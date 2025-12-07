@@ -2,17 +2,20 @@
 import BaseHead from "../components/BaseHead.astro";
 import Navigation from "../components/global/Navigation.astro";
 import Footer from "../components/global/Footer.astro";
-import { Font } from "astro:assets";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props as Props;
 ---
 
-<html
-  lang="en"
-  class="scroll-smooth selection:bg-accent-500 selection:text-white no-touchevents hydrated">
+<html lang="nl" class="scroll-smooth selection:bg-accent-500 selection:text-white no-touchevents hydrated">
   <head>
-    <BaseHead />
-    <Font cssVariable="--font-sans" preload />
+    <BaseHead {title} {description} />
   </head>
-  <body class="bg-white flex flex-col min-h-svh">
+  <body class="bg-white flex flex-col min-h-svh text-base-800">
     <Navigation />
     <main class="grow"><slot /></main>
     <Footer />

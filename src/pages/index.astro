@@ -1,20 +1,142 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Hero from "../components/landing/Hero.astro";
-import SectionOne from "../components/landing/SectionOne.astro";
-import SectionTwo from "../components/landing/SectionTwo.astro";
-import Pricing from "../components/landing/Pricing.astro";
-import WhyChooseUs from "../components/landing/WhyChooseUs.astro";
-import HowItWorks from "../components/landing/HowItWorks.astro";
-import Testimonial from "../components/global/Testimonial.astro";
+import { homeCopy, journeys, people } from "../data/content";
+
+const weekendHighlights = journeys.filter((journey) => journey.type === "Weekend").slice(0, 2);
+const founders = people.filter((person) => person.type === "Core");
 ---
 
-<BaseLayout>
-  <Hero />
-  <SectionOne />
-  <SectionTwo />
-  <WhyChooseUs />
-  <HowItWorks />
-  <Pricing />
-  <Testimonial />
+<BaseLayout title="SOLA | Weekenden waar beweging en inzicht samenkomen" description={homeCopy.subline}>
+  <section class="relative overflow-hidden bg-gradient-to-br from-base-50 via-white to-base-100">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,#e0f2fe,transparent_40%),radial-gradient(circle_at_80%_0%,#c7d2fe,transparent_35%)] opacity-80"></div>
+    <div class="relative max-w-6xl mx-auto px-6 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <p class="uppercase text-xs tracking-[0.25em] text-base-500">SOLA</p>
+        <h1 class="text-4xl lg:text-5xl font-semibold leading-tight text-base-900">{homeCopy.tagline}</h1>
+        <p class="text-lg text-base-700 max-w-xl">{homeCopy.subline}</p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="/weekenden"
+            class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-black text-white font-semibold hover:bg-accent-800 transition"
+          >
+            Ontdek onze weekenden
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-base-300 text-base-800 font-semibold hover:border-base-500"
+          >
+            Contact opnemen
+          </a>
+        </div>
+      </div>
+      <div class="bg-white/80 border border-base-200 rounded-3xl p-6 shadow-lg shadow-base-200/50">
+        <div class="space-y-3">
+          <h2 class="text-lg font-semibold text-base-900">SOLA in het kort</h2>
+          <ul class="space-y-2 text-base-700">
+            {homeCopy.introLines.map((line) => (
+              <li class="flex items-start gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-accent-600"></span>
+                <span>{line}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 py-14 space-y-10">
+    <div class="grid lg:grid-cols-2 gap-10">
+      <div class="space-y-3">
+        <h3 class="text-2xl font-semibold text-base-900">Voor wie</h3>
+        <ul class="space-y-2 text-base-700">
+          {homeCopy.voorWie.map((item) => (
+            <li class="flex gap-2">
+              <span class="mt-1 h-2 w-2 rounded-full bg-accent-600"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="space-y-3">
+        <h3 class="text-2xl font-semibold text-base-900">Waarom SOLA</h3>
+        <p class="text-base-700 leading-relaxed bg-base-50 border border-base-200 rounded-2xl p-6">{homeCopy.waarom}</p>
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      <h3 class="text-2xl font-semibold text-base-900">Hoe we werken</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {homeCopy.pillars.map((pillar) => (
+          <div class="p-4 rounded-2xl border border-base-200 bg-white shadow-sm shadow-base-200/40">
+            <p class="font-medium text-base-800">{pillar}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-base-50/80 border-y border-base-200">
+    <div class="max-w-6xl mx-auto px-6 py-14 space-y-8">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <p class="uppercase text-xs tracking-[0.25em] text-base-500">Aanbod</p>
+          <h3 class="text-3xl font-semibold text-base-900">Onze weekenden</h3>
+          <p class="text-base-700">Selectie van de eerstvolgende ervaringen.</p>
+        </div>
+        <a class="text-sm font-semibold hover:text-accent-700" href="/weekenden">Bekijk alle weekenden →</a>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        {weekendHighlights.map((weekend) => (
+          <article class="rounded-3xl border border-base-200 overflow-hidden bg-white shadow-sm hover:shadow-lg transition">
+            <div class="aspect-[4/3] bg-base-200" style={{ backgroundImage: `url(${weekend.heroImage})`, backgroundSize: "cover", backgroundPosition: "center" }}></div>
+            <div class="p-6 space-y-3">
+              <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-base-500">
+                <span class="px-3 py-1 rounded-full bg-base-100 border border-base-200">{weekend.location}</span>
+                <span>{weekend.dates}</span>
+              </div>
+              <h4 class="text-xl font-semibold text-base-900">{weekend.name}</h4>
+              <p class="text-base-700">{weekend.shortDescription}</p>
+              <div class="flex items-center justify-between text-sm font-semibold text-base-900">
+                <span>{weekend.price}</span>
+                <a class="text-accent-700 hover:underline" href={`/weekenden/${weekend.slug}`}>Ontdek weekend</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 py-14 space-y-8">
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+      <div class="space-y-4">
+        <p class="uppercase text-xs tracking-[0.25em] text-base-500">Over ons</p>
+        <h3 class="text-3xl font-semibold text-base-900">Wie SOLA draagt</h3>
+        <p class="text-base-700">SOLA wordt gedragen door twee kernfiguren die de combinatie van beweging, inzicht en natuur bewaken.</p>
+        <a class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-base-300 text-base-800 font-semibold hover:border-base-500 w-fit" href="/over-ons">
+          Leer ons kennen
+        </a>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {founders.map((person) => (
+          <div class="p-5 rounded-2xl border border-base-200 bg-base-50">
+            <p class="text-lg font-semibold text-base-900">{person.name}</p>
+            <p class="text-base-600">{person.role}</p>
+            <p class="text-sm text-base-600 mt-3">{person.bio}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-base-900 text-white py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center space-y-6">
+      <h3 class="text-3xl font-semibold">{homeCopy.afsluiting.title}</h3>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a class="px-5 py-3 rounded-full bg-white text-base-900 font-semibold" href="/weekenden">{homeCopy.afsluiting.primary}</a>
+        <a class="px-5 py-3 rounded-full border border-white/40 text-white font-semibold" href="/contact">{homeCopy.afsluiting.secondary}</a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

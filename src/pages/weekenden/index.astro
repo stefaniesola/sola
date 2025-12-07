@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { journeys, uspTags } from "../../data/content";
+
+const weekends = journeys.filter((journey) => journey.type === "Weekend");
+---
+
+<BaseLayout title="SOLA | Weekenden" description="Alle SOLA-weekenden in een helder overzicht.">
+  <section class="bg-base-50/80 border-b border-base-200">
+    <div class="max-w-6xl mx-auto px-6 py-16 space-y-6">
+      <p class="uppercase text-xs tracking-[0.25em] text-base-500">Weekenden</p>
+      <h1 class="text-4xl font-semibold text-base-900">Weekenden die bewegen én verdiepen</h1>
+      <p class="text-base-700 max-w-3xl">
+        Kleine groepen, deskundige begeleiding en programma's die beweging, inzicht en natuur samenbrengen.
+      </p>
+      <div class="flex flex-wrap gap-2">
+        {uspTags.map((tag) => (
+          <span class="px-3 py-1 rounded-full bg-white border border-base-200 text-sm text-base-700">{tag}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 py-14 grid md:grid-cols-2 gap-6">
+    {weekends.map((weekend) => (
+      <article class="rounded-3xl border border-base-200 overflow-hidden bg-white shadow-sm hover:shadow-lg transition flex flex-col">
+        <div class="aspect-[4/3] bg-base-200" style={{ backgroundImage: `url(${weekend.heroImage})`, backgroundSize: "cover", backgroundPosition: "center" }}></div>
+        <div class="p-6 space-y-3 flex-1 flex flex-col">
+          <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-base-500">
+            <span class="px-3 py-1 rounded-full bg-base-100 border border-base-200">{weekend.location}</span>
+            <span>{weekend.dates}</span>
+          </div>
+          <h2 class="text-xl font-semibold text-base-900">{weekend.name}</h2>
+          <p class="text-base-700">{weekend.shortDescription}</p>
+          <div class="mt-auto flex items-center justify-between text-sm font-semibold text-base-900 pt-2">
+            <span>{weekend.price}</span>
+            <a class="text-accent-700 hover:underline" href={`/weekenden/${weekend.slug}`}>Bekijk weekend</a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
