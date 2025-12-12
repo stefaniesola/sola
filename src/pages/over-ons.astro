@@ -1,0 +1,111 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { people, missionVision, kernidentiteit, homeCopy } from "../data/content";
+
+const coreTeam = people.filter((person) => person.type === "Core");
+const experts = people.filter((person) => person.type === "Expert");
+---
+
+<BaseLayout title="SOLA | Over ons" description="Wie we zijn, waar we voor staan en met wie we werken.">
+  <section class="bg-base-50/80 border-b border-base-200">
+    <div class="max-w-6xl mx-auto px-6 py-16 space-y-6">
+      <p class="uppercase text-xs tracking-[0.25em] text-base-500">Over SOLA</p>
+      <h1 class="text-4xl font-semibold text-base-900">Wie we zijn</h1>
+      <p class="text-base-700 max-w-3xl">
+        Sola creëert ervaringen waar beweging, wetenschap en natuur samenkomen. We werken met artsen, therapeuten en coaches die handelen vanuit KPNI, fysiologie, gedrag en voeding.
+      </p>
+      <p class="text-base-700 max-w-2xl italic">« Le corps dit vrai. » — het lichaam liegt niet.</p>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 py-14 space-y-10">
+    <div class="grid lg:grid-cols-2 gap-8">
+      <div class="space-y-3">
+        <h2 class="text-2xl font-semibold text-base-900">Voor wie</h2>
+        <ul class="space-y-2 text-base-700">
+          {homeCopy.voorWie.map((item) => (
+            <li class="flex gap-2">
+              <span class="mt-1 h-2 w-2 rounded-full bg-accent-600"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="space-y-3">
+        <h2 class="text-2xl font-semibold text-base-900">Missie & visie</h2>
+        <div class="p-5 rounded-2xl border border-base-200 bg-base-50 space-y-3">
+          <div>
+            <p class="font-semibold text-base-900">Onze missie</p>
+            <p class="text-base-700">{missionVision.mission}</p>
+          </div>
+          <div>
+            <p class="font-semibold text-base-900">Onze visie</p>
+            <p class="text-base-700">{missionVision.vision}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <h2 class="text-2xl font-semibold text-base-900">Wat ons anders maakt</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {homeCopy.pillars.map((pillar) => (
+          <div class="p-4 rounded-2xl border border-base-200 bg-white shadow-sm">
+            <p class="font-medium text-base-900">{pillar}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-semibold text-base-900">Team</h2>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-4">
+        {coreTeam.map((person) => (
+          <article class="p-6 rounded-2xl border border-base-200 bg-base-50">
+            <p class="text-xl font-semibold text-base-900">{person.name}</p>
+            <p class="text-base-600">{person.role}</p>
+            <p class="text-base-700 mt-3 leading-relaxed">{person.bio}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="space-y-6">
+      <h2 class="text-2xl font-semibold text-base-900">Experten</h2>
+      <div class="grid lg:grid-cols-2 gap-4">
+        {experts.map((person) => (
+          <article class="p-6 rounded-2xl border border-base-200 bg-white shadow-sm">
+            <p class="text-xl font-semibold text-base-900">{person.name}</p>
+            <p class="text-base-600">{person.role}</p>
+            <p class="text-base-700 mt-3 leading-relaxed">{person.bio}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <h2 class="text-2xl font-semibold text-base-900">SOLA – kernidentiteit</h2>
+      <div class="p-6 rounded-2xl border border-base-200 bg-base-50 space-y-2 text-base-700">
+        {kernidentiteit.map((line) => (
+          <p>{line}</p>
+        ))}
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <h2 class="text-2xl font-semibold text-base-900">SOLA TERRA (Frankrijk)</h2>
+      <div class="p-6 rounded-2xl border border-base-200 bg-white shadow-sm space-y-2 text-base-700">
+        <p>Een natuurlijke, rustige, licht sauvage plek in Frankrijk.</p>
+        <p>Natuur die draagt. Licht dat richting geeft. Een plek om te bewegen.</p>
+        <p class="italic">« Au cœur du vivant. »</p>
+        <a class="inline-flex items-center text-accent-700 font-semibold" href="/reizen/sola-terra-frankrijk">Blijf op de hoogte →</a>
+      </div>
+    </div>
+
+    <div class="text-center pt-6">
+      <a class="px-5 py-3 rounded-full bg-black text-white font-semibold hover:bg-accent-800" href="/weekenden">Ontdek onze weekenden</a>
+    </div>
+  </section>
+</BaseLayout>
