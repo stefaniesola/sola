@@ -65,15 +65,15 @@ export const journeys: Journey[] = [
     ],
     program: [
       {
-        day: "Dag 1 – Aankomst",
-        items: ["Welkom & kennismaking", "Avondmaal", "Korte avondwandeling"],
+        day: "Vrijdag: aankomst",
+        items: ["Aankomst & welkom (SOLA × Endurance Lab)", "Samen aan tafel", "Waarom bewegen?"],
       },
       {
-        day: "Dag 2 – Inzicht & beweging",
+        day: "Zaterdag: inzicht & beweging",
         items: ["Ochtendworkshop over training", "Trail of fietsrit in kleine groepen", "Avondsessie: voeding & herstel"],
       },
       {
-        day: "Dag 3 – Integratie",
+        day: "Zondag: integratie & vooruitblik",
         items: ["Ochtendactiviteit", "Reflectiemoment", "Afsluitcirkel"],
       },
     ],
