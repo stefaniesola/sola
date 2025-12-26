@@ -66,7 +66,7 @@ export const journeys: Journey[] = [
     program: [
       {
         day: "Vrijdag: aankomst",
-        items: ["Aankomst & welkom (SOLA × Endurance Lab)", "Samen aan tafel", "Waarom bewegen?"],
+        items: ["Welkom bij SOLA x Simon", "Samen aan tafel", "Waarom bewegen?"],
       },
       {
         day: "Zaterdag: inzicht & beweging",
