@@ -1,46 +1,61 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { homeCopy, journeys, people } from "../data/content";
+import { homeCopy, journeys, people, homePage } from "../data/content";
 
-const weekendHighlights = journeys.filter((journey) => journey.type === "Weekend").slice(0, 2);
+const weekendHighlights = journeys
+  .filter((journey) => journey.type === "Weekend")
+  .slice(0, 2);
 const founders = people.filter((person) => person.type === "Core");
 ---
 
-<BaseLayout title="SOLA | Weekenden waar beweging en inzicht samenkomen" description={homeCopy.subline}>
-  <section class="relative overflow-hidden bg-gradient-to-br from-base-50 via-white to-base-100">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,#e0f2fe,transparent_40%),radial-gradient(circle_at_80%_0%,#c7d2fe,transparent_35%)] opacity-80"></div>
-    <div class="relative max-w-6xl mx-auto px-6 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-center">
+<BaseLayout
+  title="SOLATRAVEL | Weekenden waar beweging en inzicht samenkomen"
+  description={homeCopy.subline}
+>
+  <section
+    class="relative overflow-hidden min-h-[600px] lg:min-h-[700px] hero-bg-animated"
+  >
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-base-900/80 via-base-900/60 to-base-900/40"
+    >
+    </div>
+    <div
+      class="relative max-w-6xl mx-auto px-6 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-center min-h-[600px] lg:min-h-[700px]"
+    >
       <div class="space-y-6">
-        <p class="uppercase text-xs tracking-[0.25em] text-base-500">SOLA</p>
-        <h1 class="text-4xl lg:text-5xl font-semibold leading-tight text-base-900">{homeCopy.tagline}</h1>
-        <p class="text-lg text-base-700 max-w-xl">{homeCopy.subline}</p>
+        <p class="uppercase text-xs tracking-[0.25em] text-white/80">
+          {homePage.brandLabel}
+        </p>
+        <h1 class="text-4xl lg:text-5xl font-semibold leading-tight text-white">
+          {homeCopy.tagline}
+        </h1>
+        <p class="text-lg text-white/90 max-w-xl">{homeCopy.subline}</p>
         <div class="flex flex-wrap gap-3">
           <a
             href="/weekenden"
-            class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-black text-white font-semibold hover:bg-accent-800 transition"
+            class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-white text-base-900 font-semibold hover:bg-white/90 transition"
           >
-            Ontdek onze weekenden
+            {homePage.ctaDiscover}
           </a>
           <a
             href="/contact"
-            class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-base-300 text-base-800 font-semibold hover:border-base-500"
+            class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-white/40 text-white font-semibold hover:border-white/60 hover:bg-white/10"
           >
-            Contact opnemen
+            {homePage.ctaContact}
           </a>
         </div>
       </div>
-      <div class="bg-white/80 border border-base-200 rounded-3xl p-6 shadow-lg shadow-base-200/50">
-        <div class="space-y-3">
-          <h2 class="text-lg font-semibold text-base-900">SOLA in het kort</h2>
-          <ul class="space-y-2 text-base-700">
-            {homeCopy.introLines.map((line) => (
-              <li class="flex items-start gap-2">
-                <span class="mt-1 h-2 w-2 rounded-full bg-accent-600"></span>
-                <span>{line}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div class="flex items-center justify-end h-full">
+        <blockquote class="text-right space-y-3 max-w-md">
+          <p
+            class="text-2xl lg:text-3xl font-light italic text-white leading-relaxed drop-shadow-lg"
+          >
+            {homePage.heroQuote}
+          </p>
+          <footer class="text-base lg:text-lg text-white/90 font-medium">
+            {homePage.heroQuoteAuthor}
+          </footer>
+        </blockquote>
       </div>
     </div>
   </section>
@@ -48,62 +63,173 @@ const founders = people.filter((person) => person.type === "Core");
   <section class="max-w-6xl mx-auto px-6 py-14 space-y-10">
     <div class="grid lg:grid-cols-2 gap-10">
       <div class="space-y-3">
-        <h3 class="text-2xl font-semibold text-base-900">Voor wie</h3>
+        <h3 class="text-2xl font-semibold text-base-900">{homePage.sectionVoorWie}</h3>
         <ul class="space-y-2 text-base-700">
-          {homeCopy.voorWie.map((item) => (
-            <li class="flex gap-2">
-              <span class="mt-1 h-2 w-2 rounded-full bg-accent-600"></span>
-              <span>{item}</span>
-            </li>
-          ))}
+          {
+            homeCopy.voorWie.map((item) => (
+              <li class="flex gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-accent-600" />
+                <span>{item}</span>
+              </li>
+            ))
+          }
         </ul>
       </div>
       <div class="space-y-3">
-        <h3 class="text-2xl font-semibold text-base-900">Waarom SOLA</h3>
-        <p class="text-base-700 leading-relaxed bg-base-50 border border-base-200 rounded-2xl p-6">{homeCopy.waarom}</p>
+        <h3 class="text-2xl font-semibold text-base-900">{homePage.sectionWaarom}</h3>
+        <p
+          class="text-base-700 leading-relaxed bg-base-50 border border-base-200 rounded-2xl p-6"
+        >
+          {homeCopy.waarom}
+        </p>
       </div>
     </div>
 
     <div class="space-y-6">
-      <h3 class="text-2xl font-semibold text-base-900">Hoe we werken</h3>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {homeCopy.pillars.map((pillar) => (
-          <div class="p-4 rounded-2xl border border-base-200 bg-white shadow-sm shadow-base-200/40">
-            <p class="font-medium text-base-800">{pillar}</p>
-          </div>
-        ))}
+      <h3 class="text-2xl font-semibold text-base-900">{homePage.sectionHoeWeWerken}</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          homeCopy.pillars.map((pillar) => (
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <p class="font-medium text-base-800 text-lg">
+                    {pillar.title}
+                  </p>
+                </div>
+                <div class="flip-card-back">
+                  <p class="text-base-700 text-sm leading-relaxed">
+                    {pillar.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
+
+    <style>
+      .hero-bg-animated {
+        background-image: url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        animation: subtleMove 20s ease-in-out infinite alternate;
+      }
+
+      @keyframes subtleMove {
+        0% {
+          background-position: center center;
+          background-size: 100%;
+        }
+        100% {
+          background-position: 55% 45%;
+          background-size: 110%;
+        }
+      }
+
+      .flip-card {
+        background-color: transparent;
+        perspective: 1000px;
+        min-height: 140px;
+      }
+
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: left;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        min-height: 120px;
+      }
+
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .flip-card-front,
+      .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        padding: 1.75rem;
+        border-radius: 1rem;
+        border: 1px solid rgb(229 231 235);
+        background-color: white;
+        box-shadow:
+          0 1px 2px 0 rgb(0 0 0 / 0.05),
+          0 1px 3px 0 rgb(0 0 0 / 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .flip-card-back {
+        transform: rotateY(180deg);
+        justify-content: flex-start;
+      }
+    </style>
   </section>
 
   <section class="bg-base-50/80 border-y border-base-200">
     <div class="max-w-6xl mx-auto px-6 py-14 space-y-8">
       <div class="flex items-end justify-between gap-4">
         <div>
-          <p class="uppercase text-xs tracking-[0.25em] text-base-500">Aanbod</p>
-          <h3 class="text-3xl font-semibold text-base-900">Onze weekenden</h3>
-          <p class="text-base-700">Selectie van de eerstvolgende ervaringen.</p>
+          <p class="uppercase text-xs tracking-[0.25em] text-base-500">
+            {homePage.sectionAanbod.label}
+          </p>
+          <h3 class="text-3xl font-semibold text-base-900">{homePage.sectionAanbod.title}</h3>
+          <p class="text-base-700">{homePage.sectionAanbod.description}</p>
         </div>
-        <a class="text-sm font-semibold hover:text-accent-700" href="/weekenden">Bekijk alle weekenden →</a>
+        <a class="text-sm font-semibold hover:text-accent-700" href="/weekenden"
+          >{homePage.sectionAanbod.link}</a
+        >
       </div>
       <div class="grid md:grid-cols-2 gap-6">
-        {weekendHighlights.map((weekend) => (
-          <article class="rounded-3xl border border-base-200 overflow-hidden bg-white shadow-sm hover:shadow-lg transition">
-            <div class="aspect-[4/3] bg-base-200" style={{ backgroundImage: `url(${weekend.heroImage})`, backgroundSize: "cover", backgroundPosition: "center" }}></div>
-            <div class="p-6 space-y-3">
-              <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-base-500">
-                <span class="px-3 py-1 rounded-full bg-base-100 border border-base-200">{weekend.location}</span>
-                <span>{weekend.dates}</span>
+        {
+          weekendHighlights.map((weekend) => (
+            <a
+              href={`/weekenden/${weekend.slug}`}
+              class="rounded-3xl border border-base-200 overflow-hidden bg-white shadow-sm hover:shadow-lg transition flex flex-col group cursor-pointer"
+            >
+              <div
+                class="relative aspect-video bg-base-200 overflow-hidden"
+                style={{
+                  backgroundImage: `url(${weekend.heroImage})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              >
+                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                  <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 inline-flex items-center px-5 py-3 rounded-full bg-white text-base-900 font-semibold">
+                    {homePage.ctaDiscoverWeekend}
+                  </span>
+                </div>
               </div>
-              <h4 class="text-xl font-semibold text-base-900">{weekend.name}</h4>
-              <p class="text-base-700">{weekend.shortDescription}</p>
-              <div class="flex items-center justify-between text-sm font-semibold text-base-900">
-                <span>{weekend.price}</span>
-                <a class="text-accent-700 hover:underline" href={`/weekenden/${weekend.slug}`}>Ontdek weekend</a>
+              <div class="p-6 space-y-3 flex-1 flex flex-col">
+                <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-base-500">
+                  <span class="px-3 py-1 rounded-full bg-base-100 border border-base-200">
+                    {weekend.location}
+                  </span>
+                  <span>{weekend.dates}</span>
+                </div>
+                <h4 class="text-xl font-semibold text-base-900">
+                  {weekend.name}
+                </h4>
+                <p class="text-base-700">{weekend.shortDescription}</p>
+                <div class="mt-auto flex items-center justify-between text-sm font-semibold text-base-900 pt-2">
+                  <span>{weekend.price}</span>
+                  <span class="text-accent-700 group-hover:underline">
+                    {homePage.ctaDiscoverWeekend}
+                  </span>
+                </div>
               </div>
-            </div>
-          </article>
-        ))}
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -111,21 +237,32 @@ const founders = people.filter((person) => person.type === "Core");
   <section class="max-w-6xl mx-auto px-6 py-14 space-y-8">
     <div class="grid lg:grid-cols-2 gap-10 items-center">
       <div class="space-y-4">
-        <p class="uppercase text-xs tracking-[0.25em] text-base-500">Over ons</p>
-        <h3 class="text-3xl font-semibold text-base-900">Wie SOLA draagt</h3>
-        <p class="text-base-700">SOLA wordt gedragen door twee kernfiguren die de combinatie van beweging, inzicht en natuur bewaken.</p>
-        <a class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-base-300 text-base-800 font-semibold hover:border-base-500 w-fit" href="/over-ons">
-          Leer ons kennen
+        <p class="uppercase text-xs tracking-[0.25em] text-base-500">
+          {homePage.sectionOverOns.label}
+        </p>
+        <h3 class="text-3xl font-semibold text-base-900">
+          {homePage.sectionOverOns.title}
+        </h3>
+        <p class="text-base-700">
+          {homePage.sectionOverOns.description}
+        </p>
+        <a
+          class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-base-300 text-base-800 font-semibold hover:border-base-500 w-fit"
+          href="/over-ons"
+        >
+          {homePage.sectionOverOns.cta}
         </a>
       </div>
       <div class="grid sm:grid-cols-2 gap-4">
-        {founders.map((person) => (
-          <div class="p-5 rounded-2xl border border-base-200 bg-base-50">
-            <p class="text-lg font-semibold text-base-900">{person.name}</p>
-            <p class="text-base-600">{person.role}</p>
-            <p class="text-sm text-base-600 mt-3">{person.bio}</p>
-          </div>
-        ))}
+        {
+          founders.map((person) => (
+            <div class="p-5 rounded-2xl border border-base-200 bg-base-50">
+              <p class="text-lg font-semibold text-base-900">{person.name}</p>
+              <p class="text-base-600">{person.role}</p>
+              <p class="text-sm text-base-600 mt-3">{person.bio}</p>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -134,8 +271,14 @@ const founders = people.filter((person) => person.type === "Core");
     <div class="max-w-4xl mx-auto px-6 text-center space-y-6">
       <h3 class="text-3xl font-semibold">{homeCopy.afsluiting.title}</h3>
       <div class="flex flex-wrap justify-center gap-3">
-        <a class="px-5 py-3 rounded-full bg-white text-base-900 font-semibold" href="/weekenden">{homeCopy.afsluiting.primary}</a>
-        <a class="px-5 py-3 rounded-full border border-white/40 text-white font-semibold" href="/contact">{homeCopy.afsluiting.secondary}</a>
+        <a
+          class="px-5 py-3 rounded-full bg-white text-base-900 font-semibold"
+          href="/weekenden">{homeCopy.afsluiting.primary}</a
+        >
+        <a
+          class="px-5 py-3 rounded-full border border-white/40 text-white font-semibold"
+          href="/contact">{homeCopy.afsluiting.secondary}</a
+        >
       </div>
     </div>
   </section>
