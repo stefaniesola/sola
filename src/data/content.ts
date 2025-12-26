@@ -59,7 +59,7 @@ export const journeys: Journey[] = [
     ],
     focus: [
       "Fysieke inspanning als medicijn",
-      "Impact van beweging op cardiovasculaire, metabole en mentale gezondheid",
+      "Cardiovasculaire, metabole en mentale effecten van beweging",
       "Hoe data je helpt je lichaam beter te begrijpen",
       "Consistentie en mindset",
     ],
