@@ -51,16 +51,17 @@ export const journeys: Journey[] = [
       "Tijdens dit weekend komen wetenschap, ervaring en lichaamsbewustzijn samen. Je ontdekt waarom bewegen werkt, wat het doet met jouw lichaam en hoe kennis je helpt beweging vol te houden met meer vertrouwen en plezier.",
     ],
     audience: [
-      "Ambitieuze recreanten die met meer richting willen trainen",
-      "Mensen die willen bewegen maar drempels ervaren",
-      "Sportieve zielen met een groeimindset",
+      "Sportievelingen met interesse in gezondheid",
+      "Mensen die willen bewegen, maar drempels ervaren",
+      "Gemotiveerde actievelingen die het waarom achter beweging willen begrijpen",
+      "Deelnemers met een groeimindset, met of zonder concreet sportdoel",
+
     ],
     focus: [
       "Fysieke inspanning als medicijn",
-      "Slim en haalbaar trainen",
-      "Sportvoeding die werkt in de praktijk",
+      "Hoe beweging je cardiovasculaire, metabole en mentale gezondheid beïnvloedt",
+      "Hoe data je helpt je lichaam beter te begrijpen",
       "Consistentie en mindset",
-      "Herstel en rustmomenten herkennen",
     ],
     program: [
       {
