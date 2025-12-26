@@ -79,7 +79,7 @@ export const journeys: Journey[] = [
       },
     ],
     practical: {
-      location: "Ardennen",
+      location: "Sourbrodt, Hoge Venen",
       dates: "31 juli – 2 augustus 2026",
       price: "€550",
       participants: "min. 8 – max. 14 deelnemers",
