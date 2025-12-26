@@ -71,11 +71,7 @@ export const journeys: Journey[] = [
       {
         day: "Zaterdag: inzicht & beweging",
         items: ["Sunrise & rustige ochtendwandeling (optioneel)", "Nuchter bewegen: wat gebeurt er in je lichaam?", "Ontbijt", "Meten en begrijpen: inzicht in je eigen lichaam",
-  "Beweging en gezondheid: cardio, metabolisme en glucose", "Lunch", "Namiddag: trailrun of hike", "Avondmaal", "Avondsessie: slaap & herstel",
-],
-
-        day: "Zaterdag: inzicht & beweging",
-        items: ["Ochtendworkshop over training", "Trail of fietsrit in kleine groepen", "Avondsessie: voeding & herstel"],
+  "Beweging en gezondheid: cardio, metabolisme en glucose", "Lunch", "Namiddag: trailrun of hike", "Avondmaal", "Avondsessie: slaap & herstel"],
       },
       {
         day: "Zondag: integratie & vooruitblik",
