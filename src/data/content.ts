@@ -39,7 +39,7 @@ export const journeys: Journey[] = [
     type: "Weekend",
     shortDescription:
       "Met Simon van Endurance Lab leer je hoe beweging, data en lichaamsbewustzijn samen je gezondheid versterken.",
-    location: "Ardennen",
+    location: "Hoge Venen (Ardennen)",
     dates: "31 juli – 2 augustus 2026",
     price: "€550",
     minParticipants: 8,
