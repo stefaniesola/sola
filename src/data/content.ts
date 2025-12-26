@@ -75,7 +75,7 @@ export const journeys: Journey[] = [
       },
       {
         day: "Zondag: integratie & vooruitblik",
-        items: ["Ochtendactiviteit", "Reflectiemoment", "Afsluitcirkel"],
+        items: ["Core- en krachttraining", "Van inzicht naar toepassing", "Gezamenlijke takeaways", "Lunch"],
       },
     ],
     practical: {
