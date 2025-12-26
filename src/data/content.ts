@@ -47,8 +47,8 @@ export const journeys: Journey[] = [
     heroImage:
       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80",
     intro: [
-      "Met Simon ontdek je hoe beweging en voeding bijdragen aan vitaliteit. Beweging als medicijn, voeding als brandstof, inzicht als kompas.",
-      "We combineren onderbouwde training met eerlijke voeding, zodat je helder naar je eigen lichaam leert luisteren.",
+      "Samen met Simon van Endurance Lab duik je in de kracht van beweging als fundament van gezondheid.",
+      "Tijdens dit weekend komen wetenschap, ervaring en lichaamsbewustzijn samen. Je ontdekt waarom bewegen werkt, wat het doet met jouw lichaam en hoe kennis je helpt beweging vol te houden met meer vertrouwen en plezier.",
     ],
     audience: [
       "Ambitieuze recreanten die met meer richting willen trainen",
