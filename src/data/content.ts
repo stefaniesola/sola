@@ -38,7 +38,7 @@ export const journeys: Journey[] = [
     name: "Weekend – Sport × Voeding",
     type: "Weekend",
     shortDescription:
-      "Met endurance coach Simon Helleputte ontdek je hoe beweging en voeding samenwerken voor duurzame energie.",
+      "Met Simon van Endurance Lab leer je hoe beweging, data en lichaamsbewustzijn samen je gezondheid versterken.",
     location: "Ardennen",
     dates: "31 juli – 2 augustus 2026",
     price: "€550",
