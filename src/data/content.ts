@@ -82,7 +82,7 @@ export const journeys: Journey[] = [
       price: "€550",
       participants: "min. 8 – max. 14 deelnemers",
       included: [
-        "Begeleiding door Simon en het SOLA-team",
+        "Begeleiding door Simon en het SOLATRAVEL-team",
         "Twee overnachtingen",
         "Maaltijden en snacks",
         "Workshops en trainingen",
@@ -90,7 +90,7 @@ export const journeys: Journey[] = [
       notIncluded: ["Transport naar de locatie", "Eigen verzekering"],
       sleeping: "Comfortabele kamers, gedeeld of duo. Eerlijke, voedende maaltijden.",
     },
-    guides: ["Simon Helleputte", "SOLA team"],
+    guides: ["Simon Helleputte", "SOLATRAVEL team"],
     bookingStatus: "open",
   },
   {
@@ -142,7 +142,7 @@ export const journeys: Journey[] = [
       price: "€620",
       participants: "min. 8 – max. 12 deelnemers",
       included: [
-        "Begeleiding door Sarah en het SOLA-team",
+        "Begeleiding door Sarah en het SOLATRAVEL-team",
         "Twee overnachtingen",
         "Eerlijke maaltijden en snacks",
         "Workshops en sessies",
@@ -150,12 +150,12 @@ export const journeys: Journey[] = [
       notIncluded: ["Transport naar de locatie", "Eventuele persoonlijke aankopen"],
       sleeping: "Rustige gedeelde kamers, ruimte voor stilte en integratie.",
     },
-    guides: ["Sarah Deleu", "SOLA team"],
+    guides: ["Sarah Deleu", "SOLATRAVEL team"],
     bookingStatus: "open",
   },
   {
-    slug: "sola-terra-frankrijk",
-    name: "SOLA TERRA – Frankrijk",
+    slug: "solatravel-terra-frankrijk",
+    name: "SOLATRAVEL TERRA – Frankrijk",
     type: "Reis",
     shortDescription:
       "Een natuurlijke, rustige, licht sauvage plek in Frankrijk. Voor langere trajecten waar natuur, beweging en inzicht samenkomen.",
@@ -190,7 +190,7 @@ export const journeys: Journey[] = [
       notIncluded: ["Wordt later gedeeld"],
       sleeping: "Natuurplek met comfort en rust.",
     },
-    guides: ["SOLA team"],
+    guides: ["SOLATRAVEL team"],
     bookingStatus: "Binnenkort",
   },
 ];
@@ -200,13 +200,13 @@ export const people: Person[] = [
     name: "Stefanie Deleu",
     role: "Organisator & avonturier",
     type: "Core",
-    bio: "Stefanie is de verbindende kracht achter SOLA. Ze organiseert weekenden waar beweging en natuur samenkomen en zorgt dat elke deelnemer zich gedragen voelt.",
+    bio: "Stefanie is de verbindende kracht achter SOLATRAVEL. Ze organiseert weekenden waar beweging en natuur samenkomen en zorgt dat elke deelnemer zich gedragen voelt.",
   },
   {
     name: "Sarah Van den Daele",
     role: "Organisator & marketeer",
     type: "Core",
-    bio: "Sarah vertelt het verhaal van SOLA en bewaakt de helderheid in elke ervaring. Ze zorgt dat elke sessie praktisch, warm en toegankelijk blijft.",
+    bio: "Sarah vertelt het verhaal van SOLATRAVEL en bewaakt de helderheid in elke ervaring. Ze zorgt dat elke sessie praktisch, warm en toegankelijk blijft.",
   },
   {
     name: "Simon Helleputte",
@@ -223,35 +223,51 @@ export const people: Person[] = [
 ];
 
 export const uspTags = [
-  "Kleine groep",
+  "Kleine groep (max. 14)",
   "Helder programma",
   "Deskundige begeleiding",
-  "Onderbouwd & menselijk",
-  "Mooie plek in natuur",
+  "Onderbouwd en menselijk",
+  "Samen met goesting!",
+  "Mooie locatie in de natuur",
 ];
 
 export const homeCopy = {
   tagline: "Voor wie niet gewoon weg wil, maar vooruit wil.",
   subline:
-    "SOLA creëert weekenden waar beweging, wetenschap en natuur samenkomen. Eerlijk, helder en menselijk.",
+    "SOLATRAVEL creëert weekenden waar beweging, wetenschap en natuur samenkomen. Eerlijk, helder en menselijk.",
   introLines: [
     "Voor wie wil ontdekken wat belangrijk is.",
     "Voor wie wil bewegen, nadenken en eerlijk kijken.",
     "Helderheid, richting en ruimte om echt te kiezen.",
   ],
   voorWie: [
-    "Voor mensen die willen bewegen en voelen.",
-    "Voor wie verantwoordelijkheid wil nemen voor zijn proces.",
-    "Voor wie pit heeft — en zachtheid niet schuwt.",
+    "Voor mensen die willen bewegen en voelen",
+    "Voor wie verantwoordelijkheid neemt voor zijn of haar proces",
+    "Voor wie pit heeft en zachtheid niet schuwt",
   ],
   waarom:
-    "We geloven niet in reizen die je doen ontsnappen, maar in reizen die je doen thuiskomen. In rust. In open gesprekken. In landschappen die met je meedenken.",
+    "Reizen die je doen thuiskomen. Met rust, beweging en eerlijke gesprekken, in een omgeving die helder maakt wat klopt.",
   pillars: [
-    "Kleine groepen",
-    "Expertise uit sport, psychologie en KPNI",
-    "Eerlijke voeding",
-    "Ervaringsgericht, helder en menselijk",
-    "Ruimte voor nuance en je eigen ritme",
+    {
+      title: "Deskundige begeleiding",
+      description: "Begeleiding door mensen die hun vak verstaan. Per thema werken we met een expert, met kennis van zaken en oog voor de groep.",
+    },
+    {
+      title: "Wetenschappelijk onderbouwd",
+      description: "Wat we doen vertrekt vanuit kennis en onderzoek. Elke reis wordt samen met een expert opgebouwd, zodat inhoud en ervaring elkaar versterken.",
+    },
+    {
+      title: "Ervaringsgericht",
+      description: "Je blijft niet hangen in theorie. Wat je leert en ervaart, kan je ook meenemen naar huis en inpassen in je dagelijks leven.",
+    },
+    {
+      title: "Kleine groepen",
+      description: "Kleine groepen zorgen voor rust en aandacht. Er is ruimte om te luisteren, te delen of stil te zijn, op jouw tempo en zonder verwachtingen.",
+    },
+    {
+      title: "Gezond en lekker eten",
+      description: "Eten dat voedt en smaakt. Met verse ingrediënten, met zorg bereid en afgestemd op wat je lichaam nodig heeft.",
+    },
   ],
   afsluiting: {
     title: "Klaar om in beweging te komen?",
@@ -262,16 +278,147 @@ export const homeCopy = {
 
 export const missionVision = {
   mission:
-    "SOLA bouwt ervaringen die je in beweging zetten met inzicht. Met een onderbouwde aanpak, in de natuur, in kleine groepen.",
+    "SOLATRAVEL bouwt ervaringen die je in beweging zetten met inzicht. Met een onderbouwde aanpak, in de natuur, in kleine groepen.",
   vision:
     "We geloven dat gezondheid ontstaat wanneer natuur, inspanning en inzicht samenkomen. Geen vlucht, wel een plek om wakker te worden.",
 };
 
 export const kernidentiteit = [
-  "🌞 SOLA : licht, kracht, beweging",
-  "Sola komt van soleil: licht dat richting geeft.",
+  "🌞 SOLATRAVEL : licht, kracht, beweging",
+  "Solatravel komt van soleil: licht dat richting geeft.",
   "Wij werken vanuit energie, helderheid en het lichaam dat beweegt.",
   "Gezondheid ontstaat wanneer natuur, inspanning en inzicht samenkomen.",
-  "Sola is Sarah, Stefanie.",
-  "SOLA : au vrai.",
+  "Solatravel is Sarah, Stefanie.",
+  "SOLATRAVEL : au vrai.",
 ];
+
+export const weekendPage = {
+  label: "Weekenden",
+  title: "Weekenden die bewegen én verdiepen",
+  description:
+    "Kleine groepen, deskundige begeleiding en programma's die beweging, inzicht en natuur samenbrengen.",
+  cta: "Bekijk weekend",
+};
+
+export const homePage = {
+  brandLabel: "SOLATRAVEL",
+  heroQuote: "La simplicité est la sophistication suprême",
+  heroQuoteAuthor: "— Léonard de Vinci",
+  ctaDiscover: "Ontdek onze weekenden",
+  ctaContact: "Contact opnemen",
+  sectionVoorWie: "Voor wie",
+  sectionWaarom: "Waarom SOLATRAVEL",
+  sectionHoeWeWerken: "Hoe we werken",
+  sectionAanbod: {
+    label: "Aanbod",
+    title: "Onze weekenden",
+    description: "Selectie van de eerstvolgende ervaringen.",
+    link: "Bekijk alle weekenden →",
+  },
+  ctaDiscoverWeekend: "Ontdek weekend",
+  sectionOverOns: {
+    label: "Over ons",
+    title: "Wie SOLATRAVEL draagt",
+    description:
+      "SOLATRAVEL wordt gedragen door twee kernfiguren die de combinatie van beweging, inzicht en natuur bewaken.",
+    cta: "Leer ons kennen",
+  },
+};
+
+export const weekendDetailPage = {
+  ctaBook: "Boek nu",
+  ctaMoreInfo: "Meer info",
+  sectionVoorWie: "Voor wie",
+  sectionFocus: "Wat je leert / focus",
+  sectionProgramma: "Programma",
+  sectionPraktisch: "Praktisch",
+  practicalLabels: {
+    location: "Locatie",
+    dates: "Data",
+    price: "Prijs",
+    participants: "Deelnemers",
+    included: "Inbegrepen",
+    notIncluded: "Niet inbegrepen",
+    sleeping: "Slaap & maaltijden",
+  },
+  bookingForm: {
+    title: "Boek nu",
+    description:
+      "We sturen je een bevestiging en verdere details per e-mail.",
+    labels: {
+      naam: "Naam",
+      email: "E-mail",
+      telefoon: "Telefoon",
+      weekend: "Gekozen weekend",
+    },
+    submit: "Verstuur",
+    success: "Bedankt! Je aanvraag is verstuurd.",
+  },
+  interestForm: {
+    title: "Interesseformulier",
+    description:
+      "Nog twijfels? Laat je gegevens achter, we nemen contact op.",
+    labels: {
+      naam: "Naam",
+      email: "E-mail",
+      telefoon: "Telefoon",
+    },
+    submit: "Verstuur",
+    success: "Bedankt! We nemen snel contact op.",
+  },
+};
+
+export const contactPage = {
+  label: "Contact",
+  title: "Contact en gesprek plannen",
+  description:
+    "Stuur ons een bericht of plan een gesprek. We antwoorden snel via hello@solatravel.be.",
+  form: {
+    title: "Stuur een bericht",
+    description: "We willen graag weten hoe we je kunnen helpen.",
+    labels: {
+      naam: "Naam",
+      email: "E-mail",
+      telefoon: "Telefoon",
+      bericht: "Bericht",
+    },
+    submit: "Verstuur",
+    success: "Bedankt! We hebben je bericht ontvangen.",
+  },
+  directContact: {
+    title: "Direct contact",
+    email: "hello@solatravel.be",
+    location: "Gevestigd in Gent.",
+  },
+  planMeeting: {
+    title: "Plan een gesprek",
+    description: "Liever even bellen of videobel? Plan een moment dat past.",
+    cta: "Plan via e-mail",
+  },
+};
+
+export const aboutPage = {
+  label: "Over SOLATRAVEL",
+  title: "Wie we zijn",
+  description:
+    "Solatravel creëert ervaringen waar beweging, wetenschap en natuur samenkomen. We werken met artsen, therapeuten en coaches die handelen vanuit KPNI, fysiologie, gedrag en voeding.",
+  quote: "« Le corps dit vrai. » — het lichaam liegt niet.",
+  sectionVoorWie: "Voor wie",
+  sectionMissieVisie: "Missie & visie",
+  missieLabel: "Onze missie",
+  visieLabel: "Onze visie",
+  sectionWatOnsAndersMaakt: "Wat ons anders maakt",
+  sectionTeam: "Team",
+  sectionExperten: "Experten",
+  sectionKernidentiteit: "SOLATRAVEL – kernidentiteit",
+  sectionTerra: {
+    title: "SOLATRAVEL TERRA (Frankrijk)",
+    description1:
+      "Een natuurlijke, rustige, licht sauvage plek in Frankrijk.",
+    description2:
+      "Natuur die draagt. Licht dat richting geeft. Een plek om te bewegen.",
+    quote: "« Au cœur du vivant. »",
+    cta: "Blijf op de hoogte →",
+  },
+  ctaDiscover: "Ontdek onze weekenden",
+};

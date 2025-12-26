@@ -6,14 +6,17 @@ interface Props {
   description?: string;
 }
 
-const { title = "SOLA — Beweging, wetenschap en natuur", description = "SOLA organiseert weekenden en reizen waar beweging, wetenschap en natuur samenkomen. Voor wie helder wil kiezen en in beweging wil komen." } = Astro.props as Props;
+const {
+  title = "SOLATRAVEL — Beweging, wetenschap en natuur",
+  description = "SOLATRAVEL organiseert weekenden en reizen waar beweging, wetenschap en natuur samenkomen. Voor wie helder wil kiezen en in beweging wil komen.",
+} = Astro.props as Props;
 ---
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>{title}</title>
 <meta name="description" content={description} />
-<meta name="author" content="SOLA" />
+<meta name="author" content="SOLATRAVEL" />
 <meta name="robots" content="index, follow" />
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="shortcut icon" href="/logo.svg" type="image/x-icon" />
@@ -21,10 +24,11 @@ const { title = "SOLA — Beweging, wetenschap en natuur", description = "SOLA o
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content="/og-image.png" />
-<meta property="og:url" content="https://sola.travel" />
+<meta property="og:url" content="https://solatravel.be" />
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content="/og-image.png" />
-<link rel="canonical" href="https://sola.travel" />
-<script is:inline defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
+<link rel="canonical" href="https://solatravel.be" />
+<script is:inline defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"
+></script>

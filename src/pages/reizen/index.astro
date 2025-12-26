@@ -1,49 +1,62 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { journeys, uspTags } from "../../data/content";
+import { journeys } from "../../data/content";
 
 const trips = journeys.filter((journey) => journey.type === "Reis");
 ---
 
-<BaseLayout title="SOLA | Reizen" description="Reizen waar natuur, beweging en inzicht samenkomen.">
+<BaseLayout
+  title="SOLATRAVEL | Reizen"
+  description="Reizen waar natuur, beweging en inzicht samenkomen."
+>
   <section class="bg-base-50/80 border-b border-base-200">
-    <div class="max-w-6xl mx-auto px-6 py-16 space-y-6">
+    <div class="max-w-6xl mx-auto px-6 py-16 space-y-6 text-center">
       <p class="uppercase text-xs tracking-[0.25em] text-base-500">Reizen</p>
-      <h1 class="text-4xl font-semibold text-base-900">Reizen met tijd en ruimte</h1>
-      <p class="text-base-700 max-w-3xl">
-        Lange trajecten in de natuur, met dezelfde onderbouwde aanpak en helderheid als onze weekenden.
+      <h1 class="text-4xl font-semibold text-base-900">COMING SOON</h1>
+      <p class="text-base-700 max-w-3xl mx-auto">
+        Vanaf april 2027: momenteel in voorbereiding.
       </p>
-      <div class="flex flex-wrap gap-2">
-        {uspTags.map((tag) => (
-          <span class="px-3 py-1 rounded-full bg-white border border-base-200 text-sm text-base-700">{tag}</span>
-        ))}
+      <div class="flex flex-wrap justify-center gap-3 pt-4">
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-white text-base-900 font-semibold hover:bg-white/90 transition border border-base-300"
+        >
+          Plan een gesprek
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-base-300 text-base-800 font-semibold hover:border-base-500"
+        >
+          Blijf op de hoogte
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="max-w-6xl mx-auto px-6 py-14 grid md:grid-cols-2 gap-6">
-    {trips.map((trip) => (
-      <article class="rounded-3xl border border-base-200 overflow-hidden bg-white shadow-sm hover:shadow-lg transition flex flex-col">
-        <div class="aspect-[4/3] bg-base-200" style={{ backgroundImage: `url(${trip.heroImage})`, backgroundSize: "cover", backgroundPosition: "center" }}></div>
-        <div class="p-6 space-y-3 flex-1 flex flex-col">
-          <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-base-500">
-            <span class="px-3 py-1 rounded-full bg-base-100 border border-base-200">{trip.location}</span>
-            <span>{trip.dates}</span>
+  <section class="max-w-6xl mx-auto px-6 py-14">
+    {
+      trips.map((trip) => (
+        <article class="relative rounded-2xl border border-base-200 overflow-hidden bg-white shadow-sm flex flex-col max-w-md mx-auto">
+          <div class="absolute top-4 right-4 z-10 bg-base-900 text-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wide shadow-lg rounded">
+            Coming Soon
           </div>
-          <h2 class="text-xl font-semibold text-base-900">{trip.name}</h2>
-          <p class="text-base-700">{trip.shortDescription}</p>
-          <div class="mt-auto flex items-center justify-between text-sm font-semibold text-base-900 pt-2">
-            <span>{trip.price}</span>
-            <a class="text-accent-700 hover:underline" href={`/reizen/${trip.slug}`}>Bekijk reis</a>
+          <div
+            class="aspect-[4/3] bg-base-200"
+            style={{
+              backgroundImage: `url(${trip.heroImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
+          <div class="p-4 space-y-2 flex-1 flex flex-col">
+            <h2 class="text-lg font-semibold text-base-900">{trip.name}</h2>
+            <p class="text-sm text-base-700">
+              Midweek- en 8-daagse reizen in Frankrijk. Kleine groep. Verdiepend
+              en onderbouwd. Veel buiten, goed eten, meer tijd.
+            </p>
           </div>
-        </div>
-      </article>
-    ))}
-    {trips.length === 0 && (
-      <div class="p-6 rounded-3xl border border-dashed border-base-200 bg-base-50">
-        <p class="font-semibold text-base-900">Reizen volgen binnenkort.</p>
-        <p class="text-base-700">Laat je gegevens achter via contact om als eerste op de hoogte te zijn.</p>
-      </div>
-    )}
+        </article>
+      ))
+    }
   </section>
 </BaseLayout>

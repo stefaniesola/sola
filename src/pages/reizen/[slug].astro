@@ -5,29 +5,56 @@ import { journeys } from "../../data/content";
 
 export function getStaticPaths() {
   const trips = journeys.filter((journey) => journey.type === "Reis");
-  return trips.map((trip) => ({ params: { slug: trip.slug }, props: { trip } }));
+  return trips.map((trip) => ({
+    params: { slug: trip.slug },
+    props: { trip },
+  }));
 }
 
 const { trip } = Astro.props as { trip: Journey };
 ---
 
-<BaseLayout title={`SOLA | ${trip.name}`} description={trip.shortDescription}>
+<BaseLayout
+  title={`SOLATRAVEL | ${trip.name}`}
+  description={trip.shortDescription}
+>
   <section class="relative bg-base-900 text-white">
     <div
       class="absolute inset-0 opacity-45"
-      style={{ backgroundImage: `url(${trip.heroImage})`, backgroundSize: "cover", backgroundPosition: "center" }}
-    ></div>
+      style={{
+        backgroundImage: `url(${trip.heroImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+    </div>
     <div class="relative max-w-6xl mx-auto px-6 py-24 space-y-6">
-      <p class="uppercase text-xs tracking-[0.25em] text-white/70">{trip.type}</p>
+      <p class="uppercase text-xs tracking-[0.25em] text-white/70">
+        {trip.type}
+      </p>
       <h1 class="text-4xl lg:text-5xl font-semibold">{trip.name}</h1>
       <div class="flex flex-wrap gap-3 text-sm">
-        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/30">{trip.location}</span>
-        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/30">{trip.dates}</span>
-        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/30">{trip.price}</span>
+        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/30"
+          >{trip.location}</span
+        >
+        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/30"
+          >{trip.dates}</span
+        >
+        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/30"
+          >{trip.price}</span
+        >
       </div>
       <div class="flex flex-wrap gap-3">
-        <a href="#praktisch" class="inline-flex items-center px-5 py-3 rounded-full bg-white text-base-900 font-semibold">Meer info</a>
-        <a href="/contact" class="inline-flex items-center px-5 py-3 rounded-full border border-white/60 text-white font-semibold">Plan een gesprek</a>
+        <a
+          href="#praktisch"
+          class="inline-flex items-center px-5 py-3 rounded-full bg-white text-base-900 font-semibold"
+          >Meer info</a
+        >
+        <a
+          href="/contact"
+          class="inline-flex items-center px-5 py-3 rounded-full border border-white/60 text-white font-semibold"
+          >Plan een gesprek</a
+        >
       </div>
     </div>
   </section>
@@ -35,31 +62,37 @@ const { trip } = Astro.props as { trip: Journey };
   <section class="max-w-6xl mx-auto px-6 py-14 space-y-12">
     <div class="grid lg:grid-cols-2 gap-10">
       <div class="space-y-3">
-        {trip.intro.map((paragraph) => (
-          <p class="text-base-700 leading-relaxed">{paragraph}</p>
-        ))}
+        {
+          trip.intro.map((paragraph) => (
+            <p class="text-base-700 leading-relaxed">{paragraph}</p>
+          ))
+        }
       </div>
       <div class="space-y-6">
         <div>
           <h2 class="text-xl font-semibold text-base-900">Voor wie</h2>
           <ul class="mt-3 space-y-2 text-base-700">
-            {trip.audience.map((item) => (
-              <li class="flex gap-2">
-                <span class="mt-1 h-2 w-2 rounded-full bg-accent-600"></span>
-                <span>{item}</span>
-              </li>
-            ))}
+            {
+              trip.audience.map((item) => (
+                <li class="flex gap-2">
+                  <span class="mt-1 h-2 w-2 rounded-full bg-accent-600" />
+                  <span>{item}</span>
+                </li>
+              ))
+            }
           </ul>
         </div>
         <div>
           <h2 class="text-xl font-semibold text-base-900">Wat je meeneemt</h2>
           <ul class="mt-3 space-y-2 text-base-700">
-            {trip.focus.map((item) => (
-              <li class="flex gap-2">
-                <span class="mt-1 h-2 w-2 rounded-full bg-accent-600"></span>
-                <span>{item}</span>
-              </li>
-            ))}
+            {
+              trip.focus.map((item) => (
+                <li class="flex gap-2">
+                  <span class="mt-1 h-2 w-2 rounded-full bg-accent-600" />
+                  <span>{item}</span>
+                </li>
+              ))
+            }
           </ul>
         </div>
       </div>
@@ -90,23 +123,27 @@ const { trip } = Astro.props as { trip: Journey };
           <div class="p-5 border border-base-200 rounded-2xl">
             <p class="font-semibold text-base-900">Inbegrepen</p>
             <ul class="mt-2 space-y-2 text-base-700">
-              {trip.practical.included.map((item) => (
-                <li class="flex gap-2">
-                  <span class="mt-1 h-2 w-2 rounded-full bg-accent-600"></span>
-                  <span>{item}</span>
-                </li>
-              ))}
+              {
+                trip.practical.included.map((item) => (
+                  <li class="flex gap-2">
+                    <span class="mt-1 h-2 w-2 rounded-full bg-accent-600" />
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
             </ul>
           </div>
           <div class="p-5 border border-base-200 rounded-2xl">
             <p class="font-semibold text-base-900">Niet inbegrepen</p>
             <ul class="mt-2 space-y-2 text-base-700">
-              {trip.practical.notIncluded.map((item) => (
-                <li class="flex gap-2">
-                  <span class="mt-1 h-2 w-2 rounded-full bg-accent-600"></span>
-                  <span>{item}</span>
-                </li>
-              ))}
+              {
+                trip.practical.notIncluded.map((item) => (
+                  <li class="flex gap-2">
+                    <span class="mt-1 h-2 w-2 rounded-full bg-accent-600" />
+                    <span>{item}</span>
+                  </li>
+                ))
+              }
             </ul>
           </div>
         </div>
@@ -116,30 +153,78 @@ const { trip } = Astro.props as { trip: Journey };
         </div>
       </div>
 
-      <div class="p-6 border border-base-200 rounded-2xl bg-white shadow-sm space-y-4">
-        <h3 class="text-xl font-semibold text-base-900">Op de hoogte blijven?</h3>
-        <p class="text-base-700">Laat je e-mail achter, we sturen je als eerste nieuws over deze reis.</p>
-        <form class="space-y-4" action="mailto:hello@sola.travel" method="post" enctype="text/plain" onsubmit="handleForm(event)">
+      <div
+        class="p-6 border border-base-200 rounded-2xl bg-white shadow-sm space-y-4"
+      >
+        <h3 class="text-xl font-semibold text-base-900">
+          Op de hoogte blijven?
+        </h3>
+        <p class="text-base-700">
+          Laat je e-mail achter, we sturen je als eerste nieuws over deze reis.
+        </p>
+        <form
+          class="space-y-4"
+          action="mailto:hello@solatravel.be"
+          method="post"
+          enctype="text/plain"
+          onsubmit="handleForm(event)"
+        >
           <div class="space-y-1">
-            <label class="text-sm font-medium text-base-800" for="reis-naam">Naam</label>
-            <input id="reis-naam" name="Naam" required type="text" class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600" />
+            <label class="text-sm font-medium text-base-800" for="reis-naam"
+              >Naam</label
+            >
+            <input
+              id="reis-naam"
+              name="Naam"
+              required
+              type="text"
+              class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
+            />
           </div>
           <div class="space-y-1">
-            <label class="text-sm font-medium text-base-800" for="reis-email">E-mail</label>
-            <input id="reis-email" name="Email" required type="email" class="w-full rounded-lg border-base-300" />
+            <label class="text-sm font-medium text-base-800" for="reis-email"
+              >E-mail</label
+            >
+            <input
+              id="reis-email"
+              name="Email"
+              required
+              type="email"
+              class="w-full rounded-lg border-base-300"
+            />
           </div>
           <div class="space-y-1">
-            <label class="text-sm font-medium text-base-800" for="reis-telefoon">Telefoon</label>
-            <input id="reis-telefoon" name="Telefoon" type="tel" class="w-full rounded-lg border-base-300" />
+            <label class="text-sm font-medium text-base-800" for="reis-telefoon"
+              >Telefoon</label
+            >
+            <input
+              id="reis-telefoon"
+              name="Telefoon"
+              type="tel"
+              class="w-full rounded-lg border-base-300"
+            />
           </div>
           <div class="space-y-1">
-            <label class="text-sm font-medium text-base-800" for="reis">Reis</label>
-            <input id="reis" name="Reis" value={trip.name} readonly class="w-full rounded-lg border-base-300 bg-base-50" />
+            <label class="text-sm font-medium text-base-800" for="reis"
+              >Reis</label
+            >
+            <input
+              id="reis"
+              name="Reis"
+              value={trip.name}
+              readonly
+              class="w-full rounded-lg border-base-300 bg-base-50"
+            />
           </div>
-          <button type="submit" class="w-full inline-flex items-center justify-center rounded-full bg-black text-white font-semibold px-4 py-3 hover:bg-accent-800">
+          <button
+            type="submit"
+            class="w-full inline-flex items-center justify-center rounded-full bg-black text-white font-semibold px-4 py-3 hover:bg-accent-800"
+          >
             Verzenden
           </button>
-          <p data-status class="text-sm text-green-700 hidden">Bedankt! We laten snel iets weten.</p>
+          <p data-status class="text-sm text-green-700 hidden">
+            Bedankt! We laten snel iets weten.
+          </p>
         </form>
       </div>
     </div>
@@ -148,8 +233,8 @@ const { trip } = Astro.props as { trip: Journey };
   <script is:inline>
     function handleForm(event) {
       event.preventDefault();
-      const status = event.target.querySelector('[data-status]');
-      if (status) status.classList.remove('hidden');
+      const status = event.target.querySelector("[data-status]");
+      if (status) status.classList.remove("hidden");
       event.target.reset();
     }
   </script>
