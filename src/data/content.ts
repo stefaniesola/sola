@@ -34,8 +34,8 @@ export interface Person {
 
 export const journeys: Journey[] = [
   {
-    slug: "sport-voeding",
-    name: "Weekend – Sport × Voeding",
+    slug: "exercise-is-medicine",
+    name: "Exercise is Medicine",
     type: "Weekend",
     shortDescription:
       "Met Simon van Endurance Lab leer je hoe beweging, data en lichaamsbewustzijn samen je gezondheid versterken.",
