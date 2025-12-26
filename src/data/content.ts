@@ -53,13 +53,13 @@ export const journeys: Journey[] = [
     audience: [
       "Sportievelingen met interesse in gezondheid",
       "Mensen die willen bewegen, maar drempels ervaren",
-      "Gemotiveerde actievelingen die het waarom achter beweging willen begrijpen",
+      "Gemotiveerde actievelingen die het waarom van beweging willen begrijpen",
       "Deelnemers met een groeimindset, met of zonder concreet sportdoel",
 
     ],
     focus: [
       "Fysieke inspanning als medicijn",
-      "Hoe beweging je cardiovasculaire, metabole en mentale gezondheid beïnvloedt",
+      "De impact van beweging op cardiovasculaire, metabole en mentale gezondheid",
       "Hoe data je helpt je lichaam beter te begrijpen",
       "Consistentie en mindset",
     ],
