@@ -90,7 +90,7 @@ export const journeys: Journey[] = [
         "Workshops en trainingen",
       ],
       notIncluded: ["Transport naar de locatie", "Eigen verzekering"],
-      sleeping: "We verblijven in Sourbrodt in een ruim en comfortabel groepshuis. Je slaapt standaard in een gedeelde kamer (2 personen), met een kamerverdeling per hetzelfde geslacht. Koppels kunnen uiteraard samen op één kamer. Elke kamer beschikt over een eigen ensuite badkamer. Wie liever alleen slaapt, kan dit bij inschrijving aangeven. Dit is mogelijk mits supplement en in functie van beschikbaarheid. Alle maaltijden zijn inbegrepen. Er wordt gewerkt met gezonde, evenwichtige voeding, met aandacht voor energie. Een deel van de groenten komt uit eigen kweek. Het eten is voedend, in balans en vooral: lekker.",
+      sleeping: "We verblijven in Sourbrodt in een ruim en comfortabel groepshuis. Je slaapt standaard in een gedeelde kamer (2 personen), met kamerindeling per hetzelfde geslacht. Koppels kunnen samen op één kamer. Elke kamer beschikt over een eigen ensuite badkamer. Wie liever alleen slaapt, kan dit bij inschrijving aangeven. Dit is mogelijk mits supplement en afhankelijk van beschikbaarheid. Alle maaltijden zijn inbegrepen. Er wordt gewerkt met gezonde, evenwichtige voeding, met aandacht voor energie. Een deel van de groenten komt uit eigen kweek. Het eten is voedend, in balans en vooral lekker.",
     },
     guides: ["Simon Helleputte", "SOLATRAVEL team"],
     bookingStatus: "open",
