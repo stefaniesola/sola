@@ -13,14 +13,14 @@ const founders = people.filter((person) => person.type === "Core");
   description={homeCopy.subline}
 >
   <section
-    class="relative overflow-hidden min-h-[600px] lg:min-h-[700px] hero-bg-animated"
+    class="relative overflow-hidden min-h-screen sm:min-h-[600px] lg:min-h-[700px] hero-bg-animated"
   >
     <div
       class="absolute inset-0 bg-gradient-to-r from-base-900/80 via-base-900/60 to-base-900/40"
     >
     </div>
     <div
-      class="relative max-w-6xl mx-auto px-6 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-center min-h-[600px] lg:min-h-[700px]"
+      class="relative max-w-6xl mx-auto px-6 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-center min-h-screen sm:min-h-[600px] lg:min-h-[700px]"
     >
       <div class="space-y-6">
         <p class="uppercase text-xs tracking-[0.25em] text-white/80">
@@ -121,11 +121,11 @@ const founders = people.filter((person) => person.type === "Core");
       @keyframes subtleMove {
         0% {
           background-position: center center;
-          background-size: 100%;
+          background-size: cover;
         }
         100% {
           background-position: 55% 45%;
-          background-size: 110%;
+          background-size: cover;
         }
       }
 
