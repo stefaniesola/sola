@@ -9,7 +9,9 @@ import { contactPage } from "../data/content";
 >
   <section class="bg-base-50/80 border-b border-base-200">
     <div class="max-w-4xl mx-auto px-6 py-16 space-y-4">
-      <p class="uppercase text-xs tracking-[0.25em] text-base-500">{contactPage.label}</p>
+      <p class="uppercase text-xs tracking-[0.25em] text-base-500">
+        {contactPage.label}
+      </p>
       <h1 class="text-4xl font-semibold text-base-900">
         {contactPage.title}
       </h1>
@@ -23,90 +25,35 @@ import { contactPage } from "../data/content";
     class="max-w-6xl mx-auto px-6 py-14 grid lg:grid-cols-[2fr,1fr] gap-10"
   >
     <div class="p-6 rounded-2xl border border-base-200 bg-white shadow-sm">
-      <h2 class="text-2xl font-semibold text-base-900">{contactPage.form.title}</h2>
-      <p class="text-base-700">
-        {contactPage.form.description}
-      </p>
-      <form
-        class="mt-4 space-y-4"
-        action="mailto:hello@solatravel.be"
-        method="post"
-        enctype="text/plain"
-        onsubmit="handleForm(event)"
-      >
-        <div class="space-y-1">
-          <label class="text-sm font-medium text-base-800" for="contact-naam"
-            >{contactPage.form.labels.naam}</label
-          >
-          <input
-            id="contact-naam"
-            name="Naam"
-            required
-            type="text"
-            class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
-          />
-        </div>
-        <div class="space-y-1">
-          <label class="text-sm font-medium text-base-800" for="contact-email"
-            >{contactPage.form.labels.email}</label
-          >
-          <input
-            id="contact-email"
-            name="Email"
-            required
-            type="email"
-            class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
-          />
-        </div>
-        <div class="space-y-1">
-          <label
-            class="text-sm font-medium text-base-800"
-            for="contact-telefoon">{contactPage.form.labels.telefoon}</label
-          >
-          <input
-            id="contact-telefoon"
-            name="Telefoon"
-            type="tel"
-            class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
-          />
-        </div>
-        <div class="space-y-1">
-          <label class="text-sm font-medium text-base-800" for="contact-bericht"
-            >{contactPage.form.labels.bericht}</label
-          >
-          <textarea
-            id="contact-bericht"
-            name="Bericht"
-            required
-            rows="4"
-            class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
-          ></textarea>
-        </div>
-        <button
-          type="submit"
-          class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-black text-white font-semibold hover:bg-accent-800"
-        >
-          {contactPage.form.submit}
-        </button>
-        <p data-status class="text-sm text-green-700 hidden">
-          {contactPage.form.success}
-        </p>
-      </form>
+      <div class="notion-embed-wrapper">
+        <iframe
+          id="notion-form"
+          src="https://real-earthquake-581.notion.site/ebd/2d6045ef7d2a81d39c15f26641cf0e4d"
+          width="100%"
+          frameborder="0"
+          allowfullscreen
+          style="min-height: 1200px; border: none;"></iframe>
+      </div>
     </div>
-
+    <!-- 
     <div class="space-y-6" id="plan-gesprek">
       <div class="p-6 rounded-2xl border border-base-200 bg-base-50">
-        <h3 class="text-xl font-semibold text-base-900">{contactPage.directContact.title}</h3>
+        <h3 class="text-xl font-semibold text-base-900">
+          {contactPage.directContact.title}
+        </h3>
         <p class="text-base-700">
           Mail ons op <a
             class="text-accent-700 font-semibold"
-            href={`mailto:${contactPage.directContact.email}`}>{contactPage.directContact.email}</a
+            href={`mailto:${contactPage.directContact.email}`}
+            >{contactPage.directContact.email}</a
           >.
         </p>
         <p class="text-base-700">{contactPage.directContact.location}</p>
       </div>
       <div class="p-6 rounded-2xl border border-base-200 bg-white shadow-sm">
-        <h3 class="text-xl font-semibold text-base-900">{contactPage.planMeeting.title}</h3>
+        <h3 class="text-xl font-semibold text-base-900">
+          {contactPage.planMeeting.title}
+        </h3>
         <p class="text-base-700">
           {contactPage.planMeeting.description}
         </p>
@@ -117,15 +64,6 @@ import { contactPage } from "../data/content";
           {contactPage.planMeeting.cta}
         </a>
       </div>
-    </div>
+    </div> -->
   </section>
-
-  <script is:inline>
-    function handleForm(event) {
-      event.preventDefault();
-      const status = event.target.querySelector("[data-status]");
-      if (status) status.classList.remove("hidden");
-      event.target.reset();
-    }
-  </script>
 </BaseLayout>

@@ -22,6 +22,7 @@ export interface Journey {
   } & Record<string, string>;
   guides?: string[];
   bookingStatus?: string;
+  longread?: string; // Markdown content for the full article
 }
 
 export interface Person {
@@ -30,6 +31,7 @@ export interface Person {
   type: "Core" | "Expert";
   bio: string;
   photo?: string;
+  logo?: string;
 }
 
 export const journeys: Journey[] = [
@@ -41,7 +43,7 @@ export const journeys: Journey[] = [
       "Met Simon van Endurance Lab leer je hoe beweging, data en lichaamsbewustzijn samen je gezondheid versterken.",
     location: "Hoge Venen (Ardennen)",
     dates: "31 juli – 2 augustus 2026",
-    price: "€550",
+    price: "€550 en vroegboekkado bij inschrijving vóór 15 maart 2026",
     minParticipants: 8,
     maxParticipants: 14,
     heroImage:
@@ -94,6 +96,106 @@ export const journeys: Journey[] = [
     },
     guides: ["Simon Helleputte", "SOLATRAVEL team"],
     bookingStatus: "open",
+    longread: `Samen met Simon van Endurance Lab duik je in de kracht van beweging als fundament van gezondheid. Tijdens dit weekend komen wetenschap, ervaring en lichaamsbewustzijn samen. Je ontdekt waarom bewegen werkt, wat het doet met jouw lichaam en hoe kennis je helpt beweging vol te houden met meer vertrouwen en plezier.
+
+## Voor wie
+
+- Sportieve en actieve mensen met interesse in gezondheid
+- Mensen die willen bewegen, maar drempels ervaren
+- Gemotiveerde recreanten die het waarom achter beweging willen begrijpen
+- Deelnemers met een groeimindset, met of zonder concreet sportdoel
+
+## Wat je leert / focus
+
+- Waarom fysieke inspanning een essentieel "medicijn" is voor gezondheid
+- Hoe beweging je cardiovasculaire, metabole en mentale gezondheid beïnvloedt
+- Hoe data en metingen je helpen je lichaam beter te begrijpen
+- Hoe je leert luisteren naar signalen van je lichaam: meten én voelen
+
+## Na dit weekend
+
+- Heb je meer inzicht in hoe jouw lichaam reageert op beweging
+- Weet je hoe je bewuster en consistenter kan blijven bewegen
+- Kan je betere keuzes maken rond training, herstel en rust
+- Ga je naar huis met concrete handvaten voor je eigen praktijk
+
+## Begeleiding
+
+**Simon Helleputte** – Doctor in Health Sciences, Endurance Lab
+
+Simon combineert wetenschappelijke expertise met praktijkervaring rond beweging en gezondheid. Hij vertaalt complexe inzichten naar helder, toepasbaar begrip dat je helpt bewuster en duurzamer te bewegen.
+
+**SOLA**
+
+Stefanie begeleidt dit weekend en stem het inhoudelijk af met de expert. Samen met het SOLA-team en vrijwilligers zorgen we voor een veilige en zorgzame setting waarin iedereen zich gezien voelt.
+
+## Programma
+
+### Dag 1 – Vrijdag | Aankomst & activatie
+
+- Aankomst & warme kennismaking met SOLA × Endurance Lab
+- Gezamenlijk avondmaal om te landen en te verbinden
+- Avondreflectie: je intentie voor het weekend
+- Introductie van het programma en inhoudelijke accenten door SOLA en Simon
+
+### Dag 2 – Zaterdag | Inzichten & inspanning
+
+- Vrije sunrise voor wie dat wil
+- Rustige ochtendwandeling
+- Korte inhoudelijke sessie: wat gebeurt er met je lichaam bij het ontwaken en bij nuchter bewegen
+- Ontbijt
+- Praktijksessie met meetelementen: inzicht krijgen in je eigen lichaam
+- Theoretische sessie: beweging en cardiovasculaire gezondheid, metabole gezondheid en glucosehuishouding, onderbouwd door wetenschap en ontdaan van mythes
+- Lunch
+- Namiddagactiviteit: begeleide trailrun of hike in kleine groepen
+- Gezamenlijk avondmaal
+- Avondsessie: slaap, herstel en het parasympatisch systeem
+- Korte begeleide ontspanning om de dag af te ronden
+
+### Dag 3 – Zondag | Integratie & vooruitblik
+
+- Ochtendactiviteit: core en kracht als basis voor duurzaam bewegen
+- Reflectiemoment: hoe vertaal je deze inzichten naar je eigen leven?
+- Afsluitmoment met gezamenlijke takeaways & groepsfoto
+- Gezamenlijke lunch
+
+## Verblijf & maaltijden
+
+We verblijven in Sourbrodt, in de Hoge Venen (Ardennen), in een ruim en comfortabel groepshuis. Je slaapt standaard in een gedeelde kamer (2 personen), met een kamerverdeling per hetzelfde geslacht. Koppels kunnen uiteraard samen op één kamer. Elke kamer beschikt over een eigen ensuite badkamer. Wie liever alleen slaapt, kan dit bij inschrijving aangeven. Dit is mogelijk mits supplement en in functie van beschikbaarheid.
+
+Alle maaltijden zijn inbegrepen en worden afgestemd met de expert. Er wordt gewerkt met gezonde, evenwichtige voeding, met aandacht voor energie. Een deel van de groenten komt uit eigen kweek. Het eten is voedend, in balans en vooral: lekker.
+
+## Praktisch (logistiek)
+
+**Locatie:** Ardennen  
+**Data:** 31 juli – 2 augustus 2026  
+**Prijs:** €550
+
+### Vroegboekkado
+
+Schrijf je in vóór 15 maart 2026 en ontvang een extra cadeau ter voorbereiding op het weekend.
+
+**Aantal deelnemers:** min. 8 – max. 14 deelnemers
+
+### Wat is inbegrepen
+
+- Begeleiding door Simon Helleputte en het SOLA-team
+- Twee overnachtingen
+- Maaltijden en snacks
+- Inhoudelijke sessies, workshops en begeleide activiteiten
+
+### Wat is niet inbegrepen
+
+- Transport naar de locatie
+- Eigen verzekering
+
+## Boek je plek
+
+Na je inschrijving ontvang je een bevestiging en verdere praktische info per e-mail.
+
+## Twijfel je nog?
+
+Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.`,
   },
   {
     slug: "bewustwording-connectie",
@@ -215,12 +317,14 @@ export const people: Person[] = [
     role: "Endurance coach & sportwetenschapper",
     type: "Expert",
     bio: "Simon vertaalt sportwetenschap naar haalbare stappen. Hij begeleidt beweging als medicijn en helpt je trainen met richting en nuance.",
+    logo: "/logo.svg",
   },
   {
     name: "Sarah Deleu",
     role: "EFT-coach & therapeut",
     type: "Expert",
     bio: "Sarah creëert ruimte voor emotie en connectie. Ze werkt met EFT en open gesprekken zodat je met meer zachtheid en kracht in beweging komt.",
+    logo: "/logo.svg",
   },
 ];
 
@@ -423,4 +527,43 @@ export const aboutPage = {
     cta: "Blijf op de hoogte →",
   },
   ctaDiscover: "Ontdek onze weekenden",
+};
+
+export const partnershipsPage = {
+  label: "Samenwerkingen",
+  title: "Onze samenwerkingen",
+  description:
+    "We werken samen met experts die hun vak verstaan. Mensen met kennis, ervaring en oog voor wat echt werkt.",
+  sectionPartners: "Samenwerkingen",
+  ctaTitle: "Ook partner?",
+  ctaDescription: "Laat je gegevens achter en we nemen contact op.",
+  form: {
+    labels: {
+      naam: "Naam",
+      email: "E-mail",
+      telefoon: "Telefoon",
+      organisatie: "Organisatie",
+      bericht: "Bericht",
+    },
+    submit: "Verstuur",
+    success: "Bedankt! We nemen snel contact op.",
+  },
+};
+
+export const navigation = {
+  items: [
+    { label: "Home", href: "/" },
+    { label: "Weekenden", href: "/weekenden" },
+    { label: "Reizen", href: "/reizen" },
+    { label: "Over ons", href: "/over-ons" },
+    { label: "Partners", href: "/samenwerkingen" },
+    { label: "Contact", href: "/contact" },
+  ],
+  cta: {
+    label: "Plan een gesprek",
+    href: "/contact#plan-gesprek",
+  },
+  ariaLabels: {
+    toggle: "Schakel navigatie",
+  },
 };
