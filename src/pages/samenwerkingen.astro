@@ -1,0 +1,171 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { people, partnershipsPage } from "../data/content";
+import OptimizedImage from "../layouts/utilities/OptimizedImage.astro";
+
+const partners = people.filter((person) => person.type === "Expert");
+---
+
+<BaseLayout
+  title="SOLATRAVEL | Samenwerkingen"
+  description="Onze samenwerkingen met experts die hun vak verstaan."
+>
+  <section class="bg-base-50/80 border-b border-base-200">
+    <div class="max-w-6xl mx-auto px-6 py-16 space-y-6">
+      <p class="uppercase text-xs tracking-[0.25em] text-base-500">
+        {partnershipsPage.label}
+      </p>
+      <h1 class="text-4xl font-semibold text-base-900">
+        {partnershipsPage.title}
+      </h1>
+      <p class="text-base-700 max-w-3xl">
+        {partnershipsPage.description}
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 py-14 space-y-10">
+    <div class="space-y-6">
+      <h2 class="text-2xl font-semibold text-base-900">
+        {partnershipsPage.sectionPartners}
+      </h2>
+      <div class="grid lg:grid-cols-2 gap-6">
+        {
+          partners.map((partner) => (
+            <article class="p-6 rounded-2xl border border-base-200 bg-white shadow-sm">
+              <div class="flex items-start gap-4 mb-4">
+                {partner.logo && (
+                  <div class="flex-shrink-0">
+                    <OptimizedImage
+                      src={partner.logo}
+                      alt={`${partner.name} logo`}
+                      width={80}
+                      height={80}
+                      class="w-20 h-20 object-contain rounded-lg"
+                    />
+                  </div>
+                )}
+                <div class="flex-1">
+                  <p class="text-xl font-semibold text-base-900">
+                    {partner.name}
+                  </p>
+                  <p class="text-base-600">{partner.role}</p>
+                </div>
+              </div>
+              <p class="text-base-700 leading-relaxed">{partner.bio}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="p-6 rounded-2xl border border-base-200 bg-base-50">
+      <h2 class="text-2xl font-semibold text-base-900 mb-2">
+        {partnershipsPage.ctaTitle}
+      </h2>
+      <p class="text-base-700 mb-6">
+        {partnershipsPage.ctaDescription}
+      </p>
+      <form
+        class="space-y-4"
+        action="mailto:hello@solatravel.be"
+        method="post"
+        enctype="text/plain"
+        onsubmit="handleForm(event)"
+      >
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="text-sm font-medium text-base-800" for="partner-naam">
+              {partnershipsPage.form.labels.naam}
+            </label>
+            <input
+              id="partner-naam"
+              name="Naam"
+              required
+              type="text"
+              class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
+            />
+          </div>
+          <div class="space-y-1">
+            <label
+              class="text-sm font-medium text-base-800"
+              for="partner-email"
+            >
+              {partnershipsPage.form.labels.email}
+            </label>
+            <input
+              id="partner-email"
+              name="Email"
+              required
+              type="email"
+              class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
+            />
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label
+              class="text-sm font-medium text-base-800"
+              for="partner-telefoon"
+            >
+              {partnershipsPage.form.labels.telefoon}
+            </label>
+            <input
+              id="partner-telefoon"
+              name="Telefoon"
+              type="tel"
+              class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
+            />
+          </div>
+          <div class="space-y-1">
+            <label
+              class="text-sm font-medium text-base-800"
+              for="partner-organisatie"
+            >
+              {partnershipsPage.form.labels.organisatie}
+            </label>
+            <input
+              id="partner-organisatie"
+              name="Organisatie"
+              type="text"
+              class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
+            />
+          </div>
+        </div>
+        <div class="space-y-1">
+          <label
+            class="text-sm font-medium text-base-800"
+            for="partner-bericht"
+          >
+            {partnershipsPage.form.labels.bericht}
+          </label>
+          <textarea
+            id="partner-bericht"
+            name="Bericht"
+            required
+            rows="4"
+            class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-black text-white font-semibold hover:bg-accent-800"
+        >
+          {partnershipsPage.form.submit}
+        </button>
+        <p data-status class="text-sm text-green-700 hidden">
+          {partnershipsPage.form.success}
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <script is:inline>
+    function handleForm(event) {
+      event.preventDefault();
+      const status = event.target.querySelector("[data-status]");
+      if (status) status.classList.remove("hidden");
+      event.target.reset();
+    }
+  </script>
+</BaseLayout>
