@@ -429,49 +429,6 @@ export const homePage = {
   },
 };
 
-export const weekendDetailPage = {
-  ctaBook: "Boek nu",
-  ctaMoreInfo: "Meer info",
-  sectionVoorWie: "Voor wie",
-  sectionFocus: "Wat je leert / focus",
-  sectionProgramma: "Programma",
-  sectionPraktisch: "Praktisch",
-  practicalLabels: {
-    location: "Locatie",
-    dates: "Data",
-    price: "Prijs",
-    participants: "Deelnemers",
-    included: "Inbegrepen",
-    notIncluded: "Niet inbegrepen",
-    sleeping: "Slaap & maaltijden",
-  },
-  bookingForm: {
-    title: "Boek nu",
-    description:
-      "We sturen je een bevestiging en verdere details per e-mail.",
-    labels: {
-      naam: "Naam",
-      email: "E-mail",
-      telefoon: "Telefoon",
-      weekend: "Gekozen weekend",
-    },
-    submit: "Verstuur",
-    success: "Bedankt! Je aanvraag is verstuurd.",
-  },
-  interestForm: {
-    title: "Interesseformulier",
-    description:
-      "Nog twijfels? Laat je gegevens achter, we nemen contact op.",
-    labels: {
-      naam: "Naam",
-      email: "E-mail",
-      telefoon: "Telefoon",
-    },
-    submit: "Verstuur",
-    success: "Bedankt! We nemen snel contact op.",
-  },
-};
-
 export const contactPage = {
   label: "Contact",
   title: "Contact en gesprek plannen",
@@ -548,26 +505,3 @@ export const partnershipsPage = {
   },
 };
 
-export const newsletterPage = {
-  label: "Nieuwsbrief",
-  title: "Schrijf je in voor onze nieuwsbrief",
-  description: "Blijf op de hoogte van onze laatste reizen, weekenden en updates.",
-};
-
-export const navigation = {
-  items: [
-    { label: "Home", href: "/" },
-    { label: "Weekenden", href: "/weekenden" },
-    { label: "Reizen", href: "/reizen" },
-    { label: "Over ons", href: "/over-ons" },
-    { label: "Partners", href: "/samenwerkingen" },
-    { label: "Contact", href: "/contact" },
-  ],
-  cta: {
-    label: "Plan een gesprek",
-    href: "/contact#plan-gesprek",
-  },
-  ariaLabels: {
-    toggle: "Schakel navigatie",
-  },
-};
