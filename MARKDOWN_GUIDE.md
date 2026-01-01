@@ -1,4 +1,4 @@
-# Markdown Guide voor SOLATRAVEL Content
+# Markdown Guide voor SOLA Content
 
 ## Wat is Markdown?
 

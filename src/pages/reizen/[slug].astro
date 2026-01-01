@@ -13,7 +13,7 @@ export async function getStaticPaths() {
       let imageUrl = trip.heroImage;
       // If it's a local image path, process it
       if (trip.heroImage?.startsWith("/src/assets/images/")) {
-        if (trip.slug === "solatravel-terra-frankrijk") {
+        if (trip.slug === "sola-terra-frankrijk") {
           const optimized = await getImage({
             src: terraImage,
             width: 1400,
@@ -37,10 +37,7 @@ const markdownContent = trip.longread || "";
 const htmlContent = markdownContent ? marked.parse(markdownContent) : "";
 ---
 
-<BaseLayout
-  title={`SOLATRAVEL | ${trip.name}`}
-  description={trip.shortDescription}
->
+<BaseLayout title={`SOLA | ${trip.name}`} description={trip.shortDescription}>
   <section class="relative bg-base-900 text-white">
     <div
       class="absolute inset-0 opacity-45"

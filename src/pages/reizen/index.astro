@@ -12,7 +12,7 @@ const tripsWithImages = await Promise.all(
     let imageUrl = trip.heroImage;
     // If it's a local image path, process it
     if (trip.heroImage?.startsWith("/src/assets/images/")) {
-      if (trip.slug === "solatravel-terra-frankrijk") {
+      if (trip.slug === "sola-terra-frankrijk") {
         const optimized = await getImage({
           src: terraImage,
           width: 1400,
@@ -27,7 +27,7 @@ const tripsWithImages = await Promise.all(
 ---
 
 <BaseLayout
-  title="SOLATRAVEL | Reizen"
+  title="SOLA | Reizen"
   description="Reizen waar natuur, beweging en inzicht samenkomen."
 >
   <section class="bg-base-50/80 border-b border-base-200">
