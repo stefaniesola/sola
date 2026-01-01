@@ -43,7 +43,7 @@ export const journeys: Journey[] = [
       "Met Simon van Endurance Lab leer je hoe beweging, data en lichaamsbewustzijn samen je gezondheid versterken.",
     location: "Hoge Venen (Ardennen)",
     dates: "31 juli – 2 augustus 2026",
-    price: "€550 en vroegboekkado bij inschrijving vóór 15 maart 2026",
+    price: "€550",
     minParticipants: 8,
     maxParticipants: 14,
     heroImage:
@@ -546,6 +546,12 @@ export const partnershipsPage = {
     submit: "Verstuur",
     success: "Bedankt! We nemen snel contact op.",
   },
+};
+
+export const newsletterPage = {
+  label: "Nieuwsbrief",
+  title: "Schrijf je in voor onze nieuwsbrief",
+  description: "Blijf op de hoogte van onze laatste reizen, weekenden en updates.",
 };
 
 export const navigation = {

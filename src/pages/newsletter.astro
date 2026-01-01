@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NewsletterForm from "../components/Forms/Newsletter.astro";
+---
+
+<BaseLayout
+  title="SOLATRAVEL | Nieuwsbrief"
+  description="Blijf op de hoogte van onze laatste nieuws en updates."
+>
+  <section class="bg-base-50/80 border-b border-base-200">
+    <div class="max-w-4xl mx-auto px-6 py-16 space-y-4">
+      <p class="uppercase text-xs tracking-[0.25em] text-base-500">
+        Nieuwsbrief
+      </p>
+      <h1 class="text-4xl font-semibold text-base-900">
+        Schrijf je in voor onze nieuwsbrief
+      </h1>
+      <p class="text-base-700">
+        Blijf op de hoogte van onze laatste reizen, weekenden en updates.
+      </p>
+    </div>
+  </section>
+
+  <NewsletterForm />
+</BaseLayout>
