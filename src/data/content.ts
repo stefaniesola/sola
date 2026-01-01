@@ -32,6 +32,7 @@ export interface Person {
   bio: string;
   photo?: string;
   logo?: string;
+  isFounder?: boolean;
 }
 
 export const journeys: Journey[] = [
@@ -46,8 +47,7 @@ export const journeys: Journey[] = [
     price: "€550",
     minParticipants: 8,
     maxParticipants: 14,
-    heroImage:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80",
+    heroImage: "/src/assets/images/2596052607.jpg",
     intro: [
       "Samen met Simon van Endurance Lab duik je in de kracht van beweging als fundament van gezondheid.",
       "Tijdens dit weekend komen wetenschap, ervaring en lichaamsbewustzijn samen. Je ontdekt waarom bewegen werkt, wat het doet met jouw lichaam en hoe kennis je helpt beweging vol te houden met meer vertrouwen en plezier.",
@@ -86,7 +86,7 @@ export const journeys: Journey[] = [
       price: "€550",
       participants: "min. 8 – max. 14 deelnemers",
       included: [
-        "Begeleiding door Simon en het SOLATRAVEL-team",
+        "Begeleiding door Simon en het SOLA-team",
         "Twee overnachtingen",
         "Maaltijden en snacks",
         "Workshops en trainingen",
@@ -94,7 +94,7 @@ export const journeys: Journey[] = [
       notIncluded: ["Transport naar de locatie", "Eigen verzekering"],
       sleeping: "We verblijven in Sourbrodt in een ruim en comfortabel groepshuis. Je slaapt standaard in een gedeelde kamer (2 personen), met kamerindeling per hetzelfde geslacht. Koppels kunnen samen op één kamer. Elke kamer beschikt over een eigen ensuite badkamer. Wie liever alleen slaapt, kan dit bij inschrijving aangeven. Dit is mogelijk mits supplement en afhankelijk van beschikbaarheid. Alle maaltijden zijn inbegrepen. Er wordt gewerkt met gezonde, evenwichtige voeding, met aandacht voor energie. Een deel van de groenten komt uit eigen kweek. Het eten is voedend, in balans en vooral lekker.",
     },
-    guides: ["Simon Helleputte", "SOLATRAVEL team"],
+    guides: ["Simon Helleputte", "SOLA team"],
     bookingStatus: "open",
     longread: `Samen met Simon van Endurance Lab duik je in de kracht van beweging als fundament van gezondheid. Tijdens dit weekend komen wetenschap, ervaring en lichaamsbewustzijn samen. Je ontdekt waarom bewegen werkt, wat het doet met jouw lichaam en hoe kennis je helpt beweging vol te houden met meer vertrouwen en plezier.
 
@@ -208,8 +208,7 @@ Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken
     price: "€620",
     minParticipants: 8,
     maxParticipants: 12,
-    heroImage:
-      "https://images.unsplash.com/photo-1476041800959-2f6bb412c8ce?auto=format&fit=crop&w=1400&q=80",
+    heroImage: "/src/assets/images/2631991747.jpg",
     intro: [
       "Een weekend dat ruimte maakt voor voelen, verbinden en thuiskomen bij jezelf.",
       "Met EFT, beweging en open gesprekken krijg je handvaten om met nuance en zachtheid te leven.",
@@ -246,7 +245,7 @@ Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken
       price: "€620",
       participants: "min. 8 – max. 12 deelnemers",
       included: [
-        "Begeleiding door Sarah en het SOLATRAVEL-team",
+        "Begeleiding door Sarah en het SOLA-team",
         "Twee overnachtingen",
         "Eerlijke maaltijden en snacks",
         "Workshops en sessies",
@@ -254,20 +253,103 @@ Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken
       notIncluded: ["Transport naar de locatie", "Eventuele persoonlijke aankopen"],
       sleeping: "Rustige gedeelde kamers, ruimte voor stilte en integratie.",
     },
-    guides: ["Sarah Deleu", "SOLATRAVEL team"],
+    guides: ["Sarah Deleu", "SOLA team"],
     bookingStatus: "open",
+    longread: `Een weekend dat ruimte maakt voor voelen, verbinden en thuiskomen bij jezelf. Met EFT, beweging en open gesprekken krijg je handvaten om met nuance en zachtheid te leven.
+
+## Voor wie
+
+- Mensen die niet willen ontsnappen maar begrijpen
+- Wie zachtheid wil combineren met pit
+- Wie avontuur wil mét inzicht
+
+## Wat je leert / focus
+
+- EFT en emotionele regulatie
+- Bewustwording van patronen
+- Connectie met jezelf en anderen
+- Beweging als ingang naar voelen
+- Praktische tools om thuis verder te gaan
+
+## Na dit weekend
+
+- Heb je meer inzicht in je eigen emotionele patronen
+- Weet je hoe je EFT kan toepassen in je dagelijks leven
+- Voel je je meer verbonden met jezelf en anderen
+- Ga je naar huis met concrete handvaten voor verdere groei
+
+## Begeleiding
+
+**Sarah Deleu** – EFT-coach & therapeut
+
+Sarah creëert ruimte voor emotie en connectie. Ze werkt met EFT en open gesprekken zodat je met meer zachtheid en kracht in beweging komt.
+
+**SOLA**
+
+Stefanie begeleidt dit weekend en stem het inhoudelijk af met de expert. Samen met het SOLA-team en vrijwilligers zorgen we voor een veilige en zorgzame setting waarin iedereen zich gezien voelt.
+
+## Programma
+
+### Dag 1 – Aankomen
+
+- Welkom & intenties
+- Verkennende sessie
+- Avondmaal
+
+### Dag 2 – Verdiepen
+
+- Ochtendbeweging
+- EFT en emoties in praktijk
+- Wandeling en gesprekssessies
+
+### Dag 3 – Integreren
+
+- Stiltewandeling
+- Afronding en concrete stappen
+- Gezamenlijke lunch
+
+## Verblijf & maaltijden
+
+We verblijven in de Ardennen in rustige gedeelde kamers, met ruimte voor stilte en integratie. Alle maaltijden zijn inbegrepen en worden afgestemd met de expert. Er wordt gewerkt met gezonde, evenwichtige voeding, met aandacht voor energie. Het eten is voedend, in balans en vooral: lekker.
+
+## Praktisch (logistiek)
+
+**Locatie:** Ardennen  
+**Data:** 7 – 9 augustus 2026  
+**Prijs:** €620
+
+**Aantal deelnemers:** min. 8 – max. 12 deelnemers
+
+### Wat is inbegrepen
+
+- Begeleiding door Sarah Deleu en het SOLA-team
+- Twee overnachtingen
+- Eerlijke maaltijden en snacks
+- Workshops en sessies
+
+### Wat is niet inbegrepen
+
+- Transport naar de locatie
+- Eventuele persoonlijke aankopen
+
+## Boek je plek
+
+Na je inschrijving ontvang je een bevestiging en verdere praktische info per e-mail.
+
+## Twijfel je nog?
+
+Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.`,
   },
   {
-    slug: "solatravel-terra-frankrijk",
-    name: "SOLATRAVEL TERRA – Frankrijk",
+    slug: "sola-terra-frankrijk",
+    name: "SOLA TERRA – Frankrijk",
     type: "Reis",
     shortDescription:
       "Een natuurlijke, rustige, licht sauvage plek in Frankrijk. Voor langere trajecten waar natuur, beweging en inzicht samenkomen.",
     location: "Frankrijk",
     dates: "Binnenkort beschikbaar",
     price: "n.t.b.",
-    heroImage:
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1400&q=80",
+    heroImage: "/src/assets/images/1513986998.jpg",
     intro: [
       "Een plek in Frankrijk waar natuur en licht richting geven.",
       "Voor wie langere trajecten zoekt met beweging, voeding en helderheid als basis.",
@@ -294,7 +376,7 @@ Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken
       notIncluded: ["Wordt later gedeeld"],
       sleeping: "Natuurplek met comfort en rust.",
     },
-    guides: ["SOLATRAVEL team"],
+    guides: ["SOLA team"],
     bookingStatus: "Binnenkort",
   },
 ];
@@ -303,28 +385,26 @@ export const people: Person[] = [
   {
     name: "Stefanie Deleu",
     role: "Organisator & avonturier",
-    type: "Core",
-    bio: "Stefanie is de verbindende kracht achter SOLATRAVEL. Ze organiseert weekenden waar beweging en natuur samenkomen en zorgt dat elke deelnemer zich gedragen voelt.",
+    type: "Expert",
+    bio: "Stefanie is de verbindende kracht achter SOLA. Ze organiseert weekenden waar beweging en natuur samenkomen en zorgt dat elke deelnemer zich gedragen voelt.",
+    logo: "/stefanie.webp",
+    isFounder: true,
   },
   {
     name: "Sarah Van den Daele",
     role: "Organisator & marketeer",
     type: "Core",
-    bio: "Sarah vertelt het verhaal van SOLATRAVEL en bewaakt de helderheid in elke ervaring. Ze zorgt dat elke sessie praktisch, warm en toegankelijk blijft.",
+    bio: "Sarah vertelt het verhaal van SOLA en bewaakt de helderheid in elke ervaring. Ze zorgt dat elke sessie praktisch, warm en toegankelijk blijft.",
+    logo: "/sarah.webp",
+    isFounder: true,
   },
   {
     name: "Simon Helleputte",
     role: "Endurance coach & sportwetenschapper",
     type: "Expert",
     bio: "Simon vertaalt sportwetenschap naar haalbare stappen. Hij begeleidt beweging als medicijn en helpt je trainen met richting en nuance.",
-    logo: "/logo.svg",
-  },
-  {
-    name: "Sarah Deleu",
-    role: "EFT-coach & therapeut",
-    type: "Expert",
-    bio: "Sarah creëert ruimte voor emotie en connectie. Ze werkt met EFT en open gesprekken zodat je met meer zachtheid en kracht in beweging komt.",
-    logo: "/logo.svg",
+    logo: "/simon.webp",
+    isFounder: false,
   },
 ];
 
@@ -340,7 +420,7 @@ export const uspTags = [
 export const homeCopy = {
   tagline: "Voor wie niet gewoon weg wil, maar vooruit wil.",
   subline:
-    "SOLATRAVEL creëert weekenden waar beweging, wetenschap en natuur samenkomen. Eerlijk, helder en menselijk.",
+    "SOLA creëert weekenden waar beweging, wetenschap en natuur samenkomen. Eerlijk, helder en menselijk.",
   introLines: [
     "Voor wie wil ontdekken wat belangrijk is.",
     "Voor wie wil bewegen, nadenken en eerlijk kijken.",
@@ -384,18 +464,18 @@ export const homeCopy = {
 
 export const missionVision = {
   mission:
-    "SOLATRAVEL bouwt ervaringen die je in beweging zetten met inzicht. Met een onderbouwde aanpak, in de natuur, in kleine groepen.",
+    "SOLA bouwt ervaringen die je in beweging zetten met inzicht. Met een onderbouwde aanpak, in de natuur, in kleine groepen.",
   vision:
     "We geloven dat gezondheid ontstaat wanneer natuur, inspanning en inzicht samenkomen. Geen vlucht, wel een plek om wakker te worden.",
 };
 
 export const kernidentiteit = [
-  "🌞 SOLATRAVEL : licht, kracht, beweging",
-  "Solatravel komt van soleil: licht dat richting geeft.",
+  "🌞 SOLA : licht, kracht, beweging",
+  "Sola komt van soleil: licht dat richting geeft.",
   "Wij werken vanuit energie, helderheid en het lichaam dat beweegt.",
   "Gezondheid ontstaat wanneer natuur, inspanning en inzicht samenkomen.",
-  "Solatravel is Sarah, Stefanie.",
-  "SOLATRAVEL : au vrai.",
+  "Sola is Sarah, Stefanie.",
+  "SOLA : au vrai.",
 ];
 
 export const weekendPage = {
@@ -407,11 +487,11 @@ export const weekendPage = {
 };
 
 export const homePage = {
-  brandLabel: "SOLATRAVEL",
+  brandLabel: "SOLA",
   ctaDiscover: "Ontdek onze weekenden",
   ctaContact: "Contact opnemen",
   sectionVoorWie: "Voor wie",
-  sectionWaarom: "Waarom SOLATRAVEL",
+  sectionWaarom: "Waarom SOLA",
   sectionHoeWeWerken: "Hoe we werken",
   sectionAanbod: {
     label: "Aanbod",
@@ -422,9 +502,9 @@ export const homePage = {
   ctaDiscoverWeekend: "Ontdek weekend",
   sectionOverOns: {
     label: "Over ons",
-    title: "Wie SOLATRAVEL draagt",
+    title: "Wie SOLA draagt",
     description:
-      "SOLATRAVEL wordt gedragen door twee kernfiguren die de combinatie van beweging, inzicht en natuur bewaken.",
+      "SOLA wordt gedragen door twee kernfiguren die de combinatie van beweging, inzicht en natuur bewaken.",
     cta: "Leer ons kennen",
   },
 };
@@ -459,10 +539,10 @@ export const contactPage = {
 };
 
 export const aboutPage = {
-  label: "Over SOLATRAVEL",
+  label: "Over SOLA",
   title: "Wie we zijn",
   description:
-    "Solatravel creëert ervaringen waar beweging, wetenschap en natuur samenkomen. We werken met artsen, therapeuten en coaches die handelen vanuit KPNI, fysiologie, gedrag en voeding.",
+    "Sola creëert ervaringen waar beweging, wetenschap en natuur samenkomen. We werken met artsen, therapeuten en coaches die handelen vanuit KPNI, fysiologie, gedrag en voeding.",
   quote: "« Le corps dit vrai. » — het lichaam liegt niet.",
   sectionVoorWie: "Voor wie",
   sectionMissieVisie: "Missie & visie",
@@ -471,9 +551,9 @@ export const aboutPage = {
   sectionWatOnsAndersMaakt: "Wat ons anders maakt",
   sectionTeam: "Team",
   sectionExperten: "Experten",
-  sectionKernidentiteit: "SOLATRAVEL – kernidentiteit",
+  sectionKernidentiteit: "SOLA – kernidentiteit",
   sectionTerra: {
-    title: "SOLATRAVEL TERRA (Frankrijk)",
+    title: "SOLA TERRA (Frankrijk)",
     description1:
       "Een natuurlijke, rustige, licht sauvage plek in Frankrijk.",
     description2:

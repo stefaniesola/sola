@@ -3,13 +3,31 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import type { Journey } from "../../data/content";
 import { journeys } from "../../data/content";
 import { marked } from "marked";
+import { getImage } from "astro:assets";
+import terraImage from "../../assets/images/1513986998.jpg";
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
   const trips = journeys.filter((journey) => journey.type === "Reis");
-  return trips.map((trip) => ({
-    params: { slug: trip.slug },
-    props: { trip },
-  }));
+  return Promise.all(
+    trips.map(async (trip) => {
+      let imageUrl = trip.heroImage;
+      // If it's a local image path, process it
+      if (trip.heroImage?.startsWith("/src/assets/images/")) {
+        if (trip.slug === "sola-terra-frankrijk") {
+          const optimized = await getImage({
+            src: terraImage,
+            width: 1400,
+            quality: 85,
+          });
+          imageUrl = optimized.src;
+        }
+      }
+      return {
+        params: { slug: trip.slug },
+        props: { trip: { ...trip, heroImage: imageUrl } },
+      };
+    })
+  );
 }
 
 const { trip } = Astro.props as { trip: Journey };
@@ -19,10 +37,7 @@ const markdownContent = trip.longread || "";
 const htmlContent = markdownContent ? marked.parse(markdownContent) : "";
 ---
 
-<BaseLayout
-  title={`SOLATRAVEL | ${trip.name}`}
-  description={trip.shortDescription}
->
+<BaseLayout title={`SOLA | ${trip.name}`} description={trip.shortDescription}>
   <section class="relative bg-base-900 text-white">
     <div
       class="absolute inset-0 opacity-45"

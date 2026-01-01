@@ -1,19 +1,57 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { homeCopy, journeys, people, homePage } from "../data/content";
+import { getImage } from "astro:assets";
+import heroImage from "../assets/images/hero.jpg";
+import exerciseImage from "../assets/images/2596052607.jpg";
+import bewustwordingImage from "../assets/images/2631991747.jpg";
 
 const weekendHighlights = journeys
   .filter((journey) => journey.type === "Weekend")
   .slice(0, 2);
-const founders = people.filter((person) => person.type === "Core");
+const founders = people.filter((person) => person.isFounder);
+
+// Get optimized hero image URL for background use
+const optimizedHero = await getImage({
+  src: heroImage,
+  width: 1920,
+  quality: 85,
+});
+
+// Process hero images for weekend highlights
+const weekendHighlightsWithImages = await Promise.all(
+  weekendHighlights.map(async (weekend) => {
+    let imageUrl = weekend.heroImage;
+    // If it's a local image path, process it
+    if (weekend.heroImage?.startsWith("/src/assets/images/")) {
+      if (weekend.slug === "exercise-is-medicine") {
+        const optimized = await getImage({
+          src: exerciseImage,
+          width: 1600,
+          quality: 90,
+        });
+        imageUrl = optimized.src;
+      } else if (weekend.slug === "bewustwording-connectie") {
+        const optimized = await getImage({
+          src: bewustwordingImage,
+          width: 1600,
+          quality: 90,
+        });
+        imageUrl = optimized.src;
+      }
+    }
+    return { ...weekend, heroImage: imageUrl };
+  })
+);
 ---
 
 <BaseLayout
-  title="SOLATRAVEL | Weekenden waar beweging en inzicht samenkomen"
+  title="SOLA | Weekenden waar beweging en inzicht samenkomen"
   description={homeCopy.subline}
 >
   <section
     class="relative overflow-hidden min-h-screen sm:min-h-[600px] lg:min-h-[700px] hero-bg-animated"
+    style={`background-image: url(${optimizedHero.src});`}
   >
     <div
       class="absolute inset-0 bg-gradient-to-r from-base-900/80 via-base-900/60 to-base-900/40"
@@ -105,7 +143,6 @@ const founders = people.filter((person) => person.type === "Core");
 
     <style>
       .hero-bg-animated {
-        background-image: url("https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80");
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -186,7 +223,7 @@ const founders = people.filter((person) => person.type === "Core");
       </div>
       <div class="grid md:grid-cols-2 gap-6">
         {
-          weekendHighlights.map((weekend) => (
+          weekendHighlightsWithImages.map((weekend) => (
             <a
               href={`/weekenden/${weekend.slug}`}
               class="rounded-3xl border border-base-200 overflow-hidden bg-white shadow-sm hover:shadow-lg transition flex flex-col group cursor-pointer"
