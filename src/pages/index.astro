@@ -5,11 +5,13 @@ import { getImage } from "astro:assets";
 import heroImage from "../assets/images/hero.jpg";
 import exerciseImage from "../assets/images/2596052607.jpg";
 import bewustwordingImage from "../assets/images/2631991747.jpg";
+import stefanieImage from "../assets/images/stefanie.webp";
+import sarahImage from "../assets/images/sarah.webp";
 
 const weekendHighlights = journeys
   .filter((journey) => journey.type === "Weekend")
   .slice(0, 2);
-const founders = people.filter((person) => person.type === "Core");
+const founders = people.filter((person) => person.isFounder);
 
 // Get optimized hero image URL for background use
 const optimizedHero = await getImage({
@@ -41,6 +43,29 @@ const weekendHighlightsWithImages = await Promise.all(
       }
     }
     return { ...weekend, heroImage: imageUrl };
+  })
+);
+
+// Process founder images
+const foundersWithImages = await Promise.all(
+  founders.map(async (founder) => {
+    let imageUrl = null;
+    if (founder.name === "Stefanie Deleu") {
+      const optimized = await getImage({
+        src: stefanieImage,
+        width: 400,
+        quality: 90,
+      });
+      imageUrl = optimized.src;
+    } else if (founder.name === "Sarah Van den Daele") {
+      const optimized = await getImage({
+        src: sarahImage,
+        width: 400,
+        quality: 90,
+      });
+      imageUrl = optimized.src;
+    }
+    return { ...founder, imageUrl };
   })
 );
 ---
@@ -288,8 +313,15 @@ const weekendHighlightsWithImages = await Promise.all(
       </div>
       <div class="grid sm:grid-cols-2 gap-4">
         {
-          founders.map((person) => (
+          foundersWithImages.map((person) => (
             <div class="p-5 rounded-2xl border border-base-200 bg-base-50">
+              {person.imageUrl && (
+                <img
+                  src={person.imageUrl}
+                  alt={person.name}
+                  class="w-full h-48 object-cover rounded-xl mb-4"
+                />
+              )}
               <p class="text-lg font-semibold text-base-900">{person.name}</p>
               <p class="text-base-600">{person.role}</p>
               <p class="text-sm text-base-600 mt-3">{person.bio}</p>

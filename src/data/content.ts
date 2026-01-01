@@ -32,6 +32,7 @@ export interface Person {
   bio: string;
   photo?: string;
   logo?: string;
+  isFounder?: boolean;
 }
 
 export const journeys: Journey[] = [
@@ -384,28 +385,26 @@ export const people: Person[] = [
   {
     name: "Stefanie Deleu",
     role: "Organisator & avonturier",
-    type: "Core",
+    type: "Expert",
     bio: "Stefanie is de verbindende kracht achter SOLA. Ze organiseert weekenden waar beweging en natuur samenkomen en zorgt dat elke deelnemer zich gedragen voelt.",
+    logo: "/stefanie.webp",
+    isFounder: true,
   },
   {
     name: "Sarah Van den Daele",
     role: "Organisator & marketeer",
     type: "Core",
     bio: "Sarah vertelt het verhaal van SOLA en bewaakt de helderheid in elke ervaring. Ze zorgt dat elke sessie praktisch, warm en toegankelijk blijft.",
+    logo: "/sarah.webp",
+    isFounder: true,
   },
   {
     name: "Simon Helleputte",
     role: "Endurance coach & sportwetenschapper",
     type: "Expert",
     bio: "Simon vertaalt sportwetenschap naar haalbare stappen. Hij begeleidt beweging als medicijn en helpt je trainen met richting en nuance.",
-    logo: "/logo.svg",
-  },
-  {
-    name: "Sarah Deleu",
-    role: "EFT-coach & therapeut",
-    type: "Expert",
-    bio: "Sarah creëert ruimte voor emotie en connectie. Ze werkt met EFT en open gesprekken zodat je met meer zachtheid en kracht in beweging komt.",
-    logo: "/logo.svg",
+    logo: "/simon.webp",
+    isFounder: false,
   },
 ];
 
