@@ -408,8 +408,6 @@ export const weekendPage = {
 
 export const homePage = {
   brandLabel: "SOLATRAVEL",
-  heroQuote: "La simplicité est la sophistication suprême",
-  heroQuoteAuthor: "— Léonard de Vinci",
   ctaDiscover: "Ontdek onze weekenden",
   ctaContact: "Contact opnemen",
   sectionVoorWie: "Voor wie",
