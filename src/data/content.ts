@@ -46,8 +46,7 @@ export const journeys: Journey[] = [
     price: "€550",
     minParticipants: 8,
     maxParticipants: 14,
-    heroImage:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80",
+    heroImage: "/src/assets/images/2596052607.jpg",
     intro: [
       "Samen met Simon van Endurance Lab duik je in de kracht van beweging als fundament van gezondheid.",
       "Tijdens dit weekend komen wetenschap, ervaring en lichaamsbewustzijn samen. Je ontdekt waarom bewegen werkt, wat het doet met jouw lichaam en hoe kennis je helpt beweging vol te houden met meer vertrouwen en plezier.",
@@ -208,8 +207,7 @@ Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken
     price: "€620",
     minParticipants: 8,
     maxParticipants: 12,
-    heroImage:
-      "https://images.unsplash.com/photo-1476041800959-2f6bb412c8ce?auto=format&fit=crop&w=1400&q=80",
+    heroImage: "/src/assets/images/2631991747.jpg",
     intro: [
       "Een weekend dat ruimte maakt voor voelen, verbinden en thuiskomen bij jezelf.",
       "Met EFT, beweging en open gesprekken krijg je handvaten om met nuance en zachtheid te leven.",
@@ -256,6 +254,90 @@ Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken
     },
     guides: ["Sarah Deleu", "SOLATRAVEL team"],
     bookingStatus: "open",
+    longread: `Een weekend dat ruimte maakt voor voelen, verbinden en thuiskomen bij jezelf. Met EFT, beweging en open gesprekken krijg je handvaten om met nuance en zachtheid te leven.
+
+## Voor wie
+
+- Mensen die niet willen ontsnappen maar begrijpen
+- Wie zachtheid wil combineren met pit
+- Wie avontuur wil mét inzicht
+
+## Wat je leert / focus
+
+- EFT en emotionele regulatie
+- Bewustwording van patronen
+- Connectie met jezelf en anderen
+- Beweging als ingang naar voelen
+- Praktische tools om thuis verder te gaan
+
+## Na dit weekend
+
+- Heb je meer inzicht in je eigen emotionele patronen
+- Weet je hoe je EFT kan toepassen in je dagelijks leven
+- Voel je je meer verbonden met jezelf en anderen
+- Ga je naar huis met concrete handvaten voor verdere groei
+
+## Begeleiding
+
+**Sarah Deleu** – EFT-coach & therapeut
+
+Sarah creëert ruimte voor emotie en connectie. Ze werkt met EFT en open gesprekken zodat je met meer zachtheid en kracht in beweging komt.
+
+**SOLA**
+
+Stefanie begeleidt dit weekend en stem het inhoudelijk af met de expert. Samen met het SOLA-team en vrijwilligers zorgen we voor een veilige en zorgzame setting waarin iedereen zich gezien voelt.
+
+## Programma
+
+### Dag 1 – Aankomen
+
+- Welkom & intenties
+- Verkennende sessie
+- Avondmaal
+
+### Dag 2 – Verdiepen
+
+- Ochtendbeweging
+- EFT en emoties in praktijk
+- Wandeling en gesprekssessies
+
+### Dag 3 – Integreren
+
+- Stiltewandeling
+- Afronding en concrete stappen
+- Gezamenlijke lunch
+
+## Verblijf & maaltijden
+
+We verblijven in de Ardennen in rustige gedeelde kamers, met ruimte voor stilte en integratie. Alle maaltijden zijn inbegrepen en worden afgestemd met de expert. Er wordt gewerkt met gezonde, evenwichtige voeding, met aandacht voor energie. Het eten is voedend, in balans en vooral: lekker.
+
+## Praktisch (logistiek)
+
+**Locatie:** Ardennen  
+**Data:** 7 – 9 augustus 2026  
+**Prijs:** €620
+
+**Aantal deelnemers:** min. 8 – max. 12 deelnemers
+
+### Wat is inbegrepen
+
+- Begeleiding door Sarah Deleu en het SOLA-team
+- Twee overnachtingen
+- Eerlijke maaltijden en snacks
+- Workshops en sessies
+
+### Wat is niet inbegrepen
+
+- Transport naar de locatie
+- Eventuele persoonlijke aankopen
+
+## Boek je plek
+
+Na je inschrijving ontvang je een bevestiging en verdere praktische info per e-mail.
+
+## Twijfel je nog?
+
+Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.`,
   },
   {
     slug: "solatravel-terra-frankrijk",
@@ -266,8 +348,7 @@ Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken
     location: "Frankrijk",
     dates: "Binnenkort beschikbaar",
     price: "n.t.b.",
-    heroImage:
-      "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1400&q=80",
+    heroImage: "/src/assets/images/1513986998.jpg",
     intro: [
       "Een plek in Frankrijk waar natuur en licht richting geven.",
       "Voor wie langere trajecten zoekt met beweging, voeding en helderheid als basis.",

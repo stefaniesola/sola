@@ -3,13 +3,39 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import type { Journey } from "../../data/content";
 import { journeys } from "../../data/content";
 import { marked } from "marked";
+import { getImage } from "astro:assets";
+import exerciseImage from "../../assets/images/2596052607.jpg";
+import bewustwordingImage from "../../assets/images/2631991747.jpg";
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
   const weekends = journeys.filter((journey) => journey.type === "Weekend");
-  return weekends.map((weekend) => ({
-    params: { slug: weekend.slug },
-    props: { weekend },
-  }));
+  return Promise.all(
+    weekends.map(async (weekend) => {
+      let imageUrl = weekend.heroImage;
+      // If it's a local image path, process it
+      if (weekend.heroImage?.startsWith("/src/assets/images/")) {
+        if (weekend.slug === "exercise-is-medicine") {
+          const optimized = await getImage({
+            src: exerciseImage,
+            width: 1400,
+            quality: 85,
+          });
+          imageUrl = optimized.src;
+        } else if (weekend.slug === "bewustwording-connectie") {
+          const optimized = await getImage({
+            src: bewustwordingImage,
+            width: 1400,
+            quality: 85,
+          });
+          imageUrl = optimized.src;
+        }
+      }
+      return {
+        params: { slug: weekend.slug },
+        props: { weekend: { ...weekend, heroImage: imageUrl } },
+      };
+    })
+  );
 }
 
 const { weekend } = Astro.props as { weekend: Journey };
@@ -25,7 +51,7 @@ const htmlContent = markdownContent ? marked.parse(markdownContent) : "";
 >
   <section class="relative bg-base-900 text-white">
     <div
-      class="absolute inset-0 opacity-40"
+      class="absolute inset-0 opacity-60"
       style={{
         backgroundImage: `url(${weekend.heroImage})`,
         backgroundSize: "cover",
