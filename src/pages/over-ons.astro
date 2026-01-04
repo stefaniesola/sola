@@ -71,7 +71,7 @@ const coreTeam = people.filter((person) => person.type === "Core");
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {
           homeCopy.pillars.map((pillar) => (
-            <div class="p-4 rounded-2xl border border-base-200 bg-white shadow-sm">
+            <div class="p-4 rounded-2xl border border-base-200 bg-base-25 shadow-sm">
               <p class="font-medium text-base-900">{pillar.title}</p>
             </div>
           ))
@@ -114,7 +114,7 @@ const coreTeam = people.filter((person) => person.type === "Core");
         {aboutPage.sectionTerra.title}
       </h2>
       <div
-        class="p-6 rounded-2xl border border-base-200 bg-white shadow-sm space-y-2 text-base-700"
+        class="p-6 rounded-2xl border border-base-200 bg-base-25 shadow-sm space-y-2 text-base-700"
       >
         <p>{aboutPage.sectionTerra.description1}</p>
         <p>{aboutPage.sectionTerra.description2}</p>
