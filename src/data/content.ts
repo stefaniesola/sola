@@ -19,7 +19,7 @@ export interface Journey {
     included: string[];
     notIncluded: string[];
     sleeping: string;
-  } & Record<string, string>;
+  } & Record<string, string | string[]>;
   guides?: string[];
   bookingStatus?: string;
   longread?: string; // Markdown content for the full article
@@ -165,7 +165,7 @@ We verblijven in Sourbrodt, in de Hoge Venen (Ardennen), in een ruim en comforta
 
 Alle maaltijden zijn inbegrepen en worden afgestemd met de expert. Er wordt gewerkt met gezonde, evenwichtige voeding, met aandacht voor energie. Een deel van de groenten komt uit eigen kweek. Het eten is voedend, in balans en vooral: lekker.
 
-## Praktisch (logistiek)
+## Praktisch
 
 **Locatie:** Ardennen  
 **Data:** 31 juli – 2 augustus 2026  
@@ -179,7 +179,7 @@ Schrijf je in vóór 15 maart 2026 en ontvang een extra cadeau ter voorbereiding
 
 ### Wat is inbegrepen
 
-- Begeleiding door Simon Helleputte en het SOLA-team
+- Begeleiding door Simon Helleputte en het [SOLA-team](/over-ons)
 - Twee overnachtingen
 - Maaltijden en snacks
 - Inhoudelijke sessies, workshops en begeleide activiteiten
@@ -191,7 +191,7 @@ Schrijf je in vóór 15 maart 2026 en ontvang een extra cadeau ter voorbereiding
 
 ## Boek je plek
 
-Na je inschrijving ontvang je een bevestiging en verdere praktische info per e-mail.
+Na je inschrijving ontvang je een bevestiging en verdere praktische info [per e-mail](mailto:hello@solatravel.be).
 
 ## Twijfel je nog?
 
@@ -202,143 +202,271 @@ Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken
     name: "Weekend – Bewustwording × Connectie",
     type: "Weekend",
     shortDescription:
-      "Met Sarah Deleu verdiep je in emoties, EFT en verbinding. Voor wie helder en eerlijk wil kijken.",
-    location: "Ardennen",
+      "Beleef, ontdek en ervaar hoe je opnieuw je eigen regie in handen neemt.",
+    location: "Sourbrodt, Hoge Venen, Ardennen",
     dates: "7 – 9 augustus 2026",
     price: "€620",
     minParticipants: 8,
-    maxParticipants: 12,
+    maxParticipants: 14,
     heroImage: "/src/assets/images/2631991747.jpg",
     intro: [
-      "Een weekend dat ruimte maakt voor voelen, verbinden en thuiskomen bij jezelf.",
-      "Met EFT, beweging en open gesprekken krijg je handvaten om met nuance en zachtheid te leven.",
+      "Beleef, ontdek en ervaar hoe je opnieuw je eigen regie in handen neemt.",
     ],
     audience: [
-      "Mensen die niet willen ontsnappen maar begrijpen",
-      "Wie zachtheid wil combineren met pit",
-      "Wie avontuur wil mét inzicht",
+      "nieuwsgierig bent naar wat er echt in je leeft",
+      "wil leren voelen wat bij je past, voorbij het moeten",
+      "meer rust en helderheid wil ervaren in jezelf",
+      "openstaat voor bewustwording, zonder zweverigheid",
+      "wil ontdekken waar je energie van krijgt",
+      "jezelf beter wil begrijpen in relatie tot anderen",
     ],
     focus: [
-      "EFT en emotionele regulatie",
-      "Bewustwording van patronen",
-      "Connectie met jezelf en anderen",
-      "Beweging als ingang naar voelen",
-      "Praktische tools om thuis verder te gaan",
+      "vergroot je je bewustzijn over emoties, patronen en relaties",
+      "leer je beter voelen wat écht van jou is",
+      "krijg je praktische tools die je ook thuis kan toepassen",
+      "ervaar je hoe rust ontstaat wanneer chaos mag zakken",
     ],
     program: [
       {
-        day: "Dag 1 – Aankomen",
-        items: ["Welkom & intenties", "Verkennende sessie", "Avondmaal"],
+        day: "Vrijdagavond: Aankomen & kennismaking",
+        items: [
+          "Aankomen in het huis en aperitief",
+          "Kennismaking met de groep",
+          "Lichte, intuïtieve oefening om het ijs te breken",
+          "Samen avondeten",
+        ],
       },
       {
-        day: "Dag 2 – Verdiepen",
-        items: ["Ochtendbeweging", "EFT en emoties in praktijk", "Wandeling en gesprekssessies"],
+        day: "Zaterdag: In connectie met jezelf",
+        items: [
+          "06u Sunrise-moment (vrijblijvend)",
+          "Wakker worden & korte ochtendwandeling (± 30 min)",
+          "Ontbijt",
+          "Voormiddag: workshop - Inzicht in emoties en hoe ze werken, Introductie EFT: leren voelen en spanning reguleren, Praktische oefening om dit meteen te ervaren",
+          "Namiddag: Wandeling, Creatieve oefening: wat je voelt vorm geven",
+          "Avond: Samen avondeten, Aesthetic dance: vrij bewegen",
+        ],
       },
       {
-        day: "Dag 3 – Integreren",
-        items: ["Stiltewandeling", "Afronding en concrete stappen", "Gezamenlijke lunch"],
+        day: "Zondag: In connectie met de ander",
+        items: [
+          "Rustige opstart",
+          "Ontbijt",
+          "Korte check-in",
+          "Voormiddag: workshop - Inzicht in hoe jij verbinding en afstand ervaart, Herkennen van relationele patronen, EFT-oefeningen om bij jezelf te blijven in contact met anderen",
+          "Late voormiddag: Eenvoudige systemische oefeningen rond je plek en grenzen, Begeleide hartmeditatie & matrix reimprinting",
+          "Middag: Samen lunch, Afronden van het weekend met concrete handvatten om thuis mee verder te gaan",
+        ],
       },
     ],
     practical: {
-      location: "Ardennen",
-      dates: "7 – 9 augustus 2026",
-      price: "€620",
-      participants: "min. 8 – max. 12 deelnemers",
+      location: "Sourbrodt, Hoge Venen, Ardennen",
+      dates: "Vrijdag 7 t.e.m. zondag 9 augustus 2026",
+      welcomeTime: "Welkom op vrijdag vanaf 18u",
+      closingTime: "Afsluiting op zondag na de lunch",
+      price: "€620 per persoon. Deze prijs is all-in (zie hieronder).",
+      earlyBird: "Wie voor 31 maart inschrijft, ontvangt een persoonlijk cadeau.",
+      participants: "Minimum 8, maximum 14 deelnemers",
       included: [
-        "Begeleiding door Sarah en het SOLA-team",
-        "Twee overnachtingen",
-        "Eerlijke maaltijden en snacks",
-        "Workshops en sessies",
+        "3-daags / 2-nachten weekendtraject",
+        "Inhoudelijke begeleiding door Sarah van Logisch Gezond",
+        "Een sessie bij Sarah van Logisch Gezond na dit weekend",
+        "Alle workshops & sessies",
+        "Yoga + ecstatic dance",
+        "Verblijf op locatie",
+        "Maaltijden van vrijdagavond t.e.m. zondagmiddag",
       ],
-      notIncluded: ["Transport naar de locatie", "Eventuele persoonlijke aankopen"],
-      sleeping: "Rustige gedeelde kamers, ruimte voor stilte en integratie.",
+      notIncluded: ["Transport naar de locatie", "Eigen verzekering"],
+      sleeping: "We verblijven in Sourbrodt, in de Hoge Venen (Ardennen), in een ruim en comfortabel groepshuis. Je slaapt standaard in een gedeelde kamer (2 personen), met een kamerverdeling per hetzelfde geslacht. Koppels kunnen uiteraard samen op één kamer. Elke kamer beschikt over een eigen ensuite badkamer. Wie liever alleen slaapt, kan dit bij inschrijving aangeven. Dit is mogelijk mits supplement en in functie van beschikbaarheid.",
+      meals: "Alle maaltijden zijn inbegrepen. Er wordt gewerkt met gezonde, evenwichtige voeding, met aandacht voor energie. Een deel van de groenten komt uit eigen kweek. Het eten is voedend en vooral: lekker.",
     },
-    guides: ["Sarah Deleu", "SOLA team"],
+    guides: ["Sarah Deleu (Logisch Gezond)", "Liv (Gent)", "SOLA team"],
     bookingStatus: "open",
-    longread: `Een weekend dat ruimte maakt voor voelen, verbinden en thuiskomen bij jezelf. Met EFT, beweging en open gesprekken krijg je handvaten om met nuance en zachtheid te leven.
+    longread: `Beleef, ontdek en ervaar hoe je opnieuw je eigen regie in handen neemt.
+
+## Wanneer?
+
+📅 Vrijdag 7 t.e.m. zondag 9 augustus  
+🕕 Welkom op vrijdag vanaf 18u  
+🍽️ Afsluiting op zondag na de lunch
+
+## Waar?
+
+📍 Sourbrodt, Hoge Venen, Ardennen
+
+## Prijs
+
+€620 per persoon. Deze prijs is all-in (zie hieronder).
+
+✨ **Early bird**
+
+Wie voor 31 maart inschrijft, ontvangt een persoonlijk cadeau.
+
+## Wat is inbegrepen?
+
+- 3-daags / 2-nachten weekendtraject
+- Inhoudelijke begeleiding door Sarah van Logisch Gezond
+- Een sessie bij Sarah van Logisch Gezond na dit weekend
+- Alle workshops & sessies
+- Yoga + ecstatic dance
+- Verblijf op locatie
+- Maaltijden van vrijdagavond t.e.m. zondagmiddag
+
+## Groepsgrootte
+
+Minimum 8, maximum 14 deelnemers
 
 ## Voor wie
 
-- Mensen die niet willen ontsnappen maar begrijpen
-- Wie zachtheid wil combineren met pit
-- Wie avontuur wil mét inzicht
+Dit weekend is voor jou als je:
+
+- nieuwsgierig bent naar wat er echt in je leeft
+- wil leren voelen wat bij je past, voorbij het moeten
+- meer rust en helderheid wil ervaren in jezelf
+- openstaat voor bewustwording, zonder zweverigheid
+- wil ontdekken waar je energie van krijgt
+- jezelf beter wil begrijpen in relatie tot anderen
+
+Je komt niet om iets te fixen, maar om te ontdekken, ervaren en groeien.
 
 ## Wat je leert / focus
 
-- EFT en emotionele regulatie
-- Bewustwording van patronen
-- Connectie met jezelf en anderen
-- Beweging als ingang naar voelen
-- Praktische tools om thuis verder te gaan
+Tijdens dit weekend:
 
-## Na dit weekend
+- vergroot je je bewustzijn over emoties, patronen en relaties
+- leer je beter voelen wat écht van jou is
+- krijg je praktische tools die je ook thuis kan toepassen
+- ervaar je hoe rust ontstaat wanneer chaos mag zakken
 
-- Heb je meer inzicht in je eigen emotionele patronen
-- Weet je hoe je EFT kan toepassen in je dagelijks leven
-- Voel je je meer verbonden met jezelf en anderen
-- Ga je naar huis met concrete handvaten voor verdere groei
+_"Between stimulus and response there is a space. In that space is our power to choose our response."_ — Viktor Frankl
 
-## Begeleiding
+## Expertise & coördinatie
 
-**Sarah Deleu** – EFT-coach & therapeut
+Dit weekend wordt begeleid door **Sarah Deleu (Logisch Gezond)**, EFT-therapeut, in samenwerking met SOLA.
 
-Sarah creëert ruimte voor emotie en connectie. Ze werkt met EFT en open gesprekken zodat je met meer zachtheid en kracht in beweging komt.
+Sarah leert je werken met Emotional Freedom Techniques (EFT): een praktische methode om emoties en spanning te herkennen en te ontladen. Je leert hoe je zelf kan reguleren, op een manier die eenvoudig en ook na het weekend toepasbaar blijft. De begeleiding is rustig en afgestemd op wat zich op dat moment aandient.
 
-**SOLA**
-
-Stefanie begeleidt dit weekend en stem het inhoudelijk af met de expert. Samen met het SOLA-team en vrijwilligers zorgen we voor een veilige en zorgzame setting waarin iedereen zich gezien voelt.
+Daarnaast is **Liv (Gent)** betrokken als yoga-specialist. Via yoga en gerichte beweging helpt zij om uit het hoofd te komen en beter in het lichaam te zakken. Dit ondersteunt wat je mentaal en emotioneel leert, en zorgt voor integratie in het lichaam.
 
 ## Programma
 
-### Dag 1 – Aankomen
+### Vrijdagavond: Aankomen & kennismaking
 
-- Welkom & intenties
-- Verkennende sessie
-- Avondmaal
+We starten het weekend rustig.
 
-### Dag 2 – Verdiepen
+- Aankomen in het huis en aperitief
+- Kennismaking met de groep
+- Lichte, intuïtieve oefening om het ijs te breken
+- Samen avondeten
 
-- Ochtendbeweging
-- EFT en emoties in praktijk
-- Wandeling en gesprekssessies
+### Zaterdag: In connectie met jezelf
 
-### Dag 3 – Integreren
+**Ochtend**
 
-- Stiltewandeling
-- Afronding en concrete stappen
-- Gezamenlijke lunch
+- 06u Sunrise-moment (vrijblijvend)  
+  Voor wie wil: samen naar buiten om de dag te zien beginnen (rond 6u03).
+- Wakker worden & korte ochtendwandeling (± 30 min)
+- Ontbijt
 
-## Verblijf & maaltijden
+We starten de dag rustig en brengen aandacht naar het lichaam en het moment.
 
-We verblijven in de Ardennen in rustige gedeelde kamers, met ruimte voor stilte en integratie. Alle maaltijden zijn inbegrepen en worden afgestemd met de expert. Er wordt gewerkt met gezonde, evenwichtige voeding, met aandacht voor energie. Het eten is voedend, in balans en vooral: lekker.
+**Voormiddag: workshop**
 
-## Praktisch (logistiek)
+- Inzicht in emoties en hoe ze werken
+- Introductie EFT: leren voelen en spanning reguleren
+- Praktische oefening om dit meteen te ervaren
 
-**Locatie:** Ardennen  
-**Data:** 7 – 9 augustus 2026  
-**Prijs:** €620
+De focus ligt op jezelf beter aanvoelen, zonder analyse of moeten.
 
-**Aantal deelnemers:** min. 8 – max. 12 deelnemers
+**Namiddag**
 
-### Wat is inbegrepen
+- Wandeling
+- Creatieve oefening: wat je voelt vorm geven
 
-- Begeleiding door Sarah Deleu en het SOLA-team
-- Twee overnachtingen
-- Eerlijke maaltijden en snacks
-- Workshops en sessies
+**Avond**
 
-### Wat is niet inbegrepen
+- Samen avondeten
+- Aesthetic dance: vrij bewegen
 
-- Transport naar de locatie
-- Eventuele persoonlijke aankopen
+De dag bouwt geleidelijk op en laat ook voldoende ruimte om te integreren.
+
+### Zondag: In connectie met de ander
+
+**Ochtend**
+
+- Rustige opstart
+- Ontbijt
+- Korte check-in
+
+**Voormiddag: workshop**
+
+- Inzicht in hoe jij verbinding en afstand ervaart
+- Herkennen van relationele patronen
+- EFT-oefeningen om bij jezelf te blijven in contact met anderen
+
+**Late voormiddag**
+
+- Eenvoudige systemische oefeningen rond je plek en grenzen
+- Begeleide hartmeditatie & matrix reimprinting
+
+**Middag**
+
+- Samen lunch
+- Afronden van het weekend met concrete handvatten om thuis mee verder te gaan
+
+## Verblijf
+
+We verblijven in Sourbrodt, in de Hoge Venen (Ardennen), in een ruim en comfortabel groepshuis. Je slaapt standaard in een gedeelde kamer (2 personen), met een kamerverdeling per hetzelfde geslacht. Koppels kunnen uiteraard samen op één kamer. Elke kamer beschikt over een eigen ensuite badkamer. Wie liever alleen slaapt, kan dit bij inschrijving aangeven. Dit is mogelijk mits supplement en in functie van beschikbaarheid.
+
+## Maaltijden
+
+Alle maaltijden zijn inbegrepen. Er wordt gewerkt met gezonde, evenwichtige voeding, met aandacht voor energie. Een deel van de groenten komt uit eigen kweek. Het eten is voedend en vooral: lekker.
+
+## CTA + early bird
+
+✨ **Early birds ontvangen een persoonlijk cadeau tot 31 maart 2026**
+
+Beperkt aantal plaatsen — kleine groep, bewust gekozen.
 
 ## Boek je plek
 
 Na je inschrijving ontvang je een bevestiging en verdere praktische info per e-mail.
 
-## Twijfel je nog?
+## Twijfel je nog? Plan een gesprek
 
-Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.`,
+Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.
+
+## Goed om weten – FAQ
+
+**Moet ik ervaring hebben met lichaamswerk, meditatie of EFT?**
+
+Nee. Je hoeft geen enkele voorkennis te hebben. Alles wordt uitgelegd en stap voor stap begeleid. Je volgt op jouw tempo.
+
+**Is dit therapeutisch?**
+
+Nee. Dit is geen therapie en geen diepgravende analyse. Het is een ervaringsgericht weekend waarin je ontdekt, voelt en leert, zonder iets te moeten oplossen.
+
+**Moet ik persoonlijke dingen delen in de groep?**
+
+Nee. Delen mag, niets moet. Je bepaalt zelf wat je deelt en wat je voor jezelf houdt. Stilte is even welkom als woorden.
+
+**Wat neem ik concreet mee naar huis?**
+
+Je gaat naar huis met:
+
+- eenvoudige tools (zoals EFT) die je zelf kan toepassen
+- ervaringen die je helpen om anders met situaties om te gaan
+
+**Past dit bij mij als ik gewoon nieuwsgierig ben?**
+
+Ja. Veel deelnemers komen niet met een "probleem", maar met nieuwsgierigheid. Dit weekend draait om ontdekken, ervaren en verruimen.
+
+## Na inschrijving
+
+Je ontvangt:
+
+- praktische info over de locatie, aankomst en programma
+- wat mee te brengen naar het weekend`,
   },
   {
     slug: "sola-terra-frankrijk",
