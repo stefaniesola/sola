@@ -1,10 +1,39 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { journeys } from "../../data/content";
+import { journeys, uspTags } from "../../data/content";
 import { getImage } from "astro:assets";
+import exerciseImage from "../../assets/images/2596052607.jpg";
+import bewustwordingImage from "../../assets/images/2631991747.jpg";
 import terraImage from "../../assets/images/1513986998.jpg";
 
+const weekends = journeys.filter((journey) => journey.type === "Weekend");
 const trips = journeys.filter((journey) => journey.type === "Reis");
+
+// Process hero images for weekends
+const weekendsWithImages = await Promise.all(
+  weekends.map(async (weekend) => {
+    let imageUrl = weekend.heroImage;
+    // If it's a local image path, process it
+    if (weekend.heroImage?.startsWith("/src/assets/images/")) {
+      if (weekend.slug === "exercise-is-medicine") {
+        const optimized = await getImage({
+          src: exerciseImage,
+          width: 1400,
+          quality: 85,
+        });
+        imageUrl = optimized.src;
+      } else if (weekend.slug === "bewustwording-connectie") {
+        const optimized = await getImage({
+          src: bewustwordingImage,
+          width: 1400,
+          quality: 85,
+        });
+        imageUrl = optimized.src;
+      }
+    }
+    return { ...weekend, heroImage: imageUrl };
+  }),
+);
 
 // Process hero images for trips
 const tripsWithImages = await Promise.all(
@@ -31,53 +60,119 @@ const tripsWithImages = await Promise.all(
   description="Reizen waar natuur, beweging en inzicht samenkomen."
 >
   <section class="bg-base-50/80 border-b border-base-200">
-    <div class="max-w-6xl mx-auto px-6 py-16 space-y-6 text-center">
-      <p class="uppercase text-xs tracking-[0.25em] text-base-500">Reizen</p>
-      <h1 class="text-4xl font-semibold text-base-900">COMING SOON</h1>
-      <p class="text-base-700 max-w-3xl mx-auto">
-        Vanaf april 2027: momenteel in voorbereiding.
+    <div class="max-w-6xl mx-auto px-6 py-16 space-y-6">
+      <p class="uppercase text-xs tracking-[0.25em] text-base-500">
+        Reizen
       </p>
-      <div class="flex flex-wrap justify-center gap-3 pt-4">
-        <a
-          href="/contact"
-          class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold hover:bg-base-25/90 transition border border-base-300"
-        >
-          Plan een gesprek
-        </a>
-        <a
-          href="/newsletter"
-          class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-base-300 text-base-800 font-semibold hover:border-base-500"
-        >
-          Blijf op de hoogte
-        </a>
+      <h1 class="text-4xl font-semibold text-base-900">
+        Reizen die bewegen én verdiepen
+      </h1>
+      <p class="text-base-700 max-w-3xl">
+        Kleine groepen, deskundige begeleiding en programma's die beweging, inzicht en natuur samenbrengen.
+      </p>
+      <div class="flex flex-wrap gap-2">
+        {
+          uspTags.map((tag) => (
+            <span class="px-3 py-1 rounded-full bg-base-25 border border-base-200 text-sm text-base-700">
+              {tag}
+            </span>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <section class="max-w-6xl mx-auto px-6 py-14">
+  <section class="max-w-6xl mx-auto px-6 py-14 grid md:grid-cols-2 gap-6">
+    {
+      weekendsWithImages.map((weekend) => (
+        <a
+          href={`/weekenden/${weekend.slug}`}
+          class="rounded-3xl border border-base-200 overflow-hidden bg-base-25 shadow-sm hover:shadow-lg transition flex flex-col group cursor-pointer"
+        >
+          <div
+            class="relative aspect-video bg-base-200 overflow-hidden"
+            style={{
+              backgroundImage: `url(${weekend.heroImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold">
+                Bekijk weekend
+              </span>
+            </div>
+          </div>
+          <div class="p-6 space-y-3 flex-1 flex flex-col">
+            <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-base-500">
+              <span class="px-3 py-1 rounded-full bg-base-100 border border-base-200">
+                {weekend.location}
+              </span>
+              <span>{weekend.dates}</span>
+            </div>
+            <h2 class="text-xl font-semibold text-base-900">{weekend.name}</h2>
+            <p class="text-base-700">{weekend.shortDescription}</p>
+            <div class="mt-auto flex items-center justify-between text-sm font-semibold text-base-900 pt-2">
+              <span>{weekend.price}</span>
+              <span class="text-accent-700 group-hover:underline">
+                Bekijk weekend
+              </span>
+            </div>
+          </div>
+        </a>
+      ))
+    }
     {
       tripsWithImages.map((trip) => (
-        <article class="relative rounded-2xl border border-base-200 overflow-hidden bg-base-25 shadow-sm flex flex-col max-w-md mx-auto">
+        <article class="relative rounded-3xl border border-base-200 overflow-hidden bg-base-25 shadow-sm flex flex-col opacity-75">
           <div class="absolute top-4 right-4 z-10 bg-base-900 text-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wide shadow-lg rounded">
             Coming Soon
           </div>
           <div
-            class="aspect-[4/3] bg-base-200"
+            class="relative aspect-video bg-base-200 overflow-hidden"
             style={{
               backgroundImage: `url(${trip.heroImage})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
-          />
-          <div class="p-4 space-y-2 flex-1 flex flex-col">
-            <h2 class="text-lg font-semibold text-base-900">{trip.name}</h2>
-            <p class="text-sm text-base-700">
-              Midweek- en 8-daagse reizen in Frankrijk. Kleine groep. Verdiepend
-              en onderbouwd. Veel buiten, goed eten, meer tijd.
-            </p>
+          >
+          </div>
+          <div class="p-6 space-y-3 flex-1 flex flex-col">
+            <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-base-500">
+              <span class="px-3 py-1 rounded-full bg-base-100 border border-base-200">
+                {trip.location}
+              </span>
+              <span>{trip.dates}</span>
+            </div>
+            <h2 class="text-xl font-semibold text-base-900">{trip.name}</h2>
+            <p class="text-base-700">{trip.shortDescription}</p>
+            <div class="mt-auto flex items-center justify-between text-sm font-semibold text-base-900 pt-2">
+              <span>{trip.price}</span>
+            </div>
           </div>
         </article>
       ))
     }
+  </section>
+
+  <section class="bg-accent-600 text-white py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex-1">
+          <h3 class="text-2xl font-semibold mb-2">Binnenkort beschikbaar</h3>
+          <p class="text-white/80">
+            Vanaf april 2027: momenteel in voorbereiding. Blijf op de hoogte van nieuwe reizen en weekenden.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="/newsletter"
+            class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-white/40 text-white font-semibold hover:border-white/60 hover:bg-white/10"
+          >
+            Blijf op de hoogte
+          </a>
+        </div>
+      </div>
+    </div>
   </section>
 </BaseLayout>
