@@ -2,9 +2,9 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import type { Journey } from "../../data/content";
 import { journeys } from "../../data/content";
-import { marked } from "marked";
 import { getImage } from "astro:assets";
 import terraImage from "../../assets/images/1513986998.jpg";
+import { processMarkdown } from "../../utils/markdown";
 
 export async function getStaticPaths() {
   const trips = journeys.filter((journey) => journey.type === "Reis");
@@ -26,15 +26,15 @@ export async function getStaticPaths() {
         params: { slug: trip.slug },
         props: { trip: { ...trip, heroImage: imageUrl } },
       };
-    })
+    }),
   );
 }
 
 const { trip } = Astro.props as { trip: Journey };
 
-// Render markdown to HTML
+// Process markdown content and extract TOC
 const markdownContent = trip.longread || "";
-const htmlContent = markdownContent ? marked.parse(markdownContent) : "";
+const { html: htmlContent, toc } = processMarkdown(markdownContent);
 ---
 
 <BaseLayout title={`SOLA | ${trip.name}`} description={trip.shortDescription}>
@@ -81,19 +81,54 @@ const htmlContent = markdownContent ? marked.parse(markdownContent) : "";
 
   {
     htmlContent && (
-      <section id="content" class="max-w-4xl mx-auto px-6 py-14">
-        <div
-          class="prose prose-lg prose-base-900 max-w-none
-          prose-headings:font-semibold prose-headings:text-base-900
-          prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6
-          prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4
-          prose-p:text-base-700 prose-p:leading-relaxed prose-p:mb-4
-          prose-ul:text-base-700 prose-ul:my-4
-          prose-li:my-2
-          prose-strong:text-base-900 prose-strong:font-semibold
-          prose-a:text-accent-600 prose-a:no-underline hover:prose-a:underline"
-          set:html={htmlContent}
-        />
+      <section id="content" class="max-w-6xl mx-auto px-6 py-14">
+        <div class="flex flex-col lg:flex-row gap-8">
+          {/* Table of Contents */}
+          {toc.length > 0 && (
+            <aside class="lg:w-64 shrink-0">
+              <div class="sticky top-6">
+                <h2 class="text-lg font-semibold text-base-900 mb-4">
+                  Inhoudsopgave
+                </h2>
+                <nav class="space-y-2">
+                  {toc.map((item) => (
+                    <a
+                      href={`#${item.id}`}
+                      class={`block text-sm text-base-600 hover:text-accent-600 transition-colors ${
+                        item.level === 2
+                          ? "font-medium"
+                          : item.level === 3
+                            ? "ml-4"
+                            : item.level === 4
+                              ? "ml-8"
+                              : ""
+                      }`}
+                    >
+                      {item.text}
+                    </a>
+                  ))}
+                </nav>
+              </div>
+            </aside>
+          )}
+
+          {/* Main Content */}
+          <div class="flex-1 min-w-0">
+            <div
+              class="prose prose-lg prose-base-900 max-w-none
+              prose-headings:font-semibold prose-headings:text-base-900
+              prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:scroll-mt-6
+              prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:scroll-mt-6
+              prose-h4:text-lg prose-h4:mt-6 prose-h4:mb-3 prose-h4:scroll-mt-6
+              prose-p:text-base-700 prose-p:leading-relaxed prose-p:mb-4
+              prose-ul:text-base-700 prose-ul:my-4
+              prose-li:my-2
+              prose-strong:text-base-900 prose-strong:font-semibold
+              prose-a:text-accent-600 prose-a:no-underline hover:prose-a:underline"
+              set:html={htmlContent}
+            />
+          </div>
+        </div>
       </section>
     )
   }
