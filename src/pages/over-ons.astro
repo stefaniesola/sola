@@ -11,16 +11,13 @@ import {
 const coreTeam = people.filter((person) => person.type === "Core");
 ---
 
-<BaseLayout
-  title="SOLA | Over ons"
-  description="Wie we zijn, waar we voor staan en met wie we werken."
->
+<BaseLayout title={aboutPage.title} description={aboutPage.metaDescription}>
   <section class="bg-base-50/80 border-b border-base-200">
     <div class="max-w-6xl mx-auto px-6 py-16 space-y-6">
       <p class="uppercase text-xs tracking-[0.25em] text-base-500">
         {aboutPage.label}
       </p>
-      <h1 class="text-4xl font-semibold text-base-900">{aboutPage.title}</h1>
+      <h1 class="text-4xl font-semibold text-base-900">{aboutPage.heading}</h1>
       <p class="text-base-700 max-w-3xl">
         {aboutPage.description}
       </p>
@@ -121,8 +118,7 @@ const coreTeam = people.filter((person) => person.type === "Core");
         <p class="italic">{aboutPage.sectionTerra.quote}</p>
         <a
           class="inline-flex items-center text-accent-700 font-semibold"
-          href="/reizen/sola-terra-frankrijk"
-          >{aboutPage.sectionTerra.cta}</a
+          href="/reizen/sola-terra-frankrijk">{aboutPage.sectionTerra.cta}</a
         >
       </div>
     </div>

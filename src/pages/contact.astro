@@ -4,8 +4,8 @@ import { contactPage } from "../data/content";
 ---
 
 <BaseLayout
-  title="SOLA | Contact"
-  description="Neem contact op met SOLA voor boekingen, vragen of een gesprek."
+  title={contactPage.title}
+  description={contactPage.metaDescription}
 >
   <section class="bg-base-50/80 border-b border-base-200">
     <div class="max-w-4xl mx-auto px-6 py-16 space-y-4">
@@ -13,7 +13,7 @@ import { contactPage } from "../data/content";
         {contactPage.label}
       </p>
       <h1 class="text-4xl font-semibold text-base-900">
-        {contactPage.title}
+        {contactPage.heading}
       </h1>
       <p class="text-base-700">
         {contactPage.description}

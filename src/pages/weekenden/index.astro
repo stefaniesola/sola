@@ -35,8 +35,8 @@ const weekendsWithImages = await Promise.all(
 ---
 
 <BaseLayout
-  title="SOLA | Weekenden"
-  description="Alle SOLA-weekenden in een helder overzicht."
+  title={weekendPage.title}
+  description={weekendPage.metaDescription}
 >
   <section class="bg-base-50/80 border-b border-base-200">
     <div class="max-w-6xl mx-auto px-6 py-16 space-y-6">
@@ -44,7 +44,7 @@ const weekendsWithImages = await Promise.all(
         {weekendPage.label}
       </p>
       <h1 class="text-4xl font-semibold text-base-900">
-        {weekendPage.title}
+        {weekendPage.heading}
       </h1>
       <p class="text-base-700 max-w-3xl">
         {weekendPage.description}

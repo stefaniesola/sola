@@ -1,8 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FaqLayout from "../components/infopages/Faq.astro";
+import { faqPage } from "../data/content";
 ---
 
-<BaseLayout>
+<BaseLayout
+  title={faqPage.title}
+  description={faqPage.metaDescription}
+>
   <FaqLayout />
 </BaseLayout>

@@ -1,7 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Terms from "../components/infopages/Terms.astro";
+import { termsPage } from "../data/content";
 ---
-<BaseLayout>
+<BaseLayout
+  title={termsPage.title}
+  description={termsPage.metaDescription}
+>
   <Terms />
 </BaseLayout>

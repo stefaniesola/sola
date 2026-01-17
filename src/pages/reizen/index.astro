@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { journeys, uspTags } from "../../data/content";
+import { journeys, uspTags, reizenPage } from "../../data/content";
 import { getImage } from "astro:assets";
 import exerciseImage from "../../assets/images/2596052607.jpg";
 import bewustwordingImage from "../../assets/images/2631991747.jpg";
@@ -56,19 +56,19 @@ const tripsWithImages = await Promise.all(
 ---
 
 <BaseLayout
-  title="SOLA | Reizen"
-  description="Reizen waar natuur, beweging en inzicht samenkomen."
+  title={reizenPage.title}
+  description={reizenPage.metaDescription}
 >
   <section class="bg-base-50/80 border-b border-base-200">
     <div class="max-w-6xl mx-auto px-6 py-16 space-y-6">
       <p class="uppercase text-xs tracking-[0.25em] text-base-500">
-        Reizen
+        {reizenPage.label}
       </p>
       <h1 class="text-4xl font-semibold text-base-900">
-        Reizen die bewegen én verdiepen
+        {reizenPage.heading}
       </h1>
       <p class="text-base-700 max-w-3xl">
-        Kleine groepen, deskundige begeleiding en programma's die beweging, inzicht en natuur samenbrengen.
+        {reizenPage.description}
       </p>
       <div class="flex flex-wrap gap-2">
         {
