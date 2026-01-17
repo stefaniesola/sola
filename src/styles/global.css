@@ -2,53 +2,60 @@
 @plugin "@tailwindcss/typography";
 @plugin "@tailwindcss/forms";
 
+@font-face {
+    font-family: "Tw Cen MT";
+    src: url("/fonts/Tw Cen MT Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 @theme {
-  --font-sans: "Inter", sans-serif;
-  --color-black: #121212;
-  /* Accent  */
-  --color-accent-25: #fff5f5;
-  --color-accent-50: #ffebeb;
-  --color-accent-100: #ffd2d2;
-  --color-accent-200: #ffafaf;
-  --color-accent-300: #ff7878;
-  --color-accent-400: #ff3838;
-  --color-accent-500: #ff0800;
-  --color-accent-600: #e60000;
-  --color-accent-700: #cc0000;
-  --color-accent-800: #b30000;
-  --color-accent-900: #990000;
-  --color-accent-950: #7a0000;
-  /* Base */
-  --color-base-25: #F6F4F0;
-  --color-base-50: #D6D2C8;
-  --color-base-100: #ebe8e3;
-  --color-base-200: #d6d1c7;
-  --color-base-300: #b8afa0;
-  --color-base-400: #8a7d6a;
-  --color-base-500: #3e342a;
-  --color-base-600: #2f2820;
-  --color-base-700: #241f19;
-  --color-base-800: #1a1612;
-  --color-base-900: #120f0c;
-  --color-base-950: #0a0806;
+    --font-sans: "Tw Cen MT", "Inter", sans-serif;
+    --font-display: "Tw Cen MT", sans-serif;
+    --color-black: #121212;
+    /* Accent  */
+    --color-accent-25: #fff5f5;
+    --color-accent-50: #ffebeb;
+    --color-accent-100: #ffd2d2;
+    --color-accent-200: #ffafaf;
+    --color-accent-300: #ff7878;
+    --color-accent-400: #ff3838;
+    --color-accent-500: #ff0800;
+    --color-accent-600: #e60000;
+    --color-accent-700: #cc0000;
+    --color-accent-800: #b30000;
+    --color-accent-900: #990000;
+    --color-accent-950: #7a0000;
+    /* Base */
+    --color-base-25: #F6F4F0;
+    --color-base-50: #D6D2C8;
+    --color-base-100: #ebe8e3;
+    --color-base-200: #d6d1c7;
+    --color-base-300: #b8afa0;
+    --color-base-400: #8a7d6a;
+    --color-base-500: #3e342a;
+    --color-base-600: #2f2820;
+    --color-base-700: #241f19;
+    --color-base-800: #1a1612;
+    --color-base-900: #120f0c;
+    --color-base-950: #0a0806;
 }
 
 /* CSS */
-:root {
-  font-family: Inter, sans-serif;
+:root,
+html {
+    font-size: 18px; /* Increased from default 16px */
 }
 
-@supports (font-variation-settings: normal) {
-
-  /* Use variable font if supported */
-  :root {
-    font-family: InterVariable, sans-serif;
-  }
+body {
+    font-family: "Tw Cen MT", "Inter", sans-serif;
+    font-size: 1rem; /* Uses the 18px base */
 }
 
 
 /* Adds pointer cursor to buttons */
 button:not(:disabled),
 [role="button"]:not(:disabled) {
-  cursor: pointer;
+    cursor: pointer;
 }
