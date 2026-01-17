@@ -24,6 +24,7 @@ interface ImageProps extends BaseProps {
   loading?: "eager" | "lazy";
   decoding?: "async" | "auto" | "sync";
   formats?: string[] | "auto" | "avif" | "jpeg" | "png" | "svg" | "webp";
+  quality?: number;
 }
 
 type Props = InlineSvgProps | ImageProps;
@@ -38,6 +39,7 @@ const {
   decoding = "async",
   formats,
   style,
+  quality,
   ...rest
 } = Astro.props as Props;
 
@@ -138,6 +140,7 @@ if (isLocalImage) {
         loading={loading}
         decoding={decoding}
         formats={formats}
+        quality={quality}
         style={style}
         class={rest.class || Astro.props.class}
         {...rest}

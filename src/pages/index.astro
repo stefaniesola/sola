@@ -6,11 +6,12 @@ import heroImage from "../assets/images/hero.jpg";
 import exerciseImage from "../assets/images/2596052607.jpg";
 import bewustwordingImage from "../assets/images/2631991747.jpg";
 import terraImage from "../assets/images/1513986998.jpg";
+import hauteLoireImage from "../assets/images/haute-loire.jpg";
 
 const weekendHighlights = journeys
   .filter((journey) => journey.type === "Weekend")
   .slice(0, 2);
-const founders = people.filter((person) => person.isFounder);
+const founders = people.filter((person) => person.isTeamMember);
 
 // Get optimized hero image URL for background use
 const optimizedHero = await getImage({
@@ -74,6 +75,13 @@ const pillarsWithImages = await Promise.all(
     return { ...pillar, imageUrl: optimized.src };
   }),
 );
+
+// Optimize haute-loire image for founder section
+const optimizedHauteLoire = await getImage({
+  src: hauteLoireImage,
+  width: 1200,
+  quality: 90,
+});
 ---
 
 <BaseLayout
@@ -302,8 +310,8 @@ const pillarsWithImages = await Promise.all(
   </section>
 
   <section class="max-w-6xl mx-auto px-6 py-8 lg:py-14 space-y-8 scroll-fade-in">
-    <div class="grid lg:grid-cols-2 gap-10 items-center">
-      <div class="space-y-4">
+    <div class="flex flex-col lg:flex-row gap-12 items-center">
+      <div class="flex-1 space-y-4 lg:pr-8">
         <p class="uppercase text-xs tracking-[0.25em] text-base-500">
           {homePage.sectionOverOns.label}
         </p>
@@ -320,16 +328,13 @@ const pillarsWithImages = await Promise.all(
           {homePage.sectionOverOns.cta}
         </a>
       </div>
-      <div class="grid sm:grid-cols-2 gap-4">
-        {
-          founders.map((person) => (
-            <div class="p-5 rounded-2xl border border-base-200 bg-base-50">
-              <p class="text-lg font-semibold text-base-900">{person.name}</p>
-              <p class="text-base-600">{person.role}</p>
-              <p class="text-sm text-base-600 mt-3">{person.bio}</p>
-            </div>
-          ))
-        }
+      <div class="flex-1 lg:pl-8">
+        <div class="skewed-image-frame">
+          <div
+            class="skewed-image-inner"
+            style={`background-image: url(${optimizedHauteLoire.src});`}
+          />
+        </div>
       </div>
     </div>
   </section>
