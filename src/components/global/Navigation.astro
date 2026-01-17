@@ -1,3 +1,8 @@
+---
+import { Image } from "astro:assets";
+import logoImage from "../../assets/images/logo.png";
+---
+
 <header
   class="border-b border-black/5 sticky top-0 z-50 bg-base-25/80 backdrop-blur-xl"
 >
@@ -6,15 +11,8 @@
       x-data="{ open: false }"
       class="flex items-center justify-between py-4"
     >
-      <a
-        href="/"
-        class="text-black inline-flex items-center gap-2 font-semibold tracking-tight"
-      >
-        <span
-          class="h-9 w-9 rounded-full bg-black text-white inline-flex items-center justify-center text-sm"
-          >S</span
-        >
-        <span>SOLA</span>
+      <a href="/" class="inline-flex items-center">
+        <Image src={logoImage} alt="SOLA" class="h-10 w-auto" />
       </a>
       <button
         @click="open = !open"
@@ -53,7 +51,6 @@
           class="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-6 text-sm font-medium"
         >
           <a class="hover:text-accent-700" href="/">Home</a>
-          <a class="hover:text-accent-700" href="/weekenden">Weekenden</a>
           <a class="hover:text-accent-700" href="/reizen">Reizen</a>
           <a class="hover:text-accent-700" href="/over-ons">Over ons</a>
           <a class="hover:text-accent-700" href="/samenwerkingen">Partners</a>
@@ -61,8 +58,10 @@
         </div>
         <div class="mt-4 lg:mt-0 lg:ml-4 flex items-center">
           <a
-            href="/contact#plan-gesprek"
-            class="inline-flex items-center justify-center rounded-full bg-black text-white px-4 py-2 text-xs font-semibold tracking-wide hover:bg-accent-800 transition"
+            href="https://calendly.com/hello-solatravel/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-full bg-accent-600 text-white px-4 py-2 text-xs font-semibold tracking-wide hover:bg-accent-700 transition"
           >
             Plan een gesprek
           </a>

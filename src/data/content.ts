@@ -432,27 +432,22 @@ export const homeCopy = {
     "Voor wie pit heeft en zachtheid niet schuwt",
   ],
   waarom:
-    "Reizen die je doen thuiskomen. Met rust, beweging en eerlijke gesprekken, in een omgeving die helder maakt wat klopt.",
+    "SOLA creëert groepsreizen rond gezondheid, waar beweging, wetenschap en natuur samenkomen.",
   pillars: [
     {
-      title: "Deskundige begeleiding",
-      description: "Begeleiding door mensen die hun vak verstaan. Per thema werken we met een expert, met kennis van zaken en oog voor de groep.",
+      title: "Deskundige begeleiding en wetenschappelijke onderbouwing",
+      description: "Begeleiding door mensen die hun vak verstaan. Per thema werken we met een expert, met kennis van zaken en oog voor de groep. Wat we doen vertrekt vanuit kennis en onderzoek. Elke reis wordt samen met een expert opgebouwd, zodat inhoud en ervaring elkaar versterken.",
+      image: "/src/assets/images/2596052607.jpg",
     },
     {
-      title: "Wetenschappelijk onderbouwd",
-      description: "Wat we doen vertrekt vanuit kennis en onderzoek. Elke reis wordt samen met een expert opgebouwd, zodat inhoud en ervaring elkaar versterken.",
+      title: "Ervaringsgericht leren in kleine groepen",
+      description: "Je toetst de theorie aan de praktijk. Wat je leert en ervaart neem je ook mee naar huis en kun je inpassen in je dagelijkse leven.",
+      image: "/src/assets/images/2631991747.jpg",
     },
     {
-      title: "Ervaringsgericht",
-      description: "Je blijft niet hangen in theorie. Wat je leert en ervaart, kan je ook meenemen naar huis en inpassen in je dagelijks leven.",
-    },
-    {
-      title: "Kleine groepen",
-      description: "Kleine groepen zorgen voor rust en aandacht. Er is ruimte om te luisteren, te delen of stil te zijn, op jouw tempo en zonder verwachtingen.",
-    },
-    {
-      title: "Gezond en lekker eten",
-      description: "Eten dat voedt en smaakt. Met verse ingrediënten, met zorg bereid en afgestemd op wat je lichaam nodig heeft.",
+      title: "Beweging met beide voeten in de natuur",
+      description: "We kiezen voor beweging in de natuur. Omdat het goed is voor lichaam en hoofd, en omdat het inspireert en aanzet tot actie.",
+      image: "/src/assets/images/hero.jpg",
     },
   ],
   afsluiting: {
@@ -488,11 +483,10 @@ export const weekendPage = {
 
 export const homePage = {
   brandLabel: "SOLA",
-  ctaDiscover: "Ontdek onze weekenden",
+  ctaDiscover: "Ontdek onze reizen",
   ctaContact: "Contact opnemen",
   sectionVoorWie: "Voor wie",
   sectionWaarom: "Waarom SOLA",
-  sectionHoeWeWerken: "Hoe we werken",
   sectionAanbod: {
     label: "Aanbod",
     title: "Onze weekenden",
@@ -561,7 +555,7 @@ export const aboutPage = {
     quote: "« Au cœur du vivant. »",
     cta: "Blijf op de hoogte →",
   },
-  ctaDiscover: "Ontdek onze weekenden",
+  ctaDiscover: "Ontdek onze reizen",
 };
 
 export const partnershipsPage = {
