@@ -327,7 +327,7 @@ export const people: Person[] = [
     bio: "Sarah leert je werken met Emotional Freedom Techniques (EFT): een praktische methode om emoties en spanning te herkennen en te ontladen. Je leert hoe je zelf kan reguleren, op een manier die eenvoudig en ook na het weekend toepasbaar blijft. De begeleiding is rustig en afgestemd op wat zich op dat moment aandient.",
     logo: "/sarah-deleu.jpg",
     isTeamMember: false,
-    website: "https://logischgezond.be",
+    website: "https://logisch-gezond.be",
   },
   {
     name: "Liv",
