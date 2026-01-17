@@ -488,7 +488,7 @@ export const weekendPage = {
 
 export const homePage = {
   brandLabel: "SOLA",
-  ctaDiscover: "Ontdek onze weekenden",
+  ctaDiscover: "Ontdek onze reizen",
   ctaContact: "Contact opnemen",
   sectionVoorWie: "Voor wie",
   sectionWaarom: "Waarom SOLA",
@@ -561,7 +561,7 @@ export const aboutPage = {
     quote: "« Au cœur du vivant. »",
     cta: "Blijf op de hoogte →",
   },
-  ctaDiscover: "Ontdek onze weekenden",
+  ctaDiscover: "Ontdek onze reizen",
 };
 
 export const partnershipsPage = {
