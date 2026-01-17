@@ -16,6 +16,14 @@ const { title, description } = Astro.props as Props;
     <BaseHead {title} {description} />
   </head>
   <body class="bg-base-25 flex flex-col min-h-svh text-base-500 font-sans">
+    {import.meta.env.PROD && (
+      <!-- Google Tag Manager (noscript) -->
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXRV8S6Z"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+      <!-- End Google Tag Manager (noscript) -->
+    )}
     <Navigation />
     <main class="grow"><slot /></main>
     <Footer />
