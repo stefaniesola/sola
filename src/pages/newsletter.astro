@@ -1,22 +1,23 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import NewsletterForm from "../components/Forms/Newsletter.astro";
+import { newsletterPage } from "../data/content";
 ---
 
 <BaseLayout
-  title="SOLA | Nieuwsbrief"
-  description="Blijf op de hoogte van onze laatste nieuws en updates."
+  title={newsletterPage.title}
+  description={newsletterPage.metaDescription}
 >
   <section class="bg-base-50/80 border-b border-base-200">
     <div class="max-w-4xl mx-auto px-6 py-16 space-y-4">
       <p class="uppercase text-xs tracking-[0.25em] text-base-500">
-        Nieuwsbrief
+        {newsletterPage.label}
       </p>
       <h1 class="text-4xl font-semibold text-base-900">
-        Schrijf je in voor onze nieuwsbrief
+        {newsletterPage.heading}
       </h1>
       <p class="text-base-700">
-        Blijf op de hoogte van onze laatste reizen, weekenden en updates.
+        {newsletterPage.description}
       </p>
     </div>
   </section>

@@ -7,8 +7,8 @@ const partners = people.filter((person) => person.type === "Expert");
 ---
 
 <BaseLayout
-  title="SOLA | Samenwerkingen"
-  description="Onze samenwerkingen met experts die hun vak verstaan."
+  title={partnershipsPage.title}
+  description={partnershipsPage.metaDescription}
 >
   <section class="bg-base-50/80 border-b border-base-200">
     <div class="max-w-6xl mx-auto px-6 py-16 space-y-6">
@@ -16,7 +16,7 @@ const partners = people.filter((person) => person.type === "Expert");
         {partnershipsPage.label}
       </p>
       <h1 class="text-4xl font-semibold text-base-900">
-        {partnershipsPage.title}
+        {partnershipsPage.heading}
       </h1>
       <p class="text-base-700 max-w-3xl">
         {partnershipsPage.description}
@@ -66,106 +66,12 @@ const partners = people.filter((person) => person.type === "Expert");
       <p class="text-base-700 mb-6">
         {partnershipsPage.ctaDescription}
       </p>
-      <form
-        class="space-y-4"
-        action="mailto:hello@solatravel.be"
-        method="post"
-        enctype="text/plain"
-        onsubmit="handleForm(event)"
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-black text-white font-semibold hover:bg-accent-800 transition-colors"
       >
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="space-y-1">
-            <label class="text-sm font-medium text-base-800" for="partner-naam">
-              {partnershipsPage.form.labels.naam}
-            </label>
-            <input
-              id="partner-naam"
-              name="Naam"
-              required
-              type="text"
-              class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
-            />
-          </div>
-          <div class="space-y-1">
-            <label
-              class="text-sm font-medium text-base-800"
-              for="partner-email"
-            >
-              {partnershipsPage.form.labels.email}
-            </label>
-            <input
-              id="partner-email"
-              name="Email"
-              required
-              type="email"
-              class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
-            />
-          </div>
-        </div>
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="space-y-1">
-            <label
-              class="text-sm font-medium text-base-800"
-              for="partner-telefoon"
-            >
-              {partnershipsPage.form.labels.telefoon}
-            </label>
-            <input
-              id="partner-telefoon"
-              name="Telefoon"
-              type="tel"
-              class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
-            />
-          </div>
-          <div class="space-y-1">
-            <label
-              class="text-sm font-medium text-base-800"
-              for="partner-organisatie"
-            >
-              {partnershipsPage.form.labels.organisatie}
-            </label>
-            <input
-              id="partner-organisatie"
-              name="Organisatie"
-              type="text"
-              class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
-            />
-          </div>
-        </div>
-        <div class="space-y-1">
-          <label
-            class="text-sm font-medium text-base-800"
-            for="partner-bericht"
-          >
-            {partnershipsPage.form.labels.bericht}
-          </label>
-          <textarea
-            id="partner-bericht"
-            name="Bericht"
-            required
-            rows="4"
-            class="w-full rounded-lg border-base-300 focus:border-accent-600 focus:ring-accent-600"
-          ></textarea>
-        </div>
-        <button
-          type="submit"
-          class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-black text-white font-semibold hover:bg-accent-800"
-        >
-          {partnershipsPage.form.submit}
-        </button>
-        <p data-status class="text-sm text-green-700 hidden">
-          {partnershipsPage.form.success}
-        </p>
-      </form>
+        Neem contact op
+      </a>
     </div>
   </section>
-
-  <script is:inline>
-    function handleForm(event) {
-      event.preventDefault();
-      const status = event.target.querySelector("[data-status]");
-      if (status) status.classList.remove("hidden");
-      event.target.reset();
-    }
-  </script>
 </BaseLayout>
