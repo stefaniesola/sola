@@ -3,17 +3,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import {
   people,
   missionVision,
-  kernidentiteit,
-  homeCopy,
   aboutPage,
+  partnershipsPage,
 } from "../data/content";
+import OptimizedImage from "../layouts/utilities/OptimizedImage.astro";
 
-const coreTeam = people.filter((person) => person.type === "Core");
+const coreTeam = people.filter((person) => person.isTeamMember === true);
+const partners = people.filter((person) => person.isTeamMember === false);
 ---
 
 <BaseLayout title={aboutPage.title} description={aboutPage.metaDescription}>
   <section class="bg-base-50/80 border-b border-base-200">
-    <div class="max-w-6xl mx-auto px-6 py-16 space-y-6">
+    <div class="max-w-6xl mx-auto px-6 py-16 space-y-6 scroll-fade-in">
       <p class="uppercase text-xs tracking-[0.25em] text-base-500">
         {aboutPage.label}
       </p>
@@ -25,109 +26,199 @@ const coreTeam = people.filter((person) => person.type === "Core");
     </div>
   </section>
 
-  <section class="max-w-6xl mx-auto px-6 py-14 space-y-10">
-    <div class="grid lg:grid-cols-2 gap-8">
-      <div class="space-y-3">
-        <h2 class="text-2xl font-semibold text-base-900">
-          {aboutPage.sectionVoorWie}
-        </h2>
-        <ul class="space-y-2 text-base-700">
-          {
-            homeCopy.voorWie.map((item) => (
-              <li class="flex gap-2">
-                <span class="mt-1 h-2 w-2 rounded-full bg-accent-600" />
-                <span>{item}</span>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <div class="space-y-3">
-        <h2 class="text-2xl font-semibold text-base-900">
-          {aboutPage.sectionMissieVisie}
-        </h2>
-        <div
-          class="p-5 rounded-2xl border border-base-200 bg-base-50 space-y-3"
-        >
-          <div>
-            <p class="font-semibold text-base-900">{aboutPage.missieLabel}</p>
-            <p class="text-base-700">{missionVision.mission}</p>
-          </div>
-          <div>
-            <p class="font-semibold text-base-900">{aboutPage.visieLabel}</p>
-            <p class="text-base-700">{missionVision.vision}</p>
-          </div>
+  <section class="max-w-6xl mx-auto px-6 py-14 space-y-16">
+    <!-- Missie & Visie -->
+    <div class="space-y-8 scroll-fade-in">
+      <h2 class="text-3xl font-semibold text-base-900">
+        {aboutPage.sectionMissieVisie}
+      </h2>
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div class="space-y-4 p-8 rounded-2xl bg-gradient-to-br from-base-50 to-base-100 border border-base-200">
+          <h3 class="text-xl font-semibold text-base-900">
+            {aboutPage.missieLabel}
+          </h3>
+          <p class="text-lg text-base-700 leading-relaxed">
+            {missionVision.mission}
+          </p>
+        </div>
+        <div class="space-y-4 p-8 rounded-2xl bg-gradient-to-br from-accent-50 to-accent-100 border border-accent-200">
+          <h3 class="text-xl font-semibold text-base-900">
+            {aboutPage.visieLabel}
+          </h3>
+          <p class="text-lg text-base-700 leading-relaxed">
+            {missionVision.vision}
+          </p>
         </div>
       </div>
     </div>
 
-    <div class="space-y-4">
-      <h2 class="text-2xl font-semibold text-base-900">
-        {aboutPage.sectionWatOnsAndersMaakt}
-      </h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {
-          homeCopy.pillars.map((pillar) => (
-            <div class="p-4 rounded-2xl border border-base-200 bg-base-25 shadow-sm">
-              <p class="font-medium text-base-900">{pillar.title}</p>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    <div class="space-y-6">
-      <div class="flex items-center justify-between">
-        <h2 class="text-2xl font-semibold text-base-900">
+    <!-- Team -->
+    <div class="space-y-8 scroll-fade-in">
+      <div>
+        <h2 class="text-3xl font-semibold text-base-900">
           {aboutPage.sectionTeam}
         </h2>
+        <p class="text-base-700 mt-2 max-w-2xl">
+          Het team dat SOLA dagelijks draagt en vormgeeft.
+        </p>
       </div>
-      <div class="grid lg:grid-cols-2 gap-4">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           coreTeam.map((person) => (
-            <article class="p-6 rounded-2xl border border-base-200 bg-base-50">
-              <p class="text-xl font-semibold text-base-900">{person.name}</p>
-              <p class="text-base-600">{person.role}</p>
-              <p class="text-base-700 mt-3 leading-relaxed">{person.bio}</p>
+            <article class="group p-6 rounded-2xl border border-base-200 bg-base-50 hover:shadow-lg hover:bg-accent-50/50 hover:border-accent-200 transition-all duration-300">
+              <div class="flex items-start gap-4 mb-4">
+                {person.logo ? (
+                  <div class="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-base-200">
+                    <OptimizedImage
+                      src={person.logo}
+                      alt={`${person.name}`}
+                      width={400}
+                      height={400}
+                      quality={100}
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div class="w-24 h-24 rounded-full shrink-0 bg-base-300 flex items-center justify-center">
+                    <span class="text-2xl font-semibold text-base-600">
+                      {person.name.charAt(0)}
+                    </span>
+                  </div>
+                )}
+                <div class="flex-1 min-w-0">
+                  <h3 class="text-xl font-semibold text-base-900 mb-1">
+                    {person.name}
+                  </h3>
+                  <p class="text-base-600">{person.role}</p>
+                </div>
+              </div>
+              <p class="text-base-700 leading-relaxed">{person.bio}</p>
             </article>
           ))
         }
       </div>
     </div>
 
-    <div class="space-y-4">
-      <h2 class="text-2xl font-semibold text-base-900">
-        {aboutPage.sectionKernidentiteit}
-      </h2>
-      <div
-        class="p-6 rounded-2xl border border-base-200 bg-base-50 space-y-2 text-base-700"
-      >
-        {kernidentiteit.map((line) => <p>{line}</p>)}
+    <!-- Partners -->
+    <div class="space-y-8 scroll-fade-in">
+      <div>
+        <h2 class="text-3xl font-semibold text-base-900">
+          {partnershipsPage.sectionPartners}
+        </h2>
+        <p class="text-base-700 mt-2 max-w-2xl">
+          Experts en specialisten waarmee we samenwerken om de beste ervaringen te creëren.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          partners.map((partner) => (
+            <article class="group p-6 rounded-2xl border border-base-200 bg-base-50 hover:shadow-lg hover:bg-accent-50/50 hover:border-accent-200 transition-all duration-300">
+              <div class="flex items-start gap-4 mb-4">
+                {partner.logo ? (
+                  <div class="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-base-200">
+                    <OptimizedImage
+                      src={partner.logo}
+                      alt={`${partner.name}`}
+                      width={400}
+                      height={400}
+                      quality={100}
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                ) : (
+                  <div class="w-24 h-24 rounded-full shrink-0 bg-base-300 flex items-center justify-center">
+                    <span class="text-2xl font-semibold text-base-600">
+                      {partner.name.charAt(0)}
+                    </span>
+                  </div>
+                )}
+                <div class="flex-1 min-w-0">
+                  <h3 class="text-xl font-semibold text-base-900 mb-1">
+                    {partner.name}
+                  </h3>
+                  <p class="text-base-600">{partner.role}</p>
+                </div>
+              </div>
+              <p class="text-base-700 leading-relaxed mb-4">{partner.bio}</p>
+              {partner.website && (
+                <a
+                  href={partner.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center text-sm font-semibold text-accent-700 hover:text-accent-800 transition-colors"
+                >
+                  Bezoek website
+                  <svg
+                    class="w-4 h-4 ml-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </a>
+              )}
+            </article>
+          ))
+        }
       </div>
     </div>
 
-    <div class="space-y-4">
-      <h2 class="text-2xl font-semibold text-base-900">
-        {aboutPage.sectionTerra.title}
+    <!-- Partner CTA -->
+    <div class="p-8 rounded-2xl bg-accent-600 text-white scroll-fade-in">
+      <h2 class="text-2xl font-semibold mb-2">
+        {partnershipsPage.ctaTitle}
       </h2>
-      <div
-        class="p-6 rounded-2xl border border-base-200 bg-base-25 shadow-sm space-y-2 text-base-700"
-      >
-        <p>{aboutPage.sectionTerra.description1}</p>
-        <p>{aboutPage.sectionTerra.description2}</p>
-        <p class="italic">{aboutPage.sectionTerra.quote}</p>
-        <a
-          class="inline-flex items-center text-accent-700 font-semibold"
-          href="/reizen/sola-terra-frankrijk">{aboutPage.sectionTerra.cta}</a
-        >
-      </div>
-    </div>
-
-    <div class="text-center pt-6">
+      <p class="text-white/90 mb-6">
+        {partnershipsPage.ctaDescription}
+      </p>
       <a
-        class="px-5 py-3 rounded-full bg-black text-white font-semibold hover:bg-accent-800"
-        href="/reizen">{aboutPage.ctaDiscover}</a
+        href="/contact"
+        class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-white text-accent-600 font-semibold hover:bg-base-50 transition-colors"
       >
+        Neem contact op
+      </a>
     </div>
   </section>
+
+  <style>
+    .scroll-fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition:
+        opacity 0.8s ease-out,
+        transform 0.8s ease-out;
+    }
+
+    .scroll-fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".scroll-fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+    });
+  </script>
 </BaseLayout>

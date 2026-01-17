@@ -18,7 +18,8 @@ export interface Person {
   type: "Core" | "Expert";
   bio: string;
   logo?: string;
-  isFounder?: boolean;
+  isTeamMember?: boolean;
+  website?: string;
 }
 
 export const journeys: Journey[] = [
@@ -292,7 +293,7 @@ export const people: Person[] = [
     type: "Expert",
     bio: "Stefanie is de verbindende kracht achter SOLA. Ze organiseert weekenden waar beweging en natuur samenkomen en zorgt dat elke deelnemer zich gedragen voelt.",
     logo: "/stefanie.webp",
-    isFounder: true,
+    isTeamMember: true,
   },
   {
     name: "Sarah Van den Daele",
@@ -300,15 +301,42 @@ export const people: Person[] = [
     type: "Core",
     bio: "Sarah vertelt het verhaal van SOLA en bewaakt de helderheid in elke ervaring. Ze zorgt dat elke sessie praktisch, warm en toegankelijk blijft.",
     logo: "/sarah.webp",
-    isFounder: true,
+    isTeamMember: true,
+  },
+  {
+    name: "Klaas Annys",
+    role: "Coördinator & facilitator",
+    type: "Core",
+    bio: "Klaas zorgt voor de praktische organisatie en begeleiding van onze weekenden. Met oog voor detail en passie voor natuur en beweging, creëert hij een veilige en inspirerende omgeving voor elke deelnemer.",
+    logo: "/klaas.webp",
+    isTeamMember: true,
   },
   {
     name: "Simon Helleputte",
     role: "Endurance coach & sportwetenschapper",
     type: "Expert",
     bio: "Simon vertaalt sportwetenschap naar haalbare stappen. Hij begeleidt beweging als medicijn en helpt je trainen met richting en nuance.",
-    logo: "/simon.webp",
-    isFounder: false,
+    logo: "/simon-helleputte.webp",
+    isTeamMember: false,
+    website: "https://www.instagram.com/simonendurancelab",
+  },
+  {
+    name: "Sarah Deleu",
+    role: "EFT-therapeut",
+    type: "Expert",
+    bio: "Sarah leert je werken met Emotional Freedom Techniques (EFT): een praktische methode om emoties en spanning te herkennen en te ontladen. Je leert hoe je zelf kan reguleren, op een manier die eenvoudig en ook na het weekend toepasbaar blijft. De begeleiding is rustig en afgestemd op wat zich op dat moment aandient.",
+    logo: "/sarah-deleu.jpg",
+    isTeamMember: false,
+    website: "https://logischgezond.be",
+  },
+  {
+    name: "Liv",
+    role: "Yoga-specialist",
+    type: "Expert",
+    bio: "Via yoga en gerichte beweging helpt Liv om uit het hoofd te komen en beter in het lichaam te zakken. Dit ondersteunt wat je mentaal en emotioneel leert, en zorgt voor integratie in het lichaam.",
+    logo: "/liv.jpeg",
+    isTeamMember: false,
+    website: "https://livyourlife.be",
   },
 ];
 
@@ -363,9 +391,9 @@ export const homeCopy = {
 
 export const missionVision = {
   mission:
-    "SOLA bouwt ervaringen die je in beweging zetten met inzicht. Met een onderbouwde aanpak, in de natuur, in kleine groepen.",
+    "We creëren ervaringen die écht bewegen. Niet alleen je lichaam, maar ook je perspectief. Met wetenschap als kompas, natuur als klaslokaal en kleine groepen als katalysator voor echte verandering.",
   vision:
-    "We geloven dat gezondheid ontstaat wanneer natuur, inspanning en inzicht samenkomen. Geen vlucht, wel een plek om wakker te worden.",
+    "Gezondheid is geen bestemming, maar een reis. Een reis waar natuur je rust geeft, inspanning je kracht geeft en inzicht je richting geeft. Geen vlucht, maar een plek om wakker te worden — en te blijven.",
 };
 
 export const kernidentiteit = [
@@ -413,7 +441,7 @@ export const homePage = {
     label: "Over ons",
     title: "Wie SOLA draagt",
     description:
-      "SOLA wordt gedragen door twee kernfiguren die de combinatie van beweging, inzicht en natuur bewaken.",
+      "SOLA wordt gedragen door Stefanie Deleu. We werken samen met experts, coaches en therapeuten die hun vak verstaan. Per thema werken we met een specialist, zodat beweging, wetenschap en natuur samenkomen in elke ervaring.",
     cta: "Leer ons kennen",
   },
 };
@@ -497,16 +525,16 @@ export const faqPage = {
 export const privacyPage = {
   title: "SOLA | Privacybeleid",
   label: "Privacybeleid",
-  heading: "Privacy policy",
-  description: "Ons privacybeleid en hoe we omgaan met uw gegevens.",
-  metaDescription: "Ons privacybeleid en hoe we omgaan met uw gegevens.",
+  heading: "Privacybeleid",
+  description: "Ons privacybeleid en hoe we omgaan met je gegevens.",
+  metaDescription: "Ons privacybeleid en hoe we omgaan met je gegevens.",
 };
 
 export const termsPage = {
-  title: "SOLA | Algemene voorwaarden",
+  title: "SOLA | Algemene Voorwaarden",
   label: "Algemene voorwaarden",
-  heading: "Terms and conditions",
-  description: "De algemene voorwaarden voor het gebruik van onze diensten.",
-  metaDescription: "De algemene voorwaarden voor het gebruik van onze diensten.",
+  heading: "Algemene Voorwaarden",
+  description: "De algemene voorwaarden voor het boeken van onze reizen en weekenden.",
+  metaDescription: "De algemene voorwaarden voor het boeken van onze reizen en weekenden.",
 };
 
