@@ -7,9 +7,25 @@ import {
   partnershipsPage,
 } from "../data/content";
 import OptimizedImage from "../layouts/utilities/OptimizedImage.astro";
+import { getImage } from "astro:assets";
+import famenneImage from "../assets/images/famenne.jpg";
+import landscapeImage from "../assets/images/landscape.jpg";
 
 const coreTeam = people.filter((person) => person.isTeamMember === true);
 const partners = people.filter((person) => person.isTeamMember === false);
+
+// Optimize images for mission/vision sections
+const optimizedFamenne = await getImage({
+  src: famenneImage,
+  width: 1600,
+  quality: 90,
+});
+
+const optimizedLandscape = await getImage({
+  src: landscapeImage,
+  width: 1600,
+  quality: 90,
+});
 ---
 
 <BaseLayout title={aboutPage.title} description={aboutPage.metaDescription}>
@@ -28,26 +44,44 @@ const partners = people.filter((person) => person.isTeamMember === false);
 
   <section class="max-w-6xl mx-auto px-6 py-14 space-y-16">
     <!-- Missie & Visie -->
-    <div class="space-y-8 scroll-fade-in">
-      <h2 class="text-3xl font-semibold text-base-900">
-        {aboutPage.sectionMissieVisie}
-      </h2>
-      <div class="grid lg:grid-cols-2 gap-8">
-        <div class="space-y-4 p-8 rounded-2xl bg-gradient-to-br from-base-50 to-base-100 border border-base-200">
-          <h3 class="text-xl font-semibold text-base-900">
+    <div class="space-y-8 lg:space-y-16 scroll-fade-in">
+      <!-- Mission Section -->
+      <div class="flex flex-col lg:flex-row gap-12 items-center scroll-fade-in">
+        <div class="flex-1 space-y-4 lg:pr-8">
+          <h3 class="text-2xl lg:text-3xl font-semibold text-base-900">
             {aboutPage.missieLabel}
           </h3>
           <p class="text-lg text-base-700 leading-relaxed">
             {missionVision.mission}
           </p>
         </div>
-        <div class="space-y-4 p-8 rounded-2xl bg-gradient-to-br from-accent-50 to-accent-100 border border-accent-200">
-          <h3 class="text-xl font-semibold text-base-900">
+        <div class="flex-1 lg:pl-8">
+          <div class="skewed-image-frame">
+            <div
+              class="skewed-image-inner"
+              style={`background-image: url(${optimizedFamenne.src});`}
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Vision Section -->
+      <div class="flex flex-col lg:flex-row-reverse gap-12 items-center scroll-fade-in bg-base-50/50 rounded-3xl p-8 lg:p-12">
+        <div class="flex-1 space-y-4 lg:pl-8">
+          <h3 class="text-2xl lg:text-3xl font-semibold text-base-900">
             {aboutPage.visieLabel}
           </h3>
           <p class="text-lg text-base-700 leading-relaxed">
             {missionVision.vision}
           </p>
+        </div>
+        <div class="flex-1 lg:pr-8">
+          <div class="skewed-image-frame">
+            <div
+              class="skewed-image-inner"
+              style={`background-image: url(${optimizedLandscape.src});`}
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -65,7 +99,7 @@ const partners = people.filter((person) => person.isTeamMember === false);
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           coreTeam.map((person) => (
-            <article class="group p-6 rounded-2xl border border-base-200 bg-base-50 hover:shadow-lg hover:bg-accent-50/50 hover:border-accent-200 transition-all duration-300">
+            <article class="group p-6 rounded-2xl border-[0.25rem] border-white bg-white hover:shadow-lg hover:bg-accent-50/30 hover:border-accent-200 transition-all duration-300">
               <div class="flex items-start gap-4 mb-4">
                 {person.logo ? (
                   <div class="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-base-200">
@@ -112,7 +146,7 @@ const partners = people.filter((person) => person.isTeamMember === false);
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           partners.map((partner) => (
-            <article class="group p-6 rounded-2xl border border-base-200 bg-base-50 hover:shadow-lg hover:bg-accent-50/50 hover:border-accent-200 transition-all duration-300">
+            <article class="group p-6 rounded-2xl border-[0.25rem] border-white bg-white hover:shadow-lg hover:bg-accent-50/30 hover:border-accent-200 transition-all duration-300">
               <div class="flex items-start gap-4 mb-4">
                 {partner.logo ? (
                   <div class="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-base-200">
@@ -199,6 +233,26 @@ const partners = people.filter((person) => person.isTeamMember === false);
       opacity: 1;
       transform: translateY(0);
     }
+
+    .skewed-image-frame {
+      position: relative;
+      padding: 0.25rem;
+      background: linear-gradient(135deg, #f6f4f0 0%, #d6d2c8 100%);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      border-radius: 1rem;
+    }
+
+    .skewed-image-inner {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: block;
+      margin: 0;
+      border-radius: 0.75rem;
+    }
   </style>
 
   <script>
@@ -212,12 +266,29 @@ const partners = people.filter((person) => person.isTeamMember === false);
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+            // Stop observing once visible
+            observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
 
-      document.querySelectorAll(".scroll-fade-in").forEach((el) => {
-        observer.observe(el);
+      // Use requestAnimationFrame to ensure DOM is fully rendered
+      requestAnimationFrame(() => {
+        document.querySelectorAll(".scroll-fade-in").forEach((el) => {
+          // Check if element is already in view on page load
+          const rect = el.getBoundingClientRect();
+          const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+          
+          if (isInView) {
+            // Trigger animation for elements already in view
+            setTimeout(() => {
+              el.classList.add("visible");
+            }, 200);
+          }
+          
+          // Always observe for scroll-triggered animations
+          observer.observe(el);
+        });
       });
     });
   </script>
