@@ -15,18 +15,18 @@
     --font-display: "Tw Cen MT", sans-serif;
     --color-black: #121212;
     /* Accent  */
-    --color-accent-25: #faf7f5;
-    --color-accent-50: #f5ede8;
-    --color-accent-100: #ead5cc;
-    --color-accent-200: #d9b3a3;
-    --color-accent-300: #c48a73;
-    --color-accent-400: #b86145;
-    --color-accent-500: #b86145;
-    --color-accent-600: #9d5239;
-    --color-accent-700: #82432e;
-    --color-accent-800: #673424;
-    --color-accent-900: #4c251a;
-    --color-accent-950: #331910;
+    --color-accent-500: #d16a3c;
+    --color-accent-25: color-mix(in srgb, white 95%, var(--color-accent-500));
+    --color-accent-50: color-mix(in srgb, white 90%, var(--color-accent-500));
+    --color-accent-100: color-mix(in srgb, white 80%, var(--color-accent-500));
+    --color-accent-200: color-mix(in srgb, white 65%, var(--color-accent-500));
+    --color-accent-300: color-mix(in srgb, white 45%, var(--color-accent-500));
+    --color-accent-400: color-mix(in srgb, white 15%, var(--color-accent-500));
+    --color-accent-600: color-mix(in srgb, black 15%, var(--color-accent-500));
+    --color-accent-700: color-mix(in srgb, black 30%, var(--color-accent-500));
+    --color-accent-800: color-mix(in srgb, black 45%, var(--color-accent-500));
+    --color-accent-900: color-mix(in srgb, black 60%, var(--color-accent-500));
+    --color-accent-950: color-mix(in srgb, black 75%, var(--color-accent-500));
     /* Base */
     --color-base-25: #F6F4F0;
     --color-base-50: #D6D2C8;
