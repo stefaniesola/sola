@@ -28,18 +28,18 @@
     --color-accent-900: color-mix(in srgb, black 60%, var(--color-accent-500));
     --color-accent-950: color-mix(in srgb, black 75%, var(--color-accent-500));
     /* Base */
-    --color-base-25: #fffdf6;
-    --color-base-50: #f9dbce;
-    --color-base-100: #fff1e9;
-    --color-base-200: #f9dacd;
-    --color-base-300: #d9b8a6;
-    --color-base-400: #a9856f;
-    --color-base-500: #583b2e;
-    --color-base-600: #482e24;
-    --color-base-700: #3c251d;
-    --color-base-800: #311c17;
-    --color-base-900: #291612;
-    --color-base-950: #24120e;
+    --color-base-25: #F6F4F0;
+    --color-base-50: #D6D2C8;
+    --color-base-100: #ebe8e3;
+    --color-base-200: #d6d1c7;
+    --color-base-300: #b8afa0;
+    --color-base-400: #8a7d6a;
+    --color-base-500: #3e342a;
+    --color-base-600: #2f2820;
+    --color-base-700: #241f19;
+    --color-base-800: #1a1612;
+    --color-base-900: #120f0c;
+    --color-base-950: #0a0806;
 }
 
 /* CSS */
