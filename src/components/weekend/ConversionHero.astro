@@ -4,8 +4,6 @@ import type { Journey } from "../../data/content";
 interface Props {
   weekend: Journey;
   subtitle: string;
-  groupSize?: string;
-  earlyBirdLine?: string;
   primaryCtaHref: string;
   secondaryCtaHref: string;
 }
@@ -13,126 +11,48 @@ interface Props {
 const {
   weekend,
   subtitle,
-  groupSize,
-  earlyBirdLine,
   primaryCtaHref,
   secondaryCtaHref,
 } = Astro.props;
 ---
 
-<section class="relative overflow-hidden bg-base-900 text-white">
-  <div
-    class="absolute inset-0"
-    style={{
-      backgroundImage: `url(${weekend.heroImage})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-    }}
-  />
-  <div class="absolute inset-0 bg-base-900/70" />
-  <div class="relative max-w-6xl mx-auto px-6 py-20 lg:py-28">
-    <div class="grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px] items-start">
-      <div class="space-y-6">
-        <p class="uppercase text-xs tracking-[0.25em] text-white/70">
-          {weekend.type}
-        </p>
-        <div class="space-y-3">
-          <h1 class="text-4xl lg:text-5xl font-semibold leading-tight">
-            {weekend.name}
-          </h1>
-          <p class="text-lg lg:text-xl text-white/85 max-w-2xl">
-            {subtitle}
-          </p>
-        </div>
-        {earlyBirdLine && (
-          <div class="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-4 py-2 text-sm font-medium text-white/90">
-            <span class="text-xs uppercase tracking-[0.2em] text-white/70">
-              Vroegboekkado
-            </span>
-            <span>{earlyBirdLine}</span>
-          </div>
-        )}
-        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="rounded-2xl border border-white/20 bg-white/10 p-4">
-            <p class="text-xs uppercase tracking-[0.2em] text-white/60">
-              Datum
-            </p>
-            <p class="mt-2 text-base font-semibold text-white">
-              {weekend.dates}
-            </p>
-          </div>
-          <div class="rounded-2xl border border-white/20 bg-white/10 p-4">
-            <p class="text-xs uppercase tracking-[0.2em] text-white/60">
-              Locatie
-            </p>
-            <p class="mt-2 text-base font-semibold text-white">
-              {weekend.location}
-            </p>
-          </div>
-          <div class="rounded-2xl border border-white/20 bg-white/10 p-4">
-            <p class="text-xs uppercase tracking-[0.2em] text-white/60">
-              Prijs
-            </p>
-            <p class="mt-2 text-base font-semibold text-white">
-              {weekend.price}
-            </p>
-          </div>
-          <div class="rounded-2xl border border-white/20 bg-white/10 p-4">
-            <p class="text-xs uppercase tracking-[0.2em] text-white/60">
-              Groep
-            </p>
-            <p class="mt-2 text-base font-semibold text-white">
-              {groupSize ?? "Kleine groep"}
-            </p>
-          </div>
-        </div>
-        <div class="flex flex-wrap gap-3">
-          <a
-            href={primaryCtaHref}
-            class="cta-primary inline-flex items-center justify-center rounded-full bg-base-25 px-6 py-3 text-base font-semibold text-base-900"
-          >
-            Boek je plek
-          </a>
-          <a
-            href={secondaryCtaHref}
-            class="cta-secondary inline-flex items-center justify-center rounded-full border border-white/60 px-6 py-3 text-base font-semibold text-white"
-          >
-            Plan een gesprek
-          </a>
-        </div>
+<section class="bg-base-25">
+  <div class="max-w-6xl mx-auto px-6 pt-14 lg:pt-20">
+    <div class="relative overflow-hidden rounded-3xl">
+      <img
+        src={weekend.heroImage}
+        alt={weekend.name}
+        class="h-64 w-full object-cover md:h-80 lg:h-96"
+        loading="eager"
+      />
+      <div class="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2 text-xs uppercase tracking-[0.18em] text-white drop-shadow">
+        <span>{weekend.type}</span>
+        <span aria-hidden="true">•</span>
+        <span>{weekend.location}</span>
+        <span aria-hidden="true">•</span>
+        <span>{weekend.dates}</span>
+        <span aria-hidden="true">•</span>
+        <span>{weekend.price}</span>
       </div>
-      <div class="hidden lg:block">
-        <div class="rounded-3xl border border-white/20 bg-white/10 p-6 shadow-lg backdrop-blur">
-          <div class="space-y-3 text-sm text-white/80">
-            <div class="flex items-center justify-between">
-              <span>Datum</span>
-              <span class="font-semibold text-white">{weekend.dates}</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span>Locatie</span>
-              <span class="font-semibold text-white">{weekend.location}</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span>Prijs</span>
-              <span class="font-semibold text-white">{weekend.price}</span>
-            </div>
-            <div class="flex items-center justify-between">
-              <span>Groep</span>
-              <span class="font-semibold text-white">{groupSize ?? "Kleine groep"}</span>
-            </div>
-          </div>
-          {earlyBirdLine && (
-            <div class="mt-6 rounded-2xl border border-white/20 bg-white/5 px-4 py-3 text-xs uppercase tracking-[0.2em] text-white/70">
-              {earlyBirdLine}
-            </div>
-          )}
-          <a
-            href={primaryCtaHref}
-            class="cta-primary mt-6 inline-flex w-full items-center justify-center rounded-full bg-base-25 px-6 py-3 text-base font-semibold text-base-900"
-          >
-            Boek je plek
-          </a>
-        </div>
+    </div>
+    <div class="mt-8 space-y-4">
+      <h1 class="text-4xl lg:text-5xl font-semibold text-base-900">
+        {weekend.name}
+      </h1>
+      <p class="text-lg text-base-700 max-w-3xl">{subtitle}</p>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href={primaryCtaHref}
+          class="cta-primary inline-flex items-center justify-center rounded-full border border-base-300 px-5 py-2 text-sm font-semibold text-base-900"
+        >
+          Boek dit weekend
+        </a>
+        <a
+          href={secondaryCtaHref}
+          class="cta-secondary inline-flex items-center justify-center rounded-full border border-base-300 px-5 py-2 text-sm font-semibold text-base-900"
+        >
+          Contacteer ons voor meer info
+        </a>
       </div>
     </div>
   </div>

@@ -16,13 +16,13 @@ const { items } = Astro.props;
 <div class="space-y-4" data-accordion>
   {items.map((item) => (
     <div
-      class="accordion-item rounded-2xl border border-base-200 bg-white shadow-sm"
+      class="accordion-item border-b border-base-200"
       data-accordion-item
       data-default-open={item.defaultOpen ? "true" : undefined}
     >
       <button
         type="button"
-        class="accordion-trigger flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-base font-semibold text-base-900"
+        class="accordion-trigger flex w-full items-center justify-between gap-4 py-4 text-left text-base font-semibold text-base-900"
         aria-expanded={item.defaultOpen ? "true" : "false"}
         aria-controls={`panel-${item.id}`}
         id={`trigger-${item.id}`}
@@ -33,7 +33,7 @@ const { items } = Astro.props;
         </span>
       </button>
       <div
-        class="accordion-panel overflow-hidden px-5"
+        class="accordion-panel overflow-hidden"
         id={`panel-${item.id}`}
         role="region"
         aria-labelledby={`trigger-${item.id}`}

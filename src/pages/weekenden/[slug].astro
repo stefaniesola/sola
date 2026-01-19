@@ -10,6 +10,7 @@ import ConversionHero from "../../components/weekend/ConversionHero.astro";
 import StickyBookingCard from "../../components/weekend/StickyBookingCard.astro";
 import Accordion from "../../components/weekend/Accordion.astro";
 import ScrollSpyTOC from "../../components/weekend/ScrollSpyTOC.astro";
+import simonPortrait from "../../assets/images/simon-helleputte.webp";
 
 export async function getStaticPaths() {
   const weekends = journeys.filter((journey) => journey.type === "Weekend");
@@ -116,6 +117,10 @@ const vroegboekkado = getSubsection(praktisch, "Vroegboekkado");
 const inbegrepen = getSubsection(praktisch, "Wat is inbegrepen");
 const nietInbegrepen = getSubsection(praktisch, "Wat is niet inbegrepen");
 
+const verblijfParagraphs = verblijf ? verblijf.split(/\n\s*\n/) : [];
+const verblijfText = verblijfParagraphs[0]?.trim() ?? "";
+const maaltijdenText = verblijfParagraphs.slice(1).join("\n\n").trim();
+
 const groupSizeMatch = markdownContent.match(
   /\*\*Aantal deelnemers:\*\*\s*([^\n]+)/,
 );
@@ -125,24 +130,15 @@ const earlyBirdDateMatch = markdownContent.match(
   /Schrijf je in vóór ([\w\s]+\d{4})/i,
 );
 const earlyBirdLine = earlyBirdDateMatch
-  ? `Schrijf je in vóór ${earlyBirdDateMatch[1]}`
+  ? `Vroegboekcadeau – schrijf je in vóór ${earlyBirdDateMatch[1]}`
   : undefined;
 
-const shortDate = weekend.dates
-  .replace("januari", "jan")
-  .replace("februari", "feb")
-  .replace("maart", "mrt")
-  .replace("april", "apr")
-  .replace("mei", "mei")
-  .replace("juni", "jun")
-  .replace("juli", "jul")
-  .replace("augustus", "aug")
-  .replace("september", "sep")
-  .replace("oktober", "okt")
-  .replace("november", "nov")
-  .replace("december", "dec")
-  .replace(/\s+\d{4}/, "")
-  .replace(/\s–\s/, "–");
+const simonImage = await getImage({
+  src: simonPortrait,
+  width: 520,
+  quality: 85,
+});
+const showSimon = weekend.slug === "exercise-is-medicine";
 
 const tocItems = [
   { id: "voor-wie", label: "Voor wie", enabled: Boolean(voorWie) },
@@ -156,31 +152,42 @@ const tocItems = [
     label: "Na dit weekend",
     enabled: Boolean(naDitWeekend),
   },
-  { id: "begeleiding", label: "Begeleiding", enabled: Boolean(begeleiding) },
-  { id: "programma", label: "Programma", enabled: Boolean(programma) },
   {
-    id: "verblijf-maaltijden",
-    label: "Verblijf & maaltijden",
-    enabled: Boolean(verblijf),
+    id: "expertise-coordinatie",
+    label: "Expertise & coördinatie",
+    enabled: Boolean(begeleiding),
   },
+  { id: "programma", label: "Programma", enabled: Boolean(programma) },
+  { id: "verblijf", label: "Verblijf", enabled: Boolean(verblijfText) },
+  { id: "maaltijden", label: "Maaltijden", enabled: Boolean(maaltijdenText) },
   { id: "praktisch", label: "Praktisch", enabled: Boolean(praktisch) },
   {
-    id: "wat-is-inbegrepen",
-    label: "Wat is inbegrepen",
-    enabled: Boolean(inbegrepen),
+    id: "vroegboekcadeau",
+    label: "Vroegboekcadeau",
+    enabled: Boolean(vroegboekkado),
+  },
+  { id: "inbegrepen", label: "Inbegrepen", enabled: Boolean(inbegrepen) },
+  {
+    id: "niet-inbegrepen",
+    label: "Niet inbegrepen",
+    enabled: Boolean(nietInbegrepen),
   },
   {
-    id: "wat-is-niet-inbegrepen",
-    label: "Wat is niet inbegrepen",
-    enabled: Boolean(nietInbegrepen),
+    id: "cta-early-bird",
+    label: "CTA + early bird reminder",
+    enabled: Boolean(earlyBirdLine),
+  },
+  { id: "boek-je-plek", label: "Boek je plek", enabled: Boolean(boekJePlek) },
+  {
+    id: "twijfel-je-nog",
+    label: "Twijfel je nog? Plan een gesprek",
+    enabled: Boolean(twijfel),
   },
   {
     id: "goed-om-weten",
     label: "Goed om weten",
     enabled: Boolean(goedOmWeten),
   },
-  { id: "boek-je-plek", label: "Boek je plek", enabled: Boolean(boekJePlek) },
-  { id: "twijfel-je-nog", label: "Twijfel je nog?", enabled: Boolean(twijfel) },
 ].filter((item) => item.enabled);
 ---
 
@@ -191,87 +198,144 @@ const tocItems = [
   <ConversionHero
     weekend={weekend}
     subtitle={heroSubtitle}
-    groupSize={groupSize}
-    earlyBirdLine={earlyBirdLine}
     primaryCtaHref="#boek-je-plek"
     secondaryCtaHref="/contact"
   />
 
+  <section class="bg-base-25 border-b border-base-200">
+    <div class="max-w-6xl mx-auto px-6 py-10 lg:py-12">
+      <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_240px] items-start">
+        <div class="space-y-6">
+          <dl class="grid gap-4 text-base text-base-700 sm:grid-cols-2">
+            <div>
+              <dt class="text-xs uppercase tracking-[0.2em] text-base-500">
+                Wanneer
+              </dt>
+              <dd class="mt-2 font-semibold text-base-900">{weekend.dates}</dd>
+            </div>
+            <div>
+              <dt class="text-xs uppercase tracking-[0.2em] text-base-500">
+                Waar
+              </dt>
+              <dd class="mt-2 font-semibold text-base-900">
+                {weekend.location}
+              </dd>
+            </div>
+            <div>
+              <dt class="text-xs uppercase tracking-[0.2em] text-base-500">
+                Prijs
+              </dt>
+              <dd class="mt-2 font-semibold text-base-900">{weekend.price}</dd>
+            </div>
+            <div>
+              <dt class="text-xs uppercase tracking-[0.2em] text-base-500">
+                Groep
+              </dt>
+              <dd class="mt-2 font-semibold text-base-900">
+                {groupSize ?? "Kleine groep"}
+              </dd>
+            </div>
+          </dl>
+          {earlyBirdLine && (
+            <p class="text-sm font-semibold text-base-900">{earlyBirdLine}</p>
+          )}
+        </div>
+        {introParagraph && (
+          <div class="text-base text-base-700" data-reveal>
+            <p class="leading-relaxed">{introParagraph}</p>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
   <section class="bg-base-25">
     <div class="max-w-6xl mx-auto px-6 py-12 lg:py-16 pb-24">
-      <div class="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)_280px]">
+      <div class="grid gap-10 lg:grid-cols-[200px_minmax(0,1fr)_220px]">
         <ScrollSpyTOC items={tocItems} />
 
-        <div class="space-y-16">
-          {introParagraph && (
-            <div class="space-y-4" data-reveal>
-              <p class="text-lg leading-relaxed text-base-700">
-                {introParagraph}
-              </p>
-            </div>
+        <div class="space-y-12">
+          {voorWie && (
+            <section
+              id="voor-wie"
+              data-scrollspy-section
+              class="section-anchor section-block" data-reveal
+            >
+              <h2 class="text-2xl font-semibold text-base-900">Voor wie</h2>
+              <div
+                class="prose prose-base-900 mt-4 max-w-none text-base-700"
+                set:html={marked.parse(voorWie) as string}
+              />
+            </section>
           )}
 
-          {(voorWie || focus || naDitWeekend) && (
-            <section class="grid gap-6 md:grid-cols-3" data-reveal>
-              {voorWie && (
-                <article
-                  id="voor-wie"
-                  data-scrollspy-section
-                  class="section-anchor rounded-3xl border border-base-200 bg-white p-6 shadow-sm"
-                >
-                  <h2 class="text-xl font-semibold text-base-900">Voor wie</h2>
-                  <div
-                    class="prose prose-base-900 mt-4 max-w-none text-base-700"
-                    set:html={marked.parse(voorWie) as string}
-                  />
-                </article>
-              )}
-              {focus && (
-                <article
-                  id="wat-je-leert-focus"
-                  data-scrollspy-section
-                  class="section-anchor rounded-3xl border border-base-200 bg-white p-6 shadow-sm"
-                >
-                  <h2 class="text-xl font-semibold text-base-900">
-                    Wat je leert / focus
-                  </h2>
-                  <div
-                    class="prose prose-base-900 mt-4 max-w-none text-base-700"
-                    set:html={marked.parse(focus) as string}
-                  />
-                </article>
-              )}
-              {naDitWeekend && (
-                <article
-                  id="na-dit-weekend"
-                  data-scrollspy-section
-                  class="section-anchor rounded-3xl border border-base-200 bg-white p-6 shadow-sm"
-                >
-                  <h2 class="text-xl font-semibold text-base-900">
-                    Na dit weekend
-                  </h2>
-                  <div
-                    class="prose prose-base-900 mt-4 max-w-none text-base-700"
-                    set:html={marked.parse(naDitWeekend) as string}
-                  />
-                </article>
-              )}
+          {focus && (
+            <section
+              id="wat-je-leert-focus"
+              data-scrollspy-section
+              class="section-anchor section-block" data-reveal
+            >
+              <h2 class="text-2xl font-semibold text-base-900">
+                Wat je leert / focus
+              </h2>
+              <div
+                class="prose prose-base-900 mt-4 max-w-none text-base-700"
+                set:html={marked.parse(focus) as string}
+              />
+            </section>
+          )}
+
+          {naDitWeekend && (
+            <section
+              id="na-dit-weekend"
+              data-scrollspy-section
+              class="section-anchor section-block" data-reveal
+            >
+              <h2 class="text-2xl font-semibold text-base-900">
+                Na dit weekend
+              </h2>
+              <div
+                class="prose prose-base-900 mt-4 max-w-none text-base-700"
+                set:html={marked.parse(naDitWeekend) as string}
+              />
             </section>
           )}
 
           {begeleiding && (
             <section
-              id="begeleiding"
+              id="expertise-coordinatie"
               data-scrollspy-section
-              class="section-anchor"
+              class="section-anchor section-block" data-reveal
             >
-              <div
-                class="rounded-3xl border border-base-200 bg-white p-8 shadow-sm"
-                data-reveal
-              >
-                <h2 class="text-2xl font-semibold text-base-900">Begeleiding</h2>
+              <h2 class="text-2xl font-semibold text-base-900">
+                Expertise & coördinatie
+              </h2>
+              <div class="mt-6 grid gap-6 md:grid-cols-[180px_minmax(0,1fr)] items-start">
+                {showSimon ? (
+                  <div class="space-y-3">
+                    <img
+                      src={simonImage.src}
+                      alt="Simon (Endurance Lab)"
+                      class="h-52 w-full rounded-2xl object-cover"
+                      loading="lazy"
+                    />
+                    <div class="text-sm text-base-600">
+                      <p class="font-semibold text-base-900">
+                        Simon (Endurance Lab)
+                      </p>
+                      <a
+                        href="https://www.instagram.com/simonendurancelab"
+                        class="text-base-600 underline-offset-4 hover:underline"
+                      >
+                        Instagram
+                      </a>
+                    </div>
+                  </div>
+                ) : (
+                  <div class="hidden md:block" />
+                )}
                 <div
-                  class="prose prose-base-900 mt-5 max-w-none text-base-700"
+                  class="prose prose-base-900 max-w-none text-base-700"
                   set:html={marked.parse(begeleiding) as string}
                 />
               </div>
@@ -282,30 +346,38 @@ const tocItems = [
             <section
               id="programma"
               data-scrollspy-section
-              class="section-anchor space-y-6"
+              class="section-anchor section-block" data-reveal
             >
-              <h2 class="text-2xl font-semibold text-base-900" data-reveal>
-                Programma
-              </h2>
+              <h2 class="text-2xl font-semibold text-base-900">Programma</h2>
               <Accordion items={programmaDays} />
             </section>
           )}
 
-          {verblijf && (
+          {verblijfText && (
             <section
-              id="verblijf-maaltijden"
+              id="verblijf"
               data-scrollspy-section
-              class="section-anchor"
+              class="section-anchor section-block" data-reveal
             >
-              <div class="rounded-3xl border border-base-200 bg-white p-8 shadow-sm" data-reveal>
-                <h2 class="text-2xl font-semibold text-base-900">
-                  Verblijf & maaltijden
-                </h2>
-                <div
-                  class="prose prose-base-900 mt-5 max-w-none text-base-700"
-                  set:html={marked.parse(verblijf) as string}
-                />
-              </div>
+              <h2 class="text-2xl font-semibold text-base-900">Verblijf</h2>
+              <div
+                class="prose prose-base-900 mt-4 max-w-none text-base-700"
+                set:html={marked.parse(verblijfText) as string}
+              />
+            </section>
+          )}
+
+          {maaltijdenText && (
+            <section
+              id="maaltijden"
+              data-scrollspy-section
+              class="section-anchor section-block" data-reveal
+            >
+              <h2 class="text-2xl font-semibold text-base-900">Maaltijden</h2>
+              <div
+                class="prose prose-base-900 mt-4 max-w-none text-base-700"
+                set:html={marked.parse(maaltijdenText) as string}
+              />
             </section>
           )}
 
@@ -313,40 +385,43 @@ const tocItems = [
             <section
               id="praktisch"
               data-scrollspy-section
-              class="section-anchor space-y-6"
+              class="section-anchor section-block" data-reveal
             >
-              <div class="rounded-3xl border border-base-200 bg-white p-8 shadow-sm" data-reveal>
-                <h2 class="text-2xl font-semibold text-base-900">Praktisch</h2>
-                <div
-                  class="prose prose-base-900 mt-5 max-w-none text-base-700"
-                  set:html={marked.parse(praktischIntro) as string}
-                />
-              </div>
-              {vroegboekkado && (
-                <div class="rounded-3xl border border-accent-200 bg-accent-50 p-6" data-reveal>
-                  <p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent-700">
-                    Vroegboekkado
-                  </p>
-                  <div
-                    class="prose prose-base-900 mt-4 max-w-none text-base-700"
-                    set:html={marked.parse(vroegboekkado) as string}
-                  />
-                </div>
-              )}
+              <h2 class="text-2xl font-semibold text-base-900">Praktisch</h2>
+              <div
+                class="prose prose-base-900 mt-4 max-w-none text-base-700"
+                set:html={marked.parse(praktischIntro) as string}
+              />
+            </section>
+          )}
+
+          {vroegboekkado && (
+            <section
+              id="vroegboekcadeau"
+              data-scrollspy-section
+              class="section-anchor section-block" data-reveal
+            >
+              <h2 class="text-2xl font-semibold text-base-900">
+                Vroegboekcadeau
+              </h2>
+              <div
+                class="prose prose-base-900 mt-4 max-w-none text-base-700"
+                set:html={marked.parse(vroegboekkado) as string}
+              />
             </section>
           )}
 
           {inbegrepen && (
             <section
-              id="wat-is-inbegrepen"
+              id="inbegrepen"
               data-scrollspy-section
-              class="section-anchor"
+              class="section-anchor section-block" data-reveal
             >
               <Accordion
                 items={[
                   {
                     id: "inbegrepen",
-                    title: "Wat is inbegrepen",
+                    title: "Inbegrepen",
                     content: marked.parse(inbegrepen) as string,
                     defaultOpen: true,
                   },
@@ -357,15 +432,15 @@ const tocItems = [
 
           {nietInbegrepen && (
             <section
-              id="wat-is-niet-inbegrepen"
+              id="niet-inbegrepen"
               data-scrollspy-section
-              class="section-anchor"
+              class="section-anchor section-block" data-reveal
             >
               <Accordion
                 items={[
                   {
                     id: "niet-inbegrepen",
-                    title: "Wat is niet inbegrepen",
+                    title: "Niet inbegrepen",
                     content: marked.parse(nietInbegrepen) as string,
                   },
                 ]}
@@ -373,18 +448,31 @@ const tocItems = [
             </section>
           )}
 
-          {goedOmWeten && (
+          {earlyBirdLine && (
             <section
-              id="goed-om-weten"
+              id="cta-early-bird"
               data-scrollspy-section
-              class="section-anchor"
+              class="section-anchor section-block" data-reveal
             >
-              <div class="rounded-3xl border border-base-200 bg-white p-8 shadow-sm" data-reveal>
-                <h2 class="text-2xl font-semibold text-base-900">Goed om weten</h2>
-                <div
-                  class="prose prose-base-900 mt-5 max-w-none text-base-700"
-                  set:html={marked.parse(goedOmWeten) as string}
-                />
+              <h2 class="text-2xl font-semibold text-base-900">
+                CTA + early bird reminder
+              </h2>
+              <p class="mt-4 text-base font-semibold text-base-900">
+                {earlyBirdLine}
+              </p>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="/contact"
+                  class="cta-primary inline-flex items-center justify-center rounded-full border border-base-300 px-5 py-2 text-sm font-semibold text-base-900"
+                >
+                  Boek dit weekend
+                </a>
+                <a
+                  href="/contact"
+                  class="cta-secondary inline-flex items-center justify-center rounded-full border border-base-300 px-5 py-2 text-sm font-semibold text-base-900"
+                >
+                  Contacteer ons voor meer info
+                </a>
               </div>
             </section>
           )}
@@ -393,28 +481,26 @@ const tocItems = [
             <section
               id="boek-je-plek"
               data-scrollspy-section
-              class="section-anchor"
+              class="section-anchor section-block" data-reveal
             >
-              <div class="rounded-3xl border border-base-200 bg-white p-8 shadow-sm" data-reveal>
-                <h2 class="text-2xl font-semibold text-base-900">Boek je plek</h2>
-                <div
-                  class="prose prose-base-900 mt-5 max-w-none text-base-700"
-                  set:html={marked.parse(boekJePlek) as string}
-                />
-                <div class="mt-6 flex flex-wrap gap-3">
-                  <a
-                    href="/contact"
-                    class="cta-primary inline-flex items-center justify-center rounded-full bg-base-900 px-6 py-3 text-base font-semibold text-white"
-                  >
-                    Boek je plek
-                  </a>
-                  <a
-                    href="/contact"
-                    class="cta-secondary inline-flex items-center justify-center rounded-full border border-base-300 px-6 py-3 text-base font-semibold text-base-900"
-                  >
-                    Plan een gesprek
-                  </a>
-                </div>
+              <h2 class="text-2xl font-semibold text-base-900">Boek je plek</h2>
+              <div
+                class="prose prose-base-900 mt-4 max-w-none text-base-700"
+                set:html={marked.parse(boekJePlek) as string}
+              />
+              <div class="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="/contact"
+                  class="cta-primary inline-flex items-center justify-center rounded-full border border-base-300 px-5 py-2 text-sm font-semibold text-base-900"
+                >
+                  Boek dit weekend
+                </a>
+                <a
+                  href="/contact"
+                  class="cta-secondary inline-flex items-center justify-center rounded-full border border-base-300 px-5 py-2 text-sm font-semibold text-base-900"
+                >
+                  Contacteer ons voor meer info
+                </a>
               </div>
             </section>
           )}
@@ -423,21 +509,35 @@ const tocItems = [
             <section
               id="twijfel-je-nog"
               data-scrollspy-section
-              class="section-anchor"
+              class="section-anchor section-block" data-reveal
             >
-              <div class="rounded-3xl border border-base-200 bg-white p-8 shadow-sm" data-reveal>
-                <h2 class="text-2xl font-semibold text-base-900">Twijfel je nog?</h2>
-                <div
-                  class="prose prose-base-900 mt-5 max-w-none text-base-700"
-                  set:html={marked.parse(twijfel) as string}
-                />
-                <a
-                  href="/contact"
-                  class="cta-secondary mt-6 inline-flex items-center justify-center rounded-full border border-base-300 px-6 py-3 text-base font-semibold text-base-900"
-                >
-                  Plan een gesprek
-                </a>
-              </div>
+              <h2 class="text-2xl font-semibold text-base-900">
+                Twijfel je nog? Plan een gesprek
+              </h2>
+              <div
+                class="prose prose-base-900 mt-4 max-w-none text-base-700"
+                set:html={marked.parse(twijfel) as string}
+              />
+              <a
+                href="/contact"
+                class="cta-secondary mt-6 inline-flex items-center justify-center rounded-full border border-base-300 px-5 py-2 text-sm font-semibold text-base-900"
+              >
+                Contacteer ons voor meer info
+              </a>
+            </section>
+          )}
+
+          {goedOmWeten && (
+            <section
+              id="goed-om-weten"
+              data-scrollspy-section
+              class="section-anchor section-block" data-reveal
+            >
+              <h2 class="text-2xl font-semibold text-base-900">Goed om weten</h2>
+              <div
+                class="prose prose-base-900 mt-4 max-w-none text-base-700"
+                set:html={marked.parse(goedOmWeten) as string}
+              />
             </section>
           )}
         </div>
@@ -445,24 +545,11 @@ const tocItems = [
         <StickyBookingCard
           weekend={weekend}
           groupSize={groupSize}
-          earlyBirdLine={earlyBirdLine}
           ctaHref="#boek-je-plek"
         />
       </div>
     </div>
   </section>
-
-  <div
-    class="fixed bottom-4 left-4 right-4 z-30 flex items-center justify-between gap-4 rounded-full border border-base-200 bg-white px-5 py-3 text-sm font-semibold text-base-900 shadow-lg lg:hidden"
-  >
-    <span>{`${weekend.price} • ${shortDate}`}</span>
-    <a
-      href="#boek-je-plek"
-      class="cta-primary inline-flex items-center justify-center rounded-full bg-base-900 px-4 py-2 text-sm font-semibold text-white"
-    >
-      Boek je plek
-    </a>
-  </div>
 </BaseLayout>
 
 <style>
@@ -470,21 +557,31 @@ const tocItems = [
     scroll-margin-top: 120px;
   }
 
+  .section-block {
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--color-base-200);
+  }
+
+  .section-block:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
   .scrollspy-link.is-active {
-    background: color-mix(in srgb, var(--color-base-900) 12%, white);
     color: var(--color-base-900);
+    text-decoration: underline;
+    text-underline-offset: 4px;
   }
 
   .cta-primary,
   .cta-secondary {
-    transition: transform 150ms ease, box-shadow 150ms ease, color 150ms ease,
+    transition: transform 150ms ease, color 150ms ease,
       background-color 150ms ease, border-color 150ms ease;
   }
 
   .cta-primary:hover,
   .cta-secondary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(15, 23, 42, 0.15);
+    transform: translateY(-1px);
   }
 
   .accordion-panel {
