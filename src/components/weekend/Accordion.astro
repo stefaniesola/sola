@@ -1,0 +1,48 @@
+---
+interface AccordionItem {
+  id: string;
+  title: string;
+  content: string;
+  defaultOpen?: boolean;
+}
+
+interface Props {
+  items: AccordionItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="space-y-4" data-accordion>
+  {items.map((item) => (
+    <div
+      class="accordion-item rounded-2xl border border-base-200 bg-white shadow-sm"
+      data-accordion-item
+      data-default-open={item.defaultOpen ? "true" : undefined}
+    >
+      <button
+        type="button"
+        class="accordion-trigger flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-base font-semibold text-base-900"
+        aria-expanded={item.defaultOpen ? "true" : "false"}
+        aria-controls={`panel-${item.id}`}
+        id={`trigger-${item.id}`}
+      >
+        <span>{item.title}</span>
+        <span class="accordion-icon text-xl text-base-500" aria-hidden="true">
+          +
+        </span>
+      </button>
+      <div
+        class="accordion-panel overflow-hidden px-5"
+        id={`panel-${item.id}`}
+        role="region"
+        aria-labelledby={`trigger-${item.id}`}
+      >
+        <div
+          class="accordion-panel-inner prose prose-base-900 max-w-none pb-5 text-base-700"
+          set:html={item.content}
+        />
+      </div>
+    </div>
+  ))}
+</div>
