@@ -13,33 +13,10 @@
 @theme {
     --font-sans: "Tw Cen MT", "Inter", sans-serif;
     --font-display: "Tw Cen MT", sans-serif;
-    --color-black: #121212;
-    /* Accent  */
-    --color-accent-500: #d16a3c;
-    --color-accent-25: color-mix(in srgb, white 95%, var(--color-accent-500));
-    --color-accent-50: color-mix(in srgb, white 90%, var(--color-accent-500));
-    --color-accent-100: color-mix(in srgb, white 80%, var(--color-accent-500));
-    --color-accent-200: color-mix(in srgb, white 65%, var(--color-accent-500));
-    --color-accent-300: color-mix(in srgb, white 45%, var(--color-accent-500));
-    --color-accent-400: color-mix(in srgb, white 15%, var(--color-accent-500));
-    --color-accent-600: color-mix(in srgb, black 15%, var(--color-accent-500));
-    --color-accent-700: color-mix(in srgb, black 30%, var(--color-accent-500));
-    --color-accent-800: color-mix(in srgb, black 45%, var(--color-accent-500));
-    --color-accent-900: color-mix(in srgb, black 60%, var(--color-accent-500));
-    --color-accent-950: color-mix(in srgb, black 75%, var(--color-accent-500));
-    /* Base */
-    --color-base-25: #fffdf6;
-    --color-base-50: #f9dbce;
-    --color-base-100: #fff1e9;
-    --color-base-200: #f9dacd;
-    --color-base-300: #d9b8a6;
-    --color-base-400: #a9856f;
-    --color-base-500: #583b2e;
-    --color-base-600: #482e24;
-    --color-base-700: #3c251d;
-    --color-base-800: #311c17;
-    --color-base-900: #291612;
-    --color-base-950: #24120e;
+    --color-terracotta: var(--sola-terracotta);
+    --color-ebony: var(--sola-ebony);
+    --color-white: var(--sola-white);
+    --color-stone: var(--sola-stone);
 }
 
 /* CSS */
@@ -49,10 +26,47 @@ html {
     /* Increased from default 16px */
 }
 
+:root {
+    --sola-terracotta: #d16a3c;
+    --sola-ebony: #3e342a;
+    --sola-white: #f6f4f0;
+    --sola-stone: #f9dbce;
+}
+
 body {
     font-family: "Tw Cen MT", "Inter", sans-serif;
     font-size: 1rem;
     /* Uses the 18px base */
+}
+
+@layer components {
+    .btn-primary {
+        @apply inline-flex items-center justify-center rounded-full bg-terracotta text-white font-semibold px-5 py-3 transition;
+    }
+
+    .btn-primary:hover {
+        background-color: color-mix(
+            in srgb,
+            var(--sola-terracotta) 85%,
+            var(--sola-ebony)
+        );
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center rounded-full border border-ebony/15 text-ebony font-semibold px-5 py-3 transition;
+    }
+
+    .btn-secondary:hover {
+        @apply border-terracotta text-terracotta;
+    }
+
+    .link-default {
+        @apply text-ebony/85 transition-colors;
+    }
+
+    .link-default:hover {
+        @apply text-terracotta;
+    }
 }
 
 

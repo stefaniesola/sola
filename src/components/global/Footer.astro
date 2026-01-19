@@ -3,30 +3,30 @@ import { Image } from "astro:assets";
 import logoImage from "../../assets/images/logo.png";
 ---
 
-<footer class="border-t border-base-200 mt-20 bg-base-50/60">
+<footer class="border-t border-ebony/15 mt-20 bg-ebony">
   <div
-    class="max-w-6xl mx-auto px-6 py-12 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between text-sm text-base-600"
+    class="max-w-6xl mx-auto px-6 py-12 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between text-sm text-white/85"
   >
     <div class="flex items-center gap-3">
       <Image src={logoImage} alt="SOLA" class="h-9 w-auto" />
       <div>
-        <p class="font-semibold text-base-800">SOLA</p>
-        <p class="text-xs">Kroonstraat 2a, Gent</p>
+        <p class="font-semibold text-white">SOLA</p>
+        <p class="text-xs text-white/80">Kroonstraat 2a, Gent</p>
         <a
-          class="hover:text-accent-700 text-xs mt-1 block"
+          class="link-default text-xs mt-1 block text-white/85 hover:text-terracotta"
           href="mailto:hello@solatravel.be">hello@solatravel.be</a
         >
       </div>
     </div>
-    <p class="text-xs text-base-500">© 2026 SOLA</p>
+    <p class="text-xs text-white/70">© 2026 SOLA</p>
     <div class="flex flex-col gap-2 items-end">
       <div class="flex flex-wrap gap-4 items-center justify-end">
-        <a class="hover:text-accent-700" href="/contact">Contact</a>
-        <a class="hover:text-accent-700" href="/newsletter">Nieuwsbrief</a>
+        <a class="link-default text-white/85 hover:text-terracotta" href="/contact">Contact</a>
+        <a class="link-default text-white/85 hover:text-terracotta" href="/newsletter">Nieuwsbrief</a>
       </div>
       <div class="flex flex-wrap gap-4 items-center justify-end">
-        <a class="hover:text-accent-700" href="/privacy">Privacybeleid</a>
-        <a class="hover:text-accent-700" href="/terms">Algemene Voorwaarden</a>
+        <a class="link-default text-white/85 hover:text-terracotta" href="/privacy">Privacybeleid</a>
+        <a class="link-default text-white/85 hover:text-terracotta" href="/terms">Algemene Voorwaarden</a>
       </div>
     </div>
   </div>

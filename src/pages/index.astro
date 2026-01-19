@@ -93,30 +93,30 @@ const optimizedHauteLoire = await getImage({
     style={`background-image: url(${optimizedHero.src});`}
   >
     <div
-      class="absolute inset-0 bg-gradient-to-r from-base-900/80 via-base-900/60 to-base-900/40"
+      class="absolute inset-0 bg-stone/90"
     >
     </div>
     <div
       class="relative max-w-6xl mx-auto px-6 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-center min-h-screen sm:min-h-[700px] lg:min-h-[850px]"
     >
       <div class="space-y-6">
-        <p class="uppercase text-xs tracking-[0.25em] text-white/80">
+        <p class="uppercase text-xs tracking-[0.25em] text-ebony/80">
           {homePage.brandLabel}
         </p>
-        <h1 class="text-4xl lg:text-5xl font-semibold leading-tight text-white">
+        <h1 class="text-4xl lg:text-5xl font-semibold leading-tight text-ebony">
           {homeCopy.tagline}
         </h1>
-        <p class="text-lg text-white/90 max-w-xl">{homeCopy.waarom}</p>
+        <p class="text-lg text-ebony/85 max-w-xl">{homeCopy.waarom}</p>
         <div class="flex flex-wrap gap-3">
           <a
             href="/reizen"
-            class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-accent-600 text-white font-semibold hover:bg-accent-700 transition"
+            class="btn-primary"
           >
             {homePage.ctaDiscover}
           </a>
           <a
             href="/contact"
-            class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-white/40 text-white font-semibold hover:border-white/60 hover:bg-white/10"
+            class="btn-secondary"
           >
             {homePage.ctaContact}
           </a>
@@ -126,7 +126,7 @@ const optimizedHauteLoire = await getImage({
   </section>
 
   <section class="max-w-6xl mx-auto px-6 pt-8 lg:pt-14 pb-0">
-    <h2 class="text-3xl lg:text-4xl font-semibold text-base-900 text-center">
+    <h2 class="text-3xl lg:text-4xl font-semibold text-ebony text-center">
       Hoe we werken
     </h2>
   </section>
@@ -142,16 +142,16 @@ const optimizedHauteLoire = await getImage({
               <div
                 class={`flex flex-col lg:flex-row gap-12 items-center scroll-fade-in ${
                   isEven ? "lg:flex-row" : "lg:flex-row-reverse"
-                } ${hasBackground ? "bg-base-50/50 rounded-3xl p-8 lg:p-12" : ""}`}
+                } ${hasBackground ? "bg-white rounded-3xl p-8 lg:p-12 border border-ebony/10 shadow-sm" : ""}`}
                 style={`animation-delay: ${index * 0.2}s;`}
               >
                 <div
                   class={`flex-1 space-y-4 ${isEven ? "lg:pr-8" : "lg:pl-8"}`}
                 >
-                  <h4 class="text-2xl lg:text-3xl font-semibold text-base-900">
+                  <h4 class="text-2xl lg:text-3xl font-semibold text-ebony">
                     {pillar.title}
                   </h4>
-                  <p class="text-lg text-base-700 leading-relaxed">
+                  <p class="text-lg text-ebony/85 leading-relaxed">
                     {pillar.description}
                   </p>
                 </div>
@@ -194,8 +194,9 @@ const optimizedHauteLoire = await getImage({
       .skewed-image-frame {
         position: relative;
         padding: 0.25rem;
-        background: linear-gradient(135deg, #f6f4f0 0%, #d6d2c8 100%);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        background: var(--sola-white);
+        border: 1px solid color-mix(in srgb, var(--sola-ebony) 12%, transparent);
+        box-shadow: 0 15px 40px color-mix(in srgb, var(--sola-ebony) 20%, transparent);
         overflow: hidden;
         border-radius: 1rem;
       }
@@ -247,19 +248,19 @@ const optimizedHauteLoire = await getImage({
     </script>
   </section>
 
-  <section class="bg-base-50/80 border-y border-base-200 scroll-fade-in">
+  <section class="bg-stone border-y border-ebony/10 scroll-fade-in">
     <div class="max-w-6xl mx-auto px-6 py-8 lg:py-14 space-y-8">
       <div class="flex items-end justify-between gap-4">
         <div>
-          <p class="uppercase text-xs tracking-[0.25em] text-base-500">
+          <p class="uppercase text-xs tracking-[0.25em] text-ebony/80">
             {homePage.sectionAanbod.label}
           </p>
-          <h3 class="text-3xl font-semibold text-base-900">
+          <h3 class="text-3xl font-semibold text-ebony">
             {homePage.sectionAanbod.title}
           </h3>
-          <p class="text-base-700">{homePage.sectionAanbod.description}</p>
+          <p class="text-ebony/85">{homePage.sectionAanbod.description}</p>
         </div>
-        <a class="text-sm font-semibold hover:text-accent-700" href="/reizen"
+        <a class="text-sm font-semibold link-default" href="/reizen"
           >{homePage.sectionAanbod.link}</a
         >
       </div>
@@ -268,36 +269,36 @@ const optimizedHauteLoire = await getImage({
           weekendHighlightsWithImages.map((weekend) => (
             <a
               href={`/weekenden/${weekend.slug}`}
-              class="rounded-3xl border border-base-200 overflow-hidden bg-base-25 shadow-sm hover:shadow-lg transition flex flex-col group cursor-pointer"
+              class="rounded-3xl border border-ebony/10 overflow-hidden bg-white shadow-sm hover:shadow-lg transition flex flex-col group cursor-pointer"
             >
               <div
-                class="relative aspect-video bg-base-200 overflow-hidden"
+                class="relative aspect-video bg-stone overflow-hidden"
                 style={{
                   backgroundImage: `url(${weekend.heroImage})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               >
-                <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-                  <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold">
+                <div class="absolute inset-0 bg-ebony/0 group-hover:bg-ebony/40 transition-all duration-300 flex items-center justify-center">
+                  <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 inline-flex items-center px-5 py-3 rounded-full bg-white text-ebony font-semibold">
                     {homePage.ctaDiscoverWeekend}
                   </span>
                 </div>
               </div>
               <div class="p-6 space-y-3 flex-1 flex flex-col">
-                <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-base-500">
-                  <span class="px-3 py-1 rounded-full bg-base-100 border border-base-200">
+                <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-ebony/80">
+                  <span class="px-3 py-1 rounded-full bg-stone border border-ebony/10">
                     {weekend.location}
                   </span>
-                  <span>{weekend.dates}</span>
+                  <span class="text-ebony/80">{weekend.dates}</span>
                 </div>
-                <h4 class="text-xl font-semibold text-base-900">
+                <h4 class="text-xl font-semibold text-ebony">
                   {weekend.name}
                 </h4>
-                <p class="text-base-700">{weekend.shortDescription}</p>
-                <div class="mt-auto flex items-center justify-between text-sm font-semibold text-base-900 pt-2">
-                  <span>{weekend.price}</span>
-                  <span class="text-accent-700 group-hover:underline">
+                <p class="text-ebony/85">{weekend.shortDescription}</p>
+                <div class="mt-auto flex items-center justify-between text-sm font-semibold text-ebony pt-2">
+                  <span class="text-ebony">{weekend.price}</span>
+                  <span class="text-terracotta group-hover:underline">
                     {homePage.ctaDiscoverWeekend}
                   </span>
                 </div>
@@ -312,17 +313,17 @@ const optimizedHauteLoire = await getImage({
   <section class="max-w-6xl mx-auto px-6 py-8 lg:py-14 space-y-8 scroll-fade-in">
     <div class="flex flex-col lg:flex-row gap-12 items-center">
       <div class="flex-1 space-y-4 lg:pr-8">
-        <p class="uppercase text-xs tracking-[0.25em] text-base-500">
+        <p class="uppercase text-xs tracking-[0.25em] text-ebony/80">
           {homePage.sectionOverOns.label}
         </p>
-        <h3 class="text-3xl font-semibold text-base-900">
+        <h3 class="text-3xl font-semibold text-ebony">
           {homePage.sectionOverOns.title}
         </h3>
-        <p class="text-base-700">
+        <p class="text-ebony/85">
           {homePage.sectionOverOns.description}
         </p>
         <a
-          class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-base-300 text-base-800 font-semibold hover:border-base-500 w-fit"
+          class="btn-secondary w-fit"
           href="/over-ons"
         >
           {homePage.sectionOverOns.cta}
@@ -339,18 +340,16 @@ const optimizedHauteLoire = await getImage({
     </div>
   </section>
 
-  <section class="bg-accent-600 text-white py-10 lg:py-16 scroll-fade-in">
-    <div class="max-w-4xl mx-auto px-6 text-center space-y-6">
-      <h3 class="text-3xl font-semibold">{homeCopy.afsluiting.title}</h3>
-      <div class="flex flex-wrap justify-center gap-3">
-        <a
-          class="px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold"
-          href="/reizen">{homeCopy.afsluiting.primary}</a
-        >
-        <a
-          class="px-5 py-3 rounded-full border border-white/40 text-white font-semibold"
-          href="/contact">{homeCopy.afsluiting.secondary}</a
-        >
+  <section class="bg-stone border-y border-ebony/10 py-10 lg:py-16 scroll-fade-in">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="rounded-3xl border border-ebony/10 bg-white shadow-sm px-6 py-10 space-y-6">
+        <h3 class="text-3xl font-semibold text-ebony">
+          {homeCopy.afsluiting.title}
+        </h3>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a class="btn-primary" href="/reizen">{homeCopy.afsluiting.primary}</a>
+          <a class="btn-secondary" href="/contact">{homeCopy.afsluiting.secondary}</a>
+        </div>
       </div>
     </div>
   </section>

@@ -11,11 +11,14 @@ interface Props {
 const { title, description } = Astro.props as Props;
 ---
 
-<html lang="nl" class="scroll-smooth selection:bg-accent-500 selection:text-white no-touchevents hydrated">
+<html
+  lang="nl"
+  class="scroll-smooth selection:bg-terracotta selection:text-white no-touchevents hydrated"
+>
   <head>
     <BaseHead {title} {description} />
   </head>
-  <body class="bg-base-25 flex flex-col min-h-svh text-base-500 font-sans">
+  <body class="bg-stone flex flex-col min-h-svh text-ebony/85 font-sans">
     {import.meta.env.PROD && (
       <!-- Google Tag Manager (noscript) -->
       <noscript>

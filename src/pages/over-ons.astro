@@ -29,16 +29,16 @@ const optimizedLandscape = await getImage({
 ---
 
 <BaseLayout title={aboutPage.title} description={aboutPage.metaDescription}>
-  <section class="bg-base-50/80 border-b border-base-200">
+  <section class="bg-stone border-b border-ebony/10">
     <div class="max-w-6xl mx-auto px-6 py-16 space-y-6 scroll-fade-in">
-      <p class="uppercase text-xs tracking-[0.25em] text-base-500">
+      <p class="uppercase text-xs tracking-[0.25em] text-ebony/80">
         {aboutPage.label}
       </p>
-      <h1 class="text-4xl font-semibold text-base-900">{aboutPage.heading}</h1>
-      <p class="text-base-700 max-w-3xl">
+      <h1 class="text-4xl font-semibold text-ebony">{aboutPage.heading}</h1>
+      <p class="text-ebony/85 max-w-3xl">
         {aboutPage.description}
       </p>
-      <p class="text-base-700 max-w-2xl italic">{aboutPage.quote}</p>
+      <p class="text-ebony/85 max-w-2xl italic">{aboutPage.quote}</p>
     </div>
   </section>
 
@@ -48,10 +48,10 @@ const optimizedLandscape = await getImage({
       <!-- Mission Section -->
       <div class="flex flex-col lg:flex-row gap-12 items-center scroll-fade-in">
         <div class="flex-1 space-y-4 lg:pr-8">
-          <h3 class="text-2xl lg:text-3xl font-semibold text-base-900">
+          <h3 class="text-2xl lg:text-3xl font-semibold text-ebony">
             {aboutPage.missieLabel}
           </h3>
-          <p class="text-lg text-base-700 leading-relaxed">
+          <p class="text-lg text-ebony/85 leading-relaxed">
             {missionVision.mission}
           </p>
         </div>
@@ -66,12 +66,12 @@ const optimizedLandscape = await getImage({
       </div>
 
       <!-- Vision Section -->
-      <div class="flex flex-col lg:flex-row-reverse gap-12 items-center scroll-fade-in bg-base-50/50 rounded-3xl p-8 lg:p-12">
+      <div class="flex flex-col lg:flex-row-reverse gap-12 items-center scroll-fade-in bg-white rounded-3xl p-8 lg:p-12 border border-ebony/10 shadow-sm">
         <div class="flex-1 space-y-4 lg:pl-8">
-          <h3 class="text-2xl lg:text-3xl font-semibold text-base-900">
+          <h3 class="text-2xl lg:text-3xl font-semibold text-ebony">
             {aboutPage.visieLabel}
           </h3>
-          <p class="text-lg text-base-700 leading-relaxed">
+          <p class="text-lg text-ebony/85 leading-relaxed">
             {missionVision.vision}
           </p>
         </div>
@@ -89,20 +89,20 @@ const optimizedLandscape = await getImage({
     <!-- Team -->
     <div class="space-y-8 scroll-fade-in">
       <div>
-        <h2 class="text-3xl font-semibold text-base-900">
+        <h2 class="text-3xl font-semibold text-ebony">
           {aboutPage.sectionTeam}
         </h2>
-        <p class="text-base-700 mt-2 max-w-2xl">
+        <p class="text-ebony/85 mt-2 max-w-2xl">
           Het team dat SOLA dagelijks draagt en vormgeeft.
         </p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           coreTeam.map((person) => (
-            <article class="group p-6 rounded-2xl border-[0.25rem] border-white bg-white hover:shadow-lg hover:bg-accent-50/30 hover:border-accent-200 transition-all duration-300">
+            <article class="group p-6 rounded-2xl border border-ebony/10 bg-white shadow-sm hover:shadow-lg transition-all duration-300">
               <div class="flex items-start gap-4 mb-4">
                 {person.logo ? (
-                  <div class="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-base-200">
+                  <div class="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-stone">
                     <OptimizedImage
                       src={person.logo}
                       alt={`${person.name}`}
@@ -113,20 +113,20 @@ const optimizedLandscape = await getImage({
                     />
                   </div>
                 ) : (
-                  <div class="w-24 h-24 rounded-full shrink-0 bg-base-300 flex items-center justify-center">
-                    <span class="text-2xl font-semibold text-base-600">
+                  <div class="w-24 h-24 rounded-full shrink-0 bg-stone flex items-center justify-center border border-ebony/10">
+                    <span class="text-2xl font-semibold text-ebony/80">
                       {person.name.charAt(0)}
                     </span>
                   </div>
                 )}
                 <div class="flex-1 min-w-0">
-                  <h3 class="text-xl font-semibold text-base-900 mb-1">
+                  <h3 class="text-xl font-semibold text-ebony mb-1">
                     {person.name}
                   </h3>
-                  <p class="text-base-600">{person.role}</p>
+                  <p class="text-ebony/80">{person.role}</p>
                 </div>
               </div>
-              <p class="text-base-700 leading-relaxed">{person.bio}</p>
+              <p class="text-ebony/85 leading-relaxed">{person.bio}</p>
             </article>
           ))
         }
@@ -136,20 +136,20 @@ const optimizedLandscape = await getImage({
     <!-- Partners -->
     <div class="space-y-8 scroll-fade-in">
       <div>
-        <h2 class="text-3xl font-semibold text-base-900">
+        <h2 class="text-3xl font-semibold text-ebony">
           {partnershipsPage.sectionPartners}
         </h2>
-        <p class="text-base-700 mt-2 max-w-2xl">
+        <p class="text-ebony/85 mt-2 max-w-2xl">
           Experts en specialisten waarmee we samenwerken om de beste ervaringen te creëren.
         </p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           partners.map((partner) => (
-            <article class="group p-6 rounded-2xl border-[0.25rem] border-white bg-white hover:shadow-lg hover:bg-accent-50/30 hover:border-accent-200 transition-all duration-300">
+            <article class="group p-6 rounded-2xl border border-ebony/10 bg-white shadow-sm hover:shadow-lg transition-all duration-300">
               <div class="flex items-start gap-4 mb-4">
                 {partner.logo ? (
-                  <div class="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-base-200">
+                  <div class="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-stone">
                     <OptimizedImage
                       src={partner.logo}
                       alt={`${partner.name}`}
@@ -160,26 +160,26 @@ const optimizedLandscape = await getImage({
                     />
                   </div>
                 ) : (
-                  <div class="w-24 h-24 rounded-full shrink-0 bg-base-300 flex items-center justify-center">
-                    <span class="text-2xl font-semibold text-base-600">
+                  <div class="w-24 h-24 rounded-full shrink-0 bg-stone flex items-center justify-center border border-ebony/10">
+                    <span class="text-2xl font-semibold text-ebony/80">
                       {partner.name.charAt(0)}
                     </span>
                   </div>
                 )}
                 <div class="flex-1 min-w-0">
-                  <h3 class="text-xl font-semibold text-base-900 mb-1">
+                  <h3 class="text-xl font-semibold text-ebony mb-1">
                     {partner.name}
                   </h3>
-                  <p class="text-base-600">{partner.role}</p>
+                  <p class="text-ebony/80">{partner.role}</p>
                 </div>
               </div>
-              <p class="text-base-700 leading-relaxed mb-4">{partner.bio}</p>
+              <p class="text-ebony/85 leading-relaxed mb-4">{partner.bio}</p>
               {partner.website && (
                 <a
                   href={partner.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="inline-flex items-center text-sm font-semibold text-accent-700 hover:text-accent-800 transition-colors"
+                  class="inline-flex items-center text-sm font-semibold link-default"
                 >
                   Bezoek website
                   <svg
@@ -204,16 +204,16 @@ const optimizedLandscape = await getImage({
     </div>
 
     <!-- Partner CTA -->
-    <div class="p-8 rounded-2xl bg-accent-600 text-white scroll-fade-in">
-      <h2 class="text-2xl font-semibold mb-2">
+    <div class="p-8 rounded-2xl bg-white border border-ebony/10 shadow-sm scroll-fade-in">
+      <h2 class="text-2xl font-semibold mb-2 text-ebony">
         {partnershipsPage.ctaTitle}
       </h2>
-      <p class="text-white/90 mb-6">
+      <p class="text-ebony/85 mb-6">
         {partnershipsPage.ctaDescription}
       </p>
       <a
         href="/contact"
-        class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-white text-accent-600 font-semibold hover:bg-base-50 transition-colors"
+        class="btn-primary"
       >
         Neem contact op
       </a>
@@ -237,8 +237,9 @@ const optimizedLandscape = await getImage({
     .skewed-image-frame {
       position: relative;
       padding: 0.25rem;
-      background: linear-gradient(135deg, #f6f4f0 0%, #d6d2c8 100%);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      background: var(--sola-white);
+      border: 1px solid color-mix(in srgb, var(--sola-ebony) 12%, transparent);
+      box-shadow: 0 15px 40px color-mix(in srgb, var(--sola-ebony) 20%, transparent);
       overflow: hidden;
       border-radius: 1rem;
     }

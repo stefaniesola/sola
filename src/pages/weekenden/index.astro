@@ -38,21 +38,21 @@ const weekendsWithImages = await Promise.all(
   title={weekendPage.title}
   description={weekendPage.metaDescription}
 >
-  <section class="bg-base-50/80 border-b border-base-200">
+  <section class="bg-stone border-b border-ebony/10">
     <div class="max-w-6xl mx-auto px-6 py-16 space-y-6">
-      <p class="uppercase text-xs tracking-[0.25em] text-base-500">
+      <p class="uppercase text-xs tracking-[0.25em] text-ebony/80">
         {weekendPage.label}
       </p>
-      <h1 class="text-4xl font-semibold text-base-900">
+      <h1 class="text-4xl font-semibold text-ebony">
         {weekendPage.heading}
       </h1>
-      <p class="text-base-700 max-w-3xl">
+      <p class="text-ebony/85 max-w-3xl">
         {weekendPage.description}
       </p>
       <div class="flex flex-wrap gap-2">
         {
           uspTags.map((tag) => (
-            <span class="px-3 py-1 rounded-full bg-base-25 border border-base-200 text-sm text-base-700">
+            <span class="px-3 py-1 rounded-full bg-white border border-ebony/10 text-sm text-ebony/85">
               {tag}
             </span>
           ))
@@ -66,34 +66,34 @@ const weekendsWithImages = await Promise.all(
       weekendsWithImages.map((weekend) => (
         <a
           href={`/weekenden/${weekend.slug}`}
-          class="rounded-3xl border border-base-200 overflow-hidden bg-base-25 shadow-sm hover:shadow-lg transition flex flex-col group cursor-pointer"
+          class="rounded-3xl border border-ebony/10 overflow-hidden bg-white shadow-sm hover:shadow-lg transition flex flex-col group cursor-pointer"
         >
           <div
-            class="relative aspect-video bg-base-200 overflow-hidden"
+            class="relative aspect-video bg-stone overflow-hidden"
             style={{
               backgroundImage: `url(${weekend.heroImage})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-              <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold">
+            <div class="absolute inset-0 bg-ebony/0 group-hover:bg-ebony/40 transition-all duration-300 flex items-center justify-center">
+              <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 inline-flex items-center px-5 py-3 rounded-full bg-white text-ebony font-semibold">
                 {weekendPage.cta}
               </span>
             </div>
           </div>
           <div class="p-6 space-y-3 flex-1 flex flex-col">
-            <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-base-500">
-              <span class="px-3 py-1 rounded-full bg-base-100 border border-base-200">
+            <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-ebony/80">
+              <span class="px-3 py-1 rounded-full bg-stone border border-ebony/10">
                 {weekend.location}
               </span>
-              <span>{weekend.dates}</span>
+              <span class="text-ebony/80">{weekend.dates}</span>
             </div>
-            <h2 class="text-xl font-semibold text-base-900">{weekend.name}</h2>
-            <p class="text-base-700">{weekend.shortDescription}</p>
-            <div class="mt-auto flex items-center justify-between text-sm font-semibold text-base-900 pt-2">
-              <span>{weekend.price}</span>
-              <span class="text-accent-700 group-hover:underline">
+            <h2 class="text-xl font-semibold text-ebony">{weekend.name}</h2>
+            <p class="text-ebony/85">{weekend.shortDescription}</p>
+            <div class="mt-auto flex items-center justify-between text-sm font-semibold text-ebony pt-2">
+              <span class="text-ebony">{weekend.price}</span>
+              <span class="text-terracotta group-hover:underline">
                 {weekendPage.cta}
               </span>
             </div>
