@@ -292,7 +292,7 @@ export const people: Person[] = [
     role: "Organisator & avonturier",
     type: "Expert",
     bio: "Stefanie is de verbindende kracht achter SOLA. Ze organiseert weekenden waar beweging en natuur samenkomen en zorgt dat elke deelnemer zich gedragen voelt.",
-    logo: "/stefanie.webp",
+    logo: "/stefanie.jpg",
     isTeamMember: true,
   },
   {
@@ -308,7 +308,7 @@ export const people: Person[] = [
     role: "Coördinator & facilitator",
     type: "Core",
     bio: "Klaas zorgt voor de praktische organisatie en begeleiding van onze weekenden. Met oog voor detail en passie voor natuur en beweging, creëert hij een veilige en inspirerende omgeving voor elke deelnemer.",
-    logo: "/klaas.webp",
+    logo: "/klaas.png",
     isTeamMember: true,
   },
   {
