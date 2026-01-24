@@ -296,7 +296,7 @@ export const people: Person[] = [
     isTeamMember: true,
   },
   {
-    name: "Sarah Van den Daele",
+    name: "Justine Deleu",
     role: "Organisator & marketeer",
     type: "Core",
     bio: "Sarah vertelt het verhaal van SOLA en bewaakt de helderheid in elke ervaring. Ze zorgt dat elke sessie praktisch, warm en toegankelijk blijft.",
