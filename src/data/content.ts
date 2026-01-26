@@ -300,7 +300,7 @@ export const people: Person[] = [
     role: "Organisator & marketeer",
     type: "Core",
     bio: "Justine vertelt het verhaal van SOLA en bewaakt de helderheid in elke ervaring. Ze zorgt dat elke sessie praktisch, warm en toegankelijk blijft.",
-    logo: "/sarah.webp",
+    logo: "/src/assets/images/Justine Deleu.jpg",
     isTeamMember: true,
   },
   {
