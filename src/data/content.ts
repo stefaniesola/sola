@@ -25,10 +25,10 @@ export interface Person {
 export const journeys: Journey[] = [
   {
     slug: "exercise-is-medicine",
-    name: "Exercise is Medicine",
+    name: "Beweging als medicijn",
     type: "Weekend",
     shortDescription:
-      "Met Simon van Endurance Lab leer je hoe beweging, data en lichaamsbewustzijn samen je gezondheid versterken.",
+      "Met Simon van Simon Endurance Lab leer je hoe inspanning je hart en uithouding verbetert en wat er in je lichaam gebeurt tijdens beweging, herstel en stofwisseling. Je ontdekt hoe je bewegingB en sport bewust inzet voor je algemene gezondheid.",
     location: "Hoge Venen (Ardennen)",
     dates: "31 juli – 2 augustus 2026",
     price: "€550",
@@ -135,11 +135,11 @@ Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken
   },
   {
     slug: "bewustwording-connectie",
-    name: "Weekend – Bewustwording × Connectie",
+    name: "Ontdek je kracht in verbinding",
     type: "Weekend",
     shortDescription:
-      "Beleef, ontdek en ervaar hoe je opnieuw je eigen regie in handen neemt.",
-    location: "Sourbrodt, Hoge Venen, Ardennen",
+      "Met Sarah van Logisch Gezond doorzie je patronen in relatie tot jezelf en anderen. Je leert technieken om met meer verbinding, vertrouwen en innerlijke helderheid in je dagelijks leven te staan.",
+    location: "Hoge Venen, Ardennen",
     dates: "7 – 9 augustus 2026",
     price: "€620",
     heroImage: "/src/assets/images/2631991747.jpg",
