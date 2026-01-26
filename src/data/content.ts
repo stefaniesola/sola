@@ -1,3 +1,5 @@
+import justineImg from "../assets/images/Justine Deleu.jpg";
+
 export type JourneyType = "Weekend" | "Reis";
 
 export interface Journey {
@@ -299,8 +301,8 @@ export const people: Person[] = [
     name: "Justine Deleu",
     role: "Organisator & marketeer",
     type: "Core",
-    bio: "Sarah vertelt het verhaal van SOLA en bewaakt de helderheid in elke ervaring. Ze zorgt dat elke sessie praktisch, warm en toegankelijk blijft.",
-    logo: "/sarah.webp",
+    bio: "Justine vertelt het verhaal van SOLA en bewaakt de helderheid in elke ervaring. Ze zorgt dat elke sessie praktisch, warm en toegankelijk blijft.",
+    logo: justineImg,
     isTeamMember: true,
   },
   {
@@ -537,4 +539,3 @@ export const termsPage = {
   description: "De algemene voorwaarden voor het boeken van onze reizen en weekenden.",
   metaDescription: "De algemene voorwaarden voor het boeken van onze reizen en weekenden.",
 };
-
