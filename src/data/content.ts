@@ -29,7 +29,7 @@ export const journeys: Journey[] = [
     type: "Weekend",
     shortDescription:
       "Met Simon van Simon Endurance Lab leer je hoe inspanning je hart, uithouding en stofwisseling versterkt en hoe je beweging en sport gericht inzet voor je algemene gezondheid.",
-    location: "Hoge Venen (Ardennen)",
+    location: "Hoge Venen, Ardennen",
     dates: "31 juli – 2 augustus 2026",
     price: "€550",
     heroImage: "/src/assets/images/2596052607.jpg",
