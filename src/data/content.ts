@@ -350,7 +350,7 @@ export const uspTags = [
 ];
 
 export const homeCopy = {
-  tagline: "Voor wie niet gewoon weg wil, maar vooruit wil.",
+  tagline: "Voor wie niet gewoon weg, maar vooruit wil.",
   subline:
     "SOLA creëert weekenden waar beweging, wetenschap en natuur samenkomen. Eerlijk, helder en menselijk.",
   introLines: [
