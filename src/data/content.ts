@@ -342,7 +342,6 @@ export const people: Person[] = [
 
 export const uspTags = [
   "Kleine groep (max. 14)",
-  "Helder programma",
   "Deskundige begeleiding",
   "Onderbouwd en menselijk",
   "Samen met goesting!",
@@ -368,17 +367,17 @@ export const homeCopy = {
   pillars: [
     {
       title: "Deskundige begeleiding en wetenschappelijke onderbouwing",
-      description: "Begeleiding door mensen die hun vak verstaan. Per thema werken we met een expert, met kennis van zaken en oog voor de groep. Wat we doen vertrekt vanuit kennis en onderzoek. Elke reis wordt samen met een expert opgebouwd, zodat inhoud en ervaring elkaar versterken.",
+      description: "Tijdens een SOLA-reis verdiep je je samen met een expert in een concreet gezondheidsthema. Je bouwt bewustwording op rond aspecten van mentale gezondheid, ontdekt hoe voeding en beweging samen de basis vormen voor een vitaal en lang leven, of leert hoe je met een chronische aandoening een actieve levensstijl kan verzoenen. Op een interactieve manier bouwen we samen een helder theoretisch kader op. Dat geeft je houvast en een dieper begrip van jouw persoonlijke focusthema, zodat je niet alleen ervaart, maar ook begrijpt wat je doet en waarom.",
       image: "/src/assets/images/2596052607.jpg",
     },
     {
       title: "Ervaringsgericht leren in kleine groepen",
-      description: "Je toetst de theorie aan de praktijk. Wat je leert en ervaart neem je ook mee naar huis en kun je inpassen in je dagelijkse leven.",
+      description: "Binnen de veilige omgeving van een kleine groep ga je actief aan de slag met de opgebouwde kennis. Je toetst de theorie aan de praktijk en leert technieken die je via herhaling helpen om echte verandering in gang te zetten. Je gaat terug naar huis met een stevig pakket handvatten waar je op kunt teruggrijpen voor houvast en continuïteit.",
       image: "/src/assets/images/2631991747.jpg",
     },
     {
       title: "Beweging met beide voeten in de natuur",
-      description: "We kiezen voor beweging in de natuur. Omdat het goed is voor lichaam en hoofd, en omdat het inspireert en aanzet tot actie.",
+      description: "Het fundament van de SOLA-reizen ligt in de natuur. Een natuurlijke omgeving biedt schoonheid, stilte en verwondering. De mentale rust die je daar ervaart scherpt je focus, stimuleert beweging en inspireert tot gerichte actie. De natuur vormt zo de onmisbare basis en het krachtige decor van jouw reis.",
       image: "/src/assets/images/hero.jpg",
     },
   ],
