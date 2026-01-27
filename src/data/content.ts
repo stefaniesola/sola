@@ -432,7 +432,7 @@ export const homePage = {
   sectionAanbod: {
     label: "Aanbod",
     title: "Onze weekenden",
-    description: "Selectie van de eerstvolgende ervaringen.",
+    description: "Selectie van de eerstvolgende afreizen.",
     link: "Bekijk alle weekenden →",
   },
   ctaDiscoverWeekend: "Ontdek weekend",
