@@ -440,7 +440,7 @@ export const homePage = {
     label: "Over ons",
     title: "Wie SOLA draagt",
     description:
-      "SOLA wordt gedragen door Stefanie Deleu. We werken samen met experts, coaches en therapeuten die hun vak verstaan. Per thema werken we met een specialist, zodat beweging, wetenschap en natuur samenkomen in elke ervaring.",
+      "SOLA wordt gedragen door Stefanie Deleu en een netwerk van experten, coaches en therapeuten. Per reis werken we rond één gezondheidsthema met een specialist, zodat beweging, wetenschap en natuur samenkomen in een ervaring die verder gaat dan ontspanning alleen. SOLA ontstond op het kruispunt van reizen en gezondheid. Hier wandel je in de natuur, beweeg je bewust, leer je bij over je lichaam en kom je mentaal tot rust, met inzichten en gewoontes die je ook thuis blijven ondersteunen.",
     cta: "Leer ons kennen",
   },
 };
