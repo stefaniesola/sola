@@ -55,10 +55,16 @@ const optimizedLandscape = await getImage({
           <div class="space-y-3">
             {
               missionVision.missionAccordion.map((item, index) => (
-                <div class="border border-base-200 rounded-2xl bg-base-25/60 overflow-hidden">
+                <div
+                  class={`border-t border-base-200 ${
+                    index === missionVision.missionAccordion.length - 1
+                      ? "border-b"
+                      : ""
+                  }`}
+                >
                   <button
                     type="button"
-                    class="w-full flex items-center justify-between gap-4 px-5 py-4 text-left text-base-900 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/50 transition"
+                    class="w-full flex items-center justify-between gap-4 px-2 py-5 text-left text-base-900 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/50 transition hover:text-base-800 hover:bg-base-900/3"
                     aria-expanded={index === 0 ? "true" : "false"}
                     aria-controls={`mission-panel-${index}`}
                     id={`mission-trigger-${index}`}
@@ -66,25 +72,15 @@ const optimizedLandscape = await getImage({
                   >
                     <span>{item.title}</span>
                     <span
-                      class={`ml-auto inline-flex h-7 w-7 items-center justify-center rounded-full border border-base-200 text-base-500 transition-transform duration-300 ${
-                        index === 0 ? "rotate-180" : ""
-                      }`}
+                      class="ml-auto text-base-500 transition-colors duration-300"
                       aria-hidden="true"
                     >
-                      <svg
-                        class="h-4 w-4"
-                        viewBox="0 0 20 20"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                      >
-                        <path d="M5 8l5 5 5-5" stroke-linecap="round" />
-                      </svg>
+                      +
                     </span>
                   </button>
                   <div
                     id={`mission-panel-${index}`}
-                    class={`accordion-panel text-base-700 leading-relaxed px-5 ${
+                    class={`accordion-panel text-base-700 leading-relaxed px-2 ${
                       index === 0 ? "pb-4 open" : "pb-0"
                     }`}
                     role="region"
@@ -284,7 +280,7 @@ const optimizedLandscape = await getImage({
         panel.classList.remove("open");
         panel.classList.remove("pb-4");
         panel.classList.add("pb-0");
-        icon.classList.remove("rotate-180");
+        icon.textContent = "+";
       };
 
       const openPanel = (button) => {
@@ -297,7 +293,7 @@ const optimizedLandscape = await getImage({
         panel.classList.remove("pb-0");
         panel.classList.add("pb-4");
         panel.style.maxHeight = `${panel.scrollHeight}px`;
-        icon.classList.add("rotate-180");
+        icon.textContent = "–";
       };
 
       const togglePanel = (button) => {
