@@ -9,6 +9,7 @@ export interface Journey {
   dates: string;
   price: string;
   heroImage?: string;
+  keyFacts?: { label: string; lines: string[] }[];
   longread?: string; // Markdown content for the full article
 }
 
@@ -33,38 +34,59 @@ export const journeys: Journey[] = [
     dates: "31 juli – 2 augustus 2026",
     price: "€550",
     heroImage: "/src/assets/images/2596052607.jpg",
-    longread: `Samen met Simon van Endurance Lab duik je in de kracht van beweging als fundament van gezondheid. Tijdens dit weekend komen wetenschap, ervaring en lichaamsbewustzijn samen. Je ontdekt waarom bewegen werkt, wat het doet met jouw lichaam en hoe kennis je helpt beweging vol te houden met meer vertrouwen en plezier.
+    keyFacts: [
+      {
+        label: "Wanneer",
+        lines: [
+          "Vrijdag 31 juli t.e.m. zondag 2 augustus",
+          "Welkom op vrijdag vanaf 18u",
+          "Afsluiting op zondag na de lunch",
+        ],
+      },
+      {
+        label: "Waar",
+        lines: ["Sourbrodt, Hoge Venen, Ardennen"],
+      },
+      {
+        label: "Prijs",
+        lines: ["€550 per persoon (all-in)"],
+      },
+      {
+        label: "Early bird",
+        lines: ["Cadeau bij inschrijving vóór 15 maart 2026"],
+      },
+      {
+        label: "Groepsgrootte",
+        lines: ["Minimum 8, maximum 14 deelnemers"],
+      },
+    ],
+    longread: `## Voor wie
 
-## Voor wie
-
-- Sportieve en actieve mensen met interesse in gezondheid
-- Mensen die willen bewegen, maar drempels ervaren
-- Gemotiveerde recreanten die het waarom achter beweging willen begrijpen
-- Deelnemers met een groeimindset, met of zonder concreet sportdoel
+- Graag beweegt en actief in het leven staat, zonder dat sport je volledige identiteit moet zijn
+- Voelt dat beweging essentieel is voor je gezondheid
+- Een sportief doel hebt of overweegt
+- Nieuwsgierig bent naar wat beweging doet met je metabole en cardiovasculaire gezondheid
 
 ## Wat je leert / focus
 
-- Waarom fysieke inspanning een essentieel "medicijn" is voor gezondheid
-- Hoe beweging je cardiovasculaire, metabole en mentale gezondheid beïnvloedt
-- Hoe data en metingen je helpen je lichaam beter te begrijpen
-- Hoe je leert luisteren naar signalen van je lichaam: meten én voelen
+Tijdens dit weekend ontdek je:
+
+- Waarom fysieke inspanning essentieel is
+- Hoe beweging werkt als medicijn
+- Wat er gebeurt in je lichaam tijdens inspanning
+- Hoe voeding, herstel en beweging samenhangen
+- Hoe je data en lichaamsgevoel in balans brengt
 
 ## Na dit weekend
 
-- Heb je meer inzicht in hoe jouw lichaam reageert op beweging
-- Weet je hoe je bewuster en consistenter kan blijven bewegen
-- Kan je betere keuzes maken rond training, herstel en rust
-- Ga je naar huis met concrete handvaten voor je eigen praktijk
+Je gaat naar huis met inzicht, concrete handvatten, nieuwe gewoontes en een sterker fundament voor je gezondheid.  
+Dit weekend draait niet om méér doen, maar om beter begrijpen en bewuster bewegen.
 
-## Begeleiding
+## Expertise & coördinatie
 
-**Simon Helleputte** – Doctor in Health Sciences, Endurance Lab
-
-Simon combineert wetenschappelijke expertise met praktijkervaring rond beweging en gezondheid. Hij vertaalt complexe inzichten naar helder, toepasbaar begrip dat je helpt bewuster en duurzamer te bewegen.
-
-**SOLA**
-
-Stefanie begeleidt dit weekend en stemt het inhoudelijk af met de expert. Samen met het SOLA-team en vrijwilligers zorgen we voor een veilige en zorgzame setting waarin iedereen zich gezien voelt.
+Dit weekend wordt georganiseerd door SOLA (Stefanie Deleu) in samenwerking met Simon Helleputte – Endurance Lab.  
+Simon is bewegingswetenschapper en coach.  
+SOLA zorgt voor de omkadering en integratie.
 
 ## Programma
 
@@ -96,31 +118,33 @@ Stefanie begeleidt dit weekend en stemt het inhoudelijk af met de expert. Samen 
 - Afsluitmoment met gezamenlijke takeaways & groepsfoto
 - Gezamenlijke lunch
 
-## Verblijf & maaltijden
+## Verblijf
 
 We verblijven in Sourbrodt, in de Hoge Venen (Ardennen), in een ruim en comfortabel groepshuis. Je slaapt standaard in een gedeelde kamer (2 personen), met een kamerverdeling per hetzelfde geslacht. Koppels kunnen uiteraard samen op één kamer. Elke kamer beschikt over een eigen ensuite badkamer. Wie liever alleen slaapt, kan dit bij inschrijving aangeven. Dit is mogelijk mits supplement en in functie van beschikbaarheid.
+
+## Maaltijden
 
 Alle maaltijden zijn inbegrepen en worden afgestemd met de expert. Er wordt gewerkt met gezonde, evenwichtige voeding, met aandacht voor energie. Een deel van de groenten komt uit eigen kweek. Het eten is voedend, in balans en vooral: lekker.
 
 ## Praktisch
 
-**Locatie:** Hoge Venen (Ardennen)  
-**Data:** 31 juli – 2 augustus 2026  
-**Prijs:** €550  
+**Locatie:** Sourbrodt, Hoge Venen, Ardennen  
+**Data:** Vrijdag 31 juli t.e.m. zondag 2 augustus 2026  
+**Prijs:** €550 per persoon. Deze prijs is all-in.  
 **Aantal deelnemers:** min. 8 – max. 14 deelnemers
 
-### Vroegboekkado
+## Vroegboekcadeau
 
-Schrijf je in vóór 15 maart 2026 en ontvang een extra cadeau ter voorbereiding op het weekend.
+Schrijf je in vóór 15 maart 2026 en ontvang een extra cadeau.
 
-### Wat is inbegrepen
+## Wat is inbegrepen?
 
 - Begeleiding door Simon Helleputte en het [SOLA-team](/over-ons)
 - Twee overnachtingen
 - Maaltijden en snacks
 - Inhoudelijke sessies, workshops en begeleide activiteiten
 
-### Wat is niet inbegrepen
+## Wat is niet inbegrepen?
 
 - Transport naar de locatie
 - Eigen verzekering
@@ -129,9 +153,17 @@ Schrijf je in vóór 15 maart 2026 en ontvang een extra cadeau ter voorbereiding
 
 Na je inschrijving ontvang je een bevestiging en verdere praktische info [per e-mail](mailto:hello@solatravel.be).
 
-## Twijfel je nog?
+## Twijfel je nog? Plan een gesprek
 
-Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.`,
+Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.
+
+## Goed om weten - FAQ
+
+Heb je vragen? Neem gerust contact op. We beantwoorden alles persoonlijk.
+
+## Na inschrijving
+
+Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing per mail.`,
   },
   {
     slug: "bewustwording-connectie",
@@ -143,6 +175,28 @@ Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken
     dates: "7 – 9 augustus 2026",
     price: "€620",
     heroImage: "/src/assets/images/2631991747.jpg",
+    keyFacts: [
+      {
+        label: "Wanneer",
+        lines: ["Vrijdag 7 augustus t.e.m. zondag 9 augustus 2026"],
+      },
+      {
+        label: "Waar",
+        lines: ["Sourbrodt, Hoge Venen, Ardennen"],
+      },
+      {
+        label: "Prijs",
+        lines: ["€620 per persoon (all-in)"],
+      },
+      {
+        label: "Early bird",
+        lines: ["Cadeau bij inschrijving vóór 31 maart 2026"],
+      },
+      {
+        label: "Groepsgrootte",
+        lines: ["Minimum 8, maximum 14 deelnemers"],
+      },
+    ],
     longread: `Beleef, ontdek en ervaar hoe je opnieuw je eigen regie in handen neemt.
 
 ## Voor wie
@@ -176,7 +230,7 @@ _"Between stimulus and response there is a space. In that space is our power to 
 - Kan je spanning en emoties beter herkennen en reguleren
 - Ga je naar huis met concrete handvatten voor je eigen praktijk
 
-## Begeleiding
+## Expertise & coördinatie
 
 **Sarah Deleu (Logisch Gezond)** – EFT-therapeut
 
@@ -220,9 +274,11 @@ Stefanie begeleidt dit weekend en stemt het inhoudelijk af met de experts. Samen
 - Gezamenlijke lunch
 - Afsluitmoment met concrete handvatten om thuis mee verder te gaan
 
-## Verblijf & maaltijden
+## Verblijf
 
 We verblijven in Sourbrodt, in de Hoge Venen (Ardennen), in een ruim en comfortabel groepshuis. Je slaapt standaard in een gedeelde kamer (2 personen), met een kamerverdeling per hetzelfde geslacht. Koppels kunnen uiteraard samen op één kamer. Elke kamer beschikt over een eigen ensuite badkamer. Wie liever alleen slaapt, kan dit bij inschrijving aangeven. Dit is mogelijk mits supplement en in functie van beschikbaarheid.
+
+## Maaltijden
 
 Alle maaltijden zijn inbegrepen en worden afgestemd met de experts. Er wordt gewerkt met gezonde, evenwichtige voeding, met aandacht voor energie. Een deel van de groenten komt uit eigen kweek. Het eten is voedend, in balans en vooral: lekker.
 
@@ -233,11 +289,11 @@ Alle maaltijden zijn inbegrepen en worden afgestemd met de experts. Er wordt gew
 **Prijs:** €620  
 **Aantal deelnemers:** min. 8 – max. 14 deelnemers
 
-### Vroegboekkado
+## Vroegboekcadeau
 
 Schrijf je in vóór 31 maart 2026 en ontvang een persoonlijk cadeau ter voorbereiding op het weekend.
 
-### Wat is inbegrepen
+## Wat is inbegrepen?
 
 - Begeleiding door Sarah Deleu (Logisch Gezond), Liv en het [SOLA-team](/over-ons)
 - Een sessie bij Sarah van Logisch Gezond na dit weekend
@@ -246,12 +302,20 @@ Schrijf je in vóór 31 maart 2026 en ontvang een persoonlijk cadeau ter voorber
 - Inhoudelijke sessies, workshops en begeleide activiteiten
 - Yoga + ecstatic dance
 
-### Wat is niet inbegrepen
+## Wat is niet inbegrepen?
 
 - Transport naar de locatie
 - Eigen verzekering
 
-## Goed om weten
+## Boek je plek
+
+Na je inschrijving ontvang je een bevestiging en verdere praktische info [per e-mail](mailto:hello@solatravel.be).
+
+## Twijfel je nog? Plan een gesprek
+
+Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.
+
+## Goed om weten - FAQ
 
 **Moet ik ervaring hebben met lichaamswerk, meditatie of EFT?**  
 Nee. Je hoeft geen enkele voorkennis te hebben. Alles wordt uitgelegd en stap voor stap begeleid. Je volgt op jouw tempo.
@@ -265,13 +329,9 @@ Nee. Delen mag, niets moet. Je bepaalt zelf wat je deelt en wat je voor jezelf h
 **Past dit bij mij als ik gewoon nieuwsgierig ben?**  
 Ja. Veel deelnemers komen niet met een "probleem", maar met nieuwsgierigheid. Dit weekend draait om ontdekken, ervaren en verruimen.
 
-## Boek je plek
+## Na inschrijving
 
-Na je inschrijving ontvang je een bevestiging en verdere praktische info [per e-mail](mailto:hello@solatravel.be).
-
-## Twijfel je nog?
-
-Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.`,
+Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing per mail.`,
   },
   {
     slug: "sola-terra-frankrijk",
