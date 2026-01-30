@@ -395,10 +395,9 @@ export const missionVision = {
   missionMoreHtml: `<p>Mijn passie voor sport en reizen werd aangevuld met een derde passie: actief werken aan gezondheid. Ik ontdekte hoe krachtig de basis is; slaap, voeding en beweging. Door daar bewust mee om te gaan, kom je al heel ver. Die eenvoud wil ik laten voelen tijdens SOLA-reizen.</p>
 <p>Mijn eigen traject bracht me in contact met gepassioneerde experten. Ik ging langs bij het KPNI-huis (klinische psycho-neuro-immunologie), waar gezondheid vanuit een leefstijlgerichte en deels orthomoleculaire visie wordt bekeken, woonde lezingen bij en leerde breder naar gezondheid kijken. Ik begon me te verdiepen in vragen waar veel mensen mee zitten, zoals hoe het komt dat je een ijzertekort kan hebben zonder “te weinig ijzer te eten” en kwam zo bij verrassende inzichten. Vanuit die insteek wil ik anderen in contact brengen met specialisten die hun vak verstaan. Van expertise kan je leren.</p>
 <p><strong>En dat samen, in een kleine groep gelijkgezinden, waar de positieve dynamiek elkaar versterkt. Let’s go.</strong></p>`,
-  visionHtml: `<p>Je voelt dat er meer mogelijk is. Meer energie. Meer rust in je hoofd. Meer verbinding met je lichaam.</p>
-<p>Je wil niet gewoon op reis, maar bewust tijd maken om stil te staan, bij te leren en te voelen wat jou sterker maakt, fysiek en mentaal.</p>
-<p>Je bent nieuwsgierig naar wat beweging, natuur en onderbouwde kennis met je kunnen doen wanneer je er tijd voor maakt.</p>
-<p>Geen ontsnapping uit je leven, maar een investering in hoe je het wil leven. Dan zit je hier goed.</p>`,
+  visionHtml: `<p>Er is een gevoel dat er meer mogelijk is: meer energie, meer rust in je hoofd, meer verbinding met je lichaam.</p>
+<p>Niet zomaar op reis, maar bewust tijd maken om te vertragen, bij te leren en te voelen wat jou sterker maakt, fysiek én mentaal. Vanuit beweging, natuur en onderbouwde kennis groeit een helder inzicht in wat voor jou werkt.</p>
+<p>Geen ontsnapping aan je leven, wel een investering in hoe je het wil leven.</p>`,
 };
 
 export const kernidentiteit = [
