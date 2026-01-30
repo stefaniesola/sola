@@ -105,17 +105,8 @@ const tocItems = toc.map((item) => {
   if (item.level === 2) {
     currentSectionId = item.id;
   }
-  let label = item.text;
-  if (item.text.startsWith("Dag 1")) {
-    label = "Dag 1 – Vrijdag";
-  } else if (item.text.startsWith("Dag 2")) {
-    label = "Dag 2 – Zaterdag";
-  } else if (item.text.startsWith("Dag 3")) {
-    label = "Dag 3 – Zondag";
-  }
   return {
     ...item,
-    label,
     parentId: currentSectionId || item.id,
   };
 });
@@ -180,8 +171,8 @@ const carouselImages = await Promise.all(
           >Boek nu</a
         >
         <a
-          href="#twijfel-je-nog-plan-een-gesprek"
-          data-accordion-target="twijfel-je-nog-plan-een-gesprek"
+          href="#twijfel-je"
+          data-accordion-target="twijfel-je"
           class="inline-flex items-center px-5 py-3 rounded-full border border-white/60 text-white font-semibold"
           >Vragen? Plan een gesprek</a
         >
@@ -234,7 +225,7 @@ const carouselImages = await Promise.all(
                     Inhoudsopgave
                   </h2>
                 </div>
-                <nav class="space-y-2 max-h-[60vh] overflow-y-auto pr-1">
+                <nav class="space-y-2">
                   {tocItems.map((item) => (
                     <a
                       href={`#${item.id}`}
@@ -250,7 +241,7 @@ const carouselImages = await Promise.all(
                               : ""
                       }`}
                     >
-                      {item.label}
+                      {item.text}
                     </a>
                   ))}
                 </nav>
@@ -387,8 +378,8 @@ const carouselImages = await Promise.all(
                     Boek nu
                   </a>
                   <a
-                    href="#twijfel-je-nog-plan-een-gesprek"
-                    data-accordion-target="twijfel-je-nog-plan-een-gesprek"
+                    href="#twijfel-je"
+                    data-accordion-target="twijfel-je"
                     class="inline-flex w-full items-center justify-center rounded-full border border-base-300 px-4 py-3 text-sm font-semibold text-base-700 hover:border-base-400 hover:text-base-900 transition-colors"
                   >
                     Vragen? Plan een gesprek
@@ -427,8 +418,8 @@ const carouselImages = await Promise.all(
           Boek nu
         </a>
         <a
-          href="#twijfel-je-nog-plan-een-gesprek"
-          data-accordion-target="twijfel-je-nog-plan-een-gesprek"
+          href="#twijfel-je"
+          data-accordion-target="twijfel-je"
           class="flex-1 inline-flex items-center justify-center rounded-full border border-base-300 px-4 py-3 text-sm font-semibold text-base-700 hover:border-base-400 hover:text-base-900 transition-colors"
         >
           Vragen? Plan een gesprek

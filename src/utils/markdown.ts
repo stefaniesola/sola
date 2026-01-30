@@ -27,7 +27,8 @@ function decodeHtmlEntities(text: string): string {
 function slugify(text: string): string {
   // First decode HTML entities, then slugify
   const decoded = decodeHtmlEntities(text);
-  return decoded
+  const normalized = decoded.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  return normalized
     .toLowerCase()
     .trim()
     .replace(/[^\w\s-]/g, "") // Remove special characters
