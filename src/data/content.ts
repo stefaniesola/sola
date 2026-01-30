@@ -128,7 +128,7 @@ SOLA zorgt voor de omkadering en integratie.
 
 ## Programma
 
-### Vrijdagavond: Aankomen & kennismaking
+### Dag 1 - vrijdag
 
 We starten het weekend rustig.
 
@@ -137,7 +137,7 @@ We starten het weekend rustig.
 - persoonlijke intentie voor het weekend
 - Samen avondeten
 
-### Zaterdag: Inzichten en inspanning
+### Dag 2 - zaterdag
 
 **Ochtend**
 
@@ -165,7 +165,7 @@ We starten het weekend rustig.
 - Avondmaal
 - Korte avondmodule (30–45 min): Wat gebeurt er ’s nachts in je lichaam? Herstel & het parasympatisch systeem
 
-### Zondag: Integratie
+### Dag 3 - zondag
 
 **Ochtend**
 
@@ -222,7 +222,7 @@ Schrijf je in vóór 15 maart 2026 en ontvang een extra cadeau.
 
 Na je inschrijving ontvang je een bevestiging en verdere praktische info [per e-mail](mailto:hello@solatravel.be).
 
-## Twijfel je nog? Plan een gesprek
+## Twijfel je?
 
 Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.
 
@@ -379,7 +379,7 @@ Schrijf je in vóór 31 maart 2026 en ontvang een persoonlijk cadeau ter voorber
 
 Na je inschrijving ontvang je een bevestiging en verdere praktische info [per e-mail](mailto:hello@solatravel.be).
 
-## Twijfel je nog? Plan een gesprek
+## Twijfel je?
 
 Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.
 
