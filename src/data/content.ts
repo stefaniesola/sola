@@ -235,10 +235,10 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
   },
   {
     slug: "bewustwording-connectie",
-    name: "Ontdek je kracht in verbinding",
+    name: "Bewustwording & Connectie",
     type: "Weekend",
     shortDescription:
-      "Met Sarah van Logisch Gezond doorzie je patronen in relatie tot jezelf en anderen. Je leert technieken om met meer verbinding, vertrouwen en innerlijke helderheid in je dagelijks leven te staan.",
+      "Ontdek je kracht in verbinding. Tijdens dit weekend met Sarah van Logisch Gezond leer je patronen herkennen, emoties reguleren en steviger staan in wie je bent.",
     location: "Hoge Venen, Ardennen",
     dates: "7 – 9 augustus 2026",
     price: "€620",
@@ -246,7 +246,11 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
     keyFacts: [
       {
         label: "Wanneer",
-        lines: ["Vrijdag 7 augustus t.e.m. zondag 9 augustus 2026"],
+        lines: [
+          "Vrijdag 7 t.e.m. zondag 9 augustus",
+          "Welkom op vrijdag vanaf 18u",
+          "Afsluiting op zondag na de lunch",
+        ],
       },
       {
         label: "Waar",
@@ -254,126 +258,123 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
       },
       {
         label: "Prijs",
-        lines: ["€620 per persoon (all-in)"],
+        lines: ["€620 per persoon. Deze prijs is all-in."],
       },
       {
         label: "Early bird",
-        lines: ["Cadeau bij inschrijving vóór 31 maart 2026"],
+        lines: ["Wie voor 15 maart inschrijft, ontvangt een persoonlijk cadeau."],
       },
       {
         label: "Groepsgrootte",
         lines: ["Minimum 8, maximum 14 deelnemers"],
       },
     ],
-    longread: `Beleef, ontdek en ervaar hoe je opnieuw je eigen regie in handen neemt.
-
-## Voor wie
+    longread: `## Voor wie
 
 Dit weekend is voor jou als je:
 
-- nieuwsgierig bent naar wat er echt in je leeft
-- wil leren voelen wat bij je past, voorbij het moeten
-- meer rust en helderheid wil ervaren in jezelf
-- openstaat voor bewustwording, zonder zweverigheid
-- wil ontdekken waar je energie van krijgt
-- jezelf beter wil begrijpen in relatie tot anderen
+- nieuwsgierig bent naar wat er écht in jou leeft
+- wil voelen wat bij jou past, los van het moeten
+- merkt dat je ergens vastloopt en daar helderheid in wilt
+- wilt ontdekken waar je energie van krijgt, alleen én in contact met anderen
 
-Je komt niet om iets te fixen, maar om te ontdekken, ervaren en groeien.
+Misschien voel je dat er iets wringt, maar kan je er nog niet helemaal woorden op plakken.
+Misschien weet je vooral dat je nood hebt aan ruimte, rust en richting.
 
 ## Wat je leert / focus
 
 Tijdens dit weekend:
 
-- vergroot je je bewustzijn over emoties, patronen en relaties
-- leer je beter voelen wat écht van jou is
-- krijg je praktische tools die je ook thuis kan toepassen
-- ervaar je hoe rust ontstaat wanneer chaos mag zakken
+- Krijg je inzicht in onzichtbare dynamieken die meespelen in je leven vandaag of in familiale contexten. Dingen waarvan je soms voelt: “Waarom reageer ik hier altijd zo op?” maar die moeilijk te plaatsen zijn.
+- Leer je voelen in plaats van enkel te blijven denken. Voor als je merkt dat je alles goed kan uitleggen, maar het in je lichaam nog niet mee is.
+- Ontdek je hoe je spanning en emoties kan herkennen én reguleren. Zodat je sneller merkt wanneer iets je raakt, en je niet pas achteraf beseft wat er gebeurde.
+- Krijg je helderheid in patronen die je vandaag beïnvloeden. Patronen in relaties, werk of keuzes waarvan je voelt: “Dit doe ik precies altijd opnieuw.”
+- Ervaar je hoe bewustwording ruimte geeft om steviger te staan in wie je bent. Niet door jezelf te veranderen, maar door jezelf beter te begrijpen.
 
-_"Between stimulus and response there is a space. In that space is our power to choose our response."_ — Viktor Frankl
+“Between stimulus and response there is a space. In that space is our power to choose our response.” – Viktor Frankl
+
+Tijdens dit weekend leer je die ruimte herkennen en gebruiken.
 
 ## Na dit weekend
 
-- Heb je praktische tools (zoals EFT) die je zelf kan toepassen
-- Weet je beter hoe je anders met situaties om kan gaan
-- Kan je spanning en emoties beter herkennen en reguleren
-- Ga je naar huis met concrete handvatten voor je eigen praktijk
+Je vertrekt met meer voeling met jezelf en meer vertrouwen om andere keuzes te maken waar dat nodig is.
 
 ## Expertise & coördinatie
 
-**Sarah Deleu (Logisch Gezond)** – EFT-therapeut
+Dit weekend wordt begeleid door Sarah Deleu (Logisch Gezond), EFT-therapeut, in samenwerking met SOLA.
 
-Sarah leert je werken met Emotional Freedom Techniques (EFT): een praktische methode om emoties en spanning te herkennen en te ontladen. Je leert hoe je zelf kan reguleren, op een manier die eenvoudig en ook na het weekend toepasbaar blijft. De begeleiding is rustig en afgestemd op wat zich op dat moment aandient.
+**Emotional Freedom Techniques (EFT)**  
+Een praktische methode om emoties en spanning te herkennen én los te laten. Je leert jezelf op een eenvoudige manier reguleren, een techniek die je ook na het weekend zelfstandig blijft gebruiken.
 
-**Liv (Gent)** – Yoga-specialist
+**Systemisch werk (2 modellen)**  
+We bekijken jouw hulpvraag binnen de context van vaak onzichtbare patronen die hun oorsprong kunnen hebben in je familiegeschiedenis. Via voelen, bewustwording en heldere inzichten komen vastgezette dynamieken weer in beweging.
 
-Via yoga en gerichte beweging helpt Liv om uit het hoofd te komen en beter in het lichaam te zakken. Dit ondersteunt wat je mentaal en emotioneel leert, en zorgt voor integratie in het lichaam.
+**Matrix Reimprinting**  
+Met de aangeleerde EFT-techniek werken we met een verdiepende methode die je helpt eerdere ervaringen op een nieuwe manier te verankeren, met meer steun en veiligheid.
 
-**SOLA**
-
-Stefanie begeleidt dit weekend en stemt het inhoudelijk af met de experts. Samen met het SOLA-team en vrijwilligers zorgen we voor een veilige en zorgzame setting waarin iedereen zich gezien voelt.
+**Lichaamsintegratie via yoga**  
+Lisa van Liv (Gent) begeleidt rustige yoga, stretch en eenvoudige beweging. Zo krijgt wat je mentaal en emotioneel leert ook een plek in je lichaam.
 
 ## Programma
 
-### Dag 1 – Vrijdag | Aankomst & kennismaking
+### Dag 1 – vrijdag
 
-- Aankomst in het huis en aperitief
-- Kennismaking met de groep
-- Lichte, intuïtieve oefening om het ijs te breken
-- Gezamenlijk avondmaal om te landen en te verbinden
+Aankomen en kennismaking  
+Aperitief, kennismaking, lichte oefening en samen avondeten
 
-### Dag 2 – Zaterdag | In connectie met jezelf
+### Dag 2 – zaterdag: in connectie met jezelf
 
-- Sunrise-moment (vrijblijvend, rond 6u03)
-- Wakker worden & korte ochtendwandeling (± 30 min)
-- Ontbijt
-- Workshop: inzicht in emoties en hoe ze werken, introductie EFT, praktische oefening om spanning te reguleren
-- Lunch
-- Wandeling en creatieve oefening: wat je voelt vorm geven
-- Gezamenlijk avondmaal
-- Aesthetic dance: vrij bewegen
+Sunrise-moment (vrijblijvend)  
+Ochtendwandeling  
+Ontbijt  
+Workshop EFT  
+Natuurwandeling + systemisch werkmodel 1  
+Avondeten  
+Ecstatic dance
 
-### Dag 3 – Zondag | Integratie & vooruitblik
+### Dag 3 – zondag: in connectie met de ander
 
-- Rustige opstart en ontbijt
-- Korte check-in
-- Workshop: inzicht in hoe jij verbinding en afstand ervaart, herkennen van relationele patronen, EFT-oefeningen om bij jezelf te blijven in contact met anderen
-- Systemische oefeningen rond je plek en grenzen
-- Begeleide hartmeditatie & matrix reimprinting
-- Gezamenlijke lunch
-- Afsluitmoment met concrete handvatten om thuis mee verder te gaan
+Ontbijt en check-in  
+Systemisch werkmodel 2  
+EFT integratie  
+Hartmeditatie  
+Matrix Reimprinting  
+Lunch en afronding
 
 ## Verblijf
 
-We verblijven in Sourbrodt, in de Hoge Venen (Ardennen), in een ruim en comfortabel groepshuis. Je slaapt standaard in een gedeelde kamer (2 personen), met een kamerverdeling per hetzelfde geslacht. Koppels kunnen uiteraard samen op één kamer. Elke kamer beschikt over een eigen ensuite badkamer. Wie liever alleen slaapt, kan dit bij inschrijving aangeven. Dit is mogelijk mits supplement en in functie van beschikbaarheid.
+Je verblijft in Sourbrodt in de Oostkantons, te midden van het Natuurpark Hoge Venen - Eifel. Vanaf 570 m hoogte kijkt het huis langs de achterkant uit over het meest ruige stukje natuur van België. Geniet tijdens je verblijf van een dip in de hottub of laat je actieve benen uit in de grote tuin. Je slaapt standaard in een gedeelde kamer (twee personen), met een kamerverdeling volgens geslacht. Koppels kunnen uiteraard samen op een kamer. Elke kamer is voorzien van douche en toilet. Wie liever alleen slaapt, kan dit bij inschrijving aangeven. Dit is mogelijk mits een supplement van 115 euro en in functie van beschikbaarheid.
 
 ## Maaltijden
 
-Alle maaltijden zijn inbegrepen en worden afgestemd met de experts. Er wordt gewerkt met gezonde, evenwichtige voeding, met aandacht voor energie. Een deel van de groenten komt uit eigen kweek. Het eten is voedend, in balans en vooral: lekker.
+Smakelijk op reis met SOLA. Alle maaltijden zijn inbegrepen, van het avondmaal op de dag van aankomst tot de lunch op de dag van vertrek. De focus ligt op gezonde, evenwichtige voeding, in balans met de activiteiten tijdens je reis.
 
 ## Praktisch
 
 **Locatie:** Sourbrodt, Hoge Venen, Ardennen  
-**Data:** 7 – 9 augustus 2026  
-**Prijs:** €620  
+**Data:** Vrijdag 7 t.e.m. zondag 9 augustus  
+**Prijs:** €620 per persoon. Deze prijs is all-in.  
 **Aantal deelnemers:** min. 8 – max. 14 deelnemers
 
 ## Vroegboekcadeau
 
-Schrijf je in vóór 31 maart 2026 en ontvang een persoonlijk cadeau ter voorbereiding op het weekend.
+Early birds ontvangen een persoonlijk cadeau tot 15 maart 2026  
+Beperkt aantal plaatsen — kleine groep, bewust gekozen.
 
 ## Wat is inbegrepen?
 
-- Begeleiding door Sarah Deleu (Logisch Gezond), Liv en het [SOLA-team](/over-ons)
+- 3-daags / 2-nachten weekendtraject
+- Inhoudelijke begeleiding door Sarah van Logisch Gezond
 - Een sessie bij Sarah van Logisch Gezond na dit weekend
-- Twee overnachtingen
-- Maaltijden en snacks
-- Inhoudelijke sessies, workshops en begeleide activiteiten
-- Yoga + ecstatic dance
+- Alle workshops en sessies
+- Yoga en ecstatic dance
+- Verblijf op locatie
+- Maaltijden van vrijdagavond t.e.m. zondagmiddag
 
 ## Wat is niet inbegrepen?
 
-- Transport naar de locatie
-- Eigen verzekering
+- Reis naar de locatie
+- Persoonlijke uitgaven
 
 ## Boek je plek
 
@@ -381,25 +382,32 @@ Na je inschrijving ontvang je een bevestiging en verdere praktische info [per e-
 
 ## Twijfel je?
 
-Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.
+Twijfel je nog? Plan een gesprek.
+
+## Na inschrijving
+
+Je ontvangt praktische info over locatie, aankomst en programma, en wat mee te brengen.
 
 ## Goed om weten - FAQ
 
 **Moet ik ervaring hebben met lichaamswerk, meditatie of EFT?**  
-Nee. Je hoeft geen enkele voorkennis te hebben. Alles wordt uitgelegd en stap voor stap begeleid. Je volgt op jouw tempo.
+Nee. Je hoeft geen voorkennis te hebben. Alles wordt uitgelegd en stap voor stap begeleid.
 
 **Is dit therapeutisch?**  
-Nee. Dit is geen therapie en geen diepgravende analyse. Het is een ervaringsgericht weekend waarin je ontdekt, voelt en leert, zonder iets te moeten oplossen.
+Nee. Dit is geen therapie. Het is een ervaringsgericht weekend waarin je ontdekt en leert.
 
 **Moet ik persoonlijke dingen delen in de groep?**  
-Nee. Delen mag, niets moet. Je bepaalt zelf wat je deelt en wat je voor jezelf houdt. Stilte is even welkom als woorden.
+Nee. Delen mag, niets moet.
+
+**Wat neem ik concreet mee naar huis?**  
+Eenvoudige tools zoals EFT, ervaringen en nieuwe inzichten.
 
 **Past dit bij mij als ik gewoon nieuwsgierig ben?**  
-Ja. Veel deelnemers komen niet met een "probleem", maar met nieuwsgierigheid. Dit weekend draait om ontdekken, ervaren en verruimen.
+Ja. Veel deelnemers komen met nieuwsgierigheid.
 
-## Na inschrijving
-
-Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing per mail.`,
+**Kan ik alleen komen of samen met iemand?**  
+Beide zijn welkom.
+`,
   },
   {
     slug: "sola-terra-frankrijk",
