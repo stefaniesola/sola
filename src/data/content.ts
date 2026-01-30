@@ -10,6 +10,7 @@ export interface Journey {
   price: string;
   heroImage?: string;
   keyFacts?: { label: string; lines: string[] }[];
+  faq?: { question: string; answer: string }[];
   longread?: string; // Markdown content for the full article
 }
 
@@ -38,7 +39,7 @@ export const journeys: Journey[] = [
       {
         label: "Wanneer",
         lines: [
-          "Vrijdag 31 juli t.e.m. zondag 2 augustus",
+          "31 juli t.e.m. 2 augustus",
           "Welkom op vrijdag vanaf 18u",
           "Afsluiting op zondag na de lunch",
         ],
@@ -60,71 +61,136 @@ export const journeys: Journey[] = [
         lines: ["Minimum 8, maximum 14 deelnemers"],
       },
     ],
+    faq: [
+      {
+        question: "Is dit weekend ook voor mij als ik geen marathon loop?",
+        answer:
+          "Ja. Je hoeft geen marathon te lopen of wedstrijden te plannen. Veel deelnemers bewegen recreatief of willen net een sportief doel opbouwen. Het weekend focust op gezondheid en inzicht.",
+      },
+      {
+        question: "Moet ik sportief zijn?",
+        answer: "Basisconditie en motivatie volstaan.",
+      },
+      {
+        question: "Moet ik data of sporthorloges hebben?",
+        answer:
+          "Nee. Dat is niet nodig. De metingen (zoals rusthartslag of bloeddruk) gebeuren ter plaatse. Heb je een sporthorloge, dan mag je dat zeker gebruiken, maar het is geen vereiste.",
+      },
+      {
+        question: "Is dit medisch?",
+        answer:
+          "Nee. Het is geen medische diagnose, wel wetenschappelijk onderbouwde educatie.",
+      },
+      {
+        question: "Wat als ik blessuregevoelig ben?",
+        answer:
+          "Dat kan. Je hoeft niets te forceren. Bewegingen worden aangepast en je kan activiteiten overslaan. De inhoud helpt je net begrijpen hoe je blessures kan voorkomen door slimmer te bewegen.",
+      },
+      {
+        question: "Hoe intens is de trailrun / hike?",
+        answer:
+          "Het gaat om bewegen in de natuur, geen training. We bekijken ter plaatse hoe de groep is samengesteld en delen indien nodig op in kleinere subgroepen. Je kan wandelen of licht joggen, op een tempo dat voor jou haalbaar is. Er is geen vooraf vastgelegd tempo of afstand. We stemmen de activiteit af op de groep.",
+      },
+    ],
     longread: `## Voor wie
 
 - Graag beweegt en actief in het leven staat, zonder dat sport je volledige identiteit moet zijn
-- Voelt dat beweging essentieel is voor je gezondheid
-- Een sportief doel hebt of overweegt
-- Nieuwsgierig bent naar wat beweging doet met je metabole en cardiovasculaire gezondheid
+- voelt dat beweging essentieel is voor je gezondheid, en daar graag meer inzicht in krijgt
+- een sportief doel hebt, of ermee speelt er één te formuleren (bv. marathon, trail, fietsevenement, Hyrox, …)
+- nieuwsgierig bent naar wat beweging doet met je metabole en cardiovasculaire gezondheid
 
 ## Wat je leert / focus
 
 Tijdens dit weekend ontdek je:
 
-- Waarom fysieke inspanning essentieel is
-- Hoe beweging werkt als medicijn
-- Wat er gebeurt in je lichaam tijdens inspanning
-- Hoe voeding, herstel en beweging samenhangen
-- Hoe je data en lichaamsgevoel in balans brengt
+- waarom fysieke inspanning essentieel is voor gezondheid en vitaliteit
+- hoe beweging werkt als medicijn voor zowel lichaam als geest
+- wat er écht gebeurt in je lichaam tijdens inspanning (metabolisme en hart)
+- hoe voeding, herstel en beweging samenhangen
+- hoe je data (meten) en lichaamsgevoel (voelen) in balans brengt
 
 ## Na dit weekend
 
-Je gaat naar huis met inzicht, concrete handvatten, nieuwe gewoontes en een sterker fundament voor je gezondheid.  
+Je gaat naar huis met
+
+- inzicht in je persoonlijke gezondheids- en bewegingsprofiel
+- concrete handvatten om beweging duurzaam en haalbaar te integreren in je leven
+- enkele praktische leefstijl- en bewegingsgewoontes waar jij effectief mee aan de slag gaat
+- een sterker fundament voor je sportieve én cardiovasculaire gezondheid op lange termijn
+
 Dit weekend draait niet om méér doen, maar om beter begrijpen en bewuster bewegen.
 
 ## Expertise & coördinatie
 
-Dit weekend wordt georganiseerd door SOLA (Stefanie Deleu) in samenwerking met Simon Helleputte – Endurance Lab.  
-Simon is bewegingswetenschapper en coach.  
+Dit weekend wordt georganiseerd door SOLA (Stefanie Deleu) in samenwerking met Simon Helleputte van Simon Endurance Lab.  
+Simon is bewegingswetenschapper en coach, gespecialiseerd in de impact van fysieke activiteit op gezondheid, prestaties en mentale veerkracht. Hij vertaalt wetenschap naar begrijpelijke, relevante en toepasbare inzichten, zonder dogma’s.  
 SOLA zorgt voor de omkadering en integratie.
 
 ## Programma
 
-### Dag 1 – Vrijdag | Aankomst & activatie
+### Vrijdagavond: Aankomen & kennismaking
 
-- Aankomst & warme kennismaking met SOLA × Endurance Lab
-- Gezamenlijk avondmaal om te landen en te verbinden
-- Avondreflectie: je intentie voor het weekend
-- Introductie van het programma en inhoudelijke accenten door SOLA en Simon
+We starten het weekend rustig.
 
-### Dag 2 – Zaterdag | Inzichten & inspanning
+- Aankomen in het huis en aperitief
+- Kennismaking met de groep
+- persoonlijke intentie voor het weekend
+- Samen avondeten
 
-- Sunrise-moment (vrijblijvend)
-- Rustige ochtendwandeling
-- Korte inhoudelijke sessie: wat gebeurt er met je lichaam bij het ontwaken en bij nuchter bewegen
+### Zaterdag: Inzichten en inspanning
+
+**Ochtend**
+
+- Sunrise-moment voor wie wil (rond 6u03)
+- Wakker worden & rustige ochtendwandeling (± 30 min)
+- Korte sessie Simon (± 30 min): Nuchter bewegen: wat doet dat met je lichaam? Mythes ontkracht
 - Ontbijt
-- Praktijksessie met meetelementen: inzicht krijgen in je eigen lichaam
-- Theoretische sessie: beweging en cardiovasculaire gezondheid, metabole gezondheid en glucosehuishouding, onderbouwd door wetenschap en ontdaan van mythes
+
+**Voormiddag**
+
+- Praktijksessie: persoonlijke metingen
+- Theoretische sessie Simon (± 1u15): Cardiovasculaire gezondheid, risico’s en impact van beweging met koppeling aan jouw eigen data
+
+**Middag**
+
 - Lunch
-- Namiddagactiviteit: begeleide trailrun of hike in kleine groepen
-- Gezamenlijk avondmaal
-- Avondsessie: slaap, herstel en het parasympatisch systeem
-- Korte begeleide ontspanning om de dag af te ronden
 
-### Dag 3 – Zondag | Integratie & vooruitblik
+**Namiddag**
 
-- Ochtendactiviteit: core en kracht als basis voor duurzaam bewegen
-- Reflectiemoment: hoe vertaal je deze inzichten naar je eigen leven?
-- Afsluitmoment met gezamenlijke takeaways & groepsfoto
-- Gezamenlijke lunch
+- Beweging in de natuur (trailrun / hike, in groepen)
+- Signal de Botrange (hoogste punt van België)
+
+**Avond**
+
+- Avondmaal
+- Korte avondmodule (30–45 min): Wat gebeurt er ’s nachts in je lichaam? Herstel & het parasympatisch systeem
+
+### Zondag: Integratie
+
+**Ochtend**
+
+- Rustige opstart
+- Ontbijt
+- Korte check-in
+- Core- & krachtoefeningen (1u)
+
+**Voormiddag: workshop**
+
+- Reflectie: wat neem ik mee in mijn dagelijks leven?
+- Concrete takeaways & persoonlijke actiepunten
+
+**Middag**
+
+- Samen lunch
+- Afronden van het weekend met concrete handvatten om thuis mee verder te gaan
 
 ## Verblijf
 
-We verblijven in Sourbrodt, in de Hoge Venen (Ardennen), in een ruim en comfortabel groepshuis. Je slaapt standaard in een gedeelde kamer (2 personen), met een kamerverdeling per hetzelfde geslacht. Koppels kunnen uiteraard samen op één kamer. Elke kamer beschikt over een eigen ensuite badkamer. Wie liever alleen slaapt, kan dit bij inschrijving aangeven. Dit is mogelijk mits supplement en in functie van beschikbaarheid.
+Je verblijft in Sourbrodt in de Oostkantons, te midden van het Natuurpark Hoge Venen - Eifel. Vanaf 570 m hoogte kijkt het huis langs de achterkant uit over het meest ruige stukje natuur van België. Geniet tijdens je verblijf van een dip in de hottub of laat je actieve benen uit in de grote tuin. Je slaapt standaard in een gedeelde kamer (twee personen), met een kamerverdeling volgens geslacht. Koppels kunnen uiteraard samen op een kamer. Elke kamer is voorzien van douche en toilet. Wie liever alleen slaapt, kan dit bij inschrijving aangeven. Dit is mogelijk mits een supplement en in functie van beschikbaarheid.
 
 ## Maaltijden
 
-Alle maaltijden zijn inbegrepen en worden afgestemd met de expert. Er wordt gewerkt met gezonde, evenwichtige voeding, met aandacht voor energie. Een deel van de groenten komt uit eigen kweek. Het eten is voedend, in balans en vooral: lekker.
+Smakelijk op reis met SOLA. Alle maaltijden zijn inbegrepen, van het avondmaal op de dag van aankomst tot de lunch op de dag van vertrek. De focus ligt op gezonde, evenwichtige voeding, in balans met de activiteiten tijdens je reis.
 
 ## Praktisch
 
@@ -139,10 +205,13 @@ Schrijf je in vóór 15 maart 2026 en ontvang een extra cadeau.
 
 ## Wat is inbegrepen?
 
-- Begeleiding door Simon Helleputte en het [SOLA-team](/over-ons)
-- Twee overnachtingen
-- Maaltijden en snacks
-- Inhoudelijke sessies, workshops en begeleide activiteiten
+- 3-daags / 2-nachten weekendtraject
+- Inhoudelijke begeleiding door Simon van Endurance Lab
+- Een sessie bij Simon van Endurance Lab na dit weekend
+- Alle workshops & sessies
+- Praktijkmomenten en metingen
+- Verblijf op locatie
+- Maaltijden van vrijdagavond t.e.m. zondagmiddag
 
 ## Wat is niet inbegrepen?
 
@@ -158,8 +227,6 @@ Na je inschrijving ontvang je een bevestiging en verdere praktische info [per e-
 Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.
 
 ## Goed om weten - FAQ
-
-Heb je vragen? Neem gerust contact op. We beantwoorden alles persoonlijk.
 
 ## Na inschrijving
 

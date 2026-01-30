@@ -51,6 +51,7 @@ const markdownContent = weekend.longread || "";
 const toc = extractHeadings(markdownContent);
 const sectionHeadings = toc.filter((item) => item.level === 2);
 const keyFacts = weekend.keyFacts ?? [];
+const faqItems = weekend.faq ?? [];
 
 const buildAccordionSections = (markdown: string) => {
   const lines = markdown.split("\n");
@@ -299,17 +300,57 @@ const carouselImages = await Promise.all(
                   aria-labelledby={`weekend-trigger-${index}`}
                   data-accordion-panel="weekend"
                 >
-                  <div
-                    class="prose prose-base-900 max-w-none
-                    prose-headings:font-semibold prose-headings:text-base-900
-                    prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3 prose-h3:scroll-mt-24
-                    prose-p:text-base-700 prose-p:leading-relaxed prose-p:mb-4
-                    prose-ul:text-base-700 prose-ul:my-4
-                    prose-li:my-2
-                    prose-strong:text-base-900 prose-strong:font-semibold
-                    prose-a:text-accent-600 prose-a:no-underline hover:prose-a:underline"
-                    set:html={section.html}
-                  />
+                  {section.title === "Goed om weten - FAQ" && faqItems.length > 0 ? (
+                    <div class="space-y-2">
+                      {faqItems.map((item, faqIndex) => (
+                        <div
+                          class={`border-t border-base-200 ${
+                            faqIndex === faqItems.length - 1 ? "border-b" : ""
+                          }`}
+                        >
+                          <button
+                            type="button"
+                            class="w-full flex items-center justify-between gap-4 px-2 py-4 text-left text-base-900 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/50 transition hover:text-base-800 hover:bg-base-900/3"
+                            aria-expanded="false"
+                            aria-controls={`faq-panel-${index}-${faqIndex}`}
+                            id={`faq-trigger-${index}-${faqIndex}`}
+                            data-accordion-trigger="faq"
+                          >
+                            <span>{item.question}</span>
+                            <span
+                              class="ml-auto text-base-500 transition-colors duration-300"
+                              aria-hidden="true"
+                            >
+                              +
+                            </span>
+                          </button>
+                          <div
+                            id={`faq-panel-${index}-${faqIndex}`}
+                            class="accordion-panel px-2 text-base-700 leading-relaxed pb-0"
+                            role="region"
+                            aria-labelledby={`faq-trigger-${index}-${faqIndex}`}
+                            data-accordion-panel="faq"
+                          >
+                            <div class="prose prose-base-900 max-w-none prose-p:text-base-700 prose-p:leading-relaxed prose-p:mb-4">
+                              <p>{item.answer}</p>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div
+                      class="prose prose-base-900 max-w-none
+                      prose-headings:font-semibold prose-headings:text-base-900
+                      prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3 prose-h3:scroll-mt-24
+                      prose-p:text-base-700 prose-p:leading-relaxed prose-p:mb-4
+                      prose-ul:text-base-700 prose-ul:my-4
+                      prose-li:my-2
+                      prose-strong:text-base-900 prose-strong:font-semibold
+                      prose-a:text-accent-600 prose-a:no-underline hover:prose-a:underline"
+                      set:html={section.html}
+                    />
+                  )}
                 </div>
               </div>
             ))}
@@ -401,6 +442,9 @@ const carouselImages = await Promise.all(
       const accordionButtons = document.querySelectorAll(
         '[data-accordion-trigger="weekend"]',
       );
+      const faqButtons = document.querySelectorAll(
+        '[data-accordion-trigger="faq"]',
+      );
       const ctaLinks = document.querySelectorAll("[data-accordion-target]");
 
       const closePanel = (button) => {
@@ -461,6 +505,28 @@ const carouselImages = await Promise.all(
           if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
             togglePanel(button);
+          }
+        });
+      });
+
+      faqButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const isExpanded = button.getAttribute("aria-expanded") === "true";
+          if (isExpanded) {
+            closePanel(button);
+          } else {
+            openPanel(button);
+          }
+        });
+        button.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            const isExpanded = button.getAttribute("aria-expanded") === "true";
+            if (isExpanded) {
+              closePanel(button);
+            } else {
+              openPanel(button);
+            }
           }
         });
       });
