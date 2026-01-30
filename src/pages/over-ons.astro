@@ -35,9 +35,10 @@ const optimizedLandscape = await getImage({
         {aboutPage.label}
       </p>
       <h1 class="text-4xl font-semibold text-base-900">{aboutPage.heading}</h1>
-      <p class="text-base-700 max-w-3xl">
-        {aboutPage.description}
-      </p>
+      <div
+        class="text-base-700 max-w-3xl space-y-4"
+        set:html={aboutPage.description}
+      />
       <p class="text-base-700 max-w-2xl italic">{aboutPage.quote}</p>
     </div>
   </section>
@@ -47,13 +48,59 @@ const optimizedLandscape = await getImage({
     <div class="space-y-8 lg:space-y-16 scroll-fade-in">
       <!-- Mission Section -->
       <div class="flex flex-col lg:flex-row gap-12 items-center scroll-fade-in">
-        <div class="flex-1 space-y-4 lg:pr-8">
+        <div class="flex-1 space-y-3 lg:pr-8">
           <h3 class="text-2xl lg:text-3xl font-semibold text-base-900">
             {aboutPage.missieLabel}
           </h3>
-          <p class="text-lg text-base-700 leading-relaxed">
-            {missionVision.mission}
-          </p>
+          <div class="space-y-2">
+            {
+              missionVision.missionAccordion.map((item, index) => (
+                <div
+                  class={`border-t border-base-200 ${
+                    index === missionVision.missionAccordion.length - 1
+                      ? "border-b"
+                      : ""
+                  }`}
+                >
+                  <button
+                    type="button"
+                    class="w-full flex items-center justify-between gap-4 px-2 py-4 text-left text-base-900 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/50 transition hover:text-base-800 hover:bg-base-900/3"
+                    aria-expanded={index === 0 ? "true" : "false"}
+                    aria-controls={`mission-panel-${index}`}
+                    id={`mission-trigger-${index}`}
+                    data-accordion-trigger="mission"
+                  >
+                    <span>{item.title}</span>
+                    <span
+                      class="ml-auto text-base-500 transition-colors duration-300"
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </button>
+                  <div
+                    id={`mission-panel-${index}`}
+                    class={`accordion-panel text-base-700 leading-relaxed px-2 ${
+                      index === 0 ? "pb-3 open" : "pb-0"
+                    }`}
+                    role="region"
+                    aria-labelledby={`mission-trigger-${index}`}
+                    data-accordion-panel="mission"
+                  >
+                    <div class="space-y-3 pt-0.5">
+                      {item.body.split("\n\n").map((paragraph) => (
+                        paragraph === "— Stefanie" ? (
+                          <p class="text-sm text-base-600 mt-2">{paragraph}</p>
+                        ) : (
+                          <p>{paragraph}</p>
+                        )
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
         </div>
         <div class="flex-1 lg:pl-8">
           <div class="skewed-image-frame">
@@ -71,9 +118,10 @@ const optimizedLandscape = await getImage({
           <h3 class="text-2xl lg:text-3xl font-semibold text-base-900">
             {aboutPage.visieLabel}
           </h3>
-          <p class="text-lg text-base-700 leading-relaxed">
-            {missionVision.vision}
-          </p>
+          <div
+            class="text-lg text-base-700 leading-relaxed space-y-4"
+            set:html={missionVision.visionHtml}
+          />
         </div>
         <div class="flex-1 lg:pr-8">
           <div class="skewed-image-frame">
@@ -219,6 +267,80 @@ const optimizedLandscape = await getImage({
       </a>
     </div>
   </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const accordions = document.querySelectorAll(
+        '[data-accordion-trigger="mission"]',
+      );
+
+      const closePanel = (button) => {
+        const panelId = button.getAttribute("aria-controls");
+        const panel = document.getElementById(panelId);
+        const icon = button.querySelector("span[aria-hidden='true']");
+        if (!panel || !icon) return;
+        button.setAttribute("aria-expanded", "false");
+        panel.style.maxHeight = "0px";
+        panel.classList.remove("open");
+        panel.classList.remove("pb-3");
+        panel.classList.add("pb-0");
+        icon.textContent = "+";
+      };
+
+      const openPanel = (button) => {
+        const panelId = button.getAttribute("aria-controls");
+        const panel = document.getElementById(panelId);
+        const icon = button.querySelector("span[aria-hidden='true']");
+        if (!panel || !icon) return;
+        button.setAttribute("aria-expanded", "true");
+        panel.classList.add("open");
+        panel.classList.remove("pb-0");
+        panel.classList.add("pb-3");
+        panel.style.maxHeight = `${panel.scrollHeight}px`;
+        icon.textContent = "–";
+      };
+
+      const togglePanel = (button) => {
+        const isExpanded = button.getAttribute("aria-expanded") === "true";
+        accordions.forEach((item) => closePanel(item));
+        if (!isExpanded) {
+          openPanel(button);
+        }
+      };
+
+      accordions.forEach((button) => {
+        button.addEventListener("click", () => togglePanel(button));
+        button.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            togglePanel(button);
+          }
+        });
+      });
+
+      accordions.forEach((button) => {
+        if (button.getAttribute("aria-expanded") === "true") {
+          openPanel(button);
+        }
+      });
+    });
+  </script>
+
+  <style>
+    .accordion-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition:
+        max-height 0.3s ease,
+        opacity 0.3s ease,
+        padding 0.3s ease;
+      opacity: 0;
+    }
+
+    .accordion-panel.open {
+      opacity: 1;
+    }
+  </style>
 
   <style>
     .scroll-fade-in {
