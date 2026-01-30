@@ -97,16 +97,16 @@ const optimizedLandscape = await getImage({
         </div>
         <div class="flex-1 lg:pl-8">
           <figure class="portrait-image-frame">
-            <img
+              <img
               class="portrait-image"
-              src="/images/stefanie-deleu-sola-travel.jpg"
+              src="/images/Stefanie%20Deleu%20x%20SOLA%20TRAVEL.jpg"
               alt="Stefanie Deleu, oprichtster van SOLA"
               loading="lazy"
               decoding="async"
             />
             <figcaption class="portrait-caption">
               <span>Stefanie Deleu</span>
-              <span>Oprichter · SOLA Travel</span>
+              <span>Oprichtster van SOLA</span>
             </figcaption>
           </figure>
         </div>
@@ -378,12 +378,12 @@ const optimizedLandscape = await getImage({
 
     .portrait-image-frame {
       position: relative;
-      padding: 0;
-      background: transparent;
-      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 0.25rem;
+      background: linear-gradient(135deg, #f6f4f0 0%, #e5e1d8 100%);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(0, 0, 0, 0.06);
       overflow: hidden;
-      border-radius: 0;
+      border-radius: 1rem;
     }
 
     .portrait-image {
@@ -394,27 +394,17 @@ const optimizedLandscape = await getImage({
       object-fit: cover;
       object-position: center;
       display: block;
-      border-radius: 0;
+      border-radius: 0.75rem;
     }
 
     .portrait-caption {
       display: flex;
       flex-direction: column;
       gap: 0.15rem;
-      padding: 0.75rem 0 0;
+      padding: 0.6rem 0.25rem 0;
       font-size: 0.875rem;
-      color: #8a857c;
+      color: #7a7469;
       text-align: left;
-    }
-
-    .portrait-caption span:first-child {
-      font-weight: 600;
-      color: #6f6a60;
-    }
-
-    .portrait-caption span:last-child {
-      font-weight: 400;
-      color: #9a948a;
     }
 
     @media (max-width: 1024px) {
