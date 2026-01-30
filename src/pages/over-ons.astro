@@ -97,16 +97,16 @@ const optimizedLandscape = await getImage({
         </div>
         <div class="flex-1 lg:pl-8">
           <figure class="portrait-image-frame">
-              <img
+            <img
               class="portrait-image"
-              src="/images/Stefanie%20Deleu%20x%20SOLA%20TRAVEL.jpg"
+              src="/images/stefanie-deleu-sola-travel.jpg"
               alt="Stefanie Deleu, oprichtster van SOLA"
               loading="lazy"
               decoding="async"
             />
-            <figcaption class="portrait-caption">
-              <span>Stefanie Deleu</span>
-              <span>Oprichtster van SOLA</span>
+            <figcaption class="portrait-overlay">
+              <span class="portrait-name">Stefanie Deleu</span>
+              <span class="portrait-role">Oprichter · SOLA Travel</span>
             </figcaption>
           </figure>
         </div>
@@ -378,12 +378,8 @@ const optimizedLandscape = await getImage({
 
     .portrait-image-frame {
       position: relative;
-      padding: 0.25rem;
-      background: linear-gradient(135deg, #f6f4f0 0%, #e5e1d8 100%);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-      border: 1px solid rgba(0, 0, 0, 0.06);
       overflow: hidden;
-      border-radius: 1rem;
+      border-radius: 0;
     }
 
     .portrait-image {
@@ -394,22 +390,56 @@ const optimizedLandscape = await getImage({
       object-fit: cover;
       object-position: center;
       display: block;
-      border-radius: 0.75rem;
+      border-radius: 0;
     }
 
-    .portrait-caption {
+    .portrait-overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
       display: flex;
       flex-direction: column;
       gap: 0.15rem;
-      padding: 0.6rem 0.25rem 0;
+      padding: 2.5rem 1.25rem 1rem;
       font-size: 0.875rem;
-      color: #7a7469;
+      color: #f5f3ef;
       text-align: left;
+    }
+
+    .portrait-overlay::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(19, 17, 14, 0.55),
+        rgba(19, 17, 14, 0)
+      );
+      z-index: 0;
+    }
+
+    .portrait-overlay span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .portrait-name {
+      font-weight: 500;
+    }
+
+    .portrait-role {
+      font-weight: 300;
+      color: rgba(245, 243, 239, 0.85);
     }
 
     @media (max-width: 1024px) {
       .portrait-image {
         max-height: 420px;
+      }
+
+      .portrait-overlay {
+        padding: 2rem 1rem 0.9rem;
       }
     }
   </style>
