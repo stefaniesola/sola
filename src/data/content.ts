@@ -347,31 +347,78 @@ Lisa van Liv (Gent) begeleidt rustige yoga, stretch en eenvoudige beweging. Zo k
 
 ### Dag 1 - vrijdag
 
-Aankomen en kennismaking  
-Aperitief, kennismaking, lichte oefening en samen avondeten
+Aankomen en kennismaking: we starten het weekend.
+
+- Aankomen in het huis en aperitief
+- Kennismaking met de groep
+- Lichte, intuïtieve oefening om het ijs te breken
+- Samen avondeten
 
 ### Dag 2 - zaterdag
 
 In connectie met jezelf
 
-Sunrise-moment (vrijblijvend)  
-Ochtendwandeling  
-Ontbijt  
-Workshop EFT  
-Natuurwandeling + systemisch werkmodel 1  
-Avondeten  
-Ecstatic dance
+Ochtend
+
+- 06u Sunrise-moment (vrijblijvend)
+- Voor wie wil: samen naar buiten om de dag te zien beginnen (rond 6u03).
+- Wakker worden & korte ochtendwandeling (± 30 min)
+- Uitgebreid ontbijt
+
+Voormiddag: workshop EFT
+
+- Inzicht in patronen van emoties versus ratio
+- Introductie EFT: leren voelen en spanning reguleren
+- Praktische oefening om dit meteen te ervaren
+- De focus ligt op jezelf beter aanvoelen, zonder analyse of moeten.
+
+Namiddag: natuur & systemisch werk
+
+- We maken een mooie wandeling in het natuurpark
+- verdiepen we met systemisch werkmodel 1 rond verlangen, hindernissen en je huidige situatie.
+- wat wil er in jou geleefd worden?
+- wat houdt je tegen?
+- waar sta je vandaag echt?
+- Via een creatieve oefening geef je vorm aan wat je voelt. Wat vaag was, wordt zichtbaar.
+
+Avond
+
+- Samen avondeten
+- Ecstatic dance: vrij bewegen op muziek
+
+Gewoon je lichaam volgen, spanning loslaten en voelen dat je leeft.
 
 ### Dag 3 - zondag
 
 In connectie met de ander
 
-Ontbijt en check-in  
-Systemisch werkmodel 2  
-EFT integratie  
-Hartmeditatie  
-Matrix Reimprinting  
-Lunch en afronding
+Ochtend
+
+- Rustige opstart
+- Ontbijt
+- Korte check-in
+
+Voormiddag: workshop
+
+We werken met systemisch werkmodel 2 rond relationele patronen.
+
+- systemische werkwoorden: dragen, leunen, aannemen, uitreiken
+- onderzoeken hoe jij in relatie staat tot anderen
+- EFT integreren om bij jezelf te blijven in contact
+
+Je leert aanwezig blijven bij wat je voelt, zonder jezelf te verliezen.
+
+Late voormiddag: verdieping
+
+- eenvoudige systemische oefeningen rond je plek en je grenzen
+- begeleide hartmeditatie
+- matrix reimprinting voor innerlijke steun en nieuwe perspectieven
+
+Zacht waar het kan, eerlijk waar het nodig is.
+
+Middag: afronden
+
+- Samen lunch
 
 ## Verblijf
 
