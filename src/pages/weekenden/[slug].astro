@@ -301,7 +301,7 @@ const carouselImages = await Promise.all(
                   data-accordion-panel="weekend"
                 >
                   {section.title === "Goed om weten - FAQ" && faqItems.length > 0 ? (
-                    <div class="space-y-2">
+                    <div class="space-y-2" data-accordion-group="faq">
                       {faqItems.map((item, faqIndex) => (
                         <div
                           class={`border-t border-base-200 ${
@@ -489,6 +489,11 @@ const carouselImages = await Promise.all(
         });
       };
 
+      const setPanelAutoHeight = (panel) => {
+        if (!panel || !panel.classList.contains("open")) return;
+        panel.style.maxHeight = "none";
+      };
+
       const openFromTarget = (targetId) => {
         if (!targetId) return;
         let button = document.querySelector(
@@ -520,12 +525,11 @@ const carouselImages = await Promise.all(
       faqButtons.forEach((button) => {
         button.addEventListener("click", () => {
           const isExpanded = button.getAttribute("aria-expanded") === "true";
-          if (isExpanded) {
-            closePanel(button);
-            updateParentPanelHeight(button);
-          } else {
-            const container = button.closest('[data-accordion-panel="weekend"]');
-            const siblingButtons = container?.querySelectorAll(
+          const group = button.closest('[data-accordion-group="faq"]');
+          const panelId = button.getAttribute("aria-controls");
+          const panel = panelId ? document.getElementById(panelId) : null;
+          const closeSiblings = () => {
+            const siblingButtons = group?.querySelectorAll(
               '[data-accordion-trigger="faq"]',
             );
             siblingButtons?.forEach((item) => {
@@ -533,20 +537,29 @@ const carouselImages = await Promise.all(
                 closePanel(item);
               }
             });
+          };
+          if (isExpanded) {
+            closePanel(button);
+            updateParentPanelHeight(button);
+          } else {
+            closeSiblings();
             openPanel(button);
             updateParentPanelHeight(button);
+            window.setTimeout(() => {
+              setPanelAutoHeight(panel);
+              updateParentPanelHeight(button);
+            }, 320);
           }
         });
         button.addEventListener("keydown", (event) => {
           if (event.key === "Enter" || event.key === " ") {
             event.preventDefault();
             const isExpanded = button.getAttribute("aria-expanded") === "true";
-            if (isExpanded) {
-              closePanel(button);
-              updateParentPanelHeight(button);
-            } else {
-              const container = button.closest('[data-accordion-panel="weekend"]');
-              const siblingButtons = container?.querySelectorAll(
+            const group = button.closest('[data-accordion-group="faq"]');
+            const panelId = button.getAttribute("aria-controls");
+            const panel = panelId ? document.getElementById(panelId) : null;
+            const closeSiblings = () => {
+              const siblingButtons = group?.querySelectorAll(
                 '[data-accordion-trigger="faq"]',
               );
               siblingButtons?.forEach((item) => {
@@ -554,8 +567,18 @@ const carouselImages = await Promise.all(
                   closePanel(item);
                 }
               });
+            };
+            if (isExpanded) {
+              closePanel(button);
+              updateParentPanelHeight(button);
+            } else {
+              closeSiblings();
               openPanel(button);
               updateParentPanelHeight(button);
+              window.setTimeout(() => {
+                setPanelAutoHeight(panel);
+                updateParentPanelHeight(button);
+              }, 320);
             }
           }
         });
