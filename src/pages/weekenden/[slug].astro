@@ -435,9 +435,10 @@ const carouselImages = await Promise.all(
                             aria-labelledby={`faq-trigger-${index}-${faqIndex}`}
                             data-accordion-panel="faq"
                           >
-                            <div class="prose prose-base-900 max-w-none prose-p:text-base-700 prose-p:leading-relaxed prose-p:mb-4">
-                              <p>{item.answer}</p>
-                            </div>
+                            <div
+                              class="prose prose-base-900 max-w-none prose-p:text-base-700 prose-p:leading-relaxed prose-p:mb-4 prose-ul:text-base-700 prose-ul:my-4 prose-li:my-2"
+                              set:html={processMarkdown(item.answer).html}
+                            />
                           </div>
                         </div>
                       ))}

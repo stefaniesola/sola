@@ -273,28 +273,38 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
       {
         question: "Moet ik ervaring hebben met lichaamswerk, meditatie of EFT?",
         answer:
-          "Nee. Je hoeft geen voorkennis te hebben. Alles wordt uitgelegd en stap voor stap begeleid.",
+          "Nee. Je hoeft geen enkele voorkennis te hebben. Alles wordt uitgelegd en stap voor stap begeleid. Je volgt op jouw tempo.",
       },
       {
         question: "Is dit therapeutisch?",
         answer:
-          "Nee. Dit is geen therapie. Het is een ervaringsgericht weekend waarin je ontdekt en leert.",
+          "Nee. Dit is geen therapie en geen diepgravende analyse. Het is een ervaringsgericht weekend waarin je ontdekt, voelt en leert, zonder iets te moeten oplossen.",
       },
       {
         question: "Moet ik persoonlijke dingen delen in de groep?",
-        answer: "Nee. Delen mag, niets moet.",
+        answer:
+          "Nee. Delen mag, niets moet. Je bepaalt zelf wat je deelt en wat je voor jezelf houdt. Stilte is even welkom als woorden.",
       },
       {
         question: "Wat neem ik concreet mee naar huis?",
-        answer: "Eenvoudige tools zoals EFT, ervaringen en nieuwe inzichten.",
+        answer:
+          "Je gaat naar huis met:\n\n- eenvoudige tools (zoals EFT) die je zelf kan toepassen\n- ervaringen die je helpen om anders met situaties te gaan",
       },
       {
         question: "Past dit bij mij als ik gewoon nieuwsgierig ben?",
-        answer: "Ja. Veel deelnemers komen met nieuwsgierigheid.",
+        answer:
+          "Ja. Veel deelnemers komen niet met een “probleem”, maar met nieuwsgierigheid. Dit weekend draait om ontdekken, ervaren en verruimen.",
       },
       {
-        question: "Kan ik alleen komen of samen met iemand?",
-        answer: "Beide zijn welkom.",
+        question: "Wat na dit weekend?",
+        answer:
+          "Je vertrekt met meer voeling met jezelf en meer vertrouwen om andere keuzes te maken waar dat nodig is.",
+      },
+      {
+        question:
+          "Kan ik alleen komen of samen met iemand (partner, vriend(in), ouder/kind…)?",
+        answer:
+          "Beide zijn welkom. Je kan alleen komen of samen met iemand die je nabij is. We werken in groep, met ruimte voor je eigen proces. Verbinding ontstaat vanzelf, en er is naast diepgang ook ruimte voor spontaniteit en samen lachen.",
       },
     ],
     longread: `## Voor wie
