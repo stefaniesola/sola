@@ -226,11 +226,12 @@ Na je inschrijving ontvang je een bevestiging en verdere praktische info [per e-
 
 Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.
 
-## Goed om weten - FAQ
-
 ## Na inschrijving
 
-Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing per mail.`,
+–
+Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing per mail.
+
+## Goed om weten - FAQ`,
   },
   {
     slug: "bewustwording-connectie",
