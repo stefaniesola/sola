@@ -64,7 +64,7 @@ const optimizedLandscape = await getImage({
                 >
                   <button
                     type="button"
-                    class="w-full flex items-center justify-between gap-4 px-2 py-5 text-left text-base-900 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/50 transition hover:text-base-800 hover:bg-base-900/3"
+                    class="w-full flex items-center justify-between gap-4 px-2 py-4 text-left text-base-900 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/50 transition hover:text-base-800 hover:bg-base-900/3"
                     aria-expanded={index === 0 ? "true" : "false"}
                     aria-controls={`mission-panel-${index}`}
                     id={`mission-trigger-${index}`}
@@ -81,13 +81,13 @@ const optimizedLandscape = await getImage({
                   <div
                     id={`mission-panel-${index}`}
                     class={`accordion-panel text-base-700 leading-relaxed px-2 ${
-                      index === 0 ? "pb-4 open" : "pb-0"
+                      index === 0 ? "pb-3 open" : "pb-0"
                     }`}
                     role="region"
                     aria-labelledby={`mission-trigger-${index}`}
                     data-accordion-panel="mission"
                   >
-                    <div class="space-y-3 pt-1">
+                    <div class="space-y-3 pt-0.5">
                       {item.body.split("\n\n").map((paragraph) => (
                         <p>{paragraph}</p>
                       ))}
@@ -278,7 +278,7 @@ const optimizedLandscape = await getImage({
         button.setAttribute("aria-expanded", "false");
         panel.style.maxHeight = "0px";
         panel.classList.remove("open");
-        panel.classList.remove("pb-4");
+        panel.classList.remove("pb-3");
         panel.classList.add("pb-0");
         icon.textContent = "+";
       };
@@ -291,7 +291,7 @@ const optimizedLandscape = await getImage({
         button.setAttribute("aria-expanded", "true");
         panel.classList.add("open");
         panel.classList.remove("pb-0");
-        panel.classList.add("pb-4");
+        panel.classList.add("pb-3");
         panel.style.maxHeight = `${panel.scrollHeight}px`;
         icon.textContent = "–";
       };
