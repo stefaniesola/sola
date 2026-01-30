@@ -389,20 +389,16 @@ export const homeCopy = {
 };
 
 export const missionVision = {
-  mission:
-    description: `<p>SOLA ontstond op het kruispunt van twee werelden die mijn leven sterk hebben gevormd: reizen en gezondheid. De naam SOLA verwijst naar de zon, <em>sol</em> in het Spaans, <em>sola</em> als vrouwelijke vorm in het Latijn. De zon staat voor energie, warmte en levenskracht. Dat is wat ik met deze reizen wil doorgeven.</p>
-
-    <p>Ik studeerde toerisme (en bedrijfseconomie) en werk al zo’n acht jaar in de reissector. Reizen verbreedt je blik, brengt je in beweging en haalt je uit je dagelijkse context.</p>
-
-    <p>In 2024 werd ik in Sumatra ziek door een geperforeerde appendix. Later bleek een chronische darmaandoening aan de basis te liggen. Het herstel was intens: twee weken ziekenhuis in Medan, daarna nog enkele weken in België en maanden terug opbouwen, gevolgd door een extra operatie. Het was een stevig jaar, maar ik haal er vandaag veel kracht uit en het was een stimulans om bewuster met gezondheid bezig te zijn.</p>
-
-    <p>Mijn passie voor sport en reizen werd aangevuld met een derde passie: actief werken aan gezondheid. Ik ontdekte hoe krachtig de basis is; slaap, voeding en beweging. Door daar bewust mee om te gaan, kom je al heel ver. Die eenvoud wil ik laten voelen tijdens SOLA-reizen.</p>
-
-    <p>Mijn eigen traject bracht me in contact met gepassioneerde experten. Ik ging langs bij het KPNI-huis (klinische psycho-neuro-immunologie), waar gezondheid vanuit een leefstijlgerichte en deels orthomoleculaire visie wordt bekeken, woonde lezingen bij en leerde breder naar gezondheid kijken. Ik begon me te verdiepen in vragen waar veel mensen mee zitten, zoals hoe het komt dat je een ijzertekort kan hebben zonder “te weinig ijzer te eten” en kwam zo bij verrassende inzichten. Vanuit die insteek wil ik anderen in contact brengen met specialisten die hun vak verstaan. Van expertise kan je leren.</p>
-
-    <p>En dat samen, in een kleine groep gelijkgezinden, waar de positieve dynamiek elkaar versterkt. <strong>Let’s go.</strong></p>`
-  vision:
-    "Gezondheid is geen bestemming, maar een reis. Een reis waar natuur je rust geeft, inspanning je kracht geeft en inzicht je richting geeft. Geen vlucht, maar een plek om wakker te worden — en te blijven.",
+  missionHtml: `<p>SOLA ontstond op het kruispunt van twee werelden die mijn leven sterk hebben gevormd: reizen en gezondheid. De naam SOLA verwijst naar de zon, <em>sol</em> in het Spaans, <em>sola</em> als vrouwelijke vorm in het Latijn. De zon staat voor energie, warmte en levenskracht. Dat is wat ik met deze reizen wil doorgeven.</p>
+<p>Ik studeerde toerisme (en bedrijfseconomie) en werk al zo’n acht jaar in de reissector. Reizen verbreedt je blik, brengt je in beweging en haalt je uit je dagelijkse context.</p>
+<p>In 2024 werd ik in Sumatra ziek door een geperforeerde appendix. Later bleek een chronische darmaandoening aan de basis te liggen. Het herstel was intens: twee weken ziekenhuis in Medan, daarna nog enkele weken in België en maanden terug opbouwen, gevolgd door een extra operatie. Het was een stevig jaar, maar ik haal er vandaag veel kracht uit en het was een stimulans om bewuster met gezondheid bezig te zijn.</p>`,
+  missionMoreHtml: `<p>Mijn passie voor sport en reizen werd aangevuld met een derde passie: actief werken aan gezondheid. Ik ontdekte hoe krachtig de basis is; slaap, voeding en beweging. Door daar bewust mee om te gaan, kom je al heel ver. Die eenvoud wil ik laten voelen tijdens SOLA-reizen.</p>
+<p>Mijn eigen traject bracht me in contact met gepassioneerde experten. Ik ging langs bij het KPNI-huis (klinische psycho-neuro-immunologie), waar gezondheid vanuit een leefstijlgerichte en deels orthomoleculaire visie wordt bekeken, woonde lezingen bij en leerde breder naar gezondheid kijken. Ik begon me te verdiepen in vragen waar veel mensen mee zitten, zoals hoe het komt dat je een ijzertekort kan hebben zonder “te weinig ijzer te eten” en kwam zo bij verrassende inzichten. Vanuit die insteek wil ik anderen in contact brengen met specialisten die hun vak verstaan. Van expertise kan je leren.</p>
+<p><strong>En dat samen, in een kleine groep gelijkgezinden, waar de positieve dynamiek elkaar versterkt. Let’s go.</strong></p>`,
+  visionHtml: `<p>Je voelt dat er meer mogelijk is. Meer energie. Meer rust in je hoofd. Meer verbinding met je lichaam.</p>
+<p>Je wil niet gewoon op reis, maar bewust tijd maken om stil te staan, bij te leren en te voelen wat jou sterker maakt, fysiek en mentaal.</p>
+<p>Je bent nieuwsgierig naar wat beweging, natuur en onderbouwde kennis met je kunnen doen wanneer je er tijd voor maakt.</p>
+<p>Geen ontsnapping uit je leven, maar een investering in hoe je het wil leven. Dan zit je hier goed.</p>`,
 };
 
 export const kernidentiteit = [
@@ -469,18 +465,14 @@ export const aboutPage = {
   label: "Waarom SOLA reizen anders zijn",
   heading: "Over SOLA",
   description: `<p><strong>Met SOLA trachten we iedereen met interesse in diverse gezondheidsthema’s warm te maken voor verdieping en begrip. Omdat dit het fundament is waarop je een toekomst kunt bouwen, omdat het een katalysator is voor blijvende verandering.</strong></p>
-
-  <p>De wetenschap brengt een kader en kennis, de natuur biedt schoonheid en rust en de beweging nodigt uit om alles te laten bezinken en inzichten te verweven met je eigen realiteit.</p>
-
-  <p>Heeft het leven je uit evenwicht gebracht, sta je dicht bij iemand met gezondheidsuitdagingen, of voel je je sterk aangesproken door onze thema’s?</p>
-
-  <p>Dan is SOLA er voor jou.</p>`
+<p>De wetenschap brengt een kader en kennis, de natuur biedt schoonheid en rust en de beweging nodigt uit om alles te laten bezinken en inzichten te verweven met je eigen realiteit.</p>
+<p>Heeft het leven je uit evenwicht gebracht, sta je dicht bij iemand met gezondheidsuitdagingen, of voel je je sterk aangesproken door onze thema’s? Dan is SOLA er voor jou.</p>`,
   metaDescription: "Wie we zijn, waar we voor staan en met wie we werken.",
-  quote: "« Le corps dit vrai. » — het lichaam liegt niet.",
+  quote: "« Le corps dit vrai. » — Het lichaam liegt niet.",
   sectionVoorWie: "Voor wie",
   sectionMissieVisie: "Missie & visie",
-  missieLabel: "Onze missie",
-  visieLabel: "Onze visie",
+  missieLabel: "Hoe SOLA ontstond",
+  visieLabel: "Voor wie?",
   sectionWatOnsAndersMaakt: "Wat ons anders maakt",
   sectionTeam: "Team",
   sectionExperten: "Experten",
