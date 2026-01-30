@@ -481,6 +481,14 @@ const carouselImages = await Promise.all(
         }
       };
 
+      const updateParentPanelHeight = (button) => {
+        const parentPanel = button.closest('[data-accordion-panel="weekend"]');
+        if (!parentPanel || !parentPanel.classList.contains("open")) return;
+        window.requestAnimationFrame(() => {
+          parentPanel.style.maxHeight = `${parentPanel.scrollHeight}px`;
+        });
+      };
+
       const openFromTarget = (targetId) => {
         if (!targetId) return;
         let button = document.querySelector(
@@ -514,8 +522,19 @@ const carouselImages = await Promise.all(
           const isExpanded = button.getAttribute("aria-expanded") === "true";
           if (isExpanded) {
             closePanel(button);
+            updateParentPanelHeight(button);
           } else {
+            const container = button.closest('[data-accordion-panel="weekend"]');
+            const siblingButtons = container?.querySelectorAll(
+              '[data-accordion-trigger="faq"]',
+            );
+            siblingButtons?.forEach((item) => {
+              if (item !== button) {
+                closePanel(item);
+              }
+            });
             openPanel(button);
+            updateParentPanelHeight(button);
           }
         });
         button.addEventListener("keydown", (event) => {
@@ -524,8 +543,19 @@ const carouselImages = await Promise.all(
             const isExpanded = button.getAttribute("aria-expanded") === "true";
             if (isExpanded) {
               closePanel(button);
+              updateParentPanelHeight(button);
             } else {
+              const container = button.closest('[data-accordion-panel="weekend"]');
+              const siblingButtons = container?.querySelectorAll(
+                '[data-accordion-trigger="faq"]',
+              );
+              siblingButtons?.forEach((item) => {
+                if (item !== button) {
+                  closePanel(item);
+                }
+              });
               openPanel(button);
+              updateParentPanelHeight(button);
             }
           }
         });
