@@ -56,7 +56,10 @@ if (!inlineSvg && !alt) {
 const isLocalImage =
   !src.startsWith("http") &&
   !src.startsWith("data:") &&
-  !src.startsWith("blob:");
+  !src.startsWith("blob:") &&
+  !src.startsWith("/images/");
+
+const isPublicImage = src.startsWith("/images/");
 
 let imageContent: string | undefined;
 let imageModule: Promise<{ default: ImageMetadata }> | undefined;
@@ -152,6 +155,18 @@ if (isLocalImage) {
         Image not found: {src}
       </div>
     )
+  ) : isPublicImage ? (
+    <img
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      loading={loading}
+      decoding={decoding}
+      style={style}
+      class={rest.class || Astro.props.class}
+      {...rest}
+    />
   ) : (
     /* External images */
     <Image

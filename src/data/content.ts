@@ -292,7 +292,7 @@ export const people: Person[] = [
     role: "Organisator & avonturier",
     type: "Expert",
     bio: "Stefanie  is de trekkende kracht achter SOLA en zet elke reis van A tot Z in elkaar. Ze bouwt samenwerkingen uit, coördineert de organisatie en zorgt er met haar team voor dat alles praktisch goed loopt.",
-    logo: "/stefanie.jpg",
+    logo: "/images/stefanie-deleu-sola-travel.jpeg",
     isTeamMember: true,
   },
   {
@@ -300,7 +300,7 @@ export const people: Person[] = [
     role: "Facilitator & culinaire zorg",
     type: "Core",
     bio: "Justine ondersteunt SOLA praktisch en kookt de maaltijden tijdens de weekenden. Daarnaast draagt ze ook haar steentje bij aan de communicatie.",
-    logo: "/src/assets/images/Justine Deleu.jpg",
+    logo: "/images/justine-deleu-logistiek.jpeg",
     isTeamMember: true,
   },
   {
@@ -308,7 +308,7 @@ export const people: Person[] = [
     role: "Coördinator & facilitator",
     type: "Core",
     bio: "Klaas zorgt voor de praktische organisatie en begeleiding van onze weekenden. Met oog voor detail en passie voor natuur en beweging, creëert hij een veilige en inspirerende omgeving voor elke deelnemer.",
-    logo: "/klaas.png",
+    logo: "/images/klaas-annys-sola.jpg",
     isTeamMember: true,
   },
   {

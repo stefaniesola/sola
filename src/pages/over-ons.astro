@@ -99,7 +99,7 @@ const optimizedLandscape = await getImage({
           <figure class="portrait-image-frame">
             <img
               class="portrait-image"
-              src="/images/stefanie-deleu-sola-travel.jpg"
+              src="/images/stefanie-deleu-sola-travel.jpeg"
               alt="Stefanie Deleu, oprichtster van SOLA"
               loading="lazy"
               decoding="async"
@@ -157,7 +157,11 @@ const optimizedLandscape = await getImage({
                       width={400}
                       height={400}
                       quality={100}
-                      class="w-full h-full object-cover"
+                      class={`w-full h-full object-cover ${
+                        person.name === "Klaas Annys"
+                          ? "object-[25%_80%]"
+                          : "object-center"
+                      }`}
                     />
                   </div>
                 ) : (
