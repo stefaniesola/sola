@@ -8,19 +8,12 @@ import {
 } from "../data/content";
 import OptimizedImage from "../layouts/utilities/OptimizedImage.astro";
 import { getImage } from "astro:assets";
-import famenneImage from "../assets/images/famenne.jpg";
 import landscapeImage from "../assets/images/landscape.jpg";
 
 const coreTeam = people.filter((person) => person.isTeamMember === true);
 const partners = people.filter((person) => person.isTeamMember === false);
 
 // Optimize images for mission/vision sections
-const optimizedFamenne = await getImage({
-  src: famenneImage,
-  width: 1600,
-  quality: 90,
-});
-
 const optimizedLandscape = await getImage({
   src: landscapeImage,
   width: 1600,
@@ -47,7 +40,7 @@ const optimizedLandscape = await getImage({
     <!-- Missie & Visie -->
     <div class="space-y-8 lg:space-y-16 scroll-fade-in">
       <!-- Mission Section -->
-      <div class="flex flex-col lg:flex-row gap-12 items-center scroll-fade-in">
+      <div class="flex flex-col lg:flex-row gap-10 items-center scroll-fade-in">
         <div class="flex-1 space-y-3 lg:pr-8">
           <h3 class="text-2xl lg:text-3xl font-semibold text-base-900">
             {aboutPage.missieLabel}
@@ -103,12 +96,19 @@ const optimizedLandscape = await getImage({
           </div>
         </div>
         <div class="flex-1 lg:pl-8">
-          <div class="skewed-image-frame">
-            <div
-              class="skewed-image-inner"
-              style={`background-image: url(${optimizedFamenne.src});`}
+          <figure class="portrait-image-frame">
+            <img
+              class="portrait-image"
+              src="/images/stefanie-deleu-sola-travel.jpg"
+              alt="Stefanie Deleu, oprichtster van SOLA"
+              loading="lazy"
+              decoding="async"
             />
-          </div>
+            <figcaption class="portrait-overlay">
+              <span class="portrait-name">Stefanie Deleu</span>
+              <span class="portrait-role">Oprichter · SOLA Travel</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
 
@@ -374,6 +374,73 @@ const optimizedLandscape = await getImage({
       display: block;
       margin: 0;
       border-radius: 0.75rem;
+    }
+
+    .portrait-image-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 0;
+    }
+
+    .portrait-image {
+      width: 100%;
+      height: 100%;
+      max-height: 520px;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      border-radius: 0;
+    }
+
+    .portrait-overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      padding: 2.5rem 1.25rem 1rem;
+      font-size: 0.875rem;
+      color: #f5f3ef;
+      text-align: left;
+    }
+
+    .portrait-overlay::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(19, 17, 14, 0.55),
+        rgba(19, 17, 14, 0)
+      );
+      z-index: 0;
+    }
+
+    .portrait-overlay span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .portrait-name {
+      font-weight: 500;
+    }
+
+    .portrait-role {
+      font-weight: 300;
+      color: rgba(245, 243, 239, 0.85);
+    }
+
+    @media (max-width: 1024px) {
+      .portrait-image {
+        max-height: 420px;
+      }
+
+      .portrait-overlay {
+        padding: 2rem 1rem 0.9rem;
+      }
     }
   </style>
 
