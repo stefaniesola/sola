@@ -100,16 +100,129 @@ const accordionSections = sections.map((section, index) => {
   return { ...section, id, html };
 });
 
+type TocEntry = {
+  id: string;
+  text: string;
+  level: number;
+  parentId: string;
+};
+
+const bewuswordingTocItems: TocEntry[] | null =
+  weekend.slug === "bewustwording-connectie"
+    ? [
+        { text: "Voor wie", id: "voor-wie", level: 2, parentId: "voor-wie" },
+        {
+          text: "Wat je leert / focus",
+          id: "wat-je-leert-focus",
+          level: 2,
+          parentId: "wat-je-leert-focus",
+        },
+        {
+          text: "Na dit weekend",
+          id: "na-dit-weekend",
+          level: 2,
+          parentId: "na-dit-weekend",
+        },
+        {
+          text: "Expertise & coördinatie",
+          id: "expertise-coordinatie",
+          level: 2,
+          parentId: "expertise-coordinatie",
+        },
+        {
+          text: "Programma",
+          id: "programma",
+          level: 2,
+          parentId: "programma",
+        },
+        {
+          text: "Dag 1 - vrijdag",
+          id: "dag-1-vrijdag",
+          level: 3,
+          parentId: "programma",
+        },
+        {
+          text: "Dag 2 - zaterdag",
+          id: "dag-2-zaterdag",
+          level: 3,
+          parentId: "programma",
+        },
+        {
+          text: "Dag 3 - zondag",
+          id: "dag-3-zondag",
+          level: 3,
+          parentId: "programma",
+        },
+        { text: "Verblijf", id: "verblijf", level: 2, parentId: "verblijf" },
+        {
+          text: "Maaltijden",
+          id: "maaltijden",
+          level: 2,
+          parentId: "maaltijden",
+        },
+        {
+          text: "Praktisch",
+          id: "praktisch",
+          level: 2,
+          parentId: "praktisch",
+        },
+        {
+          text: "Vroegboekcadeau",
+          id: "vroegboekcadeau",
+          level: 2,
+          parentId: "vroegboekcadeau",
+        },
+        {
+          text: "Wat is inbegrepen?",
+          id: "wat-is-inbegrepen",
+          level: 2,
+          parentId: "wat-is-inbegrepen",
+        },
+        {
+          text: "Wat is niet inbegrepen?",
+          id: "wat-is-niet-inbegrepen",
+          level: 2,
+          parentId: "wat-is-niet-inbegrepen",
+        },
+        {
+          text: "Boek je plek",
+          id: "boek-je-plek",
+          level: 2,
+          parentId: "boek-je-plek",
+        },
+        {
+          text: "Twijfel je?",
+          id: "twijfel-je",
+          level: 2,
+          parentId: "twijfel-je",
+        },
+        {
+          text: "Na inschrijving",
+          id: "na-inschrijving",
+          level: 2,
+          parentId: "na-inschrijving",
+        },
+        {
+          text: "Goed om weten - FAQ",
+          id: "goed-om-weten-faq",
+          level: 2,
+          parentId: "goed-om-weten-faq",
+        },
+      ]
+    : null;
+
 let currentSectionId = "";
-const tocItems = toc.map((item) => {
-  if (item.level === 2) {
-    currentSectionId = item.id;
-  }
-  return {
-    ...item,
-    parentId: currentSectionId || item.id,
-  };
-});
+const tocItems: TocEntry[] =
+  bewuswordingTocItems ??
+  toc.map((item) => {
+    if (item.level === 2) {
+      currentSectionId = item.id;
+    }
+    return {
+      ...item,
+      parentId: currentSectionId || item.id,
+    };
+  });
 
 const carouselImages = await Promise.all(
   [

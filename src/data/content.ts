@@ -269,6 +269,34 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
         lines: ["Minimum 8, maximum 14 deelnemers"],
       },
     ],
+    faq: [
+      {
+        question: "Moet ik ervaring hebben met lichaamswerk, meditatie of EFT?",
+        answer:
+          "Nee. Je hoeft geen voorkennis te hebben. Alles wordt uitgelegd en stap voor stap begeleid.",
+      },
+      {
+        question: "Is dit therapeutisch?",
+        answer:
+          "Nee. Dit is geen therapie. Het is een ervaringsgericht weekend waarin je ontdekt en leert.",
+      },
+      {
+        question: "Moet ik persoonlijke dingen delen in de groep?",
+        answer: "Nee. Delen mag, niets moet.",
+      },
+      {
+        question: "Wat neem ik concreet mee naar huis?",
+        answer: "Eenvoudige tools zoals EFT, ervaringen en nieuwe inzichten.",
+      },
+      {
+        question: "Past dit bij mij als ik gewoon nieuwsgierig ben?",
+        answer: "Ja. Veel deelnemers komen met nieuwsgierigheid.",
+      },
+      {
+        question: "Kan ik alleen komen of samen met iemand?",
+        answer: "Beide zijn welkom.",
+      },
+    ],
     longread: `## Voor wie
 
 Dit weekend is voor jou als je:
@@ -317,12 +345,14 @@ Lisa van Liv (Gent) begeleidt rustige yoga, stretch en eenvoudige beweging. Zo k
 
 ## Programma
 
-### Dag 1 – vrijdag
+### Dag 1 - vrijdag
 
 Aankomen en kennismaking  
 Aperitief, kennismaking, lichte oefening en samen avondeten
 
-### Dag 2 – zaterdag: in connectie met jezelf
+### Dag 2 - zaterdag
+
+In connectie met jezelf
 
 Sunrise-moment (vrijblijvend)  
 Ochtendwandeling  
@@ -332,7 +362,9 @@ Natuurwandeling + systemisch werkmodel 1
 Avondeten  
 Ecstatic dance
 
-### Dag 3 – zondag: in connectie met de ander
+### Dag 3 - zondag
+
+In connectie met de ander
 
 Ontbijt en check-in  
 Systemisch werkmodel 2  
@@ -382,31 +414,13 @@ Na je inschrijving ontvang je een bevestiging en verdere praktische info [per e-
 
 ## Twijfel je?
 
-Twijfel je nog? Plan een gesprek.
+Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.
 
 ## Na inschrijving
 
-Je ontvangt praktische info over locatie, aankomst en programma, en wat mee te brengen.
+Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing per mail.
 
 ## Goed om weten - FAQ
-
-**Moet ik ervaring hebben met lichaamswerk, meditatie of EFT?**  
-Nee. Je hoeft geen voorkennis te hebben. Alles wordt uitgelegd en stap voor stap begeleid.
-
-**Is dit therapeutisch?**  
-Nee. Dit is geen therapie. Het is een ervaringsgericht weekend waarin je ontdekt en leert.
-
-**Moet ik persoonlijke dingen delen in de groep?**  
-Nee. Delen mag, niets moet.
-
-**Wat neem ik concreet mee naar huis?**  
-Eenvoudige tools zoals EFT, ervaringen en nieuwe inzichten.
-
-**Past dit bij mij als ik gewoon nieuwsgierig ben?**  
-Ja. Veel deelnemers komen met nieuwsgierigheid.
-
-**Kan ik alleen komen of samen met iemand?**  
-Beide zijn welkom.
 `,
   },
   {
