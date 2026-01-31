@@ -89,5 +89,15 @@ export function processMarkdown(markdown: string): {
     return match;
   });
 
+  html = html.replace(/<a\b([^>]*?)>/g, (match, attrs) => {
+    const hrefMatch = attrs.match(/href="([^"]+)"/);
+    if (!hrefMatch) return match;
+    const href = hrefMatch[1];
+    const isExternal = /^https?:\/\//i.test(href);
+    if (!isExternal) return match;
+    if (/\btarget=/.test(attrs) || /\brel=/.test(attrs)) return match;
+    return `<a${attrs} target="_blank" rel="noopener noreferrer">`;
+  });
+
   return { html, toc };
 }

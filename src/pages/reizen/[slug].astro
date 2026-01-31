@@ -11,20 +11,21 @@ export async function getStaticPaths() {
   return Promise.all(
     trips.map(async (trip) => {
       let imageUrl = trip.heroImage;
+      let heroImageData;
       // If it's a local image path, process it
       if (trip.heroImage?.startsWith("/src/assets/images/")) {
         if (trip.slug === "sola-terra-frankrijk") {
-          const optimized = await getImage({
+          heroImageData = await getImage({
             src: terraImage,
             width: 1400,
             quality: 85,
           });
-          imageUrl = optimized.src;
+          imageUrl = heroImageData.src;
         }
       }
       return {
         params: { slug: trip.slug },
-        props: { trip: { ...trip, heroImage: imageUrl } },
+        props: { trip: { ...trip, heroImage: imageUrl, heroImageData } },
       };
     }),
   );
@@ -35,19 +36,34 @@ const { trip } = Astro.props as { trip: Journey };
 // Process markdown content and extract TOC
 const markdownContent = trip.longread || "";
 const { html: htmlContent, toc } = processMarkdown(markdownContent);
+const metaDescriptionBase = `${trip.shortDescription} Locatie: ${trip.location}. Data: ${trip.dates}.`;
+const metaDescription =
+  metaDescriptionBase.length > 160
+    ? `${metaDescriptionBase.slice(0, 157).trimEnd()}...`
+    : metaDescriptionBase;
+const tripTitle = `SOLA Travel | ${trip.name} | ${trip.location}`;
+const heroImageAlt = `${trip.name} in ${trip.location}`;
 ---
 
-<BaseLayout title={`SOLA | ${trip.name}`} description={trip.shortDescription}>
+<BaseLayout
+  title={tripTitle}
+  description={metaDescription}
+  ogImage={trip.heroImage}
+  ogImageAlt={heroImageAlt}
+>
   <section class="relative bg-base-900 text-white">
-    <div
-      class="absolute inset-0 opacity-45"
-      style={{
-        backgroundImage: `url(${trip.heroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-    </div>
+    {trip.heroImage && (
+      <img
+        class="absolute inset-0 w-full h-full object-cover opacity-45"
+        src={trip.heroImage}
+        width={trip.heroImageData?.width ?? 1400}
+        height={trip.heroImageData?.height ?? 933}
+        alt={heroImageAlt}
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+    )}
     <div class="relative max-w-6xl mx-auto px-6 py-24 space-y-6">
       <p class="uppercase text-xs tracking-[0.25em] text-white/70">
         {trip.type}

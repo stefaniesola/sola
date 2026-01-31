@@ -125,9 +125,14 @@ const optimizedLandscape = await getImage({
         </div>
         <div class="flex-1 lg:pr-8">
           <div class="skewed-image-frame">
-            <div
+            <img
               class="skewed-image-inner"
-              style={`background-image: url(${optimizedLandscape.src});`}
+              src={optimizedLandscape.src}
+              width={optimizedLandscape.width}
+              height={optimizedLandscape.height}
+              alt="Natuur in de Ardennen"
+              loading="lazy"
+              decoding="async"
             />
           </div>
         </div>
@@ -229,7 +234,7 @@ const optimizedLandscape = await getImage({
                   rel="noopener noreferrer"
                   class="inline-flex items-center text-sm font-semibold text-accent-700 hover:text-accent-800 transition-colors"
                 >
-                  Bezoek website
+                  {partner.name}
                   <svg
                     class="w-4 h-4 ml-1"
                     fill="none"
@@ -368,9 +373,8 @@ const optimizedLandscape = await getImage({
     .skewed-image-inner {
       width: 100%;
       aspect-ratio: 16 / 9;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      object-fit: cover;
+      object-position: center;
       display: block;
       margin: 0;
       border-radius: 0.75rem;

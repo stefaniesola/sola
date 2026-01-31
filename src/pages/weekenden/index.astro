@@ -11,25 +11,26 @@ const weekends = journeys.filter((journey) => journey.type === "Weekend");
 const weekendsWithImages = await Promise.all(
   weekends.map(async (weekend) => {
     let imageUrl = weekend.heroImage;
+    let heroImageData;
     // If it's a local image path, process it
     if (weekend.heroImage?.startsWith("/src/assets/images/")) {
       if (weekend.slug === "exercise-is-medicine") {
-        const optimized = await getImage({
+        heroImageData = await getImage({
           src: exerciseImage,
           width: 1400,
           quality: 85,
         });
-        imageUrl = optimized.src;
+        imageUrl = heroImageData.src;
       } else if (weekend.slug === "bewustwording-connectie") {
-        const optimized = await getImage({
+        heroImageData = await getImage({
           src: bewustwordingImage,
           width: 1400,
           quality: 85,
         });
-        imageUrl = optimized.src;
+        imageUrl = heroImageData.src;
       }
     }
-    return { ...weekend, heroImage: imageUrl };
+    return { ...weekend, heroImage: imageUrl, heroImageData };
   }),
 );
 ---
@@ -70,12 +71,18 @@ const weekendsWithImages = await Promise.all(
         >
           <div
             class="relative aspect-video bg-base-200 overflow-hidden"
-            style={{
-              backgroundImage: `url(${weekend.heroImage})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
           >
+            {weekend.heroImage && (
+              <img
+                class="absolute inset-0 w-full h-full object-cover"
+                src={weekend.heroImage}
+                width={weekend.heroImageData?.width ?? 1400}
+                height={weekend.heroImageData?.height ?? 933}
+                alt={`${weekend.name} in ${weekend.location}`}
+                loading="lazy"
+                decoding="async"
+              />
+            )}
             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
               <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold">
                 {weekendPage.cta}

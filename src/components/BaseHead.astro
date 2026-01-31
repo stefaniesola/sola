@@ -4,11 +4,17 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
 }
 
 const {
   title = "SOLA — Beweging, wetenschap en natuur",
   description = "SOLA organiseert weekenden en reizen waar beweging, wetenschap en natuur samenkomen. Voor wie helder wil kiezen en in beweging wil komen.",
+  canonical,
+  ogImage,
+  ogImageAlt = "SOLA Travel",
 } = Astro.props as Props;
 ---
 
@@ -23,15 +29,18 @@ const {
 <meta property="og:type" content="website" />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:url" content="https://solatravel.be" />
+{canonical && <meta property="og:url" content={canonical} />}
+{ogImage && <meta property="og:image" content={ogImage} />}
+{ogImage && <meta property="og:image:alt" content={ogImageAlt} />}
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
+{ogImage && <meta property="twitter:image" content={ogImage} />}
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 <link rel="manifest" href="/site.webmanifest" />
-<link rel="canonical" href="https://solatravel.be" />
+{canonical && <link rel="canonical" href={canonical} />}
 {import.meta.env.PROD && (
   <>
     <!-- Google tag (gtag.js) -->
