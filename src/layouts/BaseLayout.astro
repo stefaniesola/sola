@@ -6,14 +6,29 @@ import Footer from "../components/global/Footer.astro";
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
+  ogImageAlt?: string;
 }
 
-const { title, description } = Astro.props as Props;
+const { title, description, ogImage, ogImageAlt } = Astro.props as Props;
+const canonical = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).toString()
+  : undefined;
+const resolvedOgImage = ogImage
+  ? new URL(ogImage, Astro.site ?? Astro.url).toString()
+  : new URL("/images/stefanie-deleu-sola-travel.jpg", Astro.site ?? Astro.url)
+      .toString();
 ---
 
 <html lang="nl" class="scroll-smooth selection:bg-accent-500 selection:text-white no-touchevents hydrated">
   <head>
-    <BaseHead {title} {description} />
+    <BaseHead
+      {title}
+      {description}
+      canonical={canonical}
+      ogImage={resolvedOgImage}
+      ogImageAlt={ogImageAlt}
+    />
   </head>
   <body class="bg-base-25 flex flex-col min-h-svh text-base-500 font-sans">
     {import.meta.env.PROD && (

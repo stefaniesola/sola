@@ -9,6 +9,12 @@ export interface Journey {
   dates: string;
   price: string;
   heroImage?: string;
+  heroImageData?: {
+    src: string;
+    width: number;
+    height: number;
+    format?: string;
+  };
   keyFacts?: { label: string; lines: string[] }[];
   faq?: { question: string; answer: string }[];
   longread?: string; // Markdown content for the full article
@@ -122,7 +128,7 @@ Dit weekend draait niet om méér doen, maar om beter begrijpen en bewuster bewe
 
 ## Expertise & coördinatie
 
-Dit weekend wordt georganiseerd door SOLA (Stefanie Deleu) in samenwerking met Simon Helleputte van Simon Endurance Lab.  
+Dit weekend wordt georganiseerd door SOLA (Stefanie Deleu) in samenwerking met Simon Helleputte van [Simon Endurance Lab](https://www.instagram.com/simonendurancelab/).  
 Simon is bewegingswetenschapper en coach, gespecialiseerd in de impact van fysieke activiteit op gezondheid, prestaties en mentale veerkracht. Hij vertaalt wetenschap naar begrijpelijke, relevante en toepasbare inzichten, zonder dogma’s.  
 SOLA zorgt voor de omkadering en integratie.
 
@@ -339,7 +345,7 @@ Je vertrekt met meer voeling met jezelf en meer vertrouwen om andere keuzes te m
 
 ## Expertise & coördinatie
 
-Dit weekend wordt begeleid door Sarah Deleu (Logisch Gezond), EFT-therapeut, in samenwerking met SOLA.
+Dit weekend wordt begeleid door Sarah Deleu ([Logisch Gezond](https://logisch-gezond.be/)), EFT-therapeut, in samenwerking met SOLA.
 
 **Emotional Freedom Techniques (EFT)**  
 Een praktische methode om emoties en spanning te herkennen én los te laten. Je leert jezelf op een eenvoudige manier reguleren, een techniek die je ook na het weekend zelfstandig blijft gebruiken.
@@ -351,7 +357,7 @@ We bekijken jouw hulpvraag binnen de context van vaak onzichtbare patronen die h
 Met de aangeleerde EFT-techniek werken we met een verdiepende methode die je helpt eerdere ervaringen op een nieuwe manier te verankeren, met meer steun en veiligheid.
 
 **Lichaamsintegratie via yoga**  
-Lisa van Liv (Gent) begeleidt rustige yoga, stretch en eenvoudige beweging. Zo krijgt wat je mentaal en emotioneel leert ook een plek in je lichaam.
+Lisa van [LIV](https://www.livyourlife.be/) (Gent) begeleidt rustige yoga, stretch en eenvoudige beweging. Zo krijgt wat je mentaal en emotioneel leert ook een plek in je lichaam.
 
 ## Programma
 
@@ -525,7 +531,7 @@ export const people: Person[] = [
     bio: "Simon vertaalt sportwetenschap, gestoeld op zijn doctoraat en onderzoek in inspanningsfysiologie naar duidelijke en haalbare stappen. Hij laat je aan den lijve ervaren wat beweging doet met je hart, uithouding en energie, en helpt je slimmer bewegen.",
     logo: "/simon-helleputte.webp",
     isTeamMember: false,
-    website: "https://www.instagram.com/simonendurancelab",
+    website: "https://www.instagram.com/simonendurancelab/",
   },
   {
     name: "Sarah Deleu",

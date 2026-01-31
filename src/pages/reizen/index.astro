@@ -13,25 +13,26 @@ const trips = journeys.filter((journey) => journey.type === "Reis");
 const weekendsWithImages = await Promise.all(
   weekends.map(async (weekend) => {
     let imageUrl = weekend.heroImage;
+    let heroImageData;
     // If it's a local image path, process it
     if (weekend.heroImage?.startsWith("/src/assets/images/")) {
       if (weekend.slug === "exercise-is-medicine") {
-        const optimized = await getImage({
+        heroImageData = await getImage({
           src: exerciseImage,
           width: 1400,
           quality: 85,
         });
-        imageUrl = optimized.src;
+        imageUrl = heroImageData.src;
       } else if (weekend.slug === "bewustwording-connectie") {
-        const optimized = await getImage({
+        heroImageData = await getImage({
           src: bewustwordingImage,
           width: 1400,
           quality: 85,
         });
-        imageUrl = optimized.src;
+        imageUrl = heroImageData.src;
       }
     }
-    return { ...weekend, heroImage: imageUrl };
+    return { ...weekend, heroImage: imageUrl, heroImageData };
   }),
 );
 
@@ -39,18 +40,19 @@ const weekendsWithImages = await Promise.all(
 const tripsWithImages = await Promise.all(
   trips.map(async (trip) => {
     let imageUrl = trip.heroImage;
+    let heroImageData;
     // If it's a local image path, process it
     if (trip.heroImage?.startsWith("/src/assets/images/")) {
       if (trip.slug === "sola-terra-frankrijk") {
-        const optimized = await getImage({
+        heroImageData = await getImage({
           src: terraImage,
           width: 1400,
           quality: 85,
         });
-        imageUrl = optimized.src;
+        imageUrl = heroImageData.src;
       }
     }
-    return { ...trip, heroImage: imageUrl };
+    return { ...trip, heroImage: imageUrl, heroImageData };
   })
 );
 ---
@@ -91,12 +93,18 @@ const tripsWithImages = await Promise.all(
         >
           <div
             class="relative aspect-video bg-base-200 overflow-hidden"
-            style={{
-              backgroundImage: `url(${weekend.heroImage})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
           >
+            {weekend.heroImage && (
+              <img
+                class="absolute inset-0 w-full h-full object-cover"
+                src={weekend.heroImage}
+                width={weekend.heroImageData?.width ?? 1400}
+                height={weekend.heroImageData?.height ?? 933}
+                alt={`${weekend.name} in ${weekend.location}`}
+                loading="lazy"
+                decoding="async"
+              />
+            )}
             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
               <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold">
                 Bekijk weekend
@@ -130,12 +138,18 @@ const tripsWithImages = await Promise.all(
           </div>
           <div
             class="relative aspect-video bg-base-200 overflow-hidden"
-            style={{
-              backgroundImage: `url(${trip.heroImage})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
           >
+            {trip.heroImage && (
+              <img
+                class="absolute inset-0 w-full h-full object-cover"
+                src={trip.heroImage}
+                width={trip.heroImageData?.width ?? 1400}
+                height={trip.heroImageData?.height ?? 933}
+                alt={`${trip.name} in ${trip.location}`}
+                loading="lazy"
+                decoding="async"
+              />
+            )}
           </div>
           <div class="p-6 space-y-3 flex-1 flex flex-col">
             <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-base-500">

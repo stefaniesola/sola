@@ -1,13 +1,22 @@
+---
+interface Props {
+  heading: string;
+  description: string;
+}
+
+const { heading, description } = Astro.props as Props;
+---
+
 <section>
   <div class="px-8 pt-20 mx-auto md:px-12 lg:px-24 max-w-7xl">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-12">
       <div class="text-center lg:text-left">
-        <p
+        <h1
           class="text-xl leading-tight tracking-tight sm:text-2xl md:text-3xl capitalize lg:text-4xl font-medium text-base-900 lg:text-balance">
-          Frequently asked questions
-        </p>
+          {heading}
+        </h1>
         <p class="text-base leading-normal mt-4 text-base-500 font-medium">
-          Answers to commonly asked questions about our platform
+          {description}
         </p>
       </div>
       <div

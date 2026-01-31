@@ -19,27 +19,30 @@ export async function getStaticPaths() {
   return Promise.all(
     weekends.map(async (weekend) => {
       let imageUrl = weekend.heroImage;
+      let heroImageData;
       // If it's a local image path, process it
       if (weekend.heroImage?.startsWith("/src/assets/images/")) {
         if (weekend.slug === "exercise-is-medicine") {
-          const optimized = await getImage({
+          heroImageData = await getImage({
             src: exerciseImage,
             width: 1400,
             quality: 85,
           });
-          imageUrl = optimized.src;
+          imageUrl = heroImageData.src;
         } else if (weekend.slug === "bewustwording-connectie") {
-          const optimized = await getImage({
+          heroImageData = await getImage({
             src: bewustwordingImage,
             width: 1400,
             quality: 85,
           });
-          imageUrl = optimized.src;
+          imageUrl = heroImageData.src;
         }
       }
       return {
         params: { slug: weekend.slug },
-        props: { weekend: { ...weekend, heroImage: imageUrl } },
+        props: {
+          weekend: { ...weekend, heroImage: imageUrl, heroImageData },
+        },
       };
     }),
   );
@@ -52,6 +55,13 @@ const toc = extractHeadings(markdownContent);
 const sectionHeadings = toc.filter((item) => item.level === 2);
 const keyFacts = weekend.keyFacts ?? [];
 const faqItems = weekend.faq ?? [];
+const metaDescriptionBase = `${weekend.shortDescription} Locatie: ${weekend.location}. Data: ${weekend.dates}.`;
+const metaDescription =
+  metaDescriptionBase.length > 160
+    ? `${metaDescriptionBase.slice(0, 157).trimEnd()}...`
+    : metaDescriptionBase;
+const weekendTitle = `SOLA Travel | ${weekend.name} | ${weekend.location}`;
+const heroImageAlt = `${weekend.name} in ${weekend.location}`;
 
 const buildAccordionSections = (markdown: string) => {
   const lines = markdown.split("\n");
@@ -244,19 +254,24 @@ const carouselImages = await Promise.all(
 ---
 
 <BaseLayout
-  title={`SOLA | ${weekend.name}`}
-  description={weekend.shortDescription}
+  title={weekendTitle}
+  description={metaDescription}
+  ogImage={weekend.heroImage}
+  ogImageAlt={heroImageAlt}
 >
   <section class="relative bg-base-900 text-white">
-    <div
-      class="absolute inset-0 opacity-60"
-      style={{
-        backgroundImage: `url(${weekend.heroImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-    </div>
+    {weekend.heroImage && (
+      <img
+        class="absolute inset-0 w-full h-full object-cover opacity-60"
+        src={weekend.heroImage}
+        width={weekend.heroImageData?.width ?? 1400}
+        height={weekend.heroImageData?.height ?? 933}
+        alt={heroImageAlt}
+        loading="eager"
+        decoding="async"
+        fetchpriority="high"
+      />
+    )}
     <div class="relative max-w-6xl mx-auto px-6 py-24 space-y-6">
       <p class="uppercase text-xs tracking-[0.25em] text-white/70">
         {weekend.type}
@@ -315,6 +330,8 @@ const carouselImages = await Promise.all(
           >
             <img
               src={image.src}
+              width={image.width}
+              height={image.height}
               alt={`SOLA weekend sfeerbeeld ${index + 1}`}
               loading="lazy"
               decoding="async"
@@ -506,6 +523,32 @@ const carouselImages = await Promise.all(
       </div>
     </section>
   )}
+
+  <section class="max-w-6xl mx-auto px-6 pb-24">
+    <div class="rounded-2xl border border-base-200 bg-base-25 p-6 md:p-8">
+      <h2 class="text-2xl font-semibold text-base-900">
+        Meer weten over SOLA
+      </h2>
+      <p class="text-base-700 mt-2 max-w-2xl">
+        Ontdek hoe SOLA weekenden opbouwt, leer het team kennen of plan een
+        gesprek voor je inschrijving.
+      </p>
+      <div class="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
+        <a class="text-accent-700 hover:text-accent-800" href="/weekenden">
+          Bekijk alle weekenden
+        </a>
+        <a class="text-accent-700 hover:text-accent-800" href="/over-ons">
+          Over SOLA en experten
+        </a>
+        <a class="text-accent-700 hover:text-accent-800" href="/contact">
+          Plan een gesprek
+        </a>
+        <a class="text-accent-700 hover:text-accent-800" href="/faq">
+          Bekijk veelgestelde vragen
+        </a>
+      </div>
+    </div>
+  </section>
 
   <div class="fixed inset-x-0 bottom-0 z-40 border-t border-base-200 bg-white/95 backdrop-blur lg:hidden">
     <div class="max-w-6xl mx-auto px-4 py-3 space-y-3">
