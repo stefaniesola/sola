@@ -10,13 +10,25 @@ export async function getStaticPaths() {
   const trips = journeys.filter((journey) => journey.type === "Reis");
   return Promise.all(
     trips.map(async (trip) => {
-      let imageUrl = trip.heroImage;
+      let imageUrl =
+        typeof trip.heroImage === "string" ? trip.heroImage : trip.heroImage?.src;
       let heroImageData;
-      // If it's a local image path, process it
-      if (trip.heroImage?.startsWith("/src/assets/images/")) {
-        if (trip.slug === "sola-terra-frankrijk") {
+      if (trip.heroImage) {
+        // If it's a local image path, process it
+        if (typeof trip.heroImage === "string") {
+          if (trip.heroImage.startsWith("/src/assets/images/")) {
+            if (trip.slug === "sola-terra-frankrijk") {
+              heroImageData = await getImage({
+                src: terraImage,
+                width: 1400,
+                quality: 85,
+              });
+              imageUrl = heroImageData.src;
+            }
+          }
+        } else {
           heroImageData = await getImage({
-            src: terraImage,
+            src: trip.heroImage,
             width: 1400,
             quality: 85,
           });

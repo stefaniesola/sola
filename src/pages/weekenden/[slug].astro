@@ -3,7 +3,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import type { Journey } from "../../data/content";
 import { journeys } from "../../data/content";
 import { getImage } from "astro:assets";
-import exerciseImage from "../../assets/images/2596052607.jpg";
 import bewustwordingImage from "../../assets/images/2631991747.jpg";
 import {
   extractHeadings,
@@ -22,20 +21,27 @@ export async function getStaticPaths() {
   const weekends = journeys.filter((journey) => journey.type === "Weekend");
   return Promise.all(
     weekends.map(async (weekend) => {
-      let imageUrl = weekend.heroImage;
+      let imageUrl =
+        typeof weekend.heroImage === "string"
+          ? weekend.heroImage
+          : weekend.heroImage?.src;
       let heroImageData;
-      // If it's a local image path, process it
-      if (weekend.heroImage?.startsWith("/src/assets/images/")) {
-        if (weekend.slug === "exercise-is-medicine") {
+      if (weekend.heroImage) {
+        // If it's a local image path, process it
+        if (typeof weekend.heroImage === "string") {
+          if (weekend.heroImage.startsWith("/src/assets/images/")) {
+            if (weekend.slug === "bewustwording-connectie") {
+              heroImageData = await getImage({
+                src: bewustwordingImage,
+                width: 1400,
+                quality: 85,
+              });
+              imageUrl = heroImageData.src;
+            }
+          }
+        } else {
           heroImageData = await getImage({
-            src: exerciseImage,
-            width: 1400,
-            quality: 85,
-          });
-          imageUrl = heroImageData.src;
-        } else if (weekend.slug === "bewustwording-connectie") {
-          heroImageData = await getImage({
-            src: bewustwordingImage,
+            src: weekend.heroImage,
             width: 1400,
             quality: 85,
           });

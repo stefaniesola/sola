@@ -2,7 +2,6 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { journeys, uspTags, reizenPage } from "../../data/content";
 import { getImage } from "astro:assets";
-import exerciseImage from "../../assets/images/2596052607.jpg";
 import bewustwordingImage from "../../assets/images/2631991747.jpg";
 import terraImage from "../../assets/images/1513986998.jpg";
 
@@ -12,20 +11,27 @@ const trips = journeys.filter((journey) => journey.type === "Reis");
 // Process hero images for weekends
 const weekendsWithImages = await Promise.all(
   weekends.map(async (weekend) => {
-    let imageUrl = weekend.heroImage;
+    let imageUrl =
+      typeof weekend.heroImage === "string"
+        ? weekend.heroImage
+        : weekend.heroImage?.src;
     let heroImageData;
-    // If it's a local image path, process it
-    if (weekend.heroImage?.startsWith("/src/assets/images/")) {
-      if (weekend.slug === "exercise-is-medicine") {
+    if (weekend.heroImage) {
+      if (typeof weekend.heroImage === "string") {
+        // If it's a local image path, process it
+        if (weekend.heroImage.startsWith("/src/assets/images/")) {
+          if (weekend.slug === "bewustwording-connectie") {
+            heroImageData = await getImage({
+              src: bewustwordingImage,
+              width: 1400,
+              quality: 85,
+            });
+            imageUrl = heroImageData.src;
+          }
+        }
+      } else {
         heroImageData = await getImage({
-          src: exerciseImage,
-          width: 1400,
-          quality: 85,
-        });
-        imageUrl = heroImageData.src;
-      } else if (weekend.slug === "bewustwording-connectie") {
-        heroImageData = await getImage({
-          src: bewustwordingImage,
+          src: weekend.heroImage,
           width: 1400,
           quality: 85,
         });
@@ -39,13 +45,25 @@ const weekendsWithImages = await Promise.all(
 // Process hero images for trips
 const tripsWithImages = await Promise.all(
   trips.map(async (trip) => {
-    let imageUrl = trip.heroImage;
+    let imageUrl =
+      typeof trip.heroImage === "string" ? trip.heroImage : trip.heroImage?.src;
     let heroImageData;
-    // If it's a local image path, process it
-    if (trip.heroImage?.startsWith("/src/assets/images/")) {
-      if (trip.slug === "sola-terra-frankrijk") {
+    if (trip.heroImage) {
+      // If it's a local image path, process it
+      if (typeof trip.heroImage === "string") {
+        if (trip.heroImage.startsWith("/src/assets/images/")) {
+          if (trip.slug === "sola-terra-frankrijk") {
+            heroImageData = await getImage({
+              src: terraImage,
+              width: 1400,
+              quality: 85,
+            });
+            imageUrl = heroImageData.src;
+          }
+        }
+      } else {
         heroImageData = await getImage({
-          src: terraImage,
+          src: trip.heroImage,
           width: 1400,
           quality: 85,
         });
