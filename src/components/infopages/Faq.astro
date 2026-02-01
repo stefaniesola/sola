@@ -34,7 +34,7 @@ const { heading, description } = Astro.props as Props;
           <button
             @click="setActiveAccordion(id)"
             class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
-            <span>How does end-to-end encryption work?</span>
+            <span>1. Voor wie zijn SOLA-reizen bedoeld?</span>
             <svg
               class="size-5 duration-300 ease-out text-accent-500 -rotate-[45deg]"
               :class="{ '-rotate-[45deg]': activeAccordion==id }"
@@ -52,11 +52,125 @@ const { heading, description } = Astro.props as Props;
           </button>
           <div x-show="activeAccordion==id" x-collapse="">
             <div class="p-4 pt-2 text-zinc-500">
-              End-to-end encryption ensures that only the sender and recipient
-              can access the content of a message. The information is encrypted
-              on the sender's device and can only be decrypted by the intended
-              recipient, preventing any intermediaries, including the platform
-              provider, from accessing the data.
+              <p>
+                SOLA-reizen en weekenden zijn er voor mensen die voelen dat
+                gezondheid, natuur en persoonlijke groei samen mogen komen.
+              </p>
+              <p>Het is fijn als je</p>
+              <ul>
+                <li>
+                  graag beweegt en actief in het leven staat, zonder dat sport
+                  je volledige identiteit moet zijn
+                </li>
+                <li>
+                  voelt dat beweging essentieel is voor je gezondheid, en daar
+                  graag meer inzicht in krijgt
+                </li>
+                <li>
+                  interesse hebt in voeding, herstel en hoe je lichaam echt
+                  werkt
+                </li>
+                <li>graag tijd doorbrengt in de natuur</li>
+                <li>
+                  openstaat om stil te staan bij wat er in jou leeft, op jouw
+                  tempo
+                </li>
+              </ul>
+              <p>
+                Elke SOLA-reis heeft daarnaast een eigen thema en focus. Daarom
+                verschilt het accent per weekend of reis.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>2. Is er een bepaalde fysieke conditie vereist?</span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                Een basisconditie is belangrijk, omdat we tijdens onze reizen en
+                weekenden regelmatig bewegen. Hoe intensief dat is, verschilt
+                per programma en wordt altijd duidelijk vermeld op de
+                reispagina.
+              </p>
+              <p>
+                We houden rekening met de groep en passen het tempo aan waar
+                nodig. Als er verschillende niveaus zijn, splitsen we soms op in
+                kleinere groepjes zodat iedereen op een fijne en haalbare manier
+                kan deelnemen.
+              </p>
+              <p>
+                Twijfel je of een programma bij je past? Neem gerust
+                <a class="text-accent-700 hover:text-accent-800" href="/contact">
+                  contact met ons op
+                </a>
+                .
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>3. Hoe groot zijn de groepen?</span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                We werken bewust met kleine groepen, zodat er ruimte is voor
+                persoonlijke aandacht, rust en verbinding, met jezelf, de natuur
+                en elkaar.
+              </p>
+              <p>
+                De groepsgrootte ligt meestal tussen 8 en 14 deelnemers. Het
+                exacte minimum en maximum wordt telkens vermeld op de pagina van
+                het specifieke weekend of de reis.
+              </p>
             </div>
           </div>
         </div>
@@ -68,7 +182,7 @@ const { heading, description } = Astro.props as Props;
             @click="setActiveAccordion(id)"
             class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
             <span>
-              Can I access my encrypted data if I forget my encryption key?
+              4. Wanneer kan ik inschrijven?
             </span>
             <svg
               class="w-5 h-5 duration-300 ease-out text-accent-500"
@@ -90,11 +204,33 @@ const { heading, description } = Astro.props as Props;
             x-collapse=""
             style="display: none;">
             <div class="p-4 pt-2 text-zinc-500">
-              No, forgetting or losing your encryption key means that your
-              encrypted data cannot be accessed. This is a crucial security
-              measure to ensure that even if someone gains unauthorized access
-              to your account, they won't be able to decrypt and view your
-              messages or files.
+              <p>
+                Dat kan eenvoudig via de reispagina zelf. Liever persoonlijk
+                contact? Dan mag je ook altijd een
+                <a
+                  class="text-accent-700 hover:text-accent-800"
+                  href="mailto:hello@solatravel.be"
+                >
+                  e-mail
+                </a>
+                sturen of via
+                <a
+                  class="text-accent-700 hover:text-accent-800"
+                  href="https://wa.me/32493410738"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  WhatsApp
+                </a>
+                rechtstreeks contact opnemen met Stefanie.
+              </p>
+              <p>
+                Twijfel je nog of heb je een vraag voor je boekt? Neem gerust
+                eerst
+                <a class="text-accent-700 hover:text-accent-800" href="/contact">
+                  contact op
+                </a>
+              </p>
             </div>
           </div>
         </div>
@@ -106,8 +242,7 @@ const { heading, description } = Astro.props as Props;
             @click="setActiveAccordion(id)"
             class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
             <span>
-              Are there any limitations to the self-destructing messages
-              feature?
+              5. Wanneer is een reis gegarandeerd?
             </span>
             <svg
               class="w-5 h-5 duration-300 ease-out text-accent-500"
@@ -129,12 +264,50 @@ const { heading, description } = Astro.props as Props;
             x-collapse=""
             style="display: none;">
             <div class="p-4 pt-2 text-zinc-500">
-              Self-destructing messages are designed to automatically delete
-              themselves after a specific period or upon being read by the
-              recipient. However, it's important to note that the feature only
-              removes the message from the devices involved in the conversation.
-              Recipients may take screenshots or use other means to capture the
-              content, which is beyond the platform's control.
+              <p>
+                Elke reis heeft een minimum aantal deelnemers. Zodra dat bereikt
+                is, laten we dit weten. Gaat een reis uitzonderlijk niet door,
+                dan brengen we je tijdig op de hoogte.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>6. Kan ik een optie nemen?</span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                In sommige gevallen is het mogelijk om tijdelijk een optie te
+                nemen. Neem hiervoor even
+                <a class="text-accent-700 hover:text-accent-800" href="/contact">
+                  contact op
+                </a>
+                .
+              </p>
             </div>
           </div>
         </div>
@@ -146,8 +319,7 @@ const { heading, description } = Astro.props as Props;
             @click="setActiveAccordion(id)"
             class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
             <span>
-              What happens if I enable two-factor authentication and lose my
-              device?
+              7. Wanneer heb ik recht op vroegboekvoordelen?
             </span>
             <svg
               class="w-5 h-5 duration-300 ease-out text-accent-500"
@@ -169,12 +341,340 @@ const { heading, description } = Astro.props as Props;
             x-collapse=""
             style="display: none;">
             <div class="p-4 pt-2 text-zinc-500">
-              Losing your device doesn't automatically compromise your account's
-              security. It's recommended to contact our support team as soon as
-              possible to disable the two-factor authentication on your lost
-              device and set up the authentication on your new device. This
-              process will help protect your account from unauthorized access
-              while ensuring you can regain access to it.
+              <p>
+                Voor elke SOLA-reis of elk weekend is er een vroegboekvoordeel.
+                Op de reispagina staat telkens vermeld tot welke datum dit
+                voordeel geldt en wat je precies krijgt. Dat kan verschillen per
+                programma: soms is het een extra persoonlijk cadeau, soms een
+                financiële korting op de reisprijs. Wie vroeger inschrijft,
+                krijgt dus altijd iets extra.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>8. Worden er infomomenten georganiseerd?</span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                Voor sommige reizen en weekenden organiseren we een online
+                infomoment na inschrijving.
+              </p>
+              <p>
+                Je ontvangt hierover automatisch info in onze communicatie.
+                Meestal gaat het om een online meeting van ongeveer een uur,
+                zo’n drie weken voor vertrek. Tijdens dat moment overlopen we
+                alle praktische details en is er ruimte om vragen te stellen,
+                zodat je goed voorbereid aan je reis begint.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>9. Hoe kan ik een afspraak maken?</span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                Via de knop “Plan een gesprek” op de website kan je eenvoudig
+                een moment inplannen om je vragen persoonlijk te bespreken.
+              </p>
+              <p>
+                Dat kan online of fysiek in Gent. Indien nodig kan ik mij ook
+                verplaatsen. Zo bekijken we samen of een reis of weekend bij jou
+                past.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>10. Hoe boek ik een SOLA-weekend of reis?</span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                Boeken kan eenvoudig via de boekingsknop op de reispagina van
+                het weekend of de reis die je kiest.
+              </p>
+              <p>
+                Liever persoonlijk contact? Dan mag je je ook inschrijven door
+                een
+                <a
+                  class="text-accent-700 hover:text-accent-800"
+                  href="mailto:hello@solatravel.be"
+                >
+                  e-mail
+                </a>
+                of
+                <a
+                  class="text-accent-700 hover:text-accent-800"
+                  href="https://wa.me/32493410738"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  WhatsApp-bericht
+                </a>
+                te sturen. Na je inschrijving ontvang je een bevestigingsmail
+                met verdere praktische informatie.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>11. Wanneer is mijn inschrijving definitief?</span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                Wanneer je betaling ontvangen is en je een bevestigingsmail van
+                ons kreeg.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>12. Kan ik in termijnen betalen?</span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                Voor sommige reizen is gespreide betaling mogelijk. Neem
+                <a class="text-accent-700 hover:text-accent-800" href="/contact">
+                  contact op
+                </a>
+                als je dit wil bespreken.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>13. Wat is inbegrepen?</span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                Alles wat te maken heeft met logies, activiteiten en maaltijden
+                is inbegrepen in de prijs van de reis of het weekend. Ook
+                SOLA-merchandise die bij het programma hoort, is inbegrepen.
+              </p>
+              <p>
+                Gaat het om een optionele activiteit of een bijkomende
+                persoonlijke sessie, dan wordt dat altijd duidelijk vermeld op
+                de reispagina van de specifieke reis.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>14. Is vervoer inbegrepen?</span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                Vervoer van en naar de bestemming is niet standaard inbegrepen.
+                Om het praktisch en zorgeloos te maken, stellen we vóór vertrek
+                een carpoollijst op. Zo kunnen deelnemers onderling afspreken om
+                samen te rijden. Dat is niet alleen handig, maar ook gezellig en
+                duurzamer.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>15. Kan ik een eenpersoonskamer krijgen?</span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                Dat kan op aanvraag. We bekijken eerst wat de mogelijkheden zijn,
+                want niet elk verblijf heeft eenpersoonskamers. Indien mogelijk,
+                boeken we dit voor jou mits toeslag.
+              </p>
             </div>
           </div>
         </div>
@@ -186,7 +686,7 @@ const { heading, description } = Astro.props as Props;
             @click="setActiveAccordion(id)"
             class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
             <span>
-              Is my personal information shared or sold to third parties?
+              16. Ik wil graag vroeger aankomen of later vertrekken, kan dat?
             </span>
             <svg
               class="w-5 h-5 duration-300 ease-out text-accent-500"
@@ -208,10 +708,14 @@ const { heading, description } = Astro.props as Props;
             x-collapse=""
             style="display: none;">
             <div class="p-4 pt-2 text-zinc-500">
-              No, we strictly adhere to a privacy-centric approach. Your
-              personal information is never shared, sold, or monetized. We
-              prioritize your privacy and ensure that your data remains
-              confidential and only accessible to you.
+              <p>
+                Soms is dat mogelijk, afhankelijk van de locatie en
+                beschikbaarheid. Neem hierover vooraf
+                <a class="text-accent-700 hover:text-accent-800" href="/contact">
+                  contact met ons op
+                </a>
+                .
+              </p>
             </div>
           </div>
         </div>
@@ -222,7 +726,7 @@ const { heading, description } = Astro.props as Props;
           <button
             @click="setActiveAccordion(id)"
             class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
-            <span>Can I use this platform on multiple devices?</span>
+            <span>17. Is een verzekering inbegrepen?</span>
             <svg
               class="w-5 h-5 duration-300 ease-out text-accent-500"
               :class="{ '-rotate-[45deg]': activeAccordion==id }"
@@ -243,10 +747,19 @@ const { heading, description } = Astro.props as Props;
             x-collapse=""
             style="display: none;">
             <div class="p-4 pt-2 text-zinc-500">
-              Yes, you can access our platform on multiple devices. Your
-              encrypted data remains synced across all devices, allowing you to
-              seamlessly communicate and access your files and messages from
-              anywhere.
+              <p>
+                Nee. Een reis- of annulatieverzekering is niet standaard
+                inbegrepen. Je staat hier zelf voor in, indien je dat wenst.
+              </p>
+              <p>
+                Voor weekenden in België volstaat voor veel mensen hun eigen
+                basisdekking, zoals een familiale verzekering en
+                ziekteverzekering. Toch kan een extra annulatieverzekering
+                interessant zijn, bijvoorbeeld als je door ziekte of onverwachte
+                omstandigheden niet kan deelnemen. Twijfel je welke verzekering
+                voor jou zinvol is? Informeer best even bij je eigen
+                verzekeraar.
+              </p>
             </div>
           </div>
         </div>
@@ -258,7 +771,8 @@ const { heading, description } = Astro.props as Props;
             @click="setActiveAccordion(id)"
             class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
             <span>
-              Are there any storage limitations for files and documents?
+              18. Ben ik vrij om activiteiten niet mee te doen of zelf iets
+              anders te doen?
             </span>
             <svg
               class="w-5 h-5 duration-300 ease-out text-accent-500"
@@ -280,11 +794,12 @@ const { heading, description } = Astro.props as Props;
             x-collapse=""
             style="display: none;">
             <div class="p-4 pt-2 text-zinc-500">
-              Our platform provides ample storage space for your files and
-              documents. However, there may be storage limitations based on the
-              pricing plan you choose. We offer flexible plans to suit your
-              needs and provide options to upgrade if you require additional
-              storage capacity.
+              <p>
+                We werken met een vast programma, omdat dit bijdraagt aan de
+                groepsdynamiek en de opbouw van het weekend. Toch is er ruimte
+                voor overleg. We bekijken samen wat mogelijk is, met respect
+                voor de groep en het programma.
+              </p>
             </div>
           </div>
         </div>
@@ -295,7 +810,7 @@ const { heading, description } = Astro.props as Props;
           <button
             @click="setActiveAccordion(id)"
             class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
-            <span>Is it possible to export my data from the platform?</span>
+            <span>19. Is er veel vrije tijd of is het programma vol?</span>
             <svg
               class="w-5 h-5 duration-300 ease-out text-accent-500"
               :class="{ '-rotate-[45deg]': activeAccordion==id }"
@@ -316,11 +831,285 @@ const { heading, description } = Astro.props as Props;
             x-collapse=""
             style="display: none;">
             <div class="p-4 pt-2 text-zinc-500">
-              Yes, you can export your data from the platform. We offer export
-              features that allow you to download your messages, files, and
-              documents, ensuring you have a local copy for backup or migration
-              purposes. It provides you with greater control and flexibility
-              over your data.
+              <p>
+                Er is een duidelijke structuur, maar ook ruimte om te rusten, te
+                wandelen of even tijd voor jezelf te nemen.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>20. Moet ik persoonlijke dingen delen in de groep?</span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                Nee. Delen mag, niets moet. Jij bepaalt altijd zelf wat je wel
+                of niet deelt.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>21. Wordt er rekening gehouden met voeding of allergieën?</span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>Ja. Je kan dit vooraf doorgeven bij inschrijving.</p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>
+              22. Maak ik voor de reis al kennis met de begeleider of andere
+              deelnemers?
+            </span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                Ja. Voor vertrek organiseren we een online kennismakingsmoment
+                van ongeveer een uur met de expert en de andere deelnemers. Zo
+                leer je elkaar al wat kennen, kan je vragen stellen en start je
+                met een vertrouwd gevoel aan het weekend.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>23. Wat als ik moet annuleren?</span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                We begrijpen dat plannen kunnen veranderen. Annuleren kan
+                schriftelijk via
+                <a
+                  class="text-accent-700 hover:text-accent-800"
+                  href="mailto:hello@solatravel.be"
+                >
+                  e-mail
+                </a>
+                . De datum waarop we je bericht ontvangen, geldt als officiële
+                annulatiedatum.
+              </p>
+              <p>
+                De annuleringsvoorwaarden en bijhorende kosten vind je terug in
+                onze
+                <a class="text-accent-700 hover:text-accent-800" href="/terms">
+                  algemene voorwaarden
+                </a>
+                . Die verschillen naargelang het moment van annuleren vóór
+                vertrek.
+              </p>
+              <p>
+                Omdat onvoorziene omstandigheden altijd mogelijk zijn, raden we
+                aan om zelf een annulatieverzekering te overwegen.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>
+              24. Wat gebeurt er als een reis geannuleerd wordt door SOLA?
+            </span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>
+                Als er onvoldoende deelnemers zijn, kan een reis niet doorgaan.
+                Je wordt hierover tijdig verwittigd (ten laatste enkele weken
+                vooraf, afhankelijk van de reis).
+              </p>
+              <p>
+                Je kan dan kiezen om kosteloos om te boeken naar een andere
+                SOLA-reis, of om het reeds betaalde bedrag te ontvangen als
+                waardebon. Die kan je later gebruiken voor een andere reis.
+                Indien je in de toekomst niet meer kan deelnemen, bekijken we
+                samen een terugbetaling.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          x-data="{ id: $id('accordion') }"
+          :class="{ 'text-black': activeAccordion==id, 'text-zinc-600 hover:text-accent-500': activeAccordion!=id }"
+          class="cursor-pointer group text-zinc-600 hover:text-accent-500">
+          <button
+            @click="setActiveAccordion(id)"
+            class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+            <span>
+              25. Wat neem ik mee naar huis na een SOLA-weekend of reis?
+            </span>
+            <svg
+              class="w-5 h-5 duration-300 ease-out text-accent-500"
+              :class="{ '-rotate-[45deg]': activeAccordion==id }"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6">
+              </path>
+            </svg>
+          </button>
+          <div
+            x-show="activeAccordion==id"
+            x-collapse=""
+            style="display: none;">
+            <div class="p-4 pt-2 text-zinc-500">
+              <p>Je gaat naar huis met inzichten die blijven doorwerken.</p>
+              <p>
+                Een SOLA-weekend of reis is een moment waarop je beter leert
+                begrijpen wat jouw lichaam, energie en systeem nodig hebben. Je
+                leert verbanden zien, signalen herkennen en keuzes maken die
+                kloppen voor jou.
+              </p>
+              <p>
+                Bij elk programma is een verdiepende sessie met de expert
+                inbegrepen (zoals Sarah of Simon). Daar vertaal je je ervaringen
+                naar je eigen context, met concrete en haalbare volgende
+                stappen.
+              </p>
+              <p>Afhankelijk van het thema neem je bijvoorbeeld mee:</p>
+              <ul>
+                <li>inzicht in je persoonlijke gezondheids- en bewegingsprofiel</li>
+                <li>
+                  data of observaties die tijdens het weekend verzameld werden
+                  (zoals metingen)
+                </li>
+                <li>
+                  concrete handvatten om beweging, herstel of leefstijl duurzaam
+                  te integreren
+                </li>
+                <li>praktische gewoontes die passen bij jouw lichaam en ritme</li>
+                <li>
+                  meer voeling met jezelf en meer vertrouwen om keuzes te maken
+                  die energie geven in plaats van kosten
+                </li>
+              </ul>
+              <p>
+                SOLA draait om bewuster bewegen en gerichter leven. Wat je
+                leert, neem je mee naar huis, en daar begint het echte verschil.
+              </p>
             </div>
           </div>
         </div>
