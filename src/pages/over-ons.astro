@@ -10,6 +10,7 @@ import OptimizedImage from "../layouts/utilities/OptimizedImage.astro";
 import { Image, getImage } from "astro:assets";
 import landscapeImage from "../assets/images/landscape.jpg";
 import stefaniePortrait from "../assets/images/Stefanie Deleu - SOLA Travel - profiel.JPG";
+import stefanieSolaPortrait from "../assets/images/Stefanie Deleu x SOLA TRAVEL.jpg";
 
 const coreTeam = people.filter((person) => person.isTeamMember === true);
 const partners = people.filter((person) => person.isTeamMember === false);
@@ -26,7 +27,7 @@ const optimizedLandscape = await getImage({
   quality: 90,
 });
 const optimizedMissionPortrait = await getImage({
-  src: stefaniePortrait,
+  src: stefanieSolaPortrait,
   width: 1200,
   quality: 90,
 });
