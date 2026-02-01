@@ -7,6 +7,7 @@ import exerciseImage from "../assets/images/2596052607.jpg";
 import bewustwordingImage from "../assets/images/2631991747.jpg";
 import terraImage from "../assets/images/1513986998.jpg";
 import hauteLoireImage from "../assets/images/haute-loire.jpg";
+import verblijfHogeVenenImage from "../assets/images/Verblijf in Hoge Venen.avif";
 
 const weekendHighlights = journeys
   .filter((journey) => journey.type === "Weekend")
@@ -64,6 +65,10 @@ const pillarsWithImages = await Promise.all(
       imageSrc = exerciseImage;
     } else if (pillar.image === "/src/assets/images/2631991747.jpg") {
       imageSrc = bewustwordingImage;
+    } else if (
+      pillar.image === "/src/assets/images/Verblijf in Hoge Venen.avif"
+    ) {
+      imageSrc = verblijfHogeVenenImage;
     } else if (pillar.image === "/src/assets/images/hero.jpg") {
       imageSrc = heroImage;
     } else if (pillar.image === "/src/assets/images/1513986998.jpg") {
