@@ -18,17 +18,23 @@ const { isJourneyPage = false } = Astro.props as Props;
   <div class="w-full mx-auto px-6 max-w-6xl lg:px-10">
     <div
       x-data="{ open: false }"
-      class="flex items-center justify-between py-4"
+      x-effect="document.body.style.overflow = open ? 'hidden' : ''"
+      @keydown.escape.window="open = false"
+      class="site-header__row flex items-center justify-between py-4"
     >
-      <a href="/" class="inline-flex items-center">
-        <Image src={logoImage} alt="SOLA" class="h-10 w-auto" />
+      <a href="/" class="brand-logo inline-flex items-center">
+        <Image
+          src={logoImage}
+          alt="SOLA"
+          class="brand-logo__image h-10 w-auto"
+        />
       </a>
       <button
-        @click="open = !open"
+        @click="open = !open; if (open) { $nextTick(() => $refs.firstNavLink?.focus()) }"
         :aria-expanded="open.toString()"
         aria-controls="main-navigation"
-        aria-label="Schakel navigatie"
-        class="inline-flex items-center justify-center p-2 text-base-700 hover:text-black focus:outline-none focus:text-black lg:hidden"
+        aria-label="Menu"
+        class="mobile-menu-button inline-flex items-center justify-center gap-2 text-base-700 hover:text-black focus:outline-none focus:text-black lg:hidden"
       >
         <svg
           :class="{'rotate-90': open}"
@@ -50,26 +56,72 @@ const { isJourneyPage = false } = Astro.props as Props;
             stroke-width="2"
             d="M6 18L18 6M6 6l12 12"></path>
         </svg>
+        <span class="text-sm font-semibold tracking-wide">Menu</span>
       </button>
+      <div
+        x-show="open"
+        x-transition.opacity
+        class="fixed inset-0 bg-black/40 lg:hidden"
+        @click="open = false"
+        aria-hidden="true"
+      ></div>
       <nav
         id="main-navigation"
-        :class="{'max-h-80 pt-4': open, 'max-h-0': !open}"
-        class="flex-col w-full lg:w-auto lg:flex lg:flex-row lg:items-center lg:gap-8 overflow-hidden transition-all duration-300 max-h-0 lg:max-h-none"
+        :class="open ? 'translate-x-0' : 'translate-x-full'"
+        class="fixed right-0 top-0 z-50 flex h-full w-72 flex-col bg-white px-6 pb-8 pt-6 shadow-xl transition-transform duration-300 lg:static lg:z-auto lg:h-auto lg:w-auto lg:translate-x-0 lg:flex lg:flex-row lg:items-center lg:gap-8 lg:bg-transparent lg:p-0 lg:shadow-none"
       >
-        <div
-        class="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-6 text-sm lg:text-[15px] font-medium tracking-wide"
-      >
-          <a class="hover:text-accent-700" href="/">Home</a>
-          <a class="hover:text-accent-700" href="/reizen">Reizen</a>
-          <a class="hover:text-accent-700" href="/over-ons">Over ons</a>
-          <a class="hover:text-accent-700" href="/contact">Contact</a>
+        <div class="flex items-center justify-between border-b border-black/10 pb-4 lg:hidden">
+          <span class="text-sm font-semibold tracking-wide text-base-700">
+            Menu
+          </span>
+          <button
+            type="button"
+            class="mobile-menu-button inline-flex items-center justify-center text-base-700 hover:text-black focus:outline-none focus:text-black"
+            @click="open = false"
+            aria-label="Sluit menu"
+          >
+            <svg
+              class="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
         </div>
-        <div class="mt-4 lg:mt-0 lg:ml-4 flex items-center">
+        <div
+          class="mt-6 flex flex-col gap-4 text-sm font-medium tracking-wide lg:mt-0 lg:flex-row lg:items-center lg:gap-6 lg:text-[15px]"
+        >
+          <a
+            class="hover:text-accent-700"
+            href="/"
+            @click="open = false"
+            x-ref="firstNavLink"
+            >Home</a
+          >
+          <a class="hover:text-accent-700" href="/reizen" @click="open = false"
+            >Reizen</a
+          >
+          <a class="hover:text-accent-700" href="/over-ons" @click="open = false"
+            >Over ons</a
+          >
+          <a class="hover:text-accent-700" href="/contact" @click="open = false"
+            >Contact</a
+          >
+        </div>
+        <div class="mt-6 lg:mt-0 lg:ml-4 flex items-center">
           <a
             href="https://calendly.com/hello-solatravel/30min"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center justify-center rounded-full bg-accent-600 text-white px-4 py-2 text-xs font-semibold tracking-wide hover:bg-accent-700 transition"
+            @click="open = false"
           >
             Plan een gesprek
           </a>
@@ -113,6 +165,37 @@ const { isJourneyPage = false } = Astro.props as Props;
       transform: none;
       opacity: 1;
       pointer-events: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .site-header__row {
+      align-items: center;
+    }
+
+    .brand-logo {
+      line-height: 0;
+      flex: 0 0 auto;
+    }
+
+    .brand-logo__image {
+      height: 28px;
+      width: auto;
+      max-height: 28px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .mobile-menu-button {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 10px;
+      border-radius: 9999px;
+    }
+
+    .mobile-menu-button:focus-visible {
+      outline: 2px solid rgba(0, 0, 0, 0.2);
+      outline-offset: 2px;
     }
   }
 </style>
