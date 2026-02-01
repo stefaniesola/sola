@@ -5,7 +5,11 @@ import { journeys } from "../../data/content";
 import { getImage } from "astro:assets";
 import exerciseImage from "../../assets/images/2596052607.jpg";
 import bewustwordingImage from "../../assets/images/2631991747.jpg";
-import { extractHeadings, processMarkdown } from "../../utils/markdown";
+import {
+  extractHeadings,
+  processMarkdown,
+  slugifyHeading,
+} from "../../utils/markdown";
 import carouselImageOne from "../../assets/images/2596052607.jpg";
 import carouselImageTwo from "../../assets/images/2631991747.jpg";
 import carouselImageThree from "../../assets/images/hero.jpg";
@@ -52,7 +56,6 @@ const { weekend } = Astro.props as { weekend: Journey };
 
 const markdownContent = weekend.longread || "";
 const toc = extractHeadings(markdownContent);
-const sectionHeadings = toc.filter((item) => item.level === 2);
 const keyFacts = weekend.keyFacts ?? [];
 const faqItems = weekend.faq ?? [];
 const metaDescriptionBase = `${weekend.shortDescription} Locatie: ${weekend.location}. Data: ${weekend.dates}.`;
@@ -123,7 +126,7 @@ const buildAccordionSections = (markdown: string) => {
 const { introMarkdown, sections } = buildAccordionSections(markdownContent);
 const introHtml = introMarkdown ? processMarkdown(introMarkdown).html : "";
 const accordionSections = sections.map((section, index) => {
-  const id = sectionHeadings[index]?.id ?? `section-${index + 1}`;
+  const id = slugifyHeading(section.title) || `section-${index + 1}`;
   const { html } = processMarkdown(section.content);
   return { ...section, id, html };
 });
@@ -413,16 +416,15 @@ const carouselImages = await Promise.all(
           <div class="space-y-2">
             {accordionSections.map((section, index) => (
               <div
-                id={section.id}
                 data-accordion-section
                 class="border-t border-base-200 last:border-b scroll-mt-24"
               >
                 <button
                   type="button"
+                  id={section.id}
                   class="w-full flex items-center justify-between gap-4 px-2 py-4 text-left text-base-900 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/50 transition hover:text-base-800 hover:bg-base-900/3"
                   aria-expanded={index === 0 ? "true" : "false"}
                   aria-controls={`weekend-panel-${index}`}
-                  id={`weekend-trigger-${index}`}
                   data-accordion-trigger="weekend"
                   data-accordion-id={section.id}
                 >
@@ -440,7 +442,7 @@ const carouselImages = await Promise.all(
                     index === 0 ? "pb-4 open" : "pb-0"
                   }`}
                   role="region"
-                  aria-labelledby={`weekend-trigger-${index}`}
+                  aria-labelledby={section.id}
                   data-accordion-panel="weekend"
                 >
                   {section.title === "Goed om weten - FAQ" && faqItems.length > 0 ? (
@@ -624,6 +626,17 @@ const carouselImages = await Promise.all(
         '[data-accordion-trigger="faq"]',
       );
       const ctaLinks = document.querySelectorAll("[data-accordion-target]");
+      const tocLinks = document.querySelectorAll(
+        '[data-accordion-link="weekend"]',
+      );
+
+      const getAnchorOffset = () => {
+        const value = getComputedStyle(document.body).getPropertyValue(
+          "--anchor-offset",
+        );
+        const parsed = Number.parseInt(value, 10);
+        return Number.isNaN(parsed) ? 120 : parsed;
+      };
 
       const closePanel = (button) => {
         const panelId = button.getAttribute("aria-controls");
@@ -672,8 +685,8 @@ const carouselImages = await Promise.all(
         panel.style.maxHeight = "none";
       };
 
-      const openFromTarget = (targetId) => {
-        if (!targetId) return;
+      const getTriggerForTarget = (targetId) => {
+        if (!targetId) return null;
         let button = document.querySelector(
           `[data-accordion-id="${targetId}"]`,
         );
@@ -684,10 +697,38 @@ const carouselImages = await Promise.all(
             '[data-accordion-trigger="weekend"]',
           );
         }
-        if (button) {
-          accordionButtons.forEach((item) => closePanel(item));
-          openPanel(button);
+        return button;
+      };
+
+      const getPreviousAccordionTrigger = (button) => {
+        if (!button) return null;
+        const currentSection = button.closest("[data-accordion-section]");
+        if (!currentSection) return button;
+        let previousSection = currentSection.previousElementSibling;
+        while (
+          previousSection &&
+          !previousSection.matches("[data-accordion-section]")
+        ) {
+          previousSection = previousSection.previousElementSibling;
         }
+        const previousTrigger = previousSection?.querySelector(
+          '[data-accordion-trigger="weekend"]',
+        );
+        return previousTrigger ?? button;
+      };
+
+      const openOnlyAndScroll = (targetHash) => {
+        const targetId = targetHash?.replace("#", "");
+        const button = getTriggerForTarget(targetId);
+        if (!button) return;
+        accordionButtons.forEach((item) => closePanel(item));
+        openPanel(button);
+        const scrollTarget = getPreviousAccordionTrigger(button);
+        if (!scrollTarget) return;
+        const offset = getAnchorOffset();
+        const targetTop =
+          scrollTarget.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: Math.max(targetTop, 0), behavior: "smooth" });
       };
 
       accordionButtons.forEach((button) => {
@@ -765,14 +806,24 @@ const carouselImages = await Promise.all(
       ctaLinks.forEach((link) => {
         link.addEventListener("click", () => {
           const targetId = link.getAttribute("data-accordion-target");
-          window.setTimeout(() => openFromTarget(targetId), 0);
+          window.setTimeout(() => openOnlyAndScroll(`#${targetId}`), 0);
+        });
+      });
+
+      tocLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const href = link.getAttribute("href");
+          if (!href || !href.startsWith("#")) return;
+          event.preventDefault();
+          window.history.pushState(null, "", href);
+          openOnlyAndScroll(href);
         });
       });
 
       const openFromHash = () => {
         const hash = window.location.hash.replace("#", "");
         if (hash) {
-          openFromTarget(hash);
+          openOnlyAndScroll(`#${hash}`);
         }
       };
 

@@ -18,6 +18,9 @@ const resolvedOgImage = ogImage
   ? new URL(ogImage, Astro.site ?? Astro.url).toString()
   : new URL("/images/stefanie-deleu-sola-travel.jpg", Astro.site ?? Astro.url)
       .toString();
+const isJourneyPage =
+  Astro.url.pathname.startsWith("/weekenden") ||
+  Astro.url.pathname.startsWith("/reizen");
 ---
 
 <html lang="nl" class="scroll-smooth selection:bg-accent-500 selection:text-white no-touchevents hydrated">
@@ -30,7 +33,11 @@ const resolvedOgImage = ogImage
       ogImageAlt={ogImageAlt}
     />
   </head>
-  <body class="bg-base-25 flex flex-col min-h-svh text-base-500 font-sans">
+  <body
+    class={`bg-base-25 flex flex-col min-h-svh text-base-500 font-sans${
+      isJourneyPage ? " journey-page" : ""
+    }`}
+  >
     {import.meta.env.PROD && (
       <!-- Google Tag Manager (noscript) -->
       <noscript>
@@ -39,7 +46,7 @@ const resolvedOgImage = ogImage
       </noscript>
       <!-- End Google Tag Manager (noscript) -->
     )}
-    <Navigation />
+    <Navigation isJourneyPage={isJourneyPage} />
     <main class="grow"><slot /></main>
     <Footer />
   </body>

@@ -55,6 +55,14 @@ body {
     /* Uses the 18px base */
 }
 
+.journey-page {
+    --anchor-offset: 120px;
+}
+
+.journey-page [id] {
+    scroll-margin-top: var(--anchor-offset);
+}
+
 
 /* Adds pointer cursor to buttons */
 button:not(:disabled),
