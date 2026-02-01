@@ -269,6 +269,8 @@ Schrijf je in vóór 15 maart 2026 en ontvang een extra cadeau.
 - Transport naar de locatie
 - Eigen verzekering
 
+Om het praktisch te maken, stellen we vóór vertrek een carpoollijst op. Zo kunnen deelnemers onderling afspreken om samen te rijden. Dat is gezellig en duurzamer.
+
 ## Boek je plek
 
 Na je inschrijving ontvang je een bevestiging en verdere praktische info [per e-mail](mailto:hello@solatravel.be).
@@ -532,6 +534,8 @@ Beperkt aantal plaatsen — kleine groep, bewust gekozen.
 
 - Reis naar de locatie
 - Persoonlijke uitgaven
+
+Om het praktisch te maken, stellen we vóór vertrek een carpoollijst op. Zo kunnen deelnemers onderling afspreken om samen te rijden. Dat is gezellig en duurzamer.
 
 ## Boek je plek
 
