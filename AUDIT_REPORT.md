@@ -1,77 +1,94 @@
-# SOLA Travel SEO + Performance Audit Report
+# SOLA Travel — SEO + Web Performance Audit Report
 
-## Phase 1 — Repo discovery & inventory
+## A) Repo discovery & inventory
 
-### How pages are generated
-- **Routes & structure**: Astro routes live in `src/pages`, with dynamic routes for `/weekenden/[slug].astro` and `/reizen/[slug].astro`. The content is data-driven via `src/data/content.ts` (journeys/people). 
-- **SEO metadata**: Site-wide metadata is defined in `src/components/BaseHead.astro`, with page-level props passed through `src/layouts/BaseLayout.astro`.
-- **Image pipeline**: `astro:assets` (`getImage`) is used for local images. A custom `OptimizedImage` helper exists in `src/layouts/utilities/OptimizedImage.astro`.
-- **Navigation/links**: Global navigation + footer are in `src/components/global`. Internal linking appears on hero CTAs and listing cards.
+### Routes & page templates
+- **Static pages (Astro):** `src/pages/index.astro`, `src/pages/contact.astro`, `src/pages/faq.astro`, `src/pages/newsletter.astro`, `src/pages/over-ons.astro`, `src/pages/privacy.astro`, `src/pages/terms.astro`.
+- **Collection-like pages:** `src/pages/reizen/index.astro`, `src/pages/weekenden/index.astro`.
+- **Dynamic routes:** `src/pages/reizen/[slug].astro`, `src/pages/weekenden/[slug].astro`.
+- **Layouts:** `src/layouts/BaseLayout.astro` and head/meta handler `src/components/BaseHead.astro`.
+- **Content source:** `src/data/content.ts` (journeys, page metadata, copy); `src/data/faq.ts` (FAQ content).
+- **Images:** mostly in `src/assets/images` with Astro asset pipeline (`getImage`, `Image`).
 
-### Page inventory (after updates)
-| Page | Title | Meta description | Single H1 | Canonical | OG tags | Structured sections | Image alts | Internal links | External links |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| `/` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `/weekenden` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| `/weekenden/exercise-is-medicine` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `/weekenden/bewustwording-connectie` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `/reizen` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| `/reizen/sola-terra-frankrijk` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| `/over-ons` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `/contact` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `/faq` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| `/newsletter` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| `/privacy` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
-| `/terms` | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | — |
+### Shared components
+- **Navigation + footer:** `src/components/global/Navigation.astro`, `src/components/global/Footer.astro`.
+- **FAQ accordion:** `src/components/infopages/Faq.astro`.
+- **Optimized images:** `src/layouts/utilities/OptimizedImage.astro`.
 
-## Phase 2 — SEO fixes (sitewide)
-- **Titles + meta descriptions**: Enforced unique titles and descriptions, including weekend-specific format and descriptions derived from existing content.
-- **Headings**: Ensured single H1 on the FAQ page and preserved hierarchy across templates.
-- **Canonical + Open Graph**: Added canonical URLs and OG/Twitter metadata for every page.
-- **Image alts**: Replaced background-image usage with `<img>` tags where appropriate to ensure alt text and layout stability.
-- **Sitemap + robots**: Corrected `site` in `astro.config.mjs` and added `robots.txt` for sitemap discovery.
-- **Internal linking**: Added contextual links on weekend detail pages to About, Contact, FAQ, and overview.
+---
 
-## Phase 3 — Performance & load speed improvements
-- **Images**: Replaced background images with responsive `<img>` tags, added explicit dimensions, and set lazy loading below the fold.
-- **LCP/CLS**: Added eager loading + `fetchpriority="high"` on hero images and explicit `width`/`height` attributes on all meaningful images.
-- **External links in markdown**: Ensured external links open in a new tab with secure rel attributes.
+## B) Audit findings (P0 / P1 / P2)
 
-### Performance report
-**🔴 Critical (must fix)**
-- None outstanding after the current pass.
+### P0 — Critical
+- **Missing structured data coverage for journeys and FAQs.**
+  - **Impact:** Reduced eligibility for rich results; weaker SERP enhancement signals.
+  - **Files:** `src/pages/weekenden/[slug].astro`, `src/pages/reizen/[slug].astro`, `src/pages/faq.astro`, `src/components/BaseHead.astro`, `src/layouts/BaseLayout.astro`.
 
-**🟠 Important (should fix)**
-- Consider further reducing third-party script impact (GTM/analytics) by deferring non-essential tracking if business constraints allow.
+### P1 — High priority
+- **Internal linking gaps in on-page copy for key journey terms and entry points.**
+  - **Impact:** Weaker crawl paths + reduced contextual relevance for priority routes.
+  - **Files:** `src/pages/index.astro`, `src/pages/reizen/index.astro`, `src/pages/weekenden/[slug].astro`, `src/pages/over-ons.astro`.
+- **Footer missing FAQ link.**
+  - **Impact:** Reduced global discoverability + crawl depth for FAQ.
+  - **Files:** `src/components/global/Footer.astro`.
 
-**🟢 Nice to improve**
-- Add a dedicated Open Graph image asset optimized for social sharing (1200x630).
+### P2 — Medium priority
+- **Legacy public image usage for primary portraits.**
+  - **Impact:** Missed asset pipeline optimizations (responsive formats, size metadata).
+  - **Files:** `src/pages/over-ons.astro`.
 
-## Phase 4 — External partner links
-- Added consistent external links to partner brands within weekend longreads and partner cards.
-- Enforced `target="_blank"` and `rel="noopener noreferrer"` for external links.
+---
 
-## Phase 5 — Checklist for future pages
-1. Add a unique title + meta description in the page data.
-2. Ensure exactly one H1 per page.
-3. Provide canonical and OG tags via `BaseLayout`.
-4. Use `<img>` with explicit `width`/`height` for all meaningful images.
-5. Add descriptive alt text (empty alt only for decorative images).
-6. Link relevant pages internally (overview ↔ detail ↔ contact/faq).
-7. For external partners: use brand name as anchor text + open in new tab with `noopener noreferrer`.
+## C) Implementation plan (exact files)
 
-## Files changed
-- `astro.config.mjs`
-- `public/robots.txt`
-- `src/components/BaseHead.astro`
-- `src/layouts/BaseLayout.astro`
-- `src/utils/markdown.ts`
-- `src/data/content.ts`
-- `src/pages/index.astro`
-- `src/pages/weekenden/index.astro`
-- `src/pages/weekenden/[slug].astro`
-- `src/pages/reizen/index.astro`
-- `src/pages/reizen/[slug].astro`
-- `src/pages/over-ons.astro`
-- `src/components/infopages/Faq.astro`
-- `src/pages/faq.astro`
+1. **Structured data**
+   - Add Organization + WebSite JSON-LD sitewide in `BaseLayout/BaseHead`.
+   - Add TouristTrip JSON-LD for journey pages and FAQPage JSON-LD where FAQs are present.
+   - **Files:**
+     - `src/components/BaseHead.astro`
+     - `src/layouts/BaseLayout.astro`
+     - `src/pages/weekenden/[slug].astro`
+     - `src/pages/reizen/[slug].astro`
+     - `src/pages/faq.astro`
+
+2. **Internal linking + UX crawl paths**
+   - Link “reizen”/“weekenden” in existing text blocks.
+   - Link “inschrijving” to terms in weekend detail pages.
+   - **Files:**
+     - `src/pages/index.astro`
+     - `src/pages/reizen/index.astro`
+     - `src/pages/weekenden/[slug].astro`
+     - `src/pages/over-ons.astro`
+
+3. **Footer navigation completeness**
+   - Add FAQ link in footer.
+   - **Files:**
+     - `src/components/global/Footer.astro`
+
+4. **Image pipeline consistency**
+   - Move primary portrait to Astro image pipeline for sizing + CLS stability.
+   - **Files:**
+     - `src/pages/over-ons.astro`
+
+---
+
+## D) Expected impact summary
+- **Core Web Vitals:** Improved CLS stability for key portrait imagery; maintain LCP priority handling for hero images.
+- **Technical SEO:** Consistent structured data across the site; stronger canonical + OG coverage; improved rich result eligibility.
+- **On-page SEO:** Better internal linking and contextual relevance for high-intent routes.
+- **UX/conversion:** Clearer wayfinding to FAQ and terms without adding new copy.
+
+---
+
+## E) Verification plan (commands + checks)
+
+### Build + preview
+- `pnpm build`
+- `pnpm preview`
+
+### Checklist
+- **No broken links:** run a link checker (e.g., `npx linkinator http://localhost:4321 --skip "https://calendly.com/*" --skip "https://tally.so/*"`).
+- **Lighthouse:** run `npx lighthouse http://localhost:4321 --view` and verify LCP/CLS/INP improvements.
+- **Sitemap:** confirm `https://solatravel.be/sitemap-index.xml` includes all routes.
+- **Robots:** confirm `/robots.txt` is accessible and references the sitemap.
+- **Rich results:** validate JSON-LD (Organization, WebSite, TouristTrip, FAQPage) in Google Rich Results Test.
