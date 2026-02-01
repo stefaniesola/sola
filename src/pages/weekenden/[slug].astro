@@ -261,16 +261,18 @@ const tocItems: TocEntry[] =
     };
   });
 
+const carouselSources = weekend.galleryImages ?? [
+  carouselImageOne,
+  carouselImageTwo,
+  carouselImageThree,
+  carouselImageFour,
+  carouselImageFive,
+  carouselImageSix,
+  carouselImageSeven,
+];
+
 const carouselImages = await Promise.all(
-  [
-    carouselImageOne,
-    carouselImageTwo,
-    carouselImageThree,
-    carouselImageFour,
-    carouselImageFive,
-    carouselImageSix,
-    carouselImageSeven,
-  ].map(async (image) =>
+  carouselSources.map(async (image) =>
     getImage({
       src: image,
       width: 900,

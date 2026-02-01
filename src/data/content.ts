@@ -1,5 +1,12 @@
 import type { ImageMetadata } from "astro";
 import heroExerciseMedicine from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (1).jpg";
+import sfeer1 from "../assets/images/Ardennen Belgiê.jpg";
+import sfeer2 from "../assets/images/Lekker eten - SOLA Travel (1).jpg";
+import sfeer3 from "../assets/images/Justine Deleu - lopen.jpg";
+import sfeer4 from "../assets/images/Simon Endurance Lab - performance coach (1) bike.jpeg";
+import sfeer5 from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (3).jpg";
+import sfeer6 from "../assets/images/Hoge Venen - Johan Annys (1).jpg";
+import sfeer7 from "../assets/images/Stefanie Deleu - Sola Travel - brug.jpg";
 
 export type JourneyType = "Weekend" | "Reis";
 
@@ -12,6 +19,7 @@ export interface Journey {
   dates: string;
   price: string;
   heroImage?: string | ImageMetadata;
+  galleryImages?: ImageMetadata[];
   heroImageData?: {
     src: string;
     width: number;
@@ -44,6 +52,7 @@ export const journeys: Journey[] = [
     dates: "31 juli – 2 augustus 2026",
     price: "€550",
     heroImage: heroExerciseMedicine,
+    galleryImages: [sfeer1, sfeer2, sfeer3, sfeer4, sfeer5, sfeer6, sfeer7],
     keyFacts: [
       {
         label: "Wanneer",
