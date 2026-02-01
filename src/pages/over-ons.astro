@@ -13,6 +13,7 @@ import stefaniePortrait from "../assets/images/Stefanie Deleu - SOLA Travel - pr
 
 const coreTeam = people.filter((person) => person.isTeamMember === true);
 const partners = people.filter((person) => person.isTeamMember === false);
+const missiePortrait = "/images/stefanie-deleu-sola-travel.jpg";
 
 // Optimize images for mission/vision sections
 const optimizedLandscape = await getImage({
@@ -98,10 +99,12 @@ const optimizedLandscape = await getImage({
         </div>
         <div class="flex-1 lg:pl-8">
           <figure class="portrait-image-frame">
-            <Image
-              src={stefaniePortrait}
+            <img
+              src={missiePortrait}
               alt="Stefanie Deleu, oprichtster van SOLA"
               class="portrait-image"
+              loading="lazy"
+              decoding="async"
             />
             <figcaption class="portrait-overlay">
               <span class="portrait-name">Stefanie Deleu</span>
