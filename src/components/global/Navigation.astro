@@ -18,7 +18,7 @@ const { isJourneyPage = false } = Astro.props as Props;
   <div class="w-full mx-auto px-6 max-w-6xl lg:px-10">
     <div
       x-data="{ open: false }"
-      x-effect="document.body.style.overflow = open ? 'hidden' : ''"
+      x-effect="if (open) { const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth; document.body.style.overflow = 'hidden'; document.body.style.paddingRight = scrollbarWidth ? `${scrollbarWidth}px` : ''; } else { document.body.style.overflow = ''; document.body.style.paddingRight = ''; }"
       @keydown.escape.window="open = false"
       class="site-header__row flex items-center justify-between py-4"
     >
@@ -61,14 +61,14 @@ const { isJourneyPage = false } = Astro.props as Props;
       <div
         x-show="open"
         x-transition.opacity
-        class="fixed inset-0 bg-black/40 lg:hidden"
+        class="fixed inset-0 z-40 bg-transparent lg:hidden"
         @click="open = false"
         aria-hidden="true"
       ></div>
       <nav
         id="main-navigation"
-        :class="open ? 'translate-x-0' : 'translate-x-full'"
-        class="fixed right-0 top-0 z-50 flex h-full w-72 flex-col bg-white px-6 pb-8 pt-6 shadow-xl transition-transform duration-300 lg:static lg:z-auto lg:h-auto lg:w-auto lg:translate-x-0 lg:flex lg:flex-row lg:items-center lg:gap-8 lg:bg-transparent lg:p-0 lg:shadow-none"
+        :class="open ? 'translate-x-0 w-80' : 'translate-x-full w-64'"
+        class="fixed right-0 top-0 z-50 flex h-full flex-col bg-white px-6 pb-8 pt-6 shadow-xl transition-[transform,width] duration-300 lg:static lg:z-auto lg:h-auto lg:w-auto lg:translate-x-0 lg:flex lg:flex-row lg:items-center lg:gap-8 lg:bg-transparent lg:p-0 lg:shadow-none"
       >
         <div class="flex items-center justify-between border-b border-black/10 pb-4 lg:hidden">
           <span class="text-sm font-semibold tracking-wide text-base-700">
