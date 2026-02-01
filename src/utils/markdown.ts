@@ -24,7 +24,7 @@ function decodeHtmlEntities(text: string): string {
 /**
  * Generate a slug from a heading text
  */
-function slugify(text: string): string {
+export function slugifyHeading(text: string): string {
   // First decode HTML entities, then slugify
   const decoded = decodeHtmlEntities(text);
   const normalized = decoded.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -49,7 +49,7 @@ export function extractHeadings(markdown: string): TocItem[] {
     if (match) {
       const level = match[1].length;
       const text = match[2].trim();
-      const id = slugify(text);
+      const id = slugifyHeading(text);
       headings.push({ id, text, level });
     }
   }
@@ -80,7 +80,7 @@ export function processMarkdown(markdown: string): {
     // Extract plain text from the heading content (remove HTML tags)
     const textContent = content.replace(/<[^>]+>/g, "").trim();
     if (textContent) {
-      const id = slugify(textContent);
+      const id = slugifyHeading(textContent);
       // Check if ID already exists in attributes
       if (!attrs.includes('id=')) {
         return `<h${level}${attrs} id="${id}">${content}</h${level}>`;

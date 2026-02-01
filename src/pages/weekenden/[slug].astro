@@ -5,7 +5,11 @@ import { journeys } from "../../data/content";
 import { getImage } from "astro:assets";
 import exerciseImage from "../../assets/images/2596052607.jpg";
 import bewustwordingImage from "../../assets/images/2631991747.jpg";
-import { extractHeadings, processMarkdown } from "../../utils/markdown";
+import {
+  extractHeadings,
+  processMarkdown,
+  slugifyHeading,
+} from "../../utils/markdown";
 import carouselImageOne from "../../assets/images/2596052607.jpg";
 import carouselImageTwo from "../../assets/images/2631991747.jpg";
 import carouselImageThree from "../../assets/images/hero.jpg";
@@ -52,7 +56,6 @@ const { weekend } = Astro.props as { weekend: Journey };
 
 const markdownContent = weekend.longread || "";
 const toc = extractHeadings(markdownContent);
-const sectionHeadings = toc.filter((item) => item.level === 2);
 const keyFacts = weekend.keyFacts ?? [];
 const faqItems = weekend.faq ?? [];
 const metaDescriptionBase = `${weekend.shortDescription} Locatie: ${weekend.location}. Data: ${weekend.dates}.`;
@@ -123,7 +126,7 @@ const buildAccordionSections = (markdown: string) => {
 const { introMarkdown, sections } = buildAccordionSections(markdownContent);
 const introHtml = introMarkdown ? processMarkdown(introMarkdown).html : "";
 const accordionSections = sections.map((section, index) => {
-  const id = sectionHeadings[index]?.id ?? `section-${index + 1}`;
+  const id = slugifyHeading(section.title) || `section-${index + 1}`;
   const { html } = processMarkdown(section.content);
   return { ...section, id, html };
 });
