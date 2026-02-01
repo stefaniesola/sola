@@ -730,8 +730,9 @@ export const partnershipsPage = {
     "We werken samen met experts die hun vak verstaan. Mensen met kennis, ervaring en oog voor wat echt werkt.",
   metaDescription: "Onze samenwerkingen met experts die hun vak verstaan.",
   sectionPartners: "Samenwerkingen",
-  ctaTitle: "Ook partner?",
-  ctaDescription: "Laat je gegevens achter en we nemen contact op.",
+  ctaTitle: "Ook als expert bijdragen aan een SOLA-weekend of reis?",
+  ctaDescription:
+    "We bouwen samen met professionals in gezondheid, beweging en persoonlijke groei aan kleinschalige, inhoudelijk sterke weekenden en reizen in de natuur.",
   form: {
     labels: {
       naam: "Naam",
