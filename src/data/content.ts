@@ -763,7 +763,7 @@ export const faqPage = {
 };
 
 export const privacyPage = {
-  title: "SOLA | Privacybeleid",
+  title: "Privacybeleid – SOLA",
   label: "Privacybeleid",
   heading: "Privacybeleid",
   description: "Ons privacybeleid en hoe we omgaan met je gegevens.",
