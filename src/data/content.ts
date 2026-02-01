@@ -594,7 +594,7 @@ export const homeCopy = {
     {
       title: "Beweging met beide voeten in de natuur",
       description: "Het fundament van de SOLA-reizen ligt in de natuur. Een natuurlijke omgeving biedt schoonheid, stilte en verwondering. De mentale rust die je daar ervaart scherpt je focus, stimuleert beweging en inspireert tot gerichte actie. De natuur vormt zo de onmisbare basis en het krachtige decor van jouw reis.",
-      image: "/src/assets/images/hero.jpg",
+      image: "/src/assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg",
     },
   ],
   afsluiting: {
