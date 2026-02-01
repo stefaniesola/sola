@@ -23,20 +23,27 @@ const optimizedHero = await getImage({
 // Process hero images for weekend highlights
 const weekendHighlightsWithImages = await Promise.all(
   weekendHighlights.map(async (weekend) => {
-    let imageUrl = weekend.heroImage;
+    let imageUrl =
+      typeof weekend.heroImage === "string"
+        ? weekend.heroImage
+        : weekend.heroImage?.src;
     let heroImageData;
-    // If it's a local image path, process it
-    if (weekend.heroImage?.startsWith("/src/assets/images/")) {
-      if (weekend.slug === "exercise-is-medicine") {
+    if (weekend.heroImage) {
+      // If it's a local image path, process it
+      if (typeof weekend.heroImage === "string") {
+        if (weekend.heroImage.startsWith("/src/assets/images/")) {
+          if (weekend.slug === "bewustwording-connectie") {
+            heroImageData = await getImage({
+              src: bewustwordingImage,
+              width: 1600,
+              quality: 90,
+            });
+            imageUrl = heroImageData.src;
+          }
+        }
+      } else {
         heroImageData = await getImage({
-          src: exerciseImage,
-          width: 1600,
-          quality: 90,
-        });
-        imageUrl = heroImageData.src;
-      } else if (weekend.slug === "bewustwording-connectie") {
-        heroImageData = await getImage({
-          src: bewustwordingImage,
+          src: weekend.heroImage,
           width: 1600,
           quality: 90,
         });

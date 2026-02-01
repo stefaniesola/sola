@@ -1,3 +1,6 @@
+import type { ImageMetadata } from "astro";
+import heroExerciseMedicine from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (1).jpg";
+
 export type JourneyType = "Weekend" | "Reis";
 
 export interface Journey {
@@ -8,7 +11,7 @@ export interface Journey {
   location: string;
   dates: string;
   price: string;
-  heroImage?: string;
+  heroImage?: string | ImageMetadata;
   heroImageData?: {
     src: string;
     width: number;
@@ -40,7 +43,7 @@ export const journeys: Journey[] = [
     location: "Hoge Venen, Ardennen",
     dates: "31 juli – 2 augustus 2026",
     price: "€550",
-    heroImage: "/src/assets/images/2596052607.jpg",
+    heroImage: heroExerciseMedicine,
     keyFacts: [
       {
         label: "Wanneer",
