@@ -7,8 +7,9 @@ import {
   partnershipsPage,
 } from "../data/content";
 import OptimizedImage from "../layouts/utilities/OptimizedImage.astro";
-import { getImage } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import landscapeImage from "../assets/images/landscape.jpg";
+import stefaniePortrait from "../assets/images/Stefanie Deleu - SOLA Travel - profiel.JPG";
 
 const coreTeam = people.filter((person) => person.isTeamMember === true);
 const partners = people.filter((person) => person.isTeamMember === false);
@@ -97,12 +98,10 @@ const optimizedLandscape = await getImage({
         </div>
         <div class="flex-1 lg:pl-8">
           <figure class="portrait-image-frame">
-            <img
-              class="portrait-image"
-              src="/images/stefanie-deleu-sola-travel.jpg"
+            <Image
+              src={stefaniePortrait}
               alt="Stefanie Deleu, oprichtster van SOLA"
-              loading="lazy"
-              decoding="async"
+              class="portrait-image"
             />
             <figcaption class="portrait-overlay">
               <span class="portrait-name">Stefanie Deleu</span>
@@ -156,14 +155,22 @@ const optimizedLandscape = await getImage({
               <div class="flex items-start gap-4 mb-4">
                 {person.logo ? (
                   <div class="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-base-200">
-                    <OptimizedImage
-                      src={person.logo}
-                      alt={`${person.name}`}
-                      width={400}
-                      height={400}
-                      quality={100}
-                      class="w-full h-full object-cover"
-                    />
+                    {person.name === "Stefanie Deleu" ? (
+                      <Image
+                        src={stefaniePortrait}
+                        alt={person.name}
+                        class="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <OptimizedImage
+                        src={person.logo}
+                        alt={`${person.name}`}
+                        width={400}
+                        height={400}
+                        quality={100}
+                        class="w-full h-full object-cover"
+                      />
+                    )}
                   </div>
                 ) : (
                   <div class="w-24 h-24 rounded-full shrink-0 bg-base-300 flex items-center justify-center">

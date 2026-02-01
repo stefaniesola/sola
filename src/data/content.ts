@@ -505,7 +505,7 @@ export const people: Person[] = [
     role: "Organisator & avonturier",
     type: "Expert",
     bio: "Stefanie  is de trekkende kracht achter SOLA en zet elke reis van A tot Z in elkaar. Ze bouwt samenwerkingen uit, coördineert de organisatie en zorgt er met haar team voor dat alles praktisch goed loopt.",
-    logo: "src/assets/images/Stefanie Deleu - SOLA Travel - profiel.JPG",
+    logo: "Stefanie Deleu - SOLA Travel - profiel.JPG",
     isTeamMember: true,
   },
   {
