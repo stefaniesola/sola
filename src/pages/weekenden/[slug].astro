@@ -69,12 +69,16 @@ const ctaLinks =
         bookUrl: "https://tally.so/r/pbogoy",
         consultUrl:
           "https://calendly.com/hello-solatravel/30min?month=2026-02",
+        target: "_blank",
+        rel: "noopener noreferrer",
       }
     : {
         bookUrl: "#boek-je-plek",
         consultUrl: "#twijfel-je",
         bookTarget: "boek-je-plek",
         consultTarget: "twijfel-je",
+        target: undefined,
+        rel: undefined,
       };
 
 const buildAccordionSections = (markdown: string) => {
@@ -309,12 +313,16 @@ const carouselImages = await Promise.all(
         <a
           href={ctaLinks.bookUrl}
           data-accordion-target={ctaLinks.bookTarget}
+          target={ctaLinks.target}
+          rel={ctaLinks.rel}
           class="inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold"
           >Boek nu</a
         >
         <a
           href={ctaLinks.consultUrl}
           data-accordion-target={ctaLinks.consultTarget}
+          target={ctaLinks.target}
+          rel={ctaLinks.rel}
           class="inline-flex items-center px-5 py-3 rounded-full border border-white/60 text-white font-semibold"
           >Vragen? Plan een gesprek</a
         >
@@ -518,6 +526,8 @@ const carouselImages = await Promise.all(
                   <a
                     href={ctaLinks.bookUrl}
                     data-accordion-target={ctaLinks.bookTarget}
+                    target={ctaLinks.target}
+                    rel={ctaLinks.rel}
                     class="inline-flex w-full items-center justify-center rounded-full bg-accent-600 px-4 py-3 text-sm font-semibold text-white hover:bg-accent-700 transition-colors"
                   >
                     Boek nu
@@ -525,6 +535,8 @@ const carouselImages = await Promise.all(
                   <a
                     href={ctaLinks.consultUrl}
                     data-accordion-target={ctaLinks.consultTarget}
+                    target={ctaLinks.target}
+                    rel={ctaLinks.rel}
                     class="inline-flex w-full items-center justify-center rounded-full border border-base-300 px-4 py-3 text-sm font-semibold text-base-700 hover:border-base-400 hover:text-base-900 transition-colors"
                   >
                     Vragen? Plan een gesprek
@@ -584,6 +596,8 @@ const carouselImages = await Promise.all(
         <a
           href={ctaLinks.bookUrl}
           data-accordion-target={ctaLinks.bookTarget}
+          target={ctaLinks.target}
+          rel={ctaLinks.rel}
           class="flex-1 inline-flex items-center justify-center rounded-full bg-accent-600 px-4 py-3 text-sm font-semibold text-white hover:bg-accent-700 transition-colors"
         >
           Boek nu
@@ -591,6 +605,8 @@ const carouselImages = await Promise.all(
         <a
           href={ctaLinks.consultUrl}
           data-accordion-target={ctaLinks.consultTarget}
+          target={ctaLinks.target}
+          rel={ctaLinks.rel}
           class="flex-1 inline-flex items-center justify-center rounded-full border border-base-300 px-4 py-3 text-sm font-semibold text-base-700 hover:border-base-400 hover:text-base-900 transition-colors"
         >
           Vragen? Plan een gesprek
