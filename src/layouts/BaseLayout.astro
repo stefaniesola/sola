@@ -8,9 +8,11 @@ interface Props {
   description?: string;
   ogImage?: string;
   ogImageAlt?: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, ogImage, ogImageAlt } = Astro.props as Props;
+const { title, description, ogImage, ogImageAlt, structuredData } =
+  Astro.props as Props;
 const canonical = Astro.site
   ? new URL(Astro.url.pathname, Astro.site).toString()
   : undefined;
@@ -18,6 +20,37 @@ const resolvedOgImage = ogImage
   ? new URL(ogImage, Astro.site ?? Astro.url).toString()
   : new URL("/images/stefanie-deleu-sola-travel.jpg", Astro.site ?? Astro.url)
       .toString();
+const siteUrl = Astro.site ? Astro.site.toString() : undefined;
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "SOLA",
+  url: siteUrl ?? new URL("/", Astro.url).toString(),
+  email: "hello@solatravel.be",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Kroonstraat 2a",
+    addressLocality: "Gent",
+    addressCountry: "BE",
+  },
+  logo: siteUrl ? new URL("/logo.png", siteUrl).toString() : undefined,
+};
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "SOLA",
+  url: siteUrl ?? new URL("/", Astro.url).toString(),
+  description,
+};
+const structuredDataItems = [
+  organizationSchema,
+  websiteSchema,
+  ...(Array.isArray(structuredData)
+    ? structuredData
+    : structuredData
+      ? [structuredData]
+      : []),
+];
 const isJourneyPage =
   Astro.url.pathname.startsWith("/weekenden") ||
   Astro.url.pathname.startsWith("/reizen");
@@ -31,6 +64,7 @@ const isJourneyPage =
       canonical={canonical}
       ogImage={resolvedOgImage}
       ogImageAlt={ogImageAlt}
+      structuredData={structuredDataItems}
     />
   </head>
   <body

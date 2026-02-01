@@ -7,6 +7,7 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   ogImageAlt?: string;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -15,7 +16,14 @@ const {
   canonical,
   ogImage,
   ogImageAlt = "SOLA Travel",
+  structuredData,
 } = Astro.props as Props;
+
+const structuredDataItems = Array.isArray(structuredData)
+  ? structuredData
+  : structuredData
+    ? [structuredData]
+    : [];
 ---
 
 <meta charset="UTF-8" />
@@ -41,6 +49,9 @@ const {
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 <link rel="manifest" href="/site.webmanifest" />
 {canonical && <link rel="canonical" href={canonical} />}
+{structuredDataItems.map((item) => (
+  <script type="application/ld+json" set:html={JSON.stringify(item)} />
+))}
 {import.meta.env.PROD && (
   <>
     <!-- Google tag (gtag.js) -->

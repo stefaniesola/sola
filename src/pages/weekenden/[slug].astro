@@ -71,6 +71,60 @@ const metaDescription =
     : metaDescriptionBase;
 const weekendTitle = `SOLA Travel | ${weekend.name} | ${weekend.location}`;
 const heroImageAlt = `${weekend.name} in ${weekend.location}`;
+const linkClass = "text-accent-700 hover:text-accent-800";
+const linkedMoreInfoCopy =
+  "Ontdek hoe SOLA weekenden opbouwt, leer het team kennen of plan een gesprek voor je inschrijving.".replace(
+    "inschrijving",
+    `<a href="/terms" class="${linkClass}">inschrijving</a>`,
+  );
+const baseUrl = Astro.site ?? Astro.url;
+const canonicalUrl = new URL(Astro.url.pathname, baseUrl).toString();
+const absoluteHeroImage = weekend.heroImage
+  ? new URL(weekend.heroImage, baseUrl).toString()
+  : undefined;
+const priceValue = weekend.price.match(/\d+([.,]\d+)?/g)?.join("");
+const touristTripSchema = {
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  name: weekend.name,
+  description: weekend.shortDescription,
+  image: absoluteHeroImage,
+  url: canonicalUrl,
+  provider: {
+    "@type": "Organization",
+    name: "SOLA",
+    url: baseUrl.toString(),
+  },
+  location: {
+    "@type": "Place",
+    name: weekend.location,
+  },
+  ...(priceValue
+    ? {
+        offers: {
+          "@type": "Offer",
+          price: priceValue,
+          priceCurrency: "EUR",
+          url: canonicalUrl,
+        },
+      }
+    : {}),
+};
+const faqSchema = faqItems.length
+  ? {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqItems.map((item) => ({
+        "@type": "Question",
+        name: item.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.answer,
+        },
+      })),
+    }
+  : null;
+const structuredData = [touristTripSchema, faqSchema].filter(Boolean);
 const ctaLinks =
   weekend.slug === "exercise-is-medicine" ||
   weekend.slug === "bewustwording-connectie"
@@ -287,6 +341,7 @@ const carouselImages = await Promise.all(
   description={metaDescription}
   ogImage={weekend.heroImage}
   ogImageAlt={heroImageAlt}
+  structuredData={structuredData}
 >
   <section class="relative bg-base-900 text-white">
     {weekend.heroImage && (
@@ -565,10 +620,10 @@ const carouselImages = await Promise.all(
       <h2 class="text-2xl font-semibold text-base-900">
         Meer weten over SOLA
       </h2>
-      <p class="text-base-700 mt-2 max-w-2xl">
-        Ontdek hoe SOLA weekenden opbouwt, leer het team kennen of plan een
-        gesprek voor je inschrijving.
-      </p>
+      <p
+        class="text-base-700 mt-2 max-w-2xl"
+        set:html={linkedMoreInfoCopy}
+      />
       <div class="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
         <a class="text-accent-700 hover:text-accent-800" href="/weekenden">
           Bekijk alle weekenden

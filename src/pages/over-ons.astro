@@ -13,7 +13,11 @@ import stefaniePortrait from "../assets/images/Stefanie Deleu - SOLA Travel - pr
 
 const coreTeam = people.filter((person) => person.isTeamMember === true);
 const partners = people.filter((person) => person.isTeamMember === false);
-const missiePortrait = "/images/stefanie-deleu-sola-travel.jpg";
+const linkClass = "text-accent-700 hover:text-accent-800";
+const linkedLabel = aboutPage.label.replace(
+  "reizen",
+  `<a href="/reizen" class="${linkClass}">reizen</a>`,
+);
 
 // Optimize images for mission/vision sections
 const optimizedLandscape = await getImage({
@@ -21,14 +25,20 @@ const optimizedLandscape = await getImage({
   width: 1600,
   quality: 90,
 });
+const optimizedMissionPortrait = await getImage({
+  src: stefaniePortrait,
+  width: 1200,
+  quality: 90,
+});
 ---
 
 <BaseLayout title={aboutPage.title} description={aboutPage.metaDescription}>
   <section class="bg-base-50/80 border-b border-base-200">
     <div class="max-w-6xl mx-auto px-6 py-16 space-y-6 scroll-fade-in">
-      <p class="uppercase text-xs tracking-[0.25em] text-base-500">
-        {aboutPage.label}
-      </p>
+      <p
+        class="uppercase text-xs tracking-[0.25em] text-base-500"
+        set:html={linkedLabel}
+      />
       <h1 class="text-4xl font-semibold text-base-900">{aboutPage.heading}</h1>
       <div
         class="text-base-700 max-w-3xl space-y-4"
@@ -100,7 +110,9 @@ const optimizedLandscape = await getImage({
         <div class="flex-1 lg:pl-8">
           <figure class="portrait-image-frame">
             <img
-              src={missiePortrait}
+              src={optimizedMissionPortrait.src}
+              width={optimizedMissionPortrait.width}
+              height={optimizedMissionPortrait.height}
               alt="Stefanie Deleu, oprichtster van SOLA"
               class="portrait-image"
               loading="lazy"

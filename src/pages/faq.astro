@@ -2,11 +2,28 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FaqLayout from "../components/infopages/Faq.astro";
 import { faqPage } from "../data/content";
+import { faqItems } from "../data/faq";
+
+const stripHtml = (value: string) =>
+  value.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map((item) => ({
+    "@type": "Question",
+    name: stripHtml(item.question),
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: stripHtml(item.answerHtml),
+    },
+  })),
+};
 ---
 
 <BaseLayout
   title={faqPage.title}
   description={faqPage.metaDescription}
+  structuredData={faqSchema}
 >
   <FaqLayout heading={faqPage.heading} description={faqPage.description} />
 </BaseLayout>

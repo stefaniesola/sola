@@ -14,6 +14,15 @@ const weekendHighlights = journeys
   .filter((journey) => journey.type === "Weekend")
   .slice(0, 2);
 const founders = people.filter((person) => person.isTeamMember);
+const linkClass = "text-accent-700 hover:text-accent-800";
+const linkedWaarom = homeCopy.waarom.replace(
+  "groepsreizen",
+  `<a href="/reizen" class="${linkClass}">groepsreizen</a>`,
+);
+const linkedOverOnsDescription = homePage.sectionOverOns.description.replaceAll(
+  "reizen",
+  `<a href="/reizen" class="${linkClass}">reizen</a>`,
+);
 
 // Get optimized hero image URL for background use
 const optimizedHero = await getImage({
@@ -131,7 +140,10 @@ const optimizedHauteLoire = await getImage({
         <h1 class="text-4xl lg:text-5xl font-semibold leading-tight text-white">
           {homeCopy.tagline}
         </h1>
-        <p class="text-lg text-white/90 max-w-xl">{homeCopy.waarom}</p>
+        <p
+          class="text-lg text-white/90 max-w-xl"
+          set:html={linkedWaarom}
+        />
         <div class="flex flex-wrap gap-3">
           <a
             href="/reizen"
@@ -350,9 +362,7 @@ const optimizedHauteLoire = await getImage({
         <h3 class="text-3xl font-semibold text-base-900">
           {homePage.sectionOverOns.title}
         </h3>
-        <p class="text-base-700">
-          {homePage.sectionOverOns.description}
-        </p>
+        <p class="text-base-700" set:html={linkedOverOnsDescription} />
         <a
           class="inline-flex items-center justify-center px-5 py-3 rounded-full border border-base-300 text-base-800 font-semibold hover:border-base-500 w-fit"
           href="/over-ons"

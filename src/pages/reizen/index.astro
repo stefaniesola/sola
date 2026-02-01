@@ -7,6 +7,11 @@ import terraImage from "../../assets/images/1513986998.jpg";
 
 const weekends = journeys.filter((journey) => journey.type === "Weekend");
 const trips = journeys.filter((journey) => journey.type === "Reis");
+const linkClass = "text-white/90 underline-offset-4 hover:text-white";
+const upcomingCopy =
+  "Nieuwe reizen, weekenden en plekken zijn in voorbereiding. Blijf op de hoogte van wat eraan komt."
+    .replace("reizen", `<a href="/reizen" class="${linkClass}">reizen</a>`)
+    .replace("weekenden", `<a href="/weekenden" class="${linkClass}">weekenden</a>`);
 
 // Process hero images for weekends
 const weekendsWithImages = await Promise.all(
@@ -192,9 +197,7 @@ const tripsWithImages = await Promise.all(
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex-1">
           <h3 class="text-2xl font-semibold mb-2">Binnenkort beschikbaar</h3>
-          <p class="text-white/80">
-            Nieuwe reizen, weekenden en plekken zijn in voorbereiding. Blijf op de hoogte van wat eraan komt.
-          </p>
+          <p class="text-white/80" set:html={upcomingCopy} />
         </div>
         <div class="flex flex-wrap gap-3">
           <a

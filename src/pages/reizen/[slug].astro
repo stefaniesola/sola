@@ -55,6 +55,39 @@ const metaDescription =
     : metaDescriptionBase;
 const tripTitle = `SOLA Travel | ${trip.name} | ${trip.location}`;
 const heroImageAlt = `${trip.name} in ${trip.location}`;
+const baseUrl = Astro.site ?? Astro.url;
+const canonicalUrl = new URL(Astro.url.pathname, baseUrl).toString();
+const absoluteHeroImage = trip.heroImage
+  ? new URL(trip.heroImage, baseUrl).toString()
+  : undefined;
+const priceValue = trip.price.match(/\d+([.,]\d+)?/g)?.join("");
+const touristTripSchema = {
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  name: trip.name,
+  description: trip.shortDescription,
+  image: absoluteHeroImage,
+  url: canonicalUrl,
+  provider: {
+    "@type": "Organization",
+    name: "SOLA",
+    url: baseUrl.toString(),
+  },
+  location: {
+    "@type": "Place",
+    name: trip.location,
+  },
+  ...(priceValue
+    ? {
+        offers: {
+          "@type": "Offer",
+          price: priceValue,
+          priceCurrency: "EUR",
+          url: canonicalUrl,
+        },
+      }
+    : {}),
+};
 ---
 
 <BaseLayout
@@ -62,6 +95,7 @@ const heroImageAlt = `${trip.name} in ${trip.location}`;
   description={metaDescription}
   ogImage={trip.heroImage}
   ogImageAlt={heroImageAlt}
+  structuredData={touristTripSchema}
 >
   <section class="relative bg-base-900 text-white">
     {trip.heroImage && (
