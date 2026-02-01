@@ -55,6 +55,12 @@ body {
     /* Uses the 18px base */
 }
 
+main section[id],
+main h2[id],
+main h3[id] {
+    scroll-margin-top: 110px;
+}
+
 
 /* Adds pointer cursor to buttons */
 button:not(:disabled),
