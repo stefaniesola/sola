@@ -8,6 +8,7 @@ import bewustwordingImage from "../assets/images/2631991747.jpg";
 import terraImage from "../assets/images/1513986998.jpg";
 import hauteLoireImage from "../assets/images/haute-loire.jpg";
 import verblijfHogeVenenImage from "../assets/images/Verblijf in Hoge Venen.avif";
+import natureImage from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg";
 
 const weekendHighlights = journeys
   .filter((journey) => journey.type === "Weekend")
@@ -70,7 +71,7 @@ const pillarsWithImages = await Promise.all(
     ) {
       imageSrc = verblijfHogeVenenImage;
     } else if (pillar.image === "/src/assets/images/hero.jpg") {
-      imageSrc = heroImage;
+      imageSrc = natureImage;
     } else if (pillar.image === "/src/assets/images/1513986998.jpg") {
       imageSrc = terraImage;
     } else {
