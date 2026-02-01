@@ -12,6 +12,21 @@ import sfeer9 from "../assets/images/Verblijf in Hoge Venen.avif";
 import sfeer10 from "../assets/images/Ontbijt op weekend.avif";
 import sfeer11 from "../assets/images/Badkamer Hoge Venen.avif";
 import sfeer12 from "../assets/images/Kamer Sourbrodt.avif";
+import sarahSfeer1 from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (3).jpg";
+import sarahSfeer2 from "../assets/images/EFT therapie - Sarah Deleu.jpg";
+import sarahSfeer3 from "../assets/images/Lekker eten - SOLA Travel (3).jpg";
+import sarahSfeer4 from "../assets/images/Hoge Venen - Johan Annys (2).JPG";
+import sarahSfeer5 from "../assets/images/Zaal Hoge Venen.avif";
+import sarahSfeer6 from "../assets/images/Verblijf in Hoge Venen.avif";
+import sarahSfeer7 from "../assets/images/Logisch gezond - Sarah Deleu.jpg";
+import sarahSfeer8 from "../assets/images/yoga Lisa LIV.png";
+import sarahSfeer9 from "../assets/images/Ontbijt op weekend.avif";
+import sarahSfeer10 from "../assets/images/Badkamer Hoge Venen.avif";
+import sarahSfeer11 from "../assets/images/Kamer Sourbrodt.avif";
+import sarahSfeer12 from "../assets/images/Hoge Venen - Johan Annys (3).jpg";
+import sarahSfeer13 from "../assets/images/Logisch gezond EFT - Sarah.jpg";
+import sarahSfeer14 from "../assets/images/Logisch gezond - foto.jpg";
+import sarahSfeer15 from "../assets/images/Sarah Deleu - therapeut 3.jpg";
 
 export type JourneyType = "Weekend" | "Reis";
 
@@ -279,6 +294,23 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
     dates: "7 – 9 augustus 2026",
     price: "€620",
     heroImage: "/src/assets/images/2631991747.jpg",
+    galleryImages: [
+      sarahSfeer1,
+      sarahSfeer2,
+      sarahSfeer3,
+      sarahSfeer4,
+      sarahSfeer5,
+      sarahSfeer6,
+      sarahSfeer7,
+      sarahSfeer8,
+      sarahSfeer9,
+      sarahSfeer10,
+      sarahSfeer11,
+      sarahSfeer12,
+      sarahSfeer13,
+      sarahSfeer14,
+      sarahSfeer15,
+    ],
     keyFacts: [
       {
         label: "Wanneer",
