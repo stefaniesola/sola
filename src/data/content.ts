@@ -196,7 +196,7 @@ Je verblijft in Sourbrodt in de Oostkantons, te midden van het Natuurpark Hoge V
 
 ## Maaltijden
 
-Smakelijk op reis met SOLA. Alle maaltijden zijn inbegrepen, van het avondmaal op de dag van aankomst tot de lunch op de dag van vertrek. De focus ligt op gezonde, evenwichtige voeding, in balans met de activiteiten tijdens je reis.
+Smakelijk op reis met SOLA. Alle maaltijden zijn inbegrepen, van het avondmaal op de dag van aankomst tot de lunch op de dag van vertrek. De focus ligt op gezonde, evenwichtige voeding, in balans met de activiteiten tijdens je reis. Heb je allergieën of specifieke voedingswensen (zoals vegetarisch)? Geef dit zeker door bij je inschrijving, dan houden we daar graag rekening mee.
 
 ## Praktisch
 
@@ -442,7 +442,7 @@ Je verblijft in Sourbrodt in de Oostkantons, te midden van het Natuurpark Hoge V
 
 ## Maaltijden
 
-Smakelijk op reis met SOLA. Alle maaltijden zijn inbegrepen, van het avondmaal op de dag van aankomst tot de lunch op de dag van vertrek. De focus ligt op gezonde, evenwichtige voeding, in balans met de activiteiten tijdens je reis.
+Smakelijk op reis met SOLA. Alle maaltijden zijn inbegrepen, van het avondmaal op de dag van aankomst tot de lunch op de dag van vertrek. De focus ligt op gezonde, evenwichtige voeding, in balans met de activiteiten tijdens je reis. Heb je allergieën of specifieke voedingswensen (zoals vegetarisch)? Geef dit zeker door bij je inschrijving, dan houden we daar graag rekening mee.
 
 ## Praktisch
 
