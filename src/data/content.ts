@@ -27,6 +27,7 @@ import sarahSfeer12 from "../assets/images/Hoge Venen - Johan Annys (3).jpg";
 import sarahSfeer13 from "../assets/images/Logisch gezond EFT - Sarah.jpg";
 import sarahSfeer14 from "../assets/images/Logisch gezond - foto.jpg";
 import sarahSfeer15 from "../assets/images/Sarah Deleu - therapeut 3.jpg";
+import solaTerraFrankrijk from "../assets/images/SOLA TERRA Frankrijk.jpg";
 
 export type JourneyType = "Weekend" | "Reis";
 
@@ -557,7 +558,7 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
     location: "Frankrijk",
     dates: "Binnenkort beschikbaar",
     price: "n.t.b.",
-    heroImage: "/src/assets/images/1513986998.jpg",
+    heroImage: solaTerraFrankrijk,
   },
 ];
 
