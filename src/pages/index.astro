@@ -15,10 +15,7 @@ const weekendHighlights = journeys
   .slice(0, 2);
 const founders = people.filter((person) => person.isTeamMember);
 const linkClass = "text-accent-700 hover:text-accent-800";
-const linkedWaarom = homeCopy.waarom.replace(
-  "groepsreizen",
-  `<a href="/reizen" class="${linkClass}">groepsreizen</a>`,
-);
+const linkedWaarom = homeCopy.waarom;
 const linkedOverOnsDescription = homePage.sectionOverOns.description.replaceAll(
   "reizen",
   `<a href="/reizen" class="${linkClass}">reizen</a>`,
@@ -140,10 +137,7 @@ const optimizedHauteLoire = await getImage({
         <h1 class="text-4xl lg:text-5xl font-semibold leading-tight text-white">
           {homeCopy.tagline}
         </h1>
-        <p
-          class="text-lg text-white/90 max-w-xl"
-          set:html={linkedWaarom}
-        />
+        <p class="text-lg text-white/90 max-w-xl">{linkedWaarom}</p>
         <div class="flex flex-wrap gap-3">
           <a
             href="/reizen"
