@@ -33,7 +33,11 @@ const isJourneyPage =
       ogImageAlt={ogImageAlt}
     />
   </head>
-  <body class="bg-base-25 flex flex-col min-h-svh text-base-500 font-sans">
+  <body
+    class={`bg-base-25 flex flex-col min-h-svh text-base-500 font-sans${
+      isJourneyPage ? " journey-page" : ""
+    }`}
+  >
     {import.meta.env.PROD && (
       <!-- Google Tag Manager (noscript) -->
       <noscript>

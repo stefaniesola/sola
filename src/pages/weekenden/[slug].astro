@@ -623,6 +623,17 @@ const carouselImages = await Promise.all(
         '[data-accordion-trigger="faq"]',
       );
       const ctaLinks = document.querySelectorAll("[data-accordion-target]");
+      const tocLinks = document.querySelectorAll(
+        '[data-accordion-link="weekend"]',
+      );
+
+      const getAnchorOffset = () => {
+        const value = getComputedStyle(document.body).getPropertyValue(
+          "--anchor-offset",
+        );
+        const parsed = Number.parseInt(value, 10);
+        return Number.isNaN(parsed) ? 120 : parsed;
+      };
 
       const closePanel = (button) => {
         const panelId = button.getAttribute("aria-controls");
@@ -671,8 +682,8 @@ const carouselImages = await Promise.all(
         panel.style.maxHeight = "none";
       };
 
-      const openFromTarget = (targetId) => {
-        if (!targetId) return;
+      const getTriggerForTarget = (targetId) => {
+        if (!targetId) return null;
         let button = document.querySelector(
           `[data-accordion-id="${targetId}"]`,
         );
@@ -683,10 +694,38 @@ const carouselImages = await Promise.all(
             '[data-accordion-trigger="weekend"]',
           );
         }
-        if (button) {
-          accordionButtons.forEach((item) => closePanel(item));
-          openPanel(button);
+        return button;
+      };
+
+      const getPreviousAccordionTrigger = (button) => {
+        if (!button) return null;
+        const currentSection = button.closest("[data-accordion-section]");
+        if (!currentSection) return button;
+        let previousSection = currentSection.previousElementSibling;
+        while (
+          previousSection &&
+          !previousSection.matches("[data-accordion-section]")
+        ) {
+          previousSection = previousSection.previousElementSibling;
         }
+        const previousTrigger = previousSection?.querySelector(
+          '[data-accordion-trigger="weekend"]',
+        );
+        return previousTrigger ?? button;
+      };
+
+      const openOnlyAndScroll = (targetHash) => {
+        const targetId = targetHash?.replace("#", "");
+        const button = getTriggerForTarget(targetId);
+        if (!button) return;
+        accordionButtons.forEach((item) => closePanel(item));
+        openPanel(button);
+        const scrollTarget = getPreviousAccordionTrigger(button);
+        if (!scrollTarget) return;
+        const offset = getAnchorOffset();
+        const targetTop =
+          scrollTarget.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: Math.max(targetTop, 0), behavior: "smooth" });
       };
 
       accordionButtons.forEach((button) => {
@@ -764,14 +803,24 @@ const carouselImages = await Promise.all(
       ctaLinks.forEach((link) => {
         link.addEventListener("click", () => {
           const targetId = link.getAttribute("data-accordion-target");
-          window.setTimeout(() => openFromTarget(targetId), 0);
+          window.setTimeout(() => openOnlyAndScroll(`#${targetId}`), 0);
+        });
+      });
+
+      tocLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const href = link.getAttribute("href");
+          if (!href || !href.startsWith("#")) return;
+          event.preventDefault();
+          window.history.pushState(null, "", href);
+          openOnlyAndScroll(href);
         });
       });
 
       const openFromHash = () => {
         const hash = window.location.hash.replace("#", "");
         if (hash) {
-          openFromTarget(hash);
+          openOnlyAndScroll(`#${hash}`);
         }
       };
 
