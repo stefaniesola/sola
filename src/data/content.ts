@@ -390,17 +390,11 @@ Misschien weet je vooral dat je nood hebt aan ruimte, rust en richting.
 
 ## Wat je leert / focus
 
-Tijdens dit weekend:
+Tijdens dit weekend werk je met Emotional Freedom Techniques (EFT), systemisch werk en Matrix Reimprinting. Deze methodes helpen je inzicht te krijgen in wat onder de oppervlakte meespeelt en geven je praktische handvatten om daar anders mee om te gaan.
 
-- Krijg je inzicht in onzichtbare dynamieken die meespelen in je leven vandaag of in familiale contexten. Dingen waarvan je soms voelt: “Waarom reageer ik hier altijd zo op?” maar die moeilijk te plaatsen zijn.
-- Leer je voelen in plaats van enkel te blijven denken. Voor als je merkt dat je alles goed kan uitleggen, maar het in je lichaam nog niet mee is.
-- Ontdek je hoe je spanning en emoties kan herkennen én reguleren. Zodat je sneller merkt wanneer iets je raakt, en je niet pas achteraf beseft wat er gebeurde.
-- Krijg je helderheid in patronen die je vandaag beïnvloeden. Patronen in relaties, werk of keuzes waarvan je voelt: “Dit doe ik precies altijd opnieuw.”
-- Ervaar je hoe bewustwording ruimte geeft om steviger te staan in wie je bent. Niet door jezelf te veranderen, maar door jezelf beter te begrijpen.
+Wat je leert en ervaart, krijgt de tijd om te bezinken. Met gerichte yogasessies en wandelingen in de natuur ondersteun je je lichaam en zenuwstelsel in het verwerken en integreren van wat in beweging komt.
 
-“Between stimulus and response there is a space. In that space is our power to choose our response.” – Viktor Frankl
-
-Tijdens dit weekend leer je die ruimte herkennen en gebruiken.
+We werken in een kleine, veilige groep met duidelijke begeleiding en aandacht voor tempo en integratie, zodat je niet alleen inzicht opdoet, maar ook echte stappen kan zetten.
 
 ## Na dit weekend
 
