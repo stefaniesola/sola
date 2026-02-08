@@ -367,7 +367,7 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
       {
         question: "Wat na dit weekend?",
         answer:
-          "Je vertrekt met meer voeling met jezelf en meer vertrouwen om andere keuzes te maken waar dat nodig is.",
+          "- Je beheerst praktische EFT-technieken om spanning te verlagen en jezelf te reguleren bij stress of emotionele lading.\n- Je herkent oude patronen en kan bewuster pauzeren in plaats van automatisch te reageren.\n- Je leert lichamelijke signalen gebruiken als richtingaanwijzers en weet hoe je jezelf weer in evenwicht brengt.\n- Door systemisch werk krijg je inzicht in bredere familiepatronen, waardoor meer ruimte ontstaat.\n- Met Matrix Reimprinting oefende je om beladen ervaringen op een veiligere manier te verankeren, zodat ze minder grip hebben op je reacties.\n- Je hebt deze technieken niet alleen begrepen, maar ook geoefend, zodat je ze thuis verder toepast.\n- Je vertrekt met inzicht en concrete vaardigheden om jezelf te ondersteunen wanneer het leven schuurt of uitdaagt.",
       },
       {
         question:
@@ -398,7 +398,13 @@ We werken in een kleine, veilige groep met duidelijke begeleiding en aandacht vo
 
 ## Na dit weekend
 
-Je vertrekt met meer voeling met jezelf en meer vertrouwen om andere keuzes te maken waar dat nodig is.
+- Je beheerst praktische EFT-technieken om spanning te verlagen en jezelf te reguleren bij stress of emotionele lading.
+- Je herkent oude patronen en kan bewuster pauzeren in plaats van automatisch te reageren.
+- Je leert lichamelijke signalen gebruiken als richtingaanwijzers en weet hoe je jezelf weer in evenwicht brengt.
+- Door systemisch werk krijg je inzicht in bredere familiepatronen, waardoor meer ruimte ontstaat.
+- Met Matrix Reimprinting oefende je om beladen ervaringen op een veiligere manier te verankeren, zodat ze minder grip hebben op je reacties.
+- Je hebt deze technieken niet alleen begrepen, maar ook geoefend, zodat je ze thuis verder toepast.
+- Je vertrekt met inzicht en concrete vaardigheden om jezelf te ondersteunen wanneer het leven schuurt of uitdaagt.
 
 ## Expertise & coördinatie
 
