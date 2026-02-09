@@ -463,7 +463,7 @@ Namiddag: natuur & systemisch werk
 Avond
 
 - Samen avondeten
-- Ecstatic dance: vrij bewegen op muziek
+- Ecstatic dance: vrij bewegen op muziek (vrijblijvende deelname)
 
 Gewoon je lichaam volgen, spanning loslaten en voelen dat je leeft.
 
