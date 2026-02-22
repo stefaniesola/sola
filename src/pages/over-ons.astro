@@ -11,6 +11,7 @@ import { Image, getImage } from "astro:assets";
 import landscapeImage from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (4).jpg";
 import stefaniePortrait from "../assets/images/Stefanie Deleu - SOLA Travel - profiel.JPG";
 import stefanieSolaPortrait from "../assets/images/Stefanie Deleu x SOLA TRAVEL.jpg";
+import yugenLogo from "../assets/images/yugendrinks_logo.svg";
 
 const coreTeam = people.filter((person) => person.isTeamMember === true);
 const partners = people.filter((person) => person.isTeamMember === false);
@@ -281,7 +282,7 @@ const optimizedMissionPortrait = await getImage({
 
   </section>
 
-  <!-- Partner CTA -->
+  <!-- Expert CTA -->
   <section class="w-full bg-accent-600 text-white scroll-fade-in">
     <div class="max-w-6xl mx-auto px-6 py-8 lg:py-10 text-center space-y-6">
       <h2 class="text-2xl font-semibold">
@@ -289,6 +290,97 @@ const optimizedMissionPortrait = await getImage({
       </h2>
       <p class="text-white/90 max-w-3xl mx-auto">
         {partnershipsPage.ctaDescription}
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold"
+      >
+        Neem contact op
+      </a>
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="max-w-6xl mx-auto px-6 py-14 space-y-8 scroll-fade-in">
+    <div>
+      <h2 class="text-3xl font-semibold text-base-900">Partners</h2>
+      <p class="text-base-700 mt-2 max-w-2xl">
+        Merken en organisaties die SOLA ondersteunen en bijdragen aan de beleving van onze weekends.
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <article class="group p-6 rounded-2xl border-[0.25rem] border-white bg-white hover:shadow-lg hover:bg-accent-50/30 hover:border-accent-200 transition-all duration-300">
+        <div class="flex items-start gap-4 mb-4">
+          <div class="w-24 h-24 rounded-full overflow-hidden shrink-0 bg-base-200 flex items-center justify-center p-4">
+            <img
+              src={yugenLogo.src}
+              alt="Yugen Kombucha"
+              class="w-full h-full object-contain"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="flex-1 min-w-0">
+            <h3 class="text-xl font-semibold text-base-900 mb-1">Yugen Kombucha</h3>
+          </div>
+        </div>
+        <p class="text-base-700 leading-relaxed mb-4">
+          Yugen Kombucha is een licht bruisend, gefermenteerd thee-alternatief voor frisdrank of alcohol.
+        </p>
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <a
+            href="https://yugendrinks.com/nl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center text-sm font-semibold text-accent-700 hover:text-accent-800 transition-colors"
+          >
+            yugendrinks.com
+            <svg
+              class="w-4 h-4 ml-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              />
+            </svg>
+          </a>
+          <a
+            href="https://www.instagram.com/yugenkombucha"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center text-sm font-semibold text-accent-700 hover:text-accent-800 transition-colors"
+          >
+            Instagram
+            <svg
+              class="w-4 h-4 ml-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+              />
+            </svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Partner CTA -->
+  <section class="w-full bg-accent-600 text-white scroll-fade-in">
+    <div class="max-w-6xl mx-auto px-6 py-8 lg:py-10 text-center space-y-6">
+      <h2 class="text-2xl font-semibold">Ook als partner bijdragen aan SOLA?</h2>
+      <p class="text-white/90 max-w-3xl mx-auto">
+        We bouwen met duurzame partners in voeding en persoonlijke groei aan inhoudelijk sterke weekends en reizen in de natuur.
       </p>
       <a
         href="/contact"
