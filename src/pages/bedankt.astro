@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const title = "Bedankt | SOLA Travel";
+const description =
+  "Bedankt — we hebben je bericht of inschrijving goed ontvangen. Bekijk de volgende stap voor SOLA weekends, contact of nieuwsbrief.";
+
+const type = Astro.url.searchParams.get("type");
+const typeLineMap: Record<string, string> = {
+  nieuwsbrief: "Je staat nu op de SOLA nieuwsbrief.",
+  contact: "We hebben je bericht ontvangen.",
+  tally: "We hebben je inschrijving goed ontvangen.",
+};
+const typeLine = type ? typeLineMap[type] ?? null : null;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="sola-thankyou-page">
+    <div class="sola-thankyou-container">
+      <h1>Bedankt — we hebben alles goed ontvangen.</h1>
+      <p>
+        Je aanvraag of inschrijving is <strong>succesvol doorgestuurd</strong>.
+        We nemen snel contact met je op of sturen je extra informatie.
+      </p>
+
+      {typeLine && <p class="sola-thankyou-type-line">{typeLine}</p>}
+
+      <h2>Volgende stap</h2>
+      <ul>
+        <li>Bekijk het aanbod en kies het weekend dat bij je past.</li>
+        <li>
+          Heb je een vraag? Neem contact op — we antwoorden snel en helder.
+        </li>
+        <li>Wil je rustig meevolgen? Schrijf je in op de nieuwsbrief.</li>
+      </ul>
+
+      <div class="sola-thankyou-cta" aria-label="Vervolgacties">
+        <a
+          class="btn btn-primary"
+          href="https://tally.so/r/pbogoy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ik schrijf me in
+        </a>
+
+        <div class="sola-thankyou-cta-links">
+          <a class="btn btn-secondary" href="/contact">Neem contact op</a>
+          <a class="btn btn-secondary" href="/newsletter"
+            >Schrijf je in op de nieuwsbrief</a
+          >
+        </div>
+
+        <div class="sola-thankyou-whatsapp">
+          <a
+            href="https://wa.me/32493410738"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Stuur een WhatsApp-bericht
+          </a>
+          <small>+32 493 41 07 38</small>
+        </div>
+      </div>
+
+      <p class="sola-thankyou-fineprint">
+        Tip: voeg solatravel.be toe aan je contacten zodat je onze e-mails zeker
+        ontvangt.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

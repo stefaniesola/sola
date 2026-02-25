@@ -69,3 +69,124 @@ button:not(:disabled),
 [role="button"]:not(:disabled) {
     cursor: pointer;
 }
+
+/* SOLA Thank You Page */
+.sola-thankyou-page {
+    padding: 4rem 1.5rem;
+}
+
+.sola-thankyou-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2rem;
+    border: 1px solid var(--color-base-200);
+    border-radius: 1rem;
+    background: var(--color-base-25);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--color-base-900) 8%, transparent);
+}
+
+.sola-thankyou-container h1 {
+    font-size: clamp(1.9rem, 3vw, 2.4rem);
+    line-height: 1.15;
+    color: var(--color-base-900);
+    margin-bottom: 1rem;
+}
+
+.sola-thankyou-container p,
+.sola-thankyou-container li {
+    color: var(--color-base-700);
+}
+
+.sola-thankyou-type-line {
+    margin-top: 0.85rem;
+    color: var(--color-base-800);
+}
+
+.sola-thankyou-container h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+    color: var(--color-base-900);
+}
+
+.sola-thankyou-container ul {
+    margin: 0;
+    padding-left: 1.15rem;
+    display: grid;
+    gap: 0.55rem;
+}
+
+.sola-thankyou-cta {
+    margin-top: 1.75rem;
+    display: grid;
+    gap: 0.95rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 0.7rem 1.15rem;
+    border: 1px solid transparent;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent-500) 35%, white);
+}
+
+.btn-primary {
+    background: var(--color-accent-500);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--color-accent-600);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--color-base-900);
+    border-color: var(--color-base-300);
+}
+
+.btn-secondary:hover {
+    background: var(--color-base-100);
+    border-color: var(--color-base-400);
+}
+
+.sola-thankyou-cta-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.sola-thankyou-whatsapp {
+    display: grid;
+    gap: 0.2rem;
+}
+
+.sola-thankyou-whatsapp a {
+    width: fit-content;
+    color: var(--color-accent-700);
+    text-decoration: underline;
+    text-underline-offset: 0.12em;
+}
+
+.sola-thankyou-whatsapp a:hover {
+    color: var(--color-accent-800);
+}
+
+.sola-thankyou-whatsapp small {
+    color: var(--color-base-500);
+}
+
+.sola-thankyou-fineprint {
+    margin-top: 1.8rem;
+    font-size: 0.95rem;
+    color: var(--color-base-500);
+}
