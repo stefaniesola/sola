@@ -101,10 +101,14 @@ Useful commands:
    Expected: `301` or `308` redirect to `https://www.solatravel.be/weekenden/exercise-is-medicine`.
 2. Open `https://solatravel.be/weekenden/bewustwording-connectie`.
    Expected: `301` or `308` redirect to `https://www.solatravel.be/weekenden/bewustwording-connectie`.
-3. In Chrome DevTools → **Network**:
+3. Open `https://www.solatravel.be/weekenden/exercise-is-medicine/`.
+   Expected: `301` or `308` redirect to `https://www.solatravel.be/weekenden/exercise-is-medicine`.
+4. Open `https://www.solatravel.be/weekenden/bewustwording-connectie/`.
+   Expected: `301` or `308` redirect to `https://www.solatravel.be/weekenden/bewustwording-connectie`.
+5. In Chrome DevTools → **Network**:
    - enable **Preserve log**
    - enable **Disable cache**
-   - verify the initial request to host `solatravel.be` returns **301/308** and includes a `Location` header to the corresponding `www` URL.
+   - verify the initial request returns **301/308** and includes a `Location` header to the expected non-slash or `www` URL.
 
 ### Vercel domain settings (required)
 
