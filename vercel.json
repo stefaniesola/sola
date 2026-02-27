@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "solatravel.be"
+        }
+      ],
+      "destination": "https://www.solatravel.be/$1",
+      "permanent": true
+    }
+  ]
+}
