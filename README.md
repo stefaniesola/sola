@@ -72,3 +72,42 @@ Feel free to check Astro's [documentation](https://docs.astro.build)
 
 ---
 Maintained & updated by Bektur Aslan. Contributions welcome.
+
+## WWW canonical & redirect verification checklist
+
+Use this checklist after deploy when validating duplicate-host/canonical issues.
+
+### Automated checks
+
+- `pnpm build`
+- `rg -n "rel=\"canonical\"" dist/weekenden/exercise-is-medicine/index.html dist/weekenden/bewustwording-connectie/index.html`
+
+### Live redirect check (if network allows)
+
+Expected behavior for non-www URLs:
+- first response should be **301 or 308**
+- response headers should include:
+  - `Location: https://www.solatravel.be/<same-path>`
+
+Useful commands:
+
+- `curl -I -sS https://solatravel.be/weekenden/exercise-is-medicine | sed -n '1,20p'`
+- `curl -I -sS https://solatravel.be/weekenden/bewustwording-connectie | sed -n '1,20p'`
+
+### Manual verification (recommended)
+
+1. Open these non-www URLs:
+   - `https://solatravel.be/weekenden/exercise-is-medicine`
+   - `https://solatravel.be/weekenden/bewustwording-connectie`
+   Expected: redirect to the `www` equivalents.
+2. In Chrome DevTools → **Network**:
+   - enable **Preserve log**
+   - enable **Disable cache**
+   - verify the initial `solatravel.be` request returns **301/308** and includes
+     `Location: https://www.solatravel.be/<same-path>`.
+
+### Vercel domain settings (required)
+
+- Set `www.solatravel.be` as **Primary domain**
+- Attach `solatravel.be` as an additional domain
+- Enable **Redirect to Primary Domain** (if available)
