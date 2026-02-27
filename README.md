@@ -87,7 +87,8 @@ Use this checklist after deploy when validating duplicate-host/canonical issues.
 Expected behavior for non-www URLs:
 - first response should be **301 or 308**
 - response headers should include:
-  - `Location: https://www.solatravel.be/<same-path>`
+  - `Location: https://www.solatravel.be/weekenden/exercise-is-medicine` (for the first URL)
+  - `Location: https://www.solatravel.be/weekenden/bewustwording-connectie` (for the second URL)
 
 Useful commands:
 
@@ -96,15 +97,14 @@ Useful commands:
 
 ### Manual verification (recommended)
 
-1. Open these non-www URLs:
-   - `https://solatravel.be/weekenden/exercise-is-medicine`
-   - `https://solatravel.be/weekenden/bewustwording-connectie`
-   Expected: redirect to the `www` equivalents.
-2. In Chrome DevTools → **Network**:
+1. Open `https://solatravel.be/weekenden/exercise-is-medicine`.
+   Expected: `301` or `308` redirect to `https://www.solatravel.be/weekenden/exercise-is-medicine`.
+2. Open `https://solatravel.be/weekenden/bewustwording-connectie`.
+   Expected: `301` or `308` redirect to `https://www.solatravel.be/weekenden/bewustwording-connectie`.
+3. In Chrome DevTools → **Network**:
    - enable **Preserve log**
    - enable **Disable cache**
-   - verify the initial `solatravel.be` request returns **301/308** and includes
-     `Location: https://www.solatravel.be/<same-path>`.
+   - verify the initial request to host `solatravel.be` returns **301/308** and includes a `Location` header to the corresponding `www` URL.
 
 ### Vercel domain settings (required)
 
