@@ -72,3 +72,46 @@ Feel free to check Astro's [documentation](https://docs.astro.build)
 
 ---
 Maintained & updated by Bektur Aslan. Contributions welcome.
+
+## WWW canonical & redirect verification checklist
+
+Use this checklist after deploy when validating duplicate-host/canonical issues.
+
+### Automated checks
+
+- `pnpm build`
+- `rg -n "rel=\"canonical\"" dist/weekenden/exercise-is-medicine/index.html dist/weekenden/bewustwording-connectie/index.html`
+
+### Live redirect check (if network allows)
+
+Expected behavior for non-www URLs:
+- first response should be **301 or 308**
+- response headers should include:
+  - `Location: https://www.solatravel.be/weekenden/exercise-is-medicine` (for the first URL)
+  - `Location: https://www.solatravel.be/weekenden/bewustwording-connectie` (for the second URL)
+
+Useful commands:
+
+- `curl -I -sS https://solatravel.be/weekenden/exercise-is-medicine | sed -n '1,20p'`
+- `curl -I -sS https://solatravel.be/weekenden/bewustwording-connectie | sed -n '1,20p'`
+
+### Manual verification (recommended)
+
+1. Open `https://solatravel.be/weekenden/exercise-is-medicine`.
+   Expected: `301` or `308` redirect to `https://www.solatravel.be/weekenden/exercise-is-medicine`.
+2. Open `https://solatravel.be/weekenden/bewustwording-connectie`.
+   Expected: `301` or `308` redirect to `https://www.solatravel.be/weekenden/bewustwording-connectie`.
+3. Open `https://www.solatravel.be/weekenden/exercise-is-medicine/`.
+   Expected: `301` or `308` redirect to `https://www.solatravel.be/weekenden/exercise-is-medicine`.
+4. Open `https://www.solatravel.be/weekenden/bewustwording-connectie/`.
+   Expected: `301` or `308` redirect to `https://www.solatravel.be/weekenden/bewustwording-connectie`.
+5. In Chrome DevTools → **Network**:
+   - enable **Preserve log**
+   - enable **Disable cache**
+   - verify the initial request returns **301/308** and includes a `Location` header to the expected non-slash or `www` URL.
+
+### Vercel domain settings (required)
+
+- Set `www.solatravel.be` as **Primary domain**
+- Attach `solatravel.be` as an additional domain
+- Enable **Redirect to Primary Domain** (if available)

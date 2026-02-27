@@ -13,9 +13,6 @@ interface Props {
 
 const { title, description, ogImage, ogImageAlt, structuredData } =
   Astro.props as Props;
-const canonical = Astro.site
-  ? new URL(Astro.url.pathname, Astro.site).toString()
-  : undefined;
 const resolvedOgImage = ogImage
   ? new URL(ogImage, Astro.site ?? Astro.url).toString()
   : new URL("/images/stefanie-deleu-sola-travel.jpg", Astro.site ?? Astro.url)
@@ -61,7 +58,6 @@ const isJourneyPage =
     <BaseHead
       {title}
       {description}
-      canonical={canonical}
       ogImage={resolvedOgImage}
       ogImageAlt={ogImageAlt}
       structuredData={structuredDataItems}
