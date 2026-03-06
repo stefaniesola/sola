@@ -20,35 +20,24 @@ const typeLine = type ? typeLineMap[type] ?? null : null;
       <h1>Bedankt — we hebben alles goed ontvangen.</h1>
       <p>
         Je aanvraag of inschrijving is <strong>succesvol doorgestuurd</strong>.
-        We nemen snel contact met je op of sturen je extra informatie.
+        We sturen je snel een bevestiging of nemen contact met je op.
       </p>
 
       {typeLine && <p class="sola-thankyou-type-line">{typeLine}</p>}
 
       <h2>Volgende stap</h2>
       <ul>
-        <li>Bekijk het aanbod en kies het weekend dat bij je past.</li>
-        <li>
-          Heb je een vraag? Neem contact op — we antwoorden snel en helder.
-        </li>
-        <li>Wil je rustig meevolgen? Schrijf je in op de nieuwsbrief.</li>
+        <li>Bekijk het aanbod en het programma.</li>
+        <li>Heb je een vraag? Stuur me gerust een bericht.</li>
+        <li>Wil je rustig meevolgen? Hou je inbox in de gaten.</li>
       </ul>
 
       <div class="sola-thankyou-cta" aria-label="Vervolgacties">
-        <a
-          class="btn btn-primary"
-          href="https://tally.so/r/pbogoy?redirect=https%3A%2F%2Fwww.solatravel.be%2Fbedankt%3Ftype%3Dtally"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Ik schrijf me in
-        </a>
+        <a class="btn btn-primary" href="/weekenden">Bekijk de SOLA weekends</a>
 
         <div class="sola-thankyou-cta-links">
-          <a class="btn btn-secondary" href="/contact">Neem contact op</a>
-          <a class="btn btn-secondary" href="/newsletter"
-            >Schrijf je in op de nieuwsbrief</a
-          >
+          <a class="btn btn-secondary" href="/faq">Veelgestelde vragen</a>
+          <a class="btn btn-secondary" href="/">Naar de startpagina</a>
         </div>
 
         <div class="sola-thankyou-whatsapp">
