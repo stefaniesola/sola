@@ -11,8 +11,8 @@ const pageDescription =
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
-  <article class="max-w-3xl mx-auto px-6 py-14 lg:py-20 space-y-14 lg:space-y-20">
-    <header class="space-y-6">
+  <article class="max-w-5xl mx-auto px-6 py-10 lg:py-14 space-y-10 lg:space-y-12">
+    <header class="space-y-4 lg:space-y-5">
       <figure class="space-y-3">
         <Image
           src={hogeVenenLandschap}
@@ -40,108 +40,116 @@ const pageDescription =
       <p class="text-sm text-base-500 tracking-wide">In beweging ・ In de natuur ・ In een kleine groep</p>
     </header>
 
-    <section class="space-y-6 lg:space-y-7 text-lg text-base-700 leading-relaxed">
-      <p class="text-base-500">Stefanie - oprichter van SOLA Travel</p>
+    <section class="space-y-6 text-lg text-base-700 leading-relaxed">
+      <div class="grid gap-6 lg:gap-8 lg:grid-cols-[1.2fr_0.8fr] items-start">
+        <div class="space-y-5">
+          <p class="text-base-500">Stefanie - oprichter van SOLA Travel</p>
 
-      <figure class="space-y-3 py-1">
-        <Image
-          src={stefanieSarahLisaImage}
-          alt="Stefanie, Sarah en Lisa tijdens de voorbereiding van het SOLA weekend"
-          class="w-full h-auto rounded-2xl border border-base-200"
-          loading="lazy"
-          sizes="(max-width: 900px) 100vw, 860px"
-        />
-        <figcaption class="text-sm text-base-500">
-          Van links naar rechts: Stefanie (SOLA), Sarah Deleu en Lisa Vanderschelden
-        </figcaption>
-      </figure>
+          <p>Vorige week ontdekte ik iets onverwachts: spanning kan letterlijk in je kaak zitten.</p>
 
-      <p>Vorige week ontdekte ik iets onverwachts: spanning kan letterlijk in je kaak zitten.</p>
+          <p>
+            Ik zat samen met Sarah en Lisa om het SOLA-weekend
+            <a href="/weekenden/bewustwording-connectie" class="text-accent-700 hover:text-accent-800">
+              Bewustwording &amp; Connectie
+            </a>
+            voor te bereiden. We deden een aantal oefeningen die Sarah ook tijdens het
+            weekend begeleidt. Niets ingewikkeld, gewoon even stilstaan bij wat er in je
+            lichaam gebeurt.
+          </p>
 
-      <p>
-        Ik zat samen met Sarah en Lisa om het SOLA-weekend
-        <a href="/weekenden/bewustwording-connectie" class="text-accent-700 hover:text-accent-800">
-          Bewustwording &amp; Connectie
-        </a>
-        voor te bereiden. We deden een aantal oefeningen die Sarah ook tijdens het
-        weekend begeleidt. Niets ingewikkeld, gewoon even stilstaan bij wat er in je
-        lichaam gebeurt.
-      </p>
+          <p>
+            Op een bepaald moment stelde Sarah een eenvoudige vraag: waar in je lichaam
+            voel je spanning?
+          </p>
 
-      <p>
-        Op een bepaald moment stelde Sarah een eenvoudige vraag: waar in je lichaam
-        voel je spanning?
-      </p>
+          <p>
+            Ik dacht eerst dat er eigenlijk niets was. Tot ik merkte dat ik mijn tanden op
+            elkaar klemde. Mijn kaak dus. Lisa voelde spanning in haar buik, terwijl Sarah
+            zelf een druk op haar borst beschreef.
+          </p>
 
-      <p>
-        Ik dacht eerst dat er eigenlijk niets was. Tot ik merkte dat ik mijn tanden op
-        elkaar klemde. Mijn kaak dus. Lisa voelde spanning in haar buik, terwijl Sarah
-        zelf een druk op haar borst beschreef.
-      </p>
+          <p>
+            Dat is eigenlijk heel herkenbaar. Ons lichaam registreert spanning vaak sneller
+            dan ons hoofd ze kan benoemen.
+          </p>
+        </div>
 
-      <p>
-        Dat is eigenlijk heel herkenbaar. Ons lichaam registreert spanning vaak sneller
-        dan ons hoofd ze kan benoemen.
-      </p>
+        <figure class="space-y-3 lg:sticky lg:top-28">
+          <Image
+            src={stefanieSarahLisaImage}
+            alt="Stefanie, Sarah en Lisa tijdens de voorbereiding van het SOLA weekend"
+            class="w-full h-auto rounded-2xl border border-base-200"
+            loading="lazy"
+            sizes="(max-width: 1024px) 100vw, 360px"
+          />
+          <figcaption class="text-sm text-base-500">
+            Van links naar rechts: Stefanie (SOLA), Sarah Deleu en Lisa Vanderschelden
+          </figcaption>
+        </figure>
+      </div>
 
-      <p>
-        Daarna deden we een korte techniek waarbij je via lichte tapping op bepaalde
-        punten in het gezicht en bovenlichaam je zenuwstelsel opnieuw naar rust brengt.
-      </p>
+      <div class="grid gap-6 lg:gap-8 lg:grid-cols-[0.9fr_1.1fr] items-start border-t border-base-200 pt-6">
+        <figure class="space-y-3">
+          <Image
+            src={oefeningImage}
+            alt="Lisa en Stefanie tijdens een oefening rond lichaamsbewustzijn"
+            class="w-full h-auto rounded-2xl border border-base-200"
+            loading="lazy"
+            sizes="(max-width: 1024px) 100vw, 420px"
+          />
+          <figcaption class="text-sm text-base-500">
+            Tijdens het weekend werken we met eenvoudige oefeningen die helpen om
+            spanning te herkennen en te reguleren.
+          </figcaption>
+        </figure>
 
-      <figure class="space-y-3 py-1">
-        <Image
-          src={oefeningImage}
-          alt="Lisa en Stefanie tijdens een oefening rond lichaamsbewustzijn"
-          class="w-full h-auto rounded-2xl border border-base-200"
-          loading="lazy"
-          sizes="(max-width: 900px) 100vw, 860px"
-        />
-        <figcaption class="text-sm text-base-500">
-          Tijdens het weekend werken we met eenvoudige oefeningen die helpen om
-          spanning te herkennen en te reguleren.
-        </figcaption>
-      </figure>
+        <div class="space-y-5">
+          <p>
+            Daarna deden we een korte techniek waarbij je via lichte tapping op bepaalde
+            punten in het gezicht en bovenlichaam je zenuwstelsel opnieuw naar rust brengt.
+          </p>
 
-      <p>
-        Het principe erachter wordt steeds vaker onderzocht. Studies rond EFT
-        (Emotional Freedom Techniques) tonen bijvoorbeeld dat zulke technieken de
-        stressrespons kunnen verlagen en het cortisolniveau in het lichaam kunnen doen
-        dalen.
-      </p>
+          <p>
+            Het principe erachter wordt steeds vaker onderzocht. Studies rond EFT
+            (Emotional Freedom Techniques) tonen bijvoorbeeld dat zulke technieken de
+            stressrespons kunnen verlagen en het cortisolniveau in het lichaam kunnen doen
+            dalen.
+          </p>
 
-      <p>Wat mij vooral opviel, gebeurde een paar minuten later.</p>
+          <p>Wat mij vooral opviel, gebeurde een paar minuten later.</p>
 
-      <p>
-        Mijn kaak was minder gespannen. Niet door een plotse oplossing, maar omdat
-        mijn lichaam veiligheid had ervaren. Zo kan je loslaten.
-      </p>
+          <p>
+            Mijn kaak was minder gespannen. Niet door een plotse oplossing, maar omdat
+            mijn lichaam veiligheid had ervaren. Zo kan je loslaten.
+          </p>
 
-      <p>
-        Later deden we nog een oefening waarbij je letterlijk je eigen pad aflegt. Met
-        overtuigingen, relaties en verwachtingen die je meedraagt.
-      </p>
+          <p>
+            Later deden we nog een oefening waarbij je letterlijk je eigen pad aflegt. Met
+            overtuigingen, relaties en verwachtingen die je meedraagt.
+          </p>
 
-      <p>
-        Wat daar duidelijk werd, is hoe vaak we denken dat we eerst alles moeten
-        begrijpen voor we iets kunnen veranderen. In werkelijkheid werkt het vaak net
-        andersom. Wanneer er ruimte ontstaat, wordt het vanzelf helderder.
-      </p>
+          <p>
+            Wat daar duidelijk werd, is hoe vaak we denken dat we eerst alles moeten
+            begrijpen voor we iets kunnen veranderen. In werkelijkheid werkt het vaak net
+            andersom. Wanneer er ruimte ontstaat, wordt het vanzelf helderder.
+          </p>
 
-      <p>
-        Dat is ook de insteek van het SOLA-weekend met Sarah. Niet nog meer analyseren
-        of informatie verzamelen, maar even uit je hoofd stappen en opnieuw voelen wat
-        er eigenlijk al aanwezig is. In beweging, al wandelend en met een kleine groep
-        mensen die daar ook benieuwd naar zijn.
-      </p>
+          <p>
+            Dat is ook de insteek van het SOLA-weekend met Sarah. Niet nog meer analyseren
+            of informatie verzamelen, maar even uit je hoofd stappen en opnieuw voelen wat
+            er eigenlijk al aanwezig is. In beweging, al wandelend en met een kleine groep
+            mensen die daar ook benieuwd naar zijn.
+          </p>
 
-      <p>
-        Misschien herken je dat gevoel. Misschien voel je gewoon dat er onder de
-        oppervlakte nog iets te ontdekken valt.
-      </p>
+          <p>
+            Misschien herken je dat gevoel. Misschien voel je gewoon dat er onder de
+            oppervlakte nog iets te ontdekken valt.
+          </p>
+        </div>
+      </div>
     </section>
 
-    <section class="space-y-4 border-t border-base-200 pt-10">
+    <section class="space-y-4 border-t border-base-200 pt-8">
       <h2 class="text-2xl lg:text-3xl font-semibold text-base-900">Van inzicht naar ervaring</h2>
       <p class="text-lg text-base-700 leading-relaxed">
         Dit weekend gaat niet over perfect worden, maar over opmerken wat je lichaam je
@@ -149,7 +157,7 @@ const pageDescription =
       </p>
     </section>
 
-    <section class="space-y-6 border-t border-base-200 pt-10">
+    <section class="space-y-5 border-t border-base-200 pt-8">
       <h2 class="text-2xl lg:text-3xl font-semibold text-base-900">De experten tijdens dit weekend</h2>
 
       <div class="space-y-2">
@@ -175,7 +183,7 @@ const pageDescription =
       </div>
     </section>
 
-    <section class="bg-base-50/80 border border-base-200 rounded-3xl p-6 lg:p-10 space-y-6">
+    <section class="bg-base-50/80 border border-base-200 rounded-3xl p-6 lg:p-8 space-y-5">
       <div class="space-y-2">
         <h3 class="text-2xl lg:text-3xl font-semibold text-base-900">Bewustwording &amp; Connectie</h3>
         <p class="text-base-700">7 tot 9 augustus in de Hoge Venen</p>
@@ -204,7 +212,7 @@ const pageDescription =
       </div>
     </section>
 
-    <section class="space-y-6">
+    <section class="space-y-4">
       <a
         href="/weekenden/bewustwording-connectie"
         class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-accent-600 text-white font-semibold hover:bg-accent-700 transition"
