@@ -1,5 +1,9 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import hogeVenenLandschap from "../../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg";
+import stefanieSarahLisaImage from "../../assets/images/Stefanie Deleu x SOLA TRAVEL.jpg";
+import oefeningImage from "../../assets/images/yoga Lisa LIV.png";
 
 const pageTitle = "Hoe spanning soms letterlijk in je kaak kan zitten | SOLA";
 const pageDescription =
@@ -9,6 +13,17 @@ const pageDescription =
 <BaseLayout title={pageTitle} description={pageDescription}>
   <article class="max-w-3xl mx-auto px-6 py-14 lg:py-20 space-y-14 lg:space-y-20">
     <header class="space-y-6">
+      <figure class="space-y-3">
+        <Image
+          src={hogeVenenLandschap}
+          alt="Hoge Venen landschap met open veen en wandelpad"
+          class="w-full h-auto rounded-2xl border border-base-200"
+          loading="eager"
+          sizes="(max-width: 900px) 100vw, 860px"
+        />
+        <figcaption class="text-sm text-base-500">Hoge Venen – waar het SOLA weekend doorgaat</figcaption>
+      </figure>
+
       <p class="uppercase text-xs tracking-[0.24em] text-base-500">SOLA inzicht</p>
       <h1 class="text-4xl lg:text-5xl font-semibold leading-tight text-base-900">
         Hoe spanning soms letterlijk in je kaak kan zitten
@@ -27,6 +42,19 @@ const pageDescription =
 
     <section class="space-y-6 lg:space-y-7 text-lg text-base-700 leading-relaxed">
       <p class="text-base-500">Stefanie - oprichter van SOLA Travel</p>
+
+      <figure class="space-y-3 py-1">
+        <Image
+          src={stefanieSarahLisaImage}
+          alt="Stefanie, Sarah en Lisa tijdens de voorbereiding van het SOLA weekend"
+          class="w-full h-auto rounded-2xl border border-base-200"
+          loading="lazy"
+          sizes="(max-width: 900px) 100vw, 860px"
+        />
+        <figcaption class="text-sm text-base-500">
+          Van links naar rechts: Stefanie (SOLA), Sarah Deleu en Lisa Vanderschelden
+        </figcaption>
+      </figure>
 
       <p>Vorige week ontdekte ik iets onverwachts: spanning kan letterlijk in je kaak zitten.</p>
 
@@ -60,6 +88,20 @@ const pageDescription =
         Daarna deden we een korte techniek waarbij je via lichte tapping op bepaalde
         punten in het gezicht en bovenlichaam je zenuwstelsel opnieuw naar rust brengt.
       </p>
+
+      <figure class="space-y-3 py-1">
+        <Image
+          src={oefeningImage}
+          alt="Lisa en Stefanie tijdens een oefening rond lichaamsbewustzijn"
+          class="w-full h-auto rounded-2xl border border-base-200"
+          loading="lazy"
+          sizes="(max-width: 900px) 100vw, 860px"
+        />
+        <figcaption class="text-sm text-base-500">
+          Tijdens het weekend werken we met eenvoudige oefeningen die helpen om
+          spanning te herkennen en te reguleren.
+        </figcaption>
+      </figure>
 
       <p>
         Het principe erachter wordt steeds vaker onderzocht. Studies rond EFT
@@ -105,6 +147,32 @@ const pageDescription =
         Dit weekend gaat niet over perfect worden, maar over opmerken wat je lichaam je
         al vertelt - en leren hoe je daar zachter en helderder op kan reageren.
       </p>
+    </section>
+
+    <section class="space-y-6 border-t border-base-200 pt-10">
+      <h2 class="text-2xl lg:text-3xl font-semibold text-base-900">De experten tijdens dit weekend</h2>
+
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold text-base-900">Lisa Vanderschelden</h3>
+        <p class="text-base-500">Yoga &amp; beweging</p>
+        <p class="text-lg text-base-700 leading-relaxed">
+          Lisa is kinesitherapeut en yogadocent, met focus op herstel,
+          blessurepreventie en duurzame trainingsopbouw bij sporters. Ze combineert
+          wetenschappelijke kennis met lichaamsbewustzijn, ademhaling en gerichte
+          beweging.
+        </p>
+      </div>
+
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold text-base-900">Sarah Deleu</h3>
+        <p class="text-base-500">EFT &amp; orthomoleculair therapeut</p>
+        <p class="text-lg text-base-700 leading-relaxed">
+          Sarah is biomedisch wetenschapper en therapeut in Emotional Freedom
+          Techniques (EFT). Ze werkt rond emotionele en relationele patronen en leert
+          je spanning reguleren, zodat je met meer rust en helderheid aanwezig kan zijn
+          bij jezelf en anderen.
+        </p>
+      </div>
     </section>
 
     <section class="bg-base-50/80 border border-base-200 rounded-3xl p-6 lg:p-10 space-y-6">
