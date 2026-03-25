@@ -905,7 +905,7 @@ export const people: Person[] = [
     name: "Johan De Coninck",
     role: "KPNI-therapeut & oprichter van ART",
     type: "Expert",
-    bio: "Johan De Coninck is KPNI-therapeut en oprichter van Antwerp Rehab & Training (ART), met meer dan 20 jaar ervaring in het toepassen van een wetenschappelijk onderbouwde visie op gezondheid. Hij vertaalt inzichten uit neuro-immunologie, fysiologie en gedrag naar gerichte interventies rond beweging, voeding en herstel, met focus op de onderliggende oorzaken van klachten.",
+    bio: "Johan De Coninck is therapeut in de klinische psycho-neuro-immunologie (KPNI) en oprichter van Antwerp Rehab & Training (ART). Hij werkt rond beweging, voeding en herstel en leert je je energie en veerkracht versterken, praktisch, no-nonsense en voelbaar in je dagelijks leven.",
     logo: "/src/assets/images/johanportret.jpg",
     isTeamMember: false,
     website: "https://www.antwerprehabtraining.be/",
