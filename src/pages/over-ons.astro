@@ -12,7 +12,7 @@ import landscapeImage from "../assets/images/GeoPark Famenne Ardenne - landschap
 import stefaniePortrait from "../assets/images/Stefanie Deleu - SOLA Travel - profiel.JPG";
 import stefanieSolaPortrait from "../assets/images/Stefanie Deleu x SOLA TRAVEL.jpg";
 import yugenLogo from "../assets/images/yugendrinks_logo.svg";
-import fermentistaKlejmanLogo from "../assets/images/fermentista-klejman-logo.svg";
+import fermentistaKlejmanImage from "../assets/images/Marta-Klejman-Fermentista-Strafste-Onderneemster.jpg";
 
 const coreTeam = people.filter((person) => person.isTeamMember === true);
 const partners = people.filter((person) => person.isTeamMember === false);
@@ -58,9 +58,9 @@ const featuredPartners = [
   },
   {
     name: "Fermentista Klejman",
-    image: fermentistaKlejmanLogo.src,
-    imageClass: "object-contain",
-    imageWrapperClass: "p-3",
+    image: fermentistaKlejmanImage.src,
+    imageClass: "object-cover",
+    imageWrapperClass: "p-0",
     description:
       "Gefermenteerde voeding met pure ingrediënten. Ondersteunt een gezonde darmflora en past binnen onze visie op gezondheid.",
     website: { label: "klejman2.com", href: "https://klejman2.com/en/" },
