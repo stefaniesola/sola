@@ -902,6 +902,15 @@ export const people: Person[] = [
     website: "https://www.instagram.com/simonendurancelab/",
   },
   {
+    name: "Johan De Coninck",
+    role: "KPNI-therapeut & oprichter van ART",
+    type: "Expert",
+    bio: "Johan De Coninck is KPNI-therapeut en oprichter van Antwerp Rehab & Training (ART), met meer dan 20 jaar ervaring in het toepassen van een wetenschappelijk onderbouwde visie op gezondheid. Hij vertaalt inzichten uit neuro-immunologie, fysiologie en gedrag naar gerichte interventies rond beweging, voeding en herstel, met focus op de onderliggende oorzaken van klachten.",
+    logo: "/src/assets/images/johanportret.jpg",
+    isTeamMember: false,
+    website: "https://www.antwerprehabtraining.be/",
+  },
+  {
     name: "Sarah Deleu",
     role: "EFT & orthomoleculair therapeut",
     type: "Expert",
