@@ -782,8 +782,8 @@ Het resultaat is een echte reset van body & mind. En een ervaring die blijft doo
 
 ## Begeleiding / Experts
 
-[Johan De Coninck](https://www.rehab-training.be/team/) is zaakvoerder, therapeut en coach, expert in KPNI (Klinische Psycho-Neuro-Immunologie) en oprichter van [Antwerp Rehab & Training (ART)](https://www.rehab-training.be/).
-Als zaakvoerder en therapeut combineert hij zijn diepgaande kennis van KPNI met jarenlange ervaring in het begeleiden van mensen naar een betere gezondheid en vitaliteit. Zijn aanpak vertrekt vanuit de samenhang tussen het zenuwstelsel, het immuunsysteem en psycho-emotionele processen.
+Johan De Coninck is expert in KPNI (Klinische Psycho-Neuro-Immunologie) en oprichter van Antwerp Rehab & Training (ART).
+Hij werkt sinds 2004 met mensen rond gezondheid, beweging en gedragsverandering. Zijn aanpak vertrekt vanuit de samenhang tussen het zenuwstelsel, het immuunsysteem en psycho-emotionele processen.
 
 Binnen KPNI combineert hij onder andere:
 
