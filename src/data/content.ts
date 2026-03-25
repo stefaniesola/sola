@@ -27,6 +27,17 @@ import sarahSfeer12 from "../assets/images/Hoge Venen - Johan Annys (3).jpg";
 import sarahSfeer13 from "../assets/images/Logisch gezond EFT - Sarah.jpg";
 import sarahSfeer14 from "../assets/images/Logisch gezond - foto.jpg";
 import sarahSfeer15 from "../assets/images/Sarah Deleu - therapeut 3.jpg";
+import intermittentHero from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (4).jpg";
+import intermittentSfeer1 from "../assets/images/Simon Endurance Lab - performance coach (1) bike.jpeg";
+import intermittentSfeer2 from "../assets/images/Justine Deleu - lopen.jpg";
+import intermittentSfeer3 from "../assets/images/Hoge Venen - Johan Annys (1).jpg";
+import intermittentSfeer4 from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg";
+import intermittentSfeer5 from "../assets/images/Hoge Venen - Barbara winter.jpeg";
+import intermittentSfeer6 from "../assets/images/Hoge Venen omgeving.jpeg";
+import intermittentSfeer7 from "../assets/images/Zaal Hoge Venen.avif";
+import intermittentSfeer8 from "../assets/images/Ontbijt op weekend.avif";
+import intermittentSfeer9 from "../assets/images/Verblijf in Hoge Venen.avif";
+import intermittentSfeer10 from "../assets/images/Kamer Sourbrodt.avif";
 import solaTerraFrankrijk from "../assets/images/SOLA TERRA Frankrijk.jpg";
 
 export type JourneyType = "Weekend" | "Reis";
@@ -558,8 +569,19 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
     location: "Hoge Venen, Ardennen",
     dates: "18 – 20 september 2026",
     price: "€TBA",
-    heroImage: sfeer5,
-    galleryImages: [sfeer1, sfeer2, sfeer3, sfeer4, sfeer5, sfeer6, sfeer7],
+    heroImage: intermittentHero,
+    galleryImages: [
+      intermittentSfeer1,
+      intermittentSfeer2,
+      intermittentSfeer3,
+      intermittentSfeer4,
+      intermittentSfeer5,
+      intermittentSfeer6,
+      intermittentSfeer7,
+      intermittentSfeer8,
+      intermittentSfeer9,
+      intermittentSfeer10,
+    ],
     keyFacts: [
       {
         label: "Wanneer",
@@ -774,6 +796,13 @@ Binnen KPNI combineert hij onder andere:
 Hij brengt die elementen samen in een geïntegreerde aanpak, met als doel het lichaam beter te laten functioneren en mensen meer grip te geven op hun energie, herstel en prestaties.
 
 Johan werkt vanuit recente wetenschappelijke inzichten, maar vertaalt die naar iets dat praktisch toepasbaar is. Wat je leert, kan je ook effectief gebruiken.
+
+Meer over Johan en ART:
+
+- Website: [www.rehab-training.be](https://www.rehab-training.be/)
+- Team (Johan staat bovenaan): [ART Team](https://www.rehab-training.be/team/)
+- Facebook: [Antwerp Rehab & Training](https://www.facebook.com/ARehabTraining/?locale=nl_NL)
+- Instagram: [@antwerp_rehab_training](https://www.instagram.com/antwerp_rehab_training)
 
 ## Praktisch
 
