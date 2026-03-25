@@ -802,7 +802,7 @@ Schrijf je in vóór 15 mei 2026 en ontvang een extra cadeau.
 - Alle workshops & sessies
 - Praktische tools en challenges voor nadien
 - Verblijf op locatie
-- Maaltijden van vrijdagavond t.e.m. zondagmiddag
+- Maaltijden van vrijdagochtend t.e.m. zondagmiddag
 
 ## Wat is niet inbegrepen?
 
