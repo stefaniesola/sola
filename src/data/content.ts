@@ -27,6 +27,17 @@ import sarahSfeer12 from "../assets/images/Hoge Venen - Johan Annys (3).jpg";
 import sarahSfeer13 from "../assets/images/Logisch gezond EFT - Sarah.jpg";
 import sarahSfeer14 from "../assets/images/Logisch gezond - foto.jpg";
 import sarahSfeer15 from "../assets/images/Sarah Deleu - therapeut 3.jpg";
+import intermittentHero from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (4).jpg";
+import intermittentSfeer1 from "../assets/images/Simon Endurance Lab - performance coach (1) bike.jpeg";
+import intermittentSfeer2 from "../assets/images/Justine Deleu - lopen.jpg";
+import intermittentSfeer3 from "../assets/images/Hoge Venen - Johan Annys (1).jpg";
+import intermittentSfeer4 from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg";
+import intermittentSfeer5 from "../assets/images/Hoge Venen - Barbara winter.jpeg";
+import intermittentSfeer6 from "../assets/images/Hoge Venen omgeving.jpeg";
+import intermittentSfeer7 from "../assets/images/Zaal Hoge Venen.avif";
+import intermittentSfeer8 from "../assets/images/Ontbijt op weekend.avif";
+import intermittentSfeer9 from "../assets/images/Verblijf in Hoge Venen.avif";
+import intermittentSfeer10 from "../assets/images/Kamer Sourbrodt.avif";
 import solaTerraFrankrijk from "../assets/images/SOLA TERRA Frankrijk.jpg";
 
 export type JourneyType = "Weekend" | "Reis";
@@ -541,6 +552,300 @@ Na je inschrijving ontvang je een bevestiging en verdere praktische info [per e-
 ## Twijfel je?
 
 Laat je gegevens achter en we nemen persoonlijk contact met je op om te bekijken of dit weekend bij je past.
+
+## Na inschrijving
+
+Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing per mail.
+
+## Goed om weten - FAQ
+`,
+  },
+  {
+    slug: "intermittent-living",
+    name: "Intermittent Living",
+    type: "Weekend",
+    shortDescription:
+      "Een wetenschappelijk onderbouwde reset in de Hoge Venen. Je leert via gerichte prikkels hoe je energie, focus en herstel duurzaam versterkt.",
+    location: "Hoge Venen, Ardennen",
+    dates: "18 – 20 september 2026",
+    price: "€TBA",
+    heroImage: intermittentHero,
+    galleryImages: [
+      intermittentSfeer1,
+      intermittentSfeer2,
+      intermittentSfeer3,
+      intermittentSfeer4,
+      intermittentSfeer5,
+      intermittentSfeer6,
+      intermittentSfeer7,
+      intermittentSfeer8,
+      intermittentSfeer9,
+      intermittentSfeer10,
+    ],
+    keyFacts: [
+      {
+        label: "Wanneer",
+        lines: [
+          "Vrijdag 18 september t.e.m. zondag 20 september 2026",
+          "Welkom op vrijdag om 10u",
+          "Afsluiting op zondag na de lunch",
+        ],
+      },
+      {
+        label: "Waar",
+        lines: ["Sourbrodt, Hoge Venen, Ardennen"],
+      },
+      {
+        label: "Prijs",
+        lines: ["€TBA per persoon. Deze prijs is all-in."],
+      },
+      {
+        label: "Early bird",
+        lines: ["Cadeau bij inschrijving vóór 15 mei 2026"],
+      },
+      {
+        label: "Groepsgrootte",
+        lines: ["Minimum 8, maximum 14 deelnemers"],
+      },
+    ],
+    faq: [
+      {
+        question: "Ga ik mij effectief energieker voelen?",
+        answer:
+          "Ja. Veel mensen merken dat ze ’s ochtends makkelijker opstaan, minder dips ervaren en doorheen de dag constanter energie hebben.",
+      },
+      {
+        question: "Wat verandert er mentaal?",
+        answer:
+          "Meer rust in je hoofd en tegelijk meer scherpte. Je reageert minder automatisch op stress en hebt meer ruimte om bewuste keuzes te maken.",
+      },
+      {
+        question: "Wat betekent ‘meer veerkracht’ concreet?",
+        answer:
+          "Dat je sneller herstelt na stress, fysiek én mentaal. Minder blijven hangen, sneller terug in balans.",
+      },
+      {
+        question: "Ga ik mij sterker voelen?",
+        answer:
+          "Ja. Niet alleen fysiek, maar ook mentaal. Je merkt dat je meer aankan en minder snel uit evenwicht geraakt.",
+      },
+      {
+        question: "Wat met stress?",
+        answer:
+          "Je leert stress beter begrijpen en sturen. Niet alles vermijden, maar er anders mee omgaan.",
+      },
+      {
+        question: "Helpt dit ook in mijn dagelijkse leven of werk?",
+        answer:
+          "Ja. Meer energie en rust zorgen automatisch voor meer focus en daadkracht. Dingen die je uitstelt, worden plots haalbaar.",
+      },
+      {
+        question:
+          "Kan dit impact hebben op mijn keuzes of richting in het leven?",
+        answer:
+          "Ja. Door rust en helderheid ontstaat er ruimte. Veel mensen voelen na zo’n weekend duidelijker wat ze willen en durven daar ook stappen in zetten.",
+      },
+      {
+        question: "Is dit iets wat blijft of tijdelijk?",
+        answer:
+          "Je neemt concrete tools en inzichten mee. Het effect stopt dus niet na het weekend, je kan er nadien verder op bouwen.",
+      },
+      {
+        question: "Moet ik sportief zijn?",
+        answer:
+          "Nee. Je hoeft geen topconditie te hebben. Wel goesting om actief mee te doen. Alles wordt opgebouwd en begeleid.",
+      },
+      {
+        question: "Is dit veilig?",
+        answer:
+          "Ja. We werken met gecontroleerde prikkels (koude, warmte, ademhaling, fasting) en bouwen alles stap voor stap op. Niemand wordt in iets geduwd.",
+      },
+      {
+        question: "Ga ik wel genoeg eten?",
+        answer:
+          "Ja. Er is voldoende en doordachte voeding voorzien. We werken met principes zoals intermittent fasting, maar dit wordt begeleid en duidelijk uitgelegd.",
+      },
+      {
+        question: "Moet ik honger lijden?",
+        answer:
+          "Nee. Het gaat niet over afzien, maar over begrijpen hoe je lichaam werkt en daarop inspelen.",
+      },
+      {
+        question: "Mag ik drinken wanneer ik wil?",
+        answer:
+          "We werken met intermittent drinking. Dat betekent dat we bewust omgaan met wanneer en hoeveel je drinkt. Dit wordt praktisch uitgelegd tijdens het weekend.",
+      },
+      {
+        question: "Ga ik genoeg slapen?",
+        answer:
+          "Ja. Slaap en herstel zijn essentieel. We respecteren het ritme van het weekend en zorgen voor voldoende rust.",
+      },
+      {
+        question: "Moet ik ervaring hebben met ijsbaden of ademhaling?",
+        answer:
+          "Nee. Alles wordt uitgelegd en rustig opgebouwd. Je hoeft niets te kunnen vooraf.",
+      },
+      {
+        question: "Wat moet ik meebrengen?",
+        answer:
+          "Na inschrijving krijg je een duidelijke paklijst. Denk aan sportkledij, warme kledij en handdoeken (ook voor koude training).",
+      },
+      {
+        question: "Is er eten en drank voorzien?",
+        answer: "Ja. Alles wat je nodig hebt tijdens het weekend is voorzien.",
+      },
+      {
+        question: "Wat als ik gezondheidsklachten heb?",
+        answer:
+          "Laat dit op voorhand weten. Dan bekijken we samen wat mogelijk is.",
+      },
+      {
+        question: "Is dit een medisch traject?",
+        answer:
+          "Nee. Dit is geen therapie of behandeling, maar een begeleid weekend rond leefstijl, energie en herstel.",
+      },
+      {
+        question: "Wordt het zwaar?",
+        answer: "Neen, het wordt uitdagend én fun. Je wordt geprikkeld.",
+      },
+      {
+        question: "Wat als ik twijfel?",
+        answer:
+          "Dat is normaal. Je hoeft niets te forceren. Je kiest zelf hoe ver je meegaat.",
+      },
+    ],
+    longread: `## Voor wie is dit weekend?
+
+Voor mensen die voelen dat hun energie, focus of veerkracht beter kan.
+Voor wie niet gewoon wil ontspannen, maar wil begrijpen hoe lichaam en geest opnieuw sterker kunnen samenwerken.
+Voor wie openstaat voor een actieve, onderbouwde aanpak en niet op zoek is naar vrijblijvende wellness, maar naar een ervaring die echt iets in beweging zet.
+
+Dit weekend is er voor wie:
+
+- meer grip wil krijgen op energie, focus en herstel
+- interesse heeft in een onderbouwde aanpak, zonder zweverigheid
+- openstaat voor gerichte fysieke en mentale prikkels
+
+## Wat mag je verwachten?
+
+Een wetenschappelijk onderbouwde reset die je opnieuw energie geeft en je terug controle laat nemen over je eigen gezondheid.
+
+We leren je lichaam opnieuw omgaan met stress, zodat je veerkrachtiger, scherper en energieker wordt. Door gerichte, evolutionaire prikkels maken we je systeem terug anti-fragiel, precies wat nodig is om jouw volle potentieel te benutten.
+
+We doen dat via een innovatieve en praktische aanpak waarin we je lichaam stap voor stap opnieuw flexibel maken met:
+
+- ijsbaden en koude training
+- warmteprikkels zoals sauna en HIIT
+- intermittent fasting en drinking
+- ademhaling, met hypoxie- en CO₂-training
+- fysieke, mentale en cognitieve training en prikkels
+- nieuwe voedingsstrategieën
+- omgaan met acute en chronische stress
+
+Daarnaast krijg je concrete inzichten in je bioritme en levensstijl, zodat je ook na de retreat consistent kan blijven groeien.
+
+## Wat leer je?
+
+Na dit weekend neem je meer mee dan een goed gevoel alleen.
+Je mag rekenen op:
+
+- meer energie, minder dips
+- betere stressbestendigheid en focus
+- een sterker metabolisme en meer hormonale balans
+- efficiëntere vetverbranding
+- meer controle over lichaam en geest
+
+Het resultaat is een echte reset van body & mind. En een ervaring die blijft doorwerken: fysiek, mentaal en emotioneel.
+
+## Programma
+
+### Dag 1 - vrijdag
+
+- Welkom om 10u in Sourbrodt, Hoge Venen
+- Kennismaking met de groep en startkader van het weekend
+- Eerste fysieke en mentale activatie
+- Avondmaal en rustmoment
+
+### Dag 2 - zaterdag
+
+- Ochtendroutine met ademhaling en gerichte activatie
+- Sessies rond koude- en warmteprikkels
+- Intermittent fasting en drinking in praktijk
+- Cognitieve en fysieke prikkels met integratie in de natuur
+- Avondmodule rond stressregulatie en herstel
+
+### Dag 3 - zondag
+
+- Rustige opstart met focus op bioritme en herstel
+- Integratiesessie: vertaalslag naar je dagelijks leven
+- Afronding na de lunch
+
+## Begeleiding / Experts
+
+[Johan De Coninck](https://www.rehab-training.be/team/) is zaakvoerder, therapeut en coach, expert in KPNI (Klinische Psycho-Neuro-Immunologie) en oprichter van [Antwerp Rehab & Training (ART)](https://www.rehab-training.be/).
+Als zaakvoerder en therapeut combineert hij zijn diepgaande kennis van KPNI met jarenlange ervaring in het begeleiden van mensen naar een betere gezondheid en vitaliteit. Zijn aanpak vertrekt vanuit de samenhang tussen het zenuwstelsel, het immuunsysteem en psycho-emotionele processen.
+
+Binnen KPNI combineert hij onder andere:
+
+- beweging
+- voeding
+- ademhaling
+- lichaamswerk
+- mindset
+
+Hij brengt die elementen samen in een geïntegreerde aanpak, met als doel het lichaam beter te laten functioneren en mensen meer grip te geven op hun energie, herstel en prestaties.
+
+Johan werkt vanuit recente wetenschappelijke inzichten, maar vertaalt die naar iets dat praktisch toepasbaar is. Wat je leert, kan je ook effectief gebruiken.
+
+Meer over Johan en ART:
+
+- Website: [www.rehab-training.be](https://www.rehab-training.be/)
+- Team (Johan staat bovenaan): [ART Team](https://www.rehab-training.be/team/)
+- Facebook: [Antwerp Rehab & Training](https://www.facebook.com/ARehabTraining/?locale=nl_NL)
+- Instagram: [@antwerp_rehab_training](https://www.instagram.com/antwerp_rehab_training)
+
+## Praktisch
+
+### Verblijf
+
+Je verblijft in Sourbrodt in de Oostkantons, te midden van het Natuurpark Hoge Venen - Eifel. Vanaf 570 m hoogte kijkt het huis langs de achterkant uit over het meest ruige stukje natuur van België. Geniet tijdens je verblijf van een dip in de hottub of laat je actieve benen uit in de grote tuin. Je slaapt standaard in een gedeelde kamer (twee personen), met een kamerverdeling volgens geslacht. Koppels kunnen uiteraard samen op een kamer. Elke kamer is voorzien van douche en toilet. Wie liever alleen slaapt, kan dit bij inschrijving aangeven. Dit is mogelijk mits een supplement van 115 euro en in functie van beschikbaarheid.
+
+### Maaltijden
+
+Smakelijk op reis met SOLA. Alle maaltijden zijn inbegrepen, van het avondmaal op de dag van aankomst tot de lunch op de dag van vertrek. De focus ligt op gezonde, evenwichtige voeding, in balans met de activiteiten tijdens je reis. Heb je allergieën of specifieke voedingswensen (zoals vegetarisch)? Geef dit zeker door bij je inschrijving, dan houden we daar graag rekening mee.
+
+**Locatie:** Sourbrodt, Hoge Venen, Ardennen  
+**Data:** Vrijdag 18 september tot zondag 20 september 2026  
+**Prijs:** €TBA per persoon. Deze prijs is all-in.  
+**Aantal deelnemers:** min. 8 – max. 14 deelnemers
+
+## Vroegboekcadeau
+
+Schrijf je in vóór 15 mei 2026 en ontvang een extra cadeau.
+
+## Wat is inbegrepen?
+
+- 3-daags / 2-nachten weekendtraject
+- Inhoudelijke begeleiding door Johan De Coninck
+- Een sessie bij Johan van ART na dit weekend
+- Alle workshops & sessies
+- Praktische tools en challenges voor nadien
+- Verblijf op locatie
+- Maaltijden van vrijdagochtend t.e.m. zondagmiddag
+
+## Wat is niet inbegrepen?
+
+- Transport van en naar de locatie
+- Persoonlijke extra’s
+- Aankopen buiten het voorziene programma
+
+## Boek je plek
+
+Klaar om terug in controle en actie te komen? Reserveer je plek.
+
+## Twijfel je?
+
+Twijfel je of dit weekend bij je past? Plan gerust een kort gesprek in. Dan bekijken we samen of deze ervaring op dit moment klopt voor jou.
 
 ## Na inschrijving
 
