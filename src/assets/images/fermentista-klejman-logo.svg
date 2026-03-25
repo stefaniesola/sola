@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" role="img" aria-labelledby="title desc">
+  <title id="title">Fermentista Klejman</title>
+  <desc id="desc">Monogram logo voor Fermentista Klejman.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f5134" />
+      <stop offset="100%" stop-color="#76a76a" />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="44" fill="url(#bg)" />
+  <circle cx="150" cy="150" r="112" fill="none" stroke="#e8f5e2" stroke-width="6" />
+  <g fill="#f4f9f2">
+    <path d="M98 212V88h79v20h-55v30h47v20h-47v54H98z" />
+    <path d="M188 212V88h24v124h-24z" />
+  </g>
+</svg>
