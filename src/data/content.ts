@@ -27,6 +27,8 @@ import sarahSfeer12 from "../assets/images/Hoge Venen - Johan Annys (3).jpg";
 import sarahSfeer13 from "../assets/images/Logisch gezond EFT - Sarah.jpg";
 import sarahSfeer14 from "../assets/images/Logisch gezond - foto.jpg";
 import sarahSfeer15 from "../assets/images/Sarah Deleu - therapeut 3.jpg";
+import sarah1 from "../assets/images/Sarah - Logisch Gezond - Bewustwording en connectie (1).heic";
+import sarah2 from "../assets/images/Sarah - Logisch Gezond - Bewustwording en connectie (2).heic";
 import sarahBewustwordingNieuw1 from "../assets/images/Water infused orange.jpg";
 import sarahBewustwordingNieuw2 from "../assets/images/EFT techniek - Sarah.jpg";
 import sarahBewustwordingNieuw5 from "../assets/images/Sarah - Logisch Gezond - Bewustwording en connectie (1).jpg";
@@ -310,6 +312,8 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
     price: "€620",
     heroImage: "/src/assets/images/2631991747.jpg",
     galleryImages: [
+      sarah1,
+      sarah2,
       sarahBewustwordingNieuw1,
       sarahSfeer1,
       sarahSfeer2,
