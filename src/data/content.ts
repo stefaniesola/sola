@@ -311,8 +311,6 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
     heroImage: "/src/assets/images/2631991747.jpg",
     galleryImages: [
       sarahBewustwordingNieuw1,
-      sarahBewustwordingNieuw2,
-      sarahBewustwordingNieuw5,
       sarahSfeer1,
       sarahSfeer2,
       sarahSfeer3,
