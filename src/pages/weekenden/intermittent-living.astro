@@ -1,7 +1,7 @@
 ---
 import WeekendTemplate from "./[slug].astro";
 import type { Journey } from "../../data/content";
-import heroImage from "../../assets/images/Intermittent Living - Hoge Venen - op weekend (1).jpeg";
+import heroImage from "../../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (4).jpg";
 import sfeer1 from "../../assets/images/Intermittent Living - Hoge Venen - op weekend (2).jpeg";
 import sfeer2 from "../../assets/images/Intermittent Living - Hoge Venen - op weekend (3).jpeg";
 import sfeer3 from "../../assets/images/Intermittent Living - Hoge Venen - op weekend (4).jpeg";
@@ -21,7 +21,13 @@ const weekend: Journey = {
   location: "Hoge Venen, Ardennen",
   dates: "18 – 20 september 2026",
   price: "€TBA",
-  heroImage,
+  heroImage: heroImage.src,
+  heroImageData: {
+    src: heroImage.src,
+    width: heroImage.width,
+    height: heroImage.height,
+    format: heroImage.format,
+  },
   galleryImages: [
     sfeer1,
     sfeer2,
