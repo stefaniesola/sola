@@ -27,6 +27,9 @@ import sarahSfeer12 from "../assets/images/Hoge Venen - Johan Annys (3).jpg";
 import sarahSfeer13 from "../assets/images/Logisch gezond EFT - Sarah.jpg";
 import sarahSfeer14 from "../assets/images/Logisch gezond - foto.jpg";
 import sarahSfeer15 from "../assets/images/Sarah Deleu - therapeut 3.jpg";
+import sarahBewustwordingNieuw1 from "../assets/images/Water infused orange.jpg";
+import sarahBewustwordingNieuw2 from "../assets/images/EFT techniek - Sarah.jpg";
+import sarahBewustwordingNieuw5 from "../assets/images/Sarah - Logisch Gezond - Bewustwording en connectie (1).jpg";
 import intermittentHero from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (4).jpg";
 import intermittentSfeer1 from "../assets/images/Simon Endurance Lab - performance coach (1) bike.jpeg";
 import intermittentSfeer2 from "../assets/images/Justine Deleu - lopen.jpg";
@@ -307,6 +310,9 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
     price: "€620",
     heroImage: "/src/assets/images/2631991747.jpg",
     galleryImages: [
+      sarahBewustwordingNieuw1,
+      sarahBewustwordingNieuw2,
+      sarahBewustwordingNieuw5,
       sarahSfeer1,
       sarahSfeer2,
       sarahSfeer3,
