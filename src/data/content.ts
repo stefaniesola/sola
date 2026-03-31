@@ -55,6 +55,7 @@ export interface Journey {
   price: string;
   heroImage?: string | ImageMetadata;
   galleryImages?: ImageMetadata[];
+  galleryAlts?: string[];
   heroImageData?: {
     src: string;
     width: number;
