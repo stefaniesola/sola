@@ -13,6 +13,7 @@ import stefaniePortrait from "../assets/images/Stefanie Deleu - SOLA Travel - pr
 import stefanieSolaPortrait from "../assets/images/Stefanie Deleu x SOLA TRAVEL.jpg";
 import yugenLogo from "../assets/images/yugendrinks_logo.svg";
 import fermentistaKlejmanImage from "../assets/images/Marta-Klejman-Fermentista-Strafste-Onderneemster.jpg";
+import croutonAlexandraImage from "../assets/images/Alexandra Eemans - Crouton Biosoep profiel.png";
 
 const coreTeam = people.filter((person) => person.isTeamMember === true);
 const partners = people.filter((person) => person.isTeamMember === false);
@@ -35,6 +36,19 @@ const optimizedMissionPortrait = await getImage({
 });
 
 const featuredPartners = [
+  {
+    name: "Crouton",
+    image: croutonAlexandraImage.src,
+    imageClass: "object-cover",
+    imageWrapperClass: "p-0",
+    description:
+      "Crouton is het biologische soepatelier van Alexandra Eemans. Ze werkt met lokale, seizoensgebonden ingrediënten en bereidt pure, plantaardige gerechten zonder toevoegingen. Haar keuken sluit naadloos aan bij onze visie op gezondheid, eenvoud en kwaliteit.",
+    website: {
+      label: "croutonbiosoep.be",
+      href: "https://www.croutonbiosoep.be/",
+    },
+    instagram: "https://www.instagram.com/croutonbiosoep/",
+  },
   {
     name: "Yugen Kombucha",
     image: yugenLogo.src,
