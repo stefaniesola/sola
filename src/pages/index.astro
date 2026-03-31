@@ -10,9 +10,43 @@ import hauteLoireImage from "../assets/images/haute-loire.jpg";
 import verblijfHogeVenenImage from "../assets/images/Verblijf in Hoge Venen.avif";
 import natureImage from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg";
 
+const dutchMonthMap: Record<string, number> = {
+  januari: 0,
+  februari: 1,
+  maart: 2,
+  april: 3,
+  mei: 4,
+  juni: 5,
+  juli: 6,
+  augustus: 7,
+  september: 8,
+  oktober: 9,
+  november: 10,
+  december: 11,
+};
+
+const getJourneyStartDate = (dates: string) => {
+  const normalized = dates.toLowerCase().replace(/\s+/g, " ").trim();
+  const match = normalized.match(/(\d{1,2}).*?([a-zà-ÿ]+).*?(\d{4})/i);
+
+  if (!match) {
+    return Number.POSITIVE_INFINITY;
+  }
+
+  const day = Number.parseInt(match[1], 10);
+  const month = dutchMonthMap[match[2]];
+  const year = Number.parseInt(match[3], 10);
+
+  if (Number.isNaN(day) || Number.isNaN(year) || month === undefined) {
+    return Number.POSITIVE_INFINITY;
+  }
+
+  return new Date(year, month, day).getTime();
+};
+
 const weekendHighlights = journeys
   .filter((journey) => journey.type === "Weekend")
-  .slice(0, 2);
+  .sort((a, b) => getJourneyStartDate(a.dates) - getJourneyStartDate(b.dates));
 const founders = people.filter((person) => person.isTeamMember);
 const linkClass = "text-accent-700 hover:text-accent-800";
 const linkedWaarom = homeCopy.waarom;
@@ -295,7 +329,8 @@ const optimizedHauteLoire = await getImage({
           >{homePage.sectionAanbod.link}</a
         >
       </div>
-      <div class="grid md:grid-cols-2 gap-6">
+      <div class="relative">
+      <div class="weekend-scroll-track" aria-label="Onze weekenden">
         {
           weekendHighlightsWithImages.map((weekend) => (
             <a
@@ -344,8 +379,59 @@ const optimizedHauteLoire = await getImage({
           ))
         }
       </div>
+      <div class="weekend-scroll-fade" aria-hidden="true"></div>
+    </div>
+    <p class="hidden md:flex justify-end text-xs tracking-wide uppercase text-base-500">
+      Meer weekenden →
+    </p>
     </div>
   </section>
+
+  <style>
+    .weekend-scroll-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - 1.5rem) / 2);
+      gap: 1.5rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 0.5rem;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(53, 65, 46, 0.35) transparent;
+    }
+
+    .weekend-scroll-track > a {
+      scroll-snap-align: start;
+      min-width: 0;
+    }
+
+    .weekend-scroll-fade {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 7rem;
+      height: calc(100% - 0.5rem);
+      pointer-events: none;
+      background: linear-gradient(90deg, rgba(246, 244, 240, 0) 0%, rgba(246, 244, 240, 0.92) 70%);
+    }
+
+    @media (max-width: 1023px) {
+      .weekend-scroll-track {
+        grid-auto-columns: minmax(320px, 75%);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .weekend-scroll-track {
+        grid-auto-columns: minmax(260px, 90%);
+      }
+
+      .weekend-scroll-fade {
+        display: none;
+      }
+    }
+  </style>
 
   <section class="max-w-6xl mx-auto px-6 py-8 lg:py-14 space-y-8 scroll-fade-in">
     <div class="flex flex-col lg:flex-row gap-12 items-center">
