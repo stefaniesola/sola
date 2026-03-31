@@ -325,6 +325,7 @@ const carouselSources = weekend.galleryImages ?? [
   carouselImageSix,
   carouselImageSeven,
 ];
+const carouselAlts = weekend.galleryAlts ?? [];
 
 const carouselImages = await Promise.all(
   carouselSources.map(async (image) =>
@@ -421,7 +422,7 @@ const carouselImages = await Promise.all(
               src={image.src}
               width={image.width}
               height={image.height}
-              alt={`SOLA weekend sfeerbeeld ${index + 1}`}
+              alt={carouselAlts[index] ?? `SOLA weekend sfeerbeeld ${index + 1}`}
               loading="lazy"
               decoding="async"
               class="h-56 w-full object-cover"
