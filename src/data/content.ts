@@ -279,6 +279,7 @@ Schrijf je in vóór 15 maart 2026 en ontvang een extra cadeau.
 - Praktijkmomenten en metingen
 - Verblijf op locatie
 - Maaltijden van vrijdagavond t.e.m. zondagmiddag
+- SOLA T-shirt: ademend sportshirt, ontwikkeld met <a href="https://www.decca.cc" target="_blank" rel="noopener noreferrer">Decca Sportswear</a>
 
 ## Wat is niet inbegrepen?
 
@@ -544,6 +545,7 @@ Beperkt aantal plaatsen — kleine groep, bewust gekozen.
 - Yoga en ecstatic dance
 - Verblijf op locatie
 - Maaltijden van vrijdagavond t.e.m. zondagmiddag
+- SOLA T-shirt: ademend sportshirt, ontwikkeld met <a href="https://www.decca.cc" target="_blank" rel="noopener noreferrer">Decca Sportswear</a>
 
 ## Wat is niet inbegrepen?
 
@@ -837,6 +839,7 @@ Schrijf je in vóór 15 mei 2026 en ontvang een extra cadeau.
 - Praktische tools en challenges voor nadien
 - Verblijf op locatie
 - Maaltijden van vrijdagochtend t.e.m. zondagmiddag
+- SOLA T-shirt: ademend sportshirt, ontwikkeld met <a href="https://www.decca.cc" target="_blank" rel="noopener noreferrer">Decca Sportswear</a>
 
 ## Wat is niet inbegrepen?
 
