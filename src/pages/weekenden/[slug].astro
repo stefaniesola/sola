@@ -303,9 +303,28 @@ const bewuswordingTocItems: TocEntry[] | null =
       ]
     : null;
 
-const exerciseProgramTocItems: TocEntry[] | null =
+const exerciseTocItems: TocEntry[] | null =
   weekend.slug === "exercise-is-medicine"
     ? [
+        { text: "Voor wie", id: "voor-wie", level: 2, parentId: "voor-wie" },
+        {
+          text: "Wat je leert / focus",
+          id: "wat-je-leert-focus",
+          level: 2,
+          parentId: "wat-je-leert-focus",
+        },
+        {
+          text: "Na dit weekend",
+          id: "na-dit-weekend",
+          level: 2,
+          parentId: "na-dit-weekend",
+        },
+        {
+          text: "Expertise & coördinatie",
+          id: "expertise-coordinatie",
+          level: 2,
+          parentId: "expertise-coordinatie",
+        },
         {
           text: "Programma",
           id: "programma",
@@ -313,22 +332,77 @@ const exerciseProgramTocItems: TocEntry[] | null =
           parentId: "programma",
         },
         {
-          text: "DAG 1 – Vrijdag 31.07",
+          text: "Dag 1 - vrijdag",
           id: "dag-1-vrijdag-3107",
           level: 3,
           parentId: "programma",
         },
         {
-          text: "DAG 2 – Zaterdag 1.08",
+          text: "Dag 2 - zaterdag",
           id: "dag-2-zaterdag-108",
           level: 3,
           parentId: "programma",
         },
         {
-          text: "DAG 3 – Zondag 2.08",
+          text: "Dag 3 - zondag",
           id: "dag-3-zondag-208",
           level: 3,
           parentId: "programma",
+        },
+        { text: "Verblijf", id: "verblijf", level: 2, parentId: "verblijf" },
+        {
+          text: "Maaltijden",
+          id: "maaltijden",
+          level: 2,
+          parentId: "maaltijden",
+        },
+        {
+          text: "Praktisch",
+          id: "praktisch",
+          level: 2,
+          parentId: "praktisch",
+        },
+        {
+          text: "Vroegboekcadeau",
+          id: "vroegboekcadeau",
+          level: 2,
+          parentId: "vroegboekcadeau",
+        },
+        {
+          text: "Wat is inbegrepen?",
+          id: "wat-is-inbegrepen",
+          level: 2,
+          parentId: "wat-is-inbegrepen",
+        },
+        {
+          text: "Wat is niet inbegrepen?",
+          id: "wat-is-niet-inbegrepen",
+          level: 2,
+          parentId: "wat-is-niet-inbegrepen",
+        },
+        {
+          text: "Boek je plek",
+          id: "boek-je-plek",
+          level: 2,
+          parentId: "boek-je-plek",
+        },
+        {
+          text: "Twijfel je?",
+          id: "twijfel-je",
+          level: 2,
+          parentId: "twijfel-je",
+        },
+        {
+          text: "Na inschrijving",
+          id: "na-inschrijving",
+          level: 2,
+          parentId: "na-inschrijving",
+        },
+        {
+          text: "Goed om weten - FAQ",
+          id: "goed-om-weten-faq",
+          level: 2,
+          parentId: "goed-om-weten-faq",
         },
       ]
     : null;
@@ -346,40 +420,7 @@ const baseTocItems: TocEntry[] =
     };
   });
 
-const tocItems: TocEntry[] =
-  exerciseProgramTocItems && !bewuswordingTocItems
-    ? (() => {
-        const itemsBeforeProgramma: TocEntry[] = [];
-        const itemsAfterProgramma: TocEntry[] = [];
-        let inProgrammaGroup = false;
-
-        for (const item of baseTocItems) {
-          if (item.id === "programma") {
-            inProgrammaGroup = true;
-            continue;
-          }
-          if (inProgrammaGroup && item.level === 3 && item.parentId === "programma") {
-            continue;
-          }
-          if (inProgrammaGroup && item.level !== 3) {
-            inProgrammaGroup = false;
-            itemsAfterProgramma.push(item);
-            continue;
-          }
-          if (inProgrammaGroup) {
-            itemsAfterProgramma.push(item);
-          } else {
-            itemsBeforeProgramma.push(item);
-          }
-        }
-
-        return [
-          ...itemsBeforeProgramma,
-          ...exerciseProgramTocItems,
-          ...itemsAfterProgramma,
-        ];
-      })()
-    : baseTocItems;
+const tocItems: TocEntry[] = bewuswordingTocItems ?? exerciseTocItems ?? baseTocItems;
 
 const carouselSources = weekend.galleryImages ?? [
   carouselImageOne,
