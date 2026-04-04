@@ -303,8 +303,38 @@ const bewuswordingTocItems: TocEntry[] | null =
       ]
     : null;
 
+const exerciseProgramTocItems: TocEntry[] | null =
+  weekend.slug === "exercise-is-medicine"
+    ? [
+        {
+          text: "Programma",
+          id: "programma",
+          level: 2,
+          parentId: "programma",
+        },
+        {
+          text: "DAG 1 – Vrijdag 31.07",
+          id: "dag-1-vrijdag-3107",
+          level: 3,
+          parentId: "programma",
+        },
+        {
+          text: "DAG 2 – Zaterdag 1.08",
+          id: "dag-2-zaterdag-108",
+          level: 3,
+          parentId: "programma",
+        },
+        {
+          text: "DAG 3 – Zondag 2.08",
+          id: "dag-3-zondag-208",
+          level: 3,
+          parentId: "programma",
+        },
+      ]
+    : null;
+
 let currentSectionId = "";
-const tocItems: TocEntry[] =
+const baseTocItems: TocEntry[] =
   bewuswordingTocItems ??
   toc.map((item) => {
     if (item.level === 2) {
@@ -315,6 +345,41 @@ const tocItems: TocEntry[] =
       parentId: currentSectionId || item.id,
     };
   });
+
+const tocItems: TocEntry[] =
+  exerciseProgramTocItems && !bewuswordingTocItems
+    ? (() => {
+        const itemsBeforeProgramma: TocEntry[] = [];
+        const itemsAfterProgramma: TocEntry[] = [];
+        let inProgrammaGroup = false;
+
+        for (const item of baseTocItems) {
+          if (item.id === "programma") {
+            inProgrammaGroup = true;
+            continue;
+          }
+          if (inProgrammaGroup && item.level === 3 && item.parentId === "programma") {
+            continue;
+          }
+          if (inProgrammaGroup && item.level !== 3) {
+            inProgrammaGroup = false;
+            itemsAfterProgramma.push(item);
+            continue;
+          }
+          if (inProgrammaGroup) {
+            itemsAfterProgramma.push(item);
+          } else {
+            itemsBeforeProgramma.push(item);
+          }
+        }
+
+        return [
+          ...itemsBeforeProgramma,
+          ...exerciseProgramTocItems,
+          ...itemsAfterProgramma,
+        ];
+      })()
+    : baseTocItems;
 
 const carouselSources = weekend.galleryImages ?? [
   carouselImageOne,
