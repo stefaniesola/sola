@@ -195,61 +195,81 @@ SOLA zorgt voor de omkadering en integratie.
 
 ## Programma
 
-### Dag 1 - vrijdag
+### DAG 1 – Vrijdag 31.07
 
-We starten het weekend rustig.
+**Vanaf 18.00**  
+Onthaal met cocktails, mocktails en suikerarme dranken  
+Kamerverdeling, praktische info en passen van je SOLA T-shirt ☀️
 
-- Aankomen in het huis en aperitief
-- Kennismaking met de groep
-- persoonlijke intentie voor het weekend
-- Samen avondeten
+Kennismaking in spelvorm  
+Intro van het weekend, de groep en je persoonlijke intentie
 
-### Dag 2 - zaterdag
+**19.30**  
+Avondmaal met de groep
 
-**Ochtend**
+### DAG 2 – Zaterdag 1.08
 
-- Sunrise-moment voor wie wil (rond 6u03)
-- Wakker worden & rustige ochtendwandeling (± 30 min)
-- Korte sessie Simon (± 30 min): Nuchter bewegen: wat doet dat met je lichaam? Mythes ontkracht
-- Ontbijt
+**06.00**  
+Sunrise-moment (vrijblijvend)
 
-**Voormiddag**
+**07.00**  
+Dauwtrip in de omgeving
 
-- Praktijksessie: persoonlijke metingen
-- Theoretische sessie Simon (± 1u15): Cardiovasculaire gezondheid, risico’s en impact van beweging met koppeling aan jouw eigen data
+**07.30**  
+Infosessie: nuchter bewegen en het effect op je lichaam  
+Met Simon Helleputte (Simon Endurance Lab, All In Gent)
 
-**Middag**
+**08.15**  
+Ontbijt  
+Evenwichtig buffet met focus op energie en vezels
 
-- Lunch
+**09.00**  
+Praktijksessie – persoonlijke metingen (o.a. rusthartslag)
 
-**Namiddag**
+gevolgd door  
+Theoretische sessie: cardiovasculaire gezondheid en impact van beweging  
+Vertrekkend vanuit je eigen meetresultaten
 
-- Beweging in de natuur (trailrun / hike, in groepen)
-- Signal de Botrange (hoogste punt van België)
+**12.30**  
+Lunch  
+Inclusief korte toelichting rond sportvoeding voor, tijdens en na inspanning
 
-**Avond**
+**14.30**  
+Trailrun richting Signal de Botrange (694 m)  
+Gevarieerd parcours over bosgrond, vlonderpaden en het veenplateau, met beperkte hoogtemeters  
+Alternatief: hike (±8 km)
 
-- Avondmaal
-- Korte avondmodule (30–45 min): Wat gebeurt er ’s nachts in je lichaam? Herstel & het parasympatisch systeem
+Na afloop: douchen en tijd om even te ontspannen
 
-### Dag 3 - zondag
+**19.00**  
+Avondmaal
 
-**Ochtend**
+**20.30**  
+Avondsessie: herstel na inspanning en hoe je dit optimaliseert  
+’s Nachts schakelt je lichaam over op herstel via het parasympathisch systeem, dat zorgt voor rust en ontspanning
 
-- Rustige opstart
-- Ontbijt
-- Korte check-in
-- Core- & krachtoefeningen (1u)
+Afsluiter van de dag  
+Ontspannen in de hottub, aan de bar of rond het vuur buiten
 
-**Voormiddag: workshop**
+### DAG 3 – Zondag 2.08
 
-- Reflectie: wat neem ik mee in mijn dagelijks leven?
-- Concrete takeaways & persoonlijke actiepunten
+**08.00**  
+Ontbijt  
+(Voorheen is er een ruimte beschikbaar voor rustige beweging of yoga)
 
-**Middag**
+**09.00**  
+Workshop: analyse van je metingen en persoonlijke doelen  
+Concrete inzichten en actiepunten voor je dagelijks leven
 
-- Samen lunch
-- Afronden van het weekend met concrete handvatten om thuis mee verder te gaan
+Cirkelsessie rond sportuitrusting (±30 min)  
+Ervaringen en praktische tips
+
+**11.00**  
+Sessie krachttraining: core & stability  
+Gericht bewegen om je lichaam te activeren en ondersteunen
+
+**12.00**  
+Lunch
 
 ## Verblijf
 
