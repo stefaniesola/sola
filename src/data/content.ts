@@ -213,7 +213,7 @@ Avondmaal met de groep
 Sunrise-moment (vrijblijvend)
 
 **07.00**  
-Dauwtrip in de omgeving
+Dauwwandeling in de omgeving maken
 
 **07.30**  
 Infosessie: nuchter bewegen en het effect op je lichaam  
