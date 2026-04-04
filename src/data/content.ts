@@ -463,12 +463,15 @@ Lisa van [LIV](https://www.livyourlife.be/) (Gent) begeleidt rustige yoga, stret
 
 ### Dag 1 - vrijdag
 
-Aankomen en kennismaking: we starten het weekend.
+Vanaf 18.00
+Aankomst in het huis, onthaal met cocktails, mocktails en suikerarme dranken
+Kamerverdeling, praktische info en passen van je SOLA T-shirt ☀️
 
-- Aankomen in het huis en aperitief
-- Kennismaking met de groep
-- Lichte, intuïtieve oefening om het ijs te breken
-- Samen avondeten
+Kennismaking met de groep
+Kleine oefening via kaartspel om het ijs te breken
+
+19.30
+Samen avondeten
 
 ### Dag 2 - zaterdag
 
@@ -476,33 +479,51 @@ In connectie met jezelf
 
 Ochtend
 
-- 06u Sunrise-moment (vrijblijvend)
-- Voor wie wil: samen naar buiten om de dag te zien beginnen (rond 6u03).
-- Wakker worden & korte ochtendwandeling (± 30 min)
-- Uitgebreid ontbijt
+06.00
+Sunrise-moment (vrijblijvend)
+Voor wie wil: samen naar buiten om de dag te zien beginnen
 
-Voormiddag: workshop EFT
+07.00
+Dauwwandeling in de omgeving (±30 min)
 
-- Inzicht in patronen van emoties versus ratio
-- Introductie EFT: leren voelen en spanning reguleren
-- Praktische oefening om dit meteen te ervaren
-- De focus ligt op jezelf beter aanvoelen, zonder analyse of moeten.
+08.00
+Uitgebreid ontbijt met focus op energie
 
-Namiddag: natuur & systemisch werk
+Voormiddag – workshop EFT (±09.30 – 12.30)
 
-- We maken een mooie wandeling in het natuurpark
-- verdiepen we met systemisch werkmodel 1 rond verlangen, hindernissen en je huidige situatie.
-- wat wil er in jou geleefd worden?
-- wat houdt je tegen?
-- waar sta je vandaag echt?
-- Via een creatieve oefening geef je vorm aan wat je voelt. Wat vaag was, wordt zichtbaar.
+Inzicht in patronen van emoties versus ratio
+Introductie EFT: leren voelen en spanning reguleren
+Praktische oefening om dit meteen te ervaren
+
+Focus: jezelf beter aanvoelen, zonder analyse of moeten
+
+12.30
+Lunch
+
+Namiddag – natuur & systemisch werk (±14.00 – 17.30)
+
+Wandeling in het natuurpark over vlonderpaden, met veen, heide en bos — een mooie mix van natuur en beweging vlakbij Signal de Botrange (hoogste punt van België)
+
+Systemisch werkmodel 1 rond:
+– verlangen
+– hindernissen
+– je huidige situatie
+
+Wat wil er in jou geleefd worden?
+Wat houdt je tegen?
+Waar sta je vandaag echt?
+
+Via een creatieve oefening maak je dit concreet en zichtbaar
+Na afloop: douchen en tijd om even te ontspannen
 
 Avond
 
-- Samen avondeten
-- Ecstatic dance: vrij bewegen op muziek (vrijblijvende deelname)
+18.30
+Samen avondeten
 
-Gewoon je lichaam volgen, spanning loslaten en voelen dat je leeft.
+20.30
+Ecstatic dance (vrijblijvend)
+Vrij bewegen op muziek, spanning loslaten en terug in je lichaam komen
 
 ### Dag 3 - zondag
 
@@ -510,31 +531,33 @@ In connectie met de ander
 
 Ochtend
 
-- Rustige opstart
-- Ontbijt
-- Korte check-in
+08.00
+Rustige opstart en ontbijt
 
-Voormiddag: workshop
+09.00
+Korte check-in
 
-We werken met systemisch werkmodel 2 rond relationele patronen.
+Voormiddag – workshop (±09.30 – 11.30)
 
-- systemische werkwoorden: dragen, leunen, aannemen, uitreiken
-- onderzoeken hoe jij in relatie staat tot anderen
-- EFT integreren om bij jezelf te blijven in contact
+Systemisch werkmodel 2 rond relationele patronen
 
-Je leert aanwezig blijven bij wat je voelt, zonder jezelf te verliezen.
+We werken rond:
+– dragen
+– leunen
+– aannemen
+– uitreiken
 
-Late voormiddag: verdieping
+Onderzoeken hoe jij in relatie staat tot anderen
+EFT integreren om bij jezelf te blijven in contact
 
-- eenvoudige systemische oefeningen rond je plek en je grenzen
-- begeleide hartmeditatie
-- matrix reimprinting voor innerlijke steun en nieuwe perspectieven
+Late voormiddag – verdieping (±11.30 – 12.30)
 
-Zacht waar het kan, eerlijk waar het nodig is.
+Eenvoudige systemische oefeningen rond je plek en grenzen
+Begeleide hartmeditatie
+Matrix reimprinting voor nieuwe perspectieven
 
-Middag: afronden
-
-- Samen lunch
+12.30
+Samen lunch
 
 ## Verblijf
 
