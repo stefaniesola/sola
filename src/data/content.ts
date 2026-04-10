@@ -323,7 +323,7 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
   },
   {
     slug: "bewustwording-connectie",
-    name: "Bewustwording & Connectie",
+    name: "Mentale helderheid & connectie",
     type: "Weekend",
     shortDescription:
       "Ontdek je kracht in verbinding. Tijdens dit weekend met Sarah van Logisch Gezond leer je patronen herkennen, emoties reguleren en steviger staan in wie je bent.",
