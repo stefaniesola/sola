@@ -326,7 +326,7 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
     name: "Mentale helderheid & connectie",
     type: "Weekend",
     shortDescription:
-      "Ontdek je kracht in verbinding. Tijdens dit weekend met Sarah van Logisch Gezond leer je patronen herkennen, emoties reguleren en steviger staan in wie je bent.",
+      "Krijg inzicht in wat je gedrag stuurt en hoe je daar bewust mee omgaat. Tijdens dit weekend met Sarah van Logisch Gezond leer je patronen doorbreken, emoties reguleren en sterker staan in je dagelijkse leven.",
     location: "Hoge Venen, Ardennen",
     dates: "7 – 9 augustus 2026",
     price: "€620",
