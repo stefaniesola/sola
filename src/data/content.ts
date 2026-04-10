@@ -417,47 +417,62 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
 
 Dit weekend is voor jou als je:
 
-- nieuwsgierig bent naar wat er écht in jou leeft
-- wil voelen wat bij jou past, los van het moeten
-- merkt dat je ergens vastloopt en daar helderheid in wilt
-- wilt ontdekken waar je energie van krijgt, alleen én in contact met anderen
+- merkt dat je soms vastloopt in terugkerende gedachten, emoties of situaties
+- beter wil begrijpen hoe je reageert onder druk of in contact met anderen
+- wil leren wat voor jou werkt en wat niet, in plaats van automatisch door te gaan
+- meer inzicht wil in wat je energie geeft en wat ze kost
 
-Misschien voel je dat er iets wringt, maar kan je er nog niet helemaal woorden op plakken.
-Misschien weet je vooral dat je nood hebt aan ruimte, rust en richting.
+Misschien voel je dat er iets schuurt, maar kan je er nog niet goed de vinger op leggen. Of merk je dat je nood hebt aan rust, richting en meer grip in hoe je met jezelf en anderen omgaat.
 
 ## Wat je leert / focus
 
-Tijdens dit weekend werk je met Emotional Freedom Techniques (EFT), systemisch werk en Matrix Reimprinting. Deze methodes helpen je inzicht te krijgen in wat onder de oppervlakte meespeelt en geven je praktische handvatten om daar anders mee om te gaan.
+Tijdens dit weekend krijg je inzicht in wat jouw gedrag, emoties en reacties stuurt — en leer je hoe je daar bewust mee omgaat.
 
-Wat je leert en ervaart, krijgt de tijd om te bezinken. Met gerichte yogasessies en wandelingen in de natuur ondersteun je je lichaam en zenuwstelsel in het verwerken en integreren van wat in beweging komt.
+We werken met technieken uit de psychologie en stressregulatie, zoals Emotional Freedom Techniques (EFT) en systemisch werk. Daarmee maak je patronen zichtbaar én leer je hoe je ze doorbreekt.
 
-We werken in een kleine, veilige groep met duidelijke begeleiding en aandacht voor tempo en integratie, zodat je niet alleen inzicht opdoet, maar ook echte stappen kan zetten.
+Je ontwikkelt drie concrete vaardigheden:
+
+- **Patronen herkennen**  
+Inzicht in terugkerende gedachten en reacties
+
+- **Emoties reguleren**  
+Spanning herkennen en actief tot rust brengen
+
+- **Bewuster reageren**  
+Meer keuzevrijheid in contact met anderen
+
+Via yoga en beweging in de natuur ondersteunen we ook je lichaam en zenuwstelsel, zodat wat je leert niet alleen inzicht blijft, maar ook echt voelbaar en toepasbaar wordt.
+
+Je werkt in een kleine groep, met duidelijke begeleiding en ruimte om te integreren — zodat je naar huis gaat met rust, helderheid en concrete tools.
 
 ## Na dit weekend
 
-- Je beheerst praktische EFT-technieken om spanning te verlagen en jezelf te reguleren bij stress of emotionele lading.
-- Je herkent oude patronen en kan bewuster pauzeren in plaats van automatisch te reageren.
-- Je leert lichamelijke signalen gebruiken als richtingaanwijzers en weet hoe je jezelf weer in evenwicht brengt.
-- Door systemisch werk krijg je inzicht in bredere familiepatronen, waardoor meer ruimte ontstaat.
-- Met Matrix Reimprinting oefende je om beladen ervaringen op een veiligere manier te verankeren, zodat ze minder grip hebben op je reacties.
-- Je hebt deze technieken niet alleen begrepen, maar ook geoefend, zodat je ze thuis verder toepast.
-- Je vertrekt met inzicht en concrete vaardigheden om jezelf te ondersteunen wanneer het leven schuurt of uitdaagt.
+- Je verlaagt spanning en stress met concrete technieken zoals Emotional Freedom Techniques (EFT)
+- Je herkent automatische patronen en kan bewust pauzeren in plaats van te reageren
+- Je gebruikt signalen van je lichaam als richting en brengt jezelf terug in balans
+- Je krijgt inzicht in bredere (ook familiale) patronen, waardoor meer ruimte ontstaat
+- Je leert anders omgaan met emotioneel geladen ervaringen, zodat ze minder grip hebben
+
+Je hebt deze technieken niet alleen begrepen, maar ook geoefend, zodat je ze thuis meteen kan toepassen.
+
+Je vertrekt met meer rust, helderheid en praktische tools om jezelf te ondersteunen wanneer het schuurt of moeilijk wordt.
 
 ## Expertise & coördinatie
 
-Dit weekend wordt begeleid door Sarah Deleu ([Logisch Gezond](https://logisch-gezond.be/)), EFT-therapeut, in samenwerking met SOLA.
+Expertise & begeleiding
 
-**Emotional Freedom Techniques (EFT)**  
-Een praktische methode om emoties en spanning te herkennen én los te laten. Je leert jezelf op een eenvoudige manier reguleren, een techniek die je ook na het weekend zelfstandig blijft gebruiken.
+Dit weekend wordt begeleid door Sarah Deleu ([Logisch Gezond](https://logisch-gezond.be/)), biomedisch wetenschapper en EFT-therapeut, in samenwerking met SOLA.
 
-**Systemisch werk (2 modellen)**  
-We bekijken jouw hulpvraag binnen de context van vaak onzichtbare patronen die hun oorsprong kunnen hebben in je familiegeschiedenis. Via voelen, bewustwording en heldere inzichten komen vastgezette dynamieken weer in beweging.
+Sarah werkt rond emotionele en relationele patronen en leert je hoe je spanning reguleert, zodat je met meer rust en helderheid aanwezig kan zijn bij jezelf en anderen.
 
-**Matrix Reimprinting**  
-Met de aangeleerde EFT-techniek werken we met een verdiepende methode die je helpt eerdere ervaringen op een nieuwe manier te verankeren, met meer steun en veiligheid.
+We combineren inzichten uit psychologie, stressregulatie en lichaamsgericht werk met methodes die je ook meteen oefent:
 
-**Lichaamsintegratie via yoga**  
-Lisa van [LIV](https://www.livyourlife.be/) (Gent) begeleidt rustige yoga, stretch en eenvoudige beweging. Zo krijgt wat je mentaal en emotioneel leert ook een plek in je lichaam.
+- EFT helpt je spanning en emotionele lading herkennen en verlagen
+- Systemisch werk geeft inzicht in terugkerende patronen en dynamieken
+- Matrix Reimprinting helpt om beladen ervaringen anders te verwerken
+- [Yoga en beweging](https://www.livyourlife.be/) ondersteunen je lichaam en zenuwstelsel bij integratie
+
+Zo ga je naar huis met meer inzicht, meer rust en concrete tools die je ook na het weekend blijft gebruiken.
 
 ## Programma
 
