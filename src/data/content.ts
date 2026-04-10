@@ -800,7 +800,7 @@ We leren je lichaam opnieuw omgaan met stress, zodat je veerkrachtiger, scherper
 We doen dat via een innovatieve en praktische aanpak waarin we je lichaam stap voor stap opnieuw flexibel maken met:
 
 - ijsbaden en koude training
-- warmteprikkels zoals sauna en HIIT
+- intensieve bewegingsprikkels zoals HIIT
 - intermittent fasting en drinking
 - ademhaling, met hypoxie- en CO₂-training
 - fysieke, mentale en cognitieve training en prikkels
