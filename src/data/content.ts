@@ -1035,7 +1035,7 @@ export const homeCopy = {
     "Voor wie pit heeft en zachtheid niet schuwt",
   ],
   waarom:
-    "SOLA creëert groepsreizen rond gezondheid, waar beweging, wetenschap en natuur samenkomen.",
+    "SOLA creëert groepsreizen rond gezondheid, waar beweging, wetenschappelijk onderbouwde inzichten en natuur samenkomen.",
   pillars: [
     {
       title: "Deskundige begeleiding en wetenschappelijke onderbouwing",
