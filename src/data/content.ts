@@ -187,6 +187,14 @@ Je gaat naar huis met
 
 Dit weekend draait niet om méér doen, maar om beter begrijpen en bewuster bewegen.
 
+### Persoonlijke opvolgsessie na het weekend
+
+Na het weekend krijg je de mogelijkheid tot een 1-op-1 sessie met Simon. Hier vertaal je de inzichten uit het weekend naar jouw eigen lichaam en doelen, van training en energie tot herstel en cardiometabole gezondheid.
+
+Je kan zelf kiezen waar je op wil focussen (bv. nuchter trainen, trainingsopbouw, intensiteit, …).
+
+Extra testen zoals een lactaattest zijn mogelijk, maar optioneel en betalend.
+
 ## Expertise & coördinatie
 
 Dit weekend wordt georganiseerd door SOLA (Stefanie Deleu) in samenwerking met Simon Helleputte van [Simon Endurance Lab](https://www.instagram.com/simonendurancelab/).  
