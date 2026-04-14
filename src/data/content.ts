@@ -465,6 +465,14 @@ Je hebt deze technieken niet alleen begrepen, maar ook geoefend, zodat je ze thu
 
 Je vertrekt met meer rust, helderheid en praktische tools om jezelf te ondersteunen wanneer het schuurt of moeilijk wordt.
 
+### Persoonlijke opvolgsessie inbegrepen
+
+Na het weekend plan je een 1-op-1 sessie met Sarah. Hier vertaal je wat je geleerd en ervaren hebt naar jouw eigen situatie, zodat je er ook thuis concreet mee verder kan.
+
+Je kan zelf bepalen waar je op wil focussen, bijvoorbeeld stressregulatie, emotionele patronen, grenzen, of specifieke situaties waar je tegenaan loopt.
+
+Deze sessie is inbegrepen in het weekend en zorgt ervoor dat de inzichten niet blijven hangen, maar echt geïntegreerd worden in je dagelijks leven.
+
 ## Expertise & coördinatie
 
 Expertise & begeleiding
