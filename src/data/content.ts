@@ -302,7 +302,7 @@ Schrijf je in vóór 15 maart 2026 en ontvang een extra cadeau.
 
 - 3-daags / 2-nachten weekendtraject
 - Inhoudelijke begeleiding door Simon van Endurance Lab
-- Een sessie bij Simon van Endurance Lab na dit weekend
+- Persoonlijke 1-op-1 opvolgsessie met Simon van Endurance Lab na het weekend (inbegrepen)
 - Alle workshops & sessies
 - Praktijkmomenten en metingen
 - Verblijf op locatie
@@ -614,7 +614,7 @@ Beperkt aantal plaatsen — kleine groep, bewust gekozen.
 
 - 3-daags / 2-nachten weekendtraject
 - Inhoudelijke begeleiding door Sarah van Logisch Gezond
-- Een sessie bij Sarah van Logisch Gezond na dit weekend
+- Persoonlijke 1-op-1 opvolgsessie met Sarah van Logisch Gezond na het weekend (inbegrepen)
 - Alle workshops en sessies
 - Yoga en ecstatic dance
 - Verblijf op locatie
@@ -908,7 +908,7 @@ Schrijf je in vóór 15 mei 2026 en ontvang een extra cadeau.
 
 - 3-daags / 2-nachten weekendtraject
 - Inhoudelijke begeleiding door Johan De Coninck
-- Een sessie bij Johan van ART na dit weekend
+- Persoonlijke 1-op-1 opvolgsessie met Johan van ART na het weekend (inbegrepen)
 - Alle workshops & sessies
 - Praktische tools en challenges voor nadien
 - Verblijf op locatie
