@@ -331,7 +331,7 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
   },
   {
     slug: "bewustwording-connectie",
-    name: "Mentale helderheid & connectie",
+    name: "Van inzicht naar verdiepend denken en voelen",
     type: "Weekend",
     shortDescription:
       "Krijg inzicht in wat je gedrag stuurt en hoe je daar bewust mee omgaat. Tijdens dit weekend met Sarah van Logisch Gezond leer je patronen doorbreken, emoties reguleren en sterker staan in je dagelijkse leven.",
