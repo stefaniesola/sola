@@ -477,18 +477,22 @@ Deze sessie is inbegrepen in het weekend en zorgt ervoor dat de inzichten niet b
 
 Expertise & begeleiding
 
-Dit weekend wordt begeleid door Sarah Deleu ([Logisch Gezond](https://logisch-gezond.be/)), biomedisch wetenschapper en EFT-therapeut, in samenwerking met SOLA.
+Dit weekend wordt begeleid door Sarah Deleu ([Logisch Gezond](https://logisch-gezond.be/)), psycholoog, biomedisch wetenschapper en EFT-therapeut en Lisa ([LIV](https://www.livyourlife.be/)), kinesitherapeut en yogadocent, in samenwerking met SOLA.
 
-Sarah werkt rond emotionele en relationele patronen en leert je hoe je spanning reguleert, zodat je met meer rust en helderheid aanwezig kan zijn bij jezelf en anderen.
+Sarah werkt rond emotionele en relationele patronen, met aandacht voor stressregulatie en het zenuwstelsel. Je krijgt inzicht in hoe bepaalde reacties ontstaan en hoe je hier op een meer bewuste manier mee kan omgaan.
 
-We combineren inzichten uit psychologie, stressregulatie en lichaamsgericht werk met methodes die je ook meteen oefent:
+Lisa begeleidt de fysieke sessies en focust op beweging en herstel. Via yoga en circuit training werk je met afwisseling en beweging, waardoor je lichaam actief blijft.
 
-- EFT helpt je spanning en emotionele lading herkennen en verlagen
-- Systemisch werk geeft inzicht in terugkerende patronen en dynamieken
-- Matrix Reimprinting helpt om beladen ervaringen anders te verwerken
-- [Yoga en beweging](https://www.livyourlife.be/) ondersteunen je lichaam en zenuwstelsel bij integratie
+We combineren inzichten uit psychologie en lichaamsgericht werk met methodes die je meteen toepast:
 
-Zo ga je naar huis met meer inzicht, meer rust en concrete tools die je ook na het weekend blijft gebruiken.
+- EFT → helpt bij het reguleren van spanning en emotionele activatie
+- Systemisch werk → geeft inzicht in terugkerende patronen en relationele dynamieken
+- Matrix Reimprinting → ondersteunt het herverwerken van emotioneel beladen ervaringen
+- Yoga & beweging → ondersteunen de regulatie en integratie in het lichaam
+
+**Resultaat: meer mentale helderheid**
+
+Je vertrekt met onderbouwde inzichten en praktische toepassingen die je ook na het weekend kan blijven inzetten.
 
 ## Programma
 
