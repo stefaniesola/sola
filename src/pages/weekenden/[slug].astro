@@ -1,14 +1,11 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import type { ImageMetadata } from "astro";
 import type { Journey } from "../../data/content";
 import { journeys } from "../../data/content";
 import { getImage } from "astro:assets";
 import bewustwordingImage from "../../assets/images/2631991747.jpg";
-import {
-  extractHeadings,
-  processMarkdown,
-  slugifyHeading,
-} from "../../utils/markdown";
+import { processMarkdown, slugifyHeading } from "../../utils/markdown";
 import carouselImageOne from "../../assets/images/2596052607.jpg";
 import carouselImageTwo from "../../assets/images/2631991747.jpg";
 import carouselImageThree from "../../assets/images/hero.jpg";
@@ -16,6 +13,10 @@ import carouselImageFour from "../../assets/images/landscape.jpg";
 import carouselImageFive from "../../assets/images/famenne.jpg";
 import carouselImageSix from "../../assets/images/haute-loire.jpg";
 import carouselImageSeven from "../../assets/images/1513986998.jpg";
+import simonExpertPortrait from "../../assets/images/simon-helleputte.webp";
+import sarahExpertPortrait from "../../assets/images/Sarah Deleu therapeut - groen.jpg";
+import johanExpertPortrait from "../../assets/images/johanportret.jpg";
+import intermittentLivingWeekendImage from "../../assets/images/Intermittent Living - Hoge Venen - op weekend (7).jpeg";
 
 export async function getStaticPaths() {
   const weekends = journeys.filter((journey) => journey.type === "Weekend");
@@ -27,13 +28,12 @@ export async function getStaticPaths() {
           : weekend.heroImage?.src;
       let heroImageData;
       if (weekend.heroImage) {
-        // If it's a local image path, process it
         if (typeof weekend.heroImage === "string") {
           if (weekend.heroImage.startsWith("/src/assets/images/")) {
             if (weekend.slug === "bewustwording-connectie") {
               heroImageData = await getImage({
                 src: bewustwordingImage,
-                width: 1400,
+                width: 1600,
                 quality: 85,
               });
               imageUrl = heroImageData.src;
@@ -42,7 +42,7 @@ export async function getStaticPaths() {
         } else {
           heroImageData = await getImage({
             src: weekend.heroImage,
-            width: 1400,
+            width: 1600,
             quality: 85,
           });
           imageUrl = heroImageData.src;
@@ -60,8 +60,28 @@ export async function getStaticPaths() {
 
 const { weekend } = Astro.props as { weekend: Journey };
 
+type MarkdownSection = {
+  title: string;
+  id: string;
+  content: string;
+  html: string;
+  toc: { id: string; text: string; level: number }[];
+};
+
+type TocEntry = {
+  id: string;
+  text: string;
+  level: number;
+};
+
+type MarkdownSubsection = {
+  title: string;
+  id: string;
+  content: string;
+  html: string;
+};
+
 const markdownContent = weekend.longread || "";
-const toc = extractHeadings(markdownContent);
 const keyFacts = weekend.keyFacts ?? [];
 const faqItems = weekend.faq ?? [];
 const metaDescriptionBase = `${weekend.shortDescription} Locatie: ${weekend.location}. Data: ${weekend.dates}.`;
@@ -139,13 +159,19 @@ const ctaLinks =
     : {
         bookUrl: "#boek-je-plek",
         consultUrl: "#twijfel-je",
-        bookTarget: "boek-je-plek",
-        consultTarget: "twijfel-je",
         target: undefined,
         rel: undefined,
       };
 
-const buildAccordionSections = (markdown: string) => {
+const normalizeTitle = (value: string) =>
+  value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .trim();
+
+const buildSections = (markdown: string) => {
   const lines = markdown.split("\n");
   const introLines: string[] = [];
   const sections: { title: string; content: string }[] = [];
@@ -184,243 +210,298 @@ const buildAccordionSections = (markdown: string) => {
   return { introMarkdown: introLines.join("\n").trim(), sections };
 };
 
-const { introMarkdown, sections } = buildAccordionSections(markdownContent);
-const introHtml = introMarkdown ? processMarkdown(introMarkdown).html : "";
-const accordionSections = sections.map((section, index) => {
+const buildMarkdownSection = (
+  section: { title: string; content: string },
+  index: number,
+): MarkdownSection => {
   const id = slugifyHeading(section.title) || `section-${index + 1}`;
-  const { html } = processMarkdown(section.content);
-  return { ...section, id, html };
-});
-
-type TocEntry = {
-  id: string;
-  text: string;
-  level: number;
-  parentId: string;
+  const processed = processMarkdown(section.content);
+  return {
+    ...section,
+    id,
+    html: processed.html,
+    toc: processed.toc.filter((item) => item.level > 2),
+  };
 };
 
-const bewuswordingTocItems: TocEntry[] | null =
-  weekend.slug === "bewustwording-connectie"
-    ? [
-        { text: "Voor wie", id: "voor-wie", level: 2, parentId: "voor-wie" },
-        {
-          text: "Wat je leert / focus",
-          id: "wat-je-leert-focus",
-          level: 2,
-          parentId: "wat-je-leert-focus",
-        },
-        {
-          text: "Na dit weekend",
-          id: "na-dit-weekend",
-          level: 2,
-          parentId: "na-dit-weekend",
-        },
-        {
-          text: "Expertise & coördinatie",
-          id: "expertise-coordinatie",
-          level: 2,
-          parentId: "expertise-coordinatie",
-        },
-        {
-          text: "Programma",
-          id: "programma",
-          level: 2,
-          parentId: "programma",
-        },
-        {
-          text: "Dag 1 - vrijdag",
-          id: "dag-1-vrijdag",
-          level: 3,
-          parentId: "programma",
-        },
-        {
-          text: "Dag 2 - zaterdag",
-          id: "dag-2-zaterdag",
-          level: 3,
-          parentId: "programma",
-        },
-        {
-          text: "Dag 3 - zondag",
-          id: "dag-3-zondag",
-          level: 3,
-          parentId: "programma",
-        },
-        { text: "Verblijf", id: "verblijf", level: 2, parentId: "verblijf" },
-        {
-          text: "Maaltijden",
-          id: "maaltijden",
-          level: 2,
-          parentId: "maaltijden",
-        },
-        {
-          text: "Praktisch",
-          id: "praktisch",
-          level: 2,
-          parentId: "praktisch",
-        },
-        {
-          text: "Vroegboekcadeau",
-          id: "vroegboekcadeau",
-          level: 2,
-          parentId: "vroegboekcadeau",
-        },
-        {
-          text: "Wat is inbegrepen?",
-          id: "wat-is-inbegrepen",
-          level: 2,
-          parentId: "wat-is-inbegrepen",
-        },
-        {
-          text: "Wat is niet inbegrepen?",
-          id: "wat-is-niet-inbegrepen",
-          level: 2,
-          parentId: "wat-is-niet-inbegrepen",
-        },
-        {
-          text: "Boek je plek",
-          id: "boek-je-plek",
-          level: 2,
-          parentId: "boek-je-plek",
-        },
-        {
-          text: "Twijfel je?",
-          id: "twijfel-je",
-          level: 2,
-          parentId: "twijfel-je",
-        },
-        {
-          text: "Na inschrijving",
-          id: "na-inschrijving",
-          level: 2,
-          parentId: "na-inschrijving",
-        },
-        {
-          text: "Goed om weten - FAQ",
-          id: "goed-om-weten-faq",
-          level: 2,
-          parentId: "goed-om-weten-faq",
-        },
-      ]
-    : null;
+const splitSubsections = (markdown: string): MarkdownSubsection[] => {
+  const lines = markdown.split("\n");
+  const subsections: { title: string; content: string }[] = [];
+  let currentTitle = "";
+  let currentContent: string[] = [];
 
-const exerciseTocItems: TocEntry[] | null =
-  weekend.slug === "exercise-is-medicine"
-    ? [
-        { text: "Voor wie", id: "voor-wie", level: 2, parentId: "voor-wie" },
-        {
-          text: "Wat je leert / focus",
-          id: "wat-je-leert-focus",
-          level: 2,
-          parentId: "wat-je-leert-focus",
-        },
-        {
-          text: "Na dit weekend",
-          id: "na-dit-weekend",
-          level: 2,
-          parentId: "na-dit-weekend",
-        },
-        {
-          text: "Expertise & coördinatie",
-          id: "expertise-coordinatie",
-          level: 2,
-          parentId: "expertise-coordinatie",
-        },
-        {
-          text: "Programma",
-          id: "programma",
-          level: 2,
-          parentId: "programma",
-        },
-        {
-          text: "Dag 1 - vrijdag",
-          id: "dag-1-vrijdag-3107",
-          level: 3,
-          parentId: "programma",
-        },
-        {
-          text: "Dag 2 - zaterdag",
-          id: "dag-2-zaterdag-108",
-          level: 3,
-          parentId: "programma",
-        },
-        {
-          text: "Dag 3 - zondag",
-          id: "dag-3-zondag-208",
-          level: 3,
-          parentId: "programma",
-        },
-        { text: "Verblijf", id: "verblijf", level: 2, parentId: "verblijf" },
-        {
-          text: "Maaltijden",
-          id: "maaltijden",
-          level: 2,
-          parentId: "maaltijden",
-        },
-        {
-          text: "Praktisch",
-          id: "praktisch",
-          level: 2,
-          parentId: "praktisch",
-        },
-        {
-          text: "Vroegboekcadeau",
-          id: "vroegboekcadeau",
-          level: 2,
-          parentId: "vroegboekcadeau",
-        },
-        {
-          text: "Wat is inbegrepen?",
-          id: "wat-is-inbegrepen",
-          level: 2,
-          parentId: "wat-is-inbegrepen",
-        },
-        {
-          text: "Wat is niet inbegrepen?",
-          id: "wat-is-niet-inbegrepen",
-          level: 2,
-          parentId: "wat-is-niet-inbegrepen",
-        },
-        {
-          text: "Boek je plek",
-          id: "boek-je-plek",
-          level: 2,
-          parentId: "boek-je-plek",
-        },
-        {
-          text: "Twijfel je?",
-          id: "twijfel-je",
-          level: 2,
-          parentId: "twijfel-je",
-        },
-        {
-          text: "Na inschrijving",
-          id: "na-inschrijving",
-          level: 2,
-          parentId: "na-inschrijving",
-        },
-        {
-          text: "Goed om weten - FAQ",
-          id: "goed-om-weten-faq",
-          level: 2,
-          parentId: "goed-om-weten-faq",
-        },
-      ]
-    : null;
-
-let currentSectionId = "";
-const baseTocItems: TocEntry[] =
-  bewuswordingTocItems ??
-  toc.map((item) => {
-    if (item.level === 2) {
-      currentSectionId = item.id;
+  lines.forEach((line) => {
+    const match = line.match(/^###\s+(.+)$/);
+    if (match) {
+      if (currentTitle) {
+        subsections.push({
+          title: currentTitle,
+          content: currentContent.join("\n").trim(),
+        });
+      }
+      currentTitle = match[1].trim();
+      currentContent = [];
+      return;
     }
-    return {
-      ...item,
-      parentId: currentSectionId || item.id,
-    };
+    if (currentTitle) {
+      currentContent.push(line);
+    }
   });
 
-const tocItems: TocEntry[] = bewuswordingTocItems ?? exerciseTocItems ?? baseTocItems;
+  if (currentTitle) {
+    subsections.push({
+      title: currentTitle,
+      content: currentContent.join("\n").trim(),
+    });
+  }
+
+  return subsections.map((section, index) => ({
+    ...section,
+    id: slugifyHeading(section.title) || `subsection-${index + 1}`,
+    html: processMarkdown(section.content).html,
+  }));
+};
+
+const parseDetailCards = (markdown: string) =>
+  markdown
+    .split("\n")
+    .map((line) => line.trim())
+    .map((line) => line.replace(/\s{2,}$/g, ""))
+    .map((line) => line.match(/^\*\*(.+?):\*\*\s*(.+)$/))
+    .filter((match): match is RegExpMatchArray => Boolean(match))
+    .map((match) => ({
+      label: match[1].trim(),
+      lines: [match[2].trim()],
+    }));
+
+const sectionMatches = (
+  section: MarkdownSection | undefined,
+  predicates: string[],
+) => {
+  if (!section) return false;
+  const normalized = normalizeTitle(section.title);
+  return predicates.some((predicate) => normalized.includes(predicate));
+};
+
+const { introMarkdown, sections } = buildSections(markdownContent);
+const introHtml = introMarkdown ? processMarkdown(introMarkdown).html : "";
+const contentSections = sections.map(buildMarkdownSection);
+const findSection = (predicates: string[]) =>
+  contentSections.find((section) => sectionMatches(section, predicates));
+const isFaqSection = (section: MarkdownSection) =>
+  sectionMatches(section, ["faq", "goed om weten"]);
+const isClosingSection = (section: MarkdownSection) =>
+  sectionMatches(section, ["boek je plek", "twijfel je", "na inschrijving"]);
+const audienceSection = findSection(["voor wie"]);
+const focusSection = findSection([
+  "wat je leert",
+  "wat leer je",
+  "wat mag je verwachten",
+  "focus",
+]);
+const afterSection = findSection(["na dit weekend"]);
+const expertSection = findSection([
+  "expertise",
+  "coordinatie",
+  "begeleiding",
+  "experts",
+]);
+const programSection = findSection(["programma"]);
+const staySection = findSection(["verblijf"]);
+const mealsSection = findSection(["maaltijden"]);
+const practicalSection = findSection(["praktisch"]);
+const giftSection = findSection(["vroegboek"]);
+const includedSection = findSection(["wat is inbegrepen"]);
+const excludedSection = findSection(["wat is niet inbegrepen"]);
+const bookingSection = findSection(["boek je plek"]);
+const doubtSection = findSection(["twijfel je"]);
+const afterSignupSection = findSection(["na inschrijving"]);
+
+const categorizedIds = new Set(
+  [
+    audienceSection,
+    focusSection,
+    afterSection,
+    expertSection,
+    programSection,
+    staySection,
+    mealsSection,
+    practicalSection,
+    giftSection,
+    includedSection,
+    excludedSection,
+    bookingSection,
+    doubtSection,
+    afterSignupSection,
+  ]
+    .filter(Boolean)
+    .map((section) => section!.id),
+);
+const otherVisibleSections = contentSections.filter(
+  (section) =>
+    !categorizedIds.has(section.id) &&
+    !isFaqSection(section) &&
+    !isClosingSection(section),
+);
+const practicalSubsections = practicalSection
+  ? splitSubsections(practicalSection.content)
+  : [];
+const practicalStayOrMeals = practicalSubsections.filter((section) => {
+  const normalized = normalizeTitle(section.title);
+  return normalized.includes("verblijf") || normalized.includes("maaltijden");
+});
+const stayMealsBlocks = [
+  ...(staySection
+    ? [
+        {
+          title: staySection.title,
+          id: staySection.id,
+          html: staySection.html,
+        },
+      ]
+    : []),
+  ...(mealsSection
+    ? [
+        {
+          title: mealsSection.title,
+          id: mealsSection.id,
+          html: mealsSection.html,
+        },
+      ]
+    : []),
+  ...(staySection || mealsSection
+    ? []
+    : practicalStayOrMeals.map((section) => ({
+        title: section.title,
+        id: section.id,
+        html: section.html,
+      }))),
+];
+const practicalCards =
+  practicalSection && parseDetailCards(practicalSection.content).length > 0
+    ? parseDetailCards(practicalSection.content)
+    : keyFacts;
+const showPracticalProse =
+  practicalSection &&
+  parseDetailCards(practicalSection.content).length === 0 &&
+  practicalStayOrMeals.length === 0;
+const faqSection = contentSections.find(isFaqSection);
+const endCtaSections = [bookingSection, doubtSection, afterSignupSection].filter(
+  Boolean,
+) as MarkdownSection[];
+const whyContentBySlug: Record<
+  string,
+  { eyebrow: string; title: string; body: string; signals: string[] }
+> = {
+  "exercise-is-medicine": {
+    eyebrow: "Waarom dit weekend?",
+    title: "Begrijp hoe beweging je hart, energie en herstel sterker maakt.",
+    body: "Dit weekend maakt concreet wat gerichte inspanning doet met je cardiovasculaire gezondheid, metabolisme en mentale veerkracht. Je koppelt metingen aan lichaamsgevoel en vertaalt die inzichten naar slimmer trainen, beter herstellen en haalbare gewoontes voor je dagelijks leven. Zo wordt beweging geen extra druk op je agenda, maar een onderbouwde manier om meer energie, belastbaarheid en vertrouwen in je lichaam op te bouwen.",
+    signals: [
+      "Inspanningsfysiologie vertaald naar je eigen lichaam",
+      "Meten, voelen en bijsturen in plaats van zomaar harder trainen",
+      "Beweging in de Hoge Venen als krachtige leeromgeving",
+    ],
+  },
+  "bewustwording-connectie": {
+    eyebrow: "Waarom dit weekend?",
+    title: "Meer grip op wat je voelt, doet en herhaalt onder druk.",
+    body: "Dit weekend helpt je begrijpen hoe stress, patronen en lichamelijke signalen elkaar beïnvloeden. Je krijgt een helder kader en oefent met technieken die spanning reguleren, bewust reageren ondersteunen en thuis bruikbaar blijven. Niet als zweverige omweg, wel als praktische verdieping in hoe je systeem werkt en hoe je daar met meer keuzevrijheid mee omgaat.",
+    signals: [
+      "Psychologie en stressregulatie helder uitgelegd",
+      "EFT, systemisch werk en beweging concreet geoefend",
+      "Rust, veiligheid en integratie in een kleine groep",
+    ],
+  },
+  "intermittent-living": {
+    eyebrow: "Waarom dit weekend?",
+    title: "Train je systeem met gecontroleerde prikkels voor meer veerkracht.",
+    body: "Dit weekend gebruikt koude, warmte, ademhaling, beweging en voeding als doelgerichte prikkels. Je leert hoe je lichaam stress verwerkt en hoe je energie, focus en herstel bewuster kan sturen zonder vrijblijvende wellness. Het resultaat is geen extreme challenge, maar een intelligent weekend waarin je voelt wat gecontroleerde prikkels met je lichaam doen.",
+    signals: [
+      "KPNI en leefstijlprincipes vertaald naar actie",
+      "Gecontroleerde prikkels, stap voor stap begeleid",
+      "Concrete tools voor energie, herstel en focus",
+    ],
+  },
+};
+const whyContent =
+  whyContentBySlug[weekend.slug] ?? {
+    eyebrow: "Waarom dit weekend?",
+    title: "Een compacte investering in beter begrijpen wat je gezondheid draagt.",
+    body: weekend.shortDescription,
+    signals: [
+      "Onderbouwde inzichten",
+      "Ervaringsgericht leren",
+      "Kleine groep in de natuur",
+    ],
+  };
+
+const heroTagsBySlug: Record<string, string[]> = {
+  "exercise-is-medicine": ["Cardio", "Metabolisme", "Herstel", "Performance"],
+  "bewustwording-connectie": ["Regulatie", "Inzicht", "Connectie", "Veerkracht"],
+  "intermittent-living": ["Koude", "Warmte", "Ademhaling", "Focus"],
+};
+const heroTags =
+  heroTagsBySlug[weekend.slug] ?? ["Gezondheid", "Natuur", "Inzicht"];
+const heroFactLabels = ["wanneer", "data", "datum", "waar", "locatie", "prijs"];
+const matchedHeroFacts = keyFacts
+  .filter((fact) =>
+    heroFactLabels.some((label) => normalizeTitle(fact.label).includes(label)),
+  )
+  .slice(0, 3);
+const heroFacts = matchedHeroFacts.length > 0 ? matchedHeroFacts : keyFacts.slice(0, 3);
+const atmosphereVideoBySlug: Record<
+  string,
+  { src: string; type: string; label: string }
+> = {
+  "exercise-is-medicine": {
+    src: "/simon-uitleg-website.mp4",
+    type: "video/mp4",
+    label:
+      "Simon Helleputte legt uit wat je tijdens het weekend Beweging als medicijn leert",
+  },
+};
+const atmosphereVideo = atmosphereVideoBySlug[weekend.slug];
+
+const uniqueNavItems = (items: TocEntry[]) => {
+  const seen = new Set<string>();
+  return items.filter((item) => {
+    if (!item.id || seen.has(item.id)) return false;
+    seen.add(item.id);
+    return true;
+  });
+};
+
+const primaryNavItems: TocEntry[] = uniqueNavItems(
+  [
+    { id: "waarom-dit-weekend", text: "Waarom", level: 2 },
+    audienceSection && { id: audienceSection.id, text: "Voor wie", level: 2 },
+    focusSection && { id: focusSection.id, text: "Wat je leert", level: 2 },
+    afterSection && { id: afterSection.id, text: "Na afloop", level: 2 },
+    expertSection && { id: expertSection.id, text: "Expertise", level: 2 },
+    programSection && { id: programSection.id, text: "Programma", level: 2 },
+    (practicalSection || staySection || mealsSection) && {
+      id: practicalSection?.id ?? staySection?.id ?? mealsSection?.id ?? "praktisch",
+      text: "Praktisch",
+      level: 2,
+    },
+    faqItems.length && { id: "faq", text: "FAQ", level: 2 },
+    { id: "boek-je-plek", text: "Boeken", level: 2 },
+  ].filter(Boolean) as TocEntry[],
+);
+const mobileNavItems: TocEntry[] = uniqueNavItems(
+  [
+    { id: "waarom-dit-weekend", text: "Waarom", level: 2 },
+    focusSection && { id: focusSection.id, text: "Wat je leert", level: 2 },
+    programSection && { id: programSection.id, text: "Programma", level: 2 },
+    (practicalSection || staySection || mealsSection) && {
+      id: practicalSection?.id ?? staySection?.id ?? mealsSection?.id ?? "praktisch",
+      text: "Praktisch",
+      level: 2,
+    },
+    { id: "boek-je-plek", text: "Boeken", level: 2 },
+  ].filter(Boolean) as TocEntry[],
+);
 
 const carouselSources = weekend.galleryImages ?? [
   carouselImageOne,
@@ -432,16 +513,97 @@ const carouselSources = weekend.galleryImages ?? [
   carouselImageSeven,
 ];
 const carouselAlts = weekend.galleryAlts ?? [];
-
-const carouselImages = await Promise.all(
+const galleryImages = await Promise.all(
   carouselSources.map(async (image) =>
     getImage({
       src: image,
-      width: 900,
-      quality: 85,
+      width: 1100,
+      quality: 84,
     }),
   ),
 );
+const altForImage = (index: number) =>
+  carouselAlts[index] ?? `${weekend.name} sfeerbeeld ${index + 1}`;
+const mediaOrderBySlug: Record<string, number[]> = {
+  "exercise-is-medicine": [2, 3, 0, 4, 5, 1],
+  "bewustwording-connectie": [2, 7, 6, 0, 1, 4],
+  "intermittent-living": [0, 1, 2, 3, 4, 7],
+};
+const orderedGalleryItems = (
+  mediaOrderBySlug[weekend.slug] ?? galleryImages.map((_, index) => index)
+)
+  .map((index) =>
+    galleryImages[index]
+      ? { image: galleryImages[index], alt: altForImage(index), index }
+      : null,
+  )
+  .filter(Boolean) as { image: Awaited<ReturnType<typeof getImage>>; alt: string; index: number }[];
+const atmosphereItems = orderedGalleryItems.slice(0, 6);
+const supplementalAtmosphereSources: Record<
+  string,
+  { src: ImageMetadata; alt: string }[]
+> = {
+  "exercise-is-medicine": [
+    {
+      src: intermittentLivingWeekendImage,
+      alt: "Deelnemers tijdens een weekendmoment in de Hoge Venen",
+    },
+  ],
+};
+const supplementalAtmosphereItems = await Promise.all(
+  (supplementalAtmosphereSources[weekend.slug] ?? []).map(async (item) => ({
+    image: await getImage({
+      src: item.src,
+      width: 900,
+      quality: 84,
+    }),
+    alt: item.alt,
+  })),
+);
+const videoSideItems = atmosphereVideo
+  ? [
+      ...atmosphereItems.slice(1, 5),
+      ...(weekend.slug === "exercise-is-medicine" && atmosphereItems[0]
+        ? [atmosphereItems[0]]
+        : []),
+      ...supplementalAtmosphereItems,
+    ].slice(0, 6)
+  : [];
+const expertImageIndexBySlug: Record<string, number> = {
+  "exercise-is-medicine": 3,
+  "bewustwording-connectie": 6,
+  "intermittent-living": 12,
+};
+const expertImageIndex =
+  expertImageIndexBySlug[weekend.slug] ?? galleryImages.length - 1;
+const expertImage =
+  galleryImages[expertImageIndex] ?? orderedGalleryItems[0]?.image;
+const expertImageAlt =
+  galleryImages[expertImageIndex]
+    ? altForImage(expertImageIndex)
+    : (orderedGalleryItems[0]?.alt ?? heroImageAlt);
+const expertPortraitSources: Record<string, ImageMetadata> = {
+  "exercise-is-medicine": simonExpertPortrait,
+  "bewustwording-connectie": sarahExpertPortrait,
+  "intermittent-living": johanExpertPortrait,
+};
+const expertPortraitAlts: Record<string, string> = {
+  "exercise-is-medicine": "Simon Helleputte van Simon Endurance Lab",
+  "bewustwording-connectie": "Sarah Deleu van Logisch Gezond",
+  "intermittent-living": "Johan De Coninck van Antwerp Rehab & Training",
+};
+const expertPortraitSource = expertPortraitSources[weekend.slug];
+const expertPortrait = expertPortraitSource
+  ? await getImage({
+      src: expertPortraitSource,
+      width: 900,
+      quality: 86,
+    })
+  : undefined;
+const expertMedia = expertPortrait ?? expertImage;
+const expertMediaAlt = expertPortrait
+  ? expertPortraitAlts[weekend.slug]
+  : expertImageAlt;
 ---
 
 <BaseLayout
@@ -451,288 +613,613 @@ const carouselImages = await Promise.all(
   ogImageAlt={heroImageAlt}
   structuredData={structuredData}
 >
-  <section class="relative bg-base-900 text-white">
+  <section class="relative isolate overflow-hidden bg-base-900 text-white">
     {weekend.heroImage && (
       <img
-        class="absolute inset-0 w-full h-full object-cover opacity-60"
+        class="absolute inset-0 h-full w-full object-cover brightness-105 contrast-105 saturate-110"
         src={weekend.heroImage}
-        width={weekend.heroImageData?.width ?? 1400}
-        height={weekend.heroImageData?.height ?? 933}
+        width={weekend.heroImageData?.width ?? 1600}
+        height={weekend.heroImageData?.height ?? 1067}
         alt={heroImageAlt}
         loading="eager"
         decoding="async"
         fetchpriority="high"
       />
     )}
-    <div class="relative max-w-6xl mx-auto px-6 py-24 space-y-6">
-      <p class="uppercase text-xs tracking-[0.25em] text-white/70">
-        {weekend.type}
-      </p>
-      <h1 class="text-4xl lg:text-5xl font-semibold">{weekend.name}</h1>
-      <p class="text-base text-white/85 max-w-2xl leading-relaxed">
-        {weekend.shortDescription}
-      </p>
-      <div class="flex flex-wrap gap-3 text-sm">
-        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/30"
-          >{weekend.location}</span
-        >
-        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/30"
-          >{weekend.dates}</span
-        >
-        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/30"
-          >{weekend.price}</span
-        >
-      </div>
-      <div class="flex flex-wrap gap-3">
-        <a
-          href={ctaLinks.bookUrl}
-          data-accordion-target={ctaLinks.bookTarget}
-          target={ctaLinks.target}
-          rel={ctaLinks.rel}
-          class="inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold"
-          >Boek nu</a
-        >
-        <a
-          href={ctaLinks.consultUrl}
-          data-accordion-target={ctaLinks.consultTarget}
-          target={ctaLinks.target}
-          rel={ctaLinks.rel}
-          class="inline-flex items-center px-5 py-3 rounded-full border border-white/60 text-white font-semibold"
-          >Vragen? Plan een gesprek</a
-        >
-      </div>
-    </div>
-  </section>
+    <div class="absolute inset-0 bg-gradient-to-r from-base-950/54 via-base-900/22 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-base-950/16 via-transparent to-white/5"></div>
+    <div class="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-base-25 to-transparent"></div>
 
-  <section class="max-w-6xl mx-auto px-6 pt-12">
-    <div class="flex items-end justify-between gap-4 mb-6">
-      <div>
-        <p class="uppercase text-xs tracking-[0.25em] text-base-500">
-          Sfeerbeelden
+    <div
+      class="relative mx-auto grid min-h-[78svh] max-w-6xl items-end gap-10 px-5 pb-12 pt-28 sm:px-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:pb-16 lg:pt-36"
+      data-weekend-media-hero
+    >
+      <div class="max-w-3xl space-y-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.24em] text-white/75">
+          {weekend.type} rond gezondheid, natuur en inzicht
         </p>
-        <h2 class="text-2xl font-semibold text-base-900">
-          Een blik op de setting
-        </h2>
-      </div>
-      <p class="text-sm text-base-500 hidden lg:block">
-        Scroll horizontaal om meer beelden te zien.
-      </p>
-    </div>
-    <div class="carousel-wrapper -mx-6 px-6">
-      <div class="carousel-track flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4">
-        {carouselImages.map((image, index) => (
-          <div
-            class="snap-start shrink-0 basis-64 sm:basis-80 lg:basis-[calc((100%-2rem)/3)]"
+        <div class="space-y-4">
+          <h1 class="max-w-3xl text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+            {weekend.name}
+          </h1>
+          <p class="max-w-2xl text-lg leading-relaxed text-white/90">
+            {weekend.shortDescription}
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {heroTags.map((tag) => (
+            <span class="border border-white/35 bg-white/15 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div class="flex flex-col gap-3 pt-1 sm:flex-row">
+          <a
+            href={ctaLinks.bookUrl}
+            target={ctaLinks.target}
+            rel={ctaLinks.rel}
+            class="inline-flex items-center justify-center rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
           >
-            <img
-              src={image.src}
-              width={image.width}
-              height={image.height}
-              alt={carouselAlts[index] ?? `SOLA weekend sfeerbeeld ${index + 1}`}
-              loading="lazy"
-              decoding="async"
-              class="h-56 w-full object-cover"
-            />
+            Boek nu
+          </a>
+          <a
+            href={ctaLinks.consultUrl}
+            target={ctaLinks.target}
+            rel={ctaLinks.rel}
+            class="inline-flex items-center justify-center rounded-full border border-white/60 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+          >
+            Plan een gesprek
+          </a>
+        </div>
+        <div class="grid gap-3 text-sm sm:grid-cols-3 lg:hidden">
+          <div class="border border-white/25 bg-white/10 p-4 backdrop-blur-sm">
+            <p class="text-xs uppercase tracking-[0.18em] text-white/60">Waar</p>
+            <p class="mt-1 leading-snug text-white">{weekend.location}</p>
           </div>
-        ))}
+          <div class="border border-white/25 bg-white/10 p-4 backdrop-blur-sm">
+            <p class="text-xs uppercase tracking-[0.18em] text-white/60">Wanneer</p>
+            <p class="mt-1 leading-snug text-white">{weekend.dates}</p>
+          </div>
+          <div class="border border-white/25 bg-white/10 p-4 backdrop-blur-sm">
+            <p class="text-xs uppercase tracking-[0.18em] text-white/60">Prijs</p>
+            <p class="mt-1 leading-snug text-white">{weekend.price}</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
 
-  {accordionSections.length > 0 && (
-    <section id="content" class="max-w-6xl mx-auto px-6 pb-24 pt-12 lg:py-16">
-      <div class="flex flex-col lg:flex-row gap-8 lg:gap-10">
-        {tocItems.length > 0 && (
-          <aside class="lg:w-52 shrink-0 order-2 lg:order-1">
-            <div class="sticky top-6">
-              <div class="border border-base-200 rounded-2xl p-4 bg-white shadow-sm">
-                <div class="sticky top-0 bg-white pb-3">
-                  <h2 class="text-base font-semibold text-base-900">
-                    Inhoudsopgave
-                  </h2>
-                </div>
-                <nav class="space-y-2">
-                  {tocItems.map((item) => (
-                    <a
-                      href={`#${item.id}`}
-                      data-accordion-link="weekend"
-                      data-accordion-target={item.parentId}
-                      class={`block text-sm text-base-600 hover:text-accent-600 transition-colors ${
-                        item.level === 2
-                          ? "font-medium"
-                          : item.level === 3
-                            ? "ml-4"
-                            : item.level === 4
-                              ? "ml-8"
-                              : ""
-                      }`}
-                    >
-                      {item.text}
-                    </a>
+      {heroFacts.length > 0 && (
+        <aside class="hidden border border-white/65 bg-base-25/95 p-5 text-base-900 shadow-xl backdrop-blur-md lg:block">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-base-500">
+            In het kort
+          </p>
+          <div class="mt-5 space-y-4">
+            {heroFacts.map((fact) => (
+              <div class="border-t border-base-200 pt-4 first:border-t-0 first:pt-0">
+                <p class="text-xs uppercase tracking-[0.18em] text-base-500">
+                  {fact.label}
+                </p>
+                <div class="mt-1">
+                  {fact.lines.slice(0, 1).map((line) => (
+                    <p class="text-base leading-relaxed text-base-900">{line}</p>
                   ))}
-                </nav>
-              </div>
-            </div>
-          </aside>
-        )}
-
-        <div class="flex-1 min-w-0 order-1 lg:order-2">
-          {introHtml && (
-            <div
-              class="prose prose-lg prose-base-900 max-w-none mb-8
-              prose-p:text-base-700 prose-p:leading-relaxed"
-              set:html={introHtml}
-            />
-          )}
-          <div class="space-y-2">
-            {accordionSections.map((section, index) => (
-              <div
-                data-accordion-section
-                class="border-t border-base-200 last:border-b scroll-mt-24"
-              >
-                <button
-                  type="button"
-                  id={section.id}
-                  class="w-full flex items-center justify-between gap-4 px-2 py-4 text-left text-base-900 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/50 transition hover:text-base-800 hover:bg-base-900/3"
-                  aria-expanded={index === 0 ? "true" : "false"}
-                  aria-controls={`weekend-panel-${index}`}
-                  data-accordion-trigger="weekend"
-                  data-accordion-id={section.id}
-                >
-                  <span>{section.title}</span>
-                  <span
-                    class="ml-auto text-base-500 transition-colors duration-300"
-                    aria-hidden="true"
-                  >
-                    +
-                  </span>
-                </button>
-                <div
-                  id={`weekend-panel-${index}`}
-                  class={`accordion-panel px-2 text-base-700 leading-relaxed ${
-                    index === 0 ? "pb-4 open" : "pb-0"
-                  }`}
-                  role="region"
-                  aria-labelledby={section.id}
-                  data-accordion-panel="weekend"
-                >
-                  {section.title === "Goed om weten - FAQ" && faqItems.length > 0 ? (
-                    <div class="space-y-2" data-accordion-group="faq">
-                      {faqItems.map((item, faqIndex) => (
-                        <div
-                          class={`border-t border-base-200 ${
-                            faqIndex === faqItems.length - 1 ? "border-b" : ""
-                          }`}
-                        >
-                          <button
-                            type="button"
-                            class="w-full flex items-center justify-between gap-4 px-2 py-4 text-left text-base-900 font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/50 transition hover:text-base-800 hover:bg-base-900/3"
-                            aria-expanded="false"
-                            aria-controls={`faq-panel-${index}-${faqIndex}`}
-                            id={`faq-trigger-${index}-${faqIndex}`}
-                            data-accordion-trigger="faq"
-                          >
-                            <span>{item.question}</span>
-                            <span
-                              class="ml-auto text-base-500 transition-colors duration-300"
-                              aria-hidden="true"
-                            >
-                              +
-                            </span>
-                          </button>
-                          <div
-                            id={`faq-panel-${index}-${faqIndex}`}
-                            class="accordion-panel px-2 text-base-700 leading-relaxed pb-0"
-                            role="region"
-                            aria-labelledby={`faq-trigger-${index}-${faqIndex}`}
-                            data-accordion-panel="faq"
-                          >
-                            <div
-                              class="prose prose-base-900 max-w-none prose-p:text-base-700 prose-p:leading-relaxed prose-p:mb-4 prose-ul:text-base-700 prose-ul:my-4 prose-li:my-2"
-                              set:html={processMarkdown(item.answer).html}
-                            />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    <div
-                      class="prose prose-base-900 max-w-none
-                      prose-headings:font-semibold prose-headings:text-base-900
-                      prose-h3:text-lg prose-h3:mt-6 prose-h3:mb-3 prose-h3:scroll-mt-24
-                      prose-p:text-base-700 prose-p:leading-relaxed prose-p:mb-4
-                      prose-ul:text-base-700 prose-ul:my-4
-                      prose-li:my-2
-                      prose-strong:text-base-900 prose-strong:font-semibold
-                      prose-a:text-accent-600 prose-a:no-underline hover:prose-a:underline"
-                      set:html={section.html}
-                    />
-                  )}
                 </div>
               </div>
             ))}
           </div>
-        </div>
+        </aside>
+      )}
+    </div>
+  </section>
 
-        {keyFacts.length > 0 && (
-          <aside class="hidden lg:block lg:w-72 shrink-0 order-3">
-            <div class="sticky top-6 space-y-4">
-              <div class="rounded-2xl border border-base-200 bg-white p-5 shadow-sm">
-                <h2 class="text-sm font-semibold text-base-500 uppercase tracking-[0.2em]">
-                  In het kort
-                </h2>
-                <div class="mt-4 space-y-4 text-sm text-base-700">
-                  {keyFacts.map((fact) => (
-                    <div class="space-y-1">
-                      <p class="text-xs uppercase tracking-[0.18em] text-base-500">
-                        {fact.label}
-                      </p>
-                      {fact.lines.map((line) => (
-                        <p class="text-sm text-base-800 leading-relaxed">
-                          {line}
-                        </p>
-                      ))}
-                    </div>
-                  ))}
-                </div>
-                <div class="mt-6 space-y-3">
-                  <a
-                    href={ctaLinks.bookUrl}
-                    data-accordion-target={ctaLinks.bookTarget}
-                    target={ctaLinks.target}
-                    rel={ctaLinks.rel}
-                    class="inline-flex w-full items-center justify-center rounded-full bg-accent-600 px-4 py-3 text-sm font-semibold text-white hover:bg-accent-700 transition-colors"
-                  >
-                    Boek nu
-                  </a>
-                  <a
-                    href={ctaLinks.consultUrl}
-                    data-accordion-target={ctaLinks.consultTarget}
-                    target={ctaLinks.target}
-                    rel={ctaLinks.rel}
-                    class="inline-flex w-full items-center justify-center rounded-full border border-base-300 px-4 py-3 text-sm font-semibold text-base-700 hover:border-base-400 hover:text-base-900 transition-colors"
-                  >
-                    Vragen? Plan een gesprek
-                  </a>
-                </div>
-              </div>
-            </div>
-          </aside>
+  <nav class="border-y border-base-200 bg-base-25 lg:hidden" aria-label="Snelle links">
+    <div class="mx-auto max-w-6xl px-5 py-4 sm:px-6">
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-base-500">
+        Snel naar
+      </p>
+      <div class="flex gap-2 overflow-x-auto pb-1">
+        {mobileNavItems.map((item) => (
+          <a
+            href={`#${item.id}`}
+            class="shrink-0 rounded-full border border-base-200 bg-white px-3 py-2 text-sm font-semibold text-base-700 transition-colors hover:border-accent-500 hover:text-accent-700"
+          >
+            {item.text}
+          </a>
+        ))}
+      </div>
+    </div>
+  </nav>
+
+  <section id="waarom-dit-weekend" class="mx-auto max-w-6xl px-5 py-8 sm:px-6 lg:py-12">
+    <div class="border border-base-200 bg-white p-6 shadow-sm sm:p-8 lg:p-10">
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
+        <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">
+          {whyContent.eyebrow}
+        </p>
+        <h2 class="mt-3 max-w-3xl text-3xl font-semibold leading-tight text-base-900 sm:text-4xl">
+          {whyContent.title}
+        </h2>
+        <p class="mt-4 max-w-3xl text-lg leading-relaxed text-base-700">
+          {whyContent.body}
+        </p>
+        {introHtml && (
+          <div
+            class="prose prose-base-900 mt-4 max-w-none prose-p:text-base-700 prose-p:leading-relaxed"
+            set:html={introHtml}
+          />
         )}
       </div>
+
+        <div class="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+          {whyContent.signals.map((signal, index) => (
+            <div class="border border-base-200 bg-base-25 p-4">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-accent-700">
+                0{index + 1}
+              </p>
+              <p class="mt-2 text-base leading-snug text-base-900">{signal}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="mt-6 grid gap-4 border-t border-base-200 pt-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+        <p class="text-base leading-relaxed text-base-700">
+          Voor wie wil begrijpen, ervaren en daarna thuis verder bouwen met heldere handvatten.
+        </p>
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <a
+            href={ctaLinks.bookUrl}
+            target={ctaLinks.target}
+            rel={ctaLinks.rel}
+            class="inline-flex items-center justify-center rounded-full bg-accent-500 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-600"
+          >
+            Boek nu
+          </a>
+          <a
+            href={ctaLinks.consultUrl}
+            target={ctaLinks.target}
+            rel={ctaLinks.rel}
+            class="inline-flex items-center justify-center rounded-full border border-base-300 px-5 py-3 text-sm font-semibold text-base-800 transition-colors hover:border-accent-500 hover:text-accent-700"
+          >
+            Plan een gesprek
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {atmosphereItems.length > 0 && (
+    <section class="mx-auto max-w-6xl px-5 pb-10 sm:px-6 lg:pb-14" data-weekend-image-grid>
+      <div class="mb-6 grid gap-3 md:grid-cols-[minmax(0,0.7fr)_minmax(260px,0.3fr)] md:items-end">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-base-500">
+            Beweging, omgeving en ritme
+          </p>
+          <h2 class="mt-1 text-2xl font-semibold text-base-900">
+            De setting is geen decor, maar deel van de ervaring
+          </h2>
+        </div>
+        <p class="text-base leading-relaxed text-base-700">
+          Buiten bewegen, helder leren, goed eten en herstellen wisselen elkaar af in een weekend dat actief én gedragen voelt.
+        </p>
+      </div>
+      {atmosphereVideo ? (
+        <div class="grid gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(250px,320px)] lg:items-start">
+          <figure class="relative min-w-0 aspect-video overflow-hidden bg-base-900">
+            <span class="pointer-events-none absolute left-3 top-3 z-10 bg-base-900/80 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-white backdrop-blur-sm">
+              Video
+            </span>
+            <video
+              class="block h-full w-full max-w-full object-contain"
+              controls
+              autoplay
+              muted
+              preload="metadata"
+              playsinline
+              poster={expertMedia?.src}
+              aria-label={atmosphereVideo.label}
+            >
+              <source src={atmosphereVideo.src} type={atmosphereVideo.type} />
+              Je browser ondersteunt deze video niet.
+            </video>
+          </figure>
+          <div class="grid grid-cols-2 gap-3 self-start lg:w-full">
+            {videoSideItems.map((item) => (
+              <figure class="aspect-square overflow-hidden bg-base-100">
+                <img
+                  src={item.image.src}
+                  width={item.image.width}
+                  height={item.image.height}
+                  alt={item.alt}
+                  loading="lazy"
+                  decoding="async"
+                  class="h-full w-full object-cover brightness-105 contrast-105 saturate-110"
+                />
+              </figure>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div class="grid auto-rows-[190px] gap-3 sm:grid-cols-4 sm:auto-rows-[220px] lg:auto-rows-[250px]">
+          {atmosphereItems[0] && (
+            <figure class="overflow-hidden bg-base-100 sm:col-span-2 sm:row-span-2">
+              <img
+                src={atmosphereItems[0].image.src}
+                width={atmosphereItems[0].image.width}
+                height={atmosphereItems[0].image.height}
+                alt={atmosphereItems[0].alt}
+                loading="lazy"
+                decoding="async"
+                class="h-full w-full object-cover brightness-105 contrast-105 saturate-110"
+              />
+            </figure>
+          )}
+          {atmosphereItems.slice(1, 5).map((item) => (
+            <figure class="overflow-hidden bg-base-100">
+              <img
+                src={item.image.src}
+                width={item.image.width}
+                height={item.image.height}
+                alt={item.alt}
+                loading="lazy"
+                decoding="async"
+                class="h-full w-full object-cover brightness-105 contrast-105 saturate-110"
+              />
+            </figure>
+          ))}
+        </div>
+      )}
     </section>
   )}
 
-  <section class="max-w-6xl mx-auto px-6 pb-24">
-    <div class="rounded-2xl border border-base-200 bg-base-25 p-6 md:p-8">
+  <section id="content" class="mx-auto max-w-6xl px-5 pb-16 sm:px-6 lg:pb-24">
+    <div class="grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)]">
+      <aside class="hidden lg:block">
+        <div class="sticky top-24 border border-base-200 bg-white p-4 shadow-sm">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-base-500">
+            Op deze pagina
+          </p>
+          <nav class="mt-4 space-y-2" aria-label="Weekend secties">
+            {primaryNavItems.map((item) => (
+              <a
+                href={`#${item.id}`}
+                class="block text-sm font-semibold leading-snug text-base-800 transition-colors hover:text-accent-700"
+              >
+                {item.text}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </aside>
+
+      <div class="min-w-0 space-y-12">
+        {audienceSection && (
+          <article id={audienceSection.id} class="scroll-mt-28 border border-base-200 bg-white p-6 shadow-sm sm:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">
+              Voor wie
+            </p>
+            <h2 class="mt-2 text-3xl font-semibold text-base-900">{audienceSection.title}</h2>
+            <div
+              class="prose prose-lg prose-base-900 mt-5 max-w-none prose-p:text-base-700 prose-p:leading-relaxed prose-ul:text-base-700 prose-li:my-2 prose-strong:text-base-900"
+              set:html={audienceSection.html}
+            />
+          </article>
+        )}
+
+        {focusSection && (
+          <article id={focusSection.id} class="scroll-mt-28 border border-base-200 bg-base-25 p-6 shadow-sm sm:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">
+              Wat je leert
+            </p>
+            <h2 class="mt-2 text-3xl font-semibold text-base-900">{focusSection.title}</h2>
+            <div
+              class="prose prose-lg prose-base-900 mt-5 max-w-none prose-p:text-base-700 prose-p:leading-relaxed prose-ul:text-base-700 prose-li:my-2 prose-strong:text-base-900"
+              set:html={focusSection.html}
+            />
+          </article>
+        )}
+
+        <div class="grid gap-4 border border-base-200 bg-white p-5 shadow-sm sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center sm:p-6">
+          <p class="text-base leading-relaxed text-base-700">
+            Wil je aftoetsen of dit weekend past bij je gezondheid, energie en agenda?
+          </p>
+          <div class="flex flex-col gap-3 sm:flex-row">
+            <a
+              href={ctaLinks.bookUrl}
+              target={ctaLinks.target}
+              rel={ctaLinks.rel}
+              class="inline-flex items-center justify-center rounded-full bg-accent-500 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-600"
+            >
+              Boek nu
+            </a>
+            <a
+              href={ctaLinks.consultUrl}
+              target={ctaLinks.target}
+              rel={ctaLinks.rel}
+              class="inline-flex items-center justify-center rounded-full border border-base-300 px-5 py-3 text-sm font-semibold text-base-800 transition-colors hover:border-accent-500 hover:text-accent-700"
+            >
+              Plan een gesprek
+            </a>
+          </div>
+        </div>
+
+        {afterSection && (
+          <article id={afterSection.id} class="scroll-mt-28 border border-base-200 bg-white p-6 shadow-sm sm:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">
+              Na dit weekend
+            </p>
+            <h2 class="mt-2 text-3xl font-semibold text-base-900">{afterSection.title}</h2>
+            <div
+              class="prose prose-lg prose-base-900 mt-5 max-w-none prose-p:text-base-700 prose-p:leading-relaxed prose-ul:text-base-700 prose-li:my-2 prose-h3:text-xl prose-h3:text-base-900 prose-strong:text-base-900"
+              set:html={afterSection.html}
+            />
+          </article>
+        )}
+
+        {atmosphereItems[5] && (
+          <figure class="overflow-hidden bg-base-100">
+            <img
+              src={atmosphereItems[5].image.src}
+              width={atmosphereItems[5].image.width}
+              height={atmosphereItems[5].image.height}
+              alt={atmosphereItems[5].alt}
+              loading="lazy"
+              decoding="async"
+              class="h-[260px] w-full object-cover brightness-105 contrast-105 saturate-110 sm:h-[360px]"
+            />
+          </figure>
+        )}
+
+        {expertSection && (
+          <article id={expertSection.id} class="scroll-mt-28 grid overflow-hidden border border-base-200 bg-white shadow-sm lg:grid-cols-[minmax(260px,0.38fr)_minmax(0,1fr)]">
+            {expertMedia && (
+              <figure class="bg-base-100">
+                <img
+                  src={expertMedia.src}
+                  width={expertMedia.width}
+                  height={expertMedia.height}
+                  alt={expertMediaAlt}
+                  loading="lazy"
+                  decoding="async"
+                  class="h-72 w-full object-cover object-center brightness-105 contrast-105 saturate-105 sm:h-96 lg:h-full lg:min-h-[430px]"
+                />
+              </figure>
+            )}
+            <div class="p-6 sm:p-8 lg:p-10">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">
+                Expertise
+              </p>
+              <h2 class="mt-2 text-3xl font-semibold text-base-900">{expertSection.title}</h2>
+              <div
+                class="prose prose-lg mt-5 max-w-none prose-p:text-base-700 prose-p:leading-relaxed prose-ul:text-base-700 prose-li:my-2 prose-a:text-accent-700 prose-a:no-underline hover:prose-a:underline prose-strong:text-base-900"
+                set:html={expertSection.html}
+              />
+              <div class="mt-6 border-t border-base-200 pt-5">
+                <p class="text-sm font-semibold uppercase tracking-[0.18em] text-base-500">
+                  Waarom dit vertrouwen geeft
+                </p>
+                <p class="mt-2 text-base leading-relaxed text-base-700">
+                  De expert brengt inhoudelijke diepte; SOLA bewaakt de omkadering, het ritme en de vertaling naar een veilige, haalbare weekendervaring.
+                </p>
+              </div>
+            </div>
+          </article>
+        )}
+
+        {programSection && (
+          <article id={programSection.id} class="scroll-mt-28 border border-base-200 bg-white p-6 shadow-sm sm:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">
+              Programma
+            </p>
+            <h2 class="mt-2 text-3xl font-semibold text-base-900">{programSection.title}</h2>
+            <div
+              class="program-prose prose prose-lg prose-base-900 mt-6 max-w-none prose-h3:border-t prose-h3:border-base-200 prose-h3:pt-6 prose-h3:text-xl prose-h3:text-base-900 prose-p:text-base-700 prose-p:leading-relaxed prose-ul:text-base-700 prose-li:my-2 prose-strong:text-base-900"
+              set:html={programSection.html}
+            />
+          </article>
+        )}
+
+        {stayMealsBlocks.length > 0 && (
+          <section class="grid gap-5 md:grid-cols-2" aria-label="Verblijf en maaltijden">
+            {stayMealsBlocks.map((block) => (
+              <article id={block.id} class="scroll-mt-28 border border-base-200 bg-base-25 p-6 shadow-sm sm:p-8">
+                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">
+                  Omkadering
+                </p>
+                <h2 class="mt-2 text-2xl font-semibold text-base-900">{block.title}</h2>
+                <div
+                  class="prose prose-base-900 mt-4 max-w-none prose-p:text-base-700 prose-p:leading-relaxed prose-ul:text-base-700 prose-li:my-2"
+                  set:html={block.html}
+                />
+              </article>
+            ))}
+          </section>
+        )}
+
+        {(practicalCards.length > 0 || showPracticalProse) && (
+          <section id={practicalSection?.id ?? "praktisch"} class="scroll-mt-28">
+            <div class="mb-5">
+              <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">
+                Praktische info
+              </p>
+              <h2 class="mt-2 text-3xl font-semibold text-base-900">
+                Alles wat je vooraf wil weten
+              </h2>
+            </div>
+            {practicalCards.length > 0 && (
+              <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {practicalCards.map((fact) => (
+                  <article class="border border-base-200 bg-white p-5 shadow-sm">
+                    <p class="text-xs font-semibold uppercase tracking-[0.18em] text-base-500">
+                      {fact.label}
+                    </p>
+                    <div class="mt-2 space-y-1">
+                      {fact.lines.map((line) => (
+                        <p class="leading-relaxed text-base-800">{line}</p>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            )}
+            {showPracticalProse && (
+              <div
+                class="prose prose-base-900 mt-5 max-w-none border border-base-200 bg-white p-6 prose-p:text-base-700 prose-p:leading-relaxed"
+                set:html={practicalSection.html}
+              />
+            )}
+          </section>
+        )}
+
+        {giftSection && (
+          <article id={giftSection.id} class="scroll-mt-28 border border-accent-200 bg-accent-50 p-6 shadow-sm sm:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-800">
+              Vroegboekcadeau
+            </p>
+            <h2 class="mt-2 text-3xl font-semibold text-base-900">{giftSection.title}</h2>
+            <div
+              class="prose prose-lg prose-base-900 mt-4 max-w-none prose-p:text-base-800 prose-p:leading-relaxed"
+              set:html={giftSection.html}
+            />
+          </article>
+        )}
+
+        {(includedSection || excludedSection) && (
+          <section class="grid gap-5 md:grid-cols-2" aria-label="Inbegrepen en niet inbegrepen">
+            {includedSection && (
+              <article id={includedSection.id} class="scroll-mt-28 border border-base-200 bg-white p-6 shadow-sm sm:p-8">
+                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">
+                  Inbegrepen
+                </p>
+                <h2 class="mt-2 text-2xl font-semibold text-base-900">{includedSection.title}</h2>
+                <div
+                  class="prose prose-base-900 mt-4 max-w-none prose-ul:text-base-700 prose-li:my-2 prose-a:text-accent-700 prose-a:no-underline hover:prose-a:underline"
+                  set:html={includedSection.html}
+                />
+              </article>
+            )}
+            {excludedSection && (
+              <article id={excludedSection.id} class="scroll-mt-28 border border-base-200 bg-base-25 p-6 shadow-sm sm:p-8">
+                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-base-500">
+                  Niet inbegrepen
+                </p>
+                <h2 class="mt-2 text-2xl font-semibold text-base-900">{excludedSection.title}</h2>
+                <div
+                  class="prose prose-base-900 mt-4 max-w-none prose-ul:text-base-700 prose-li:my-2"
+                  set:html={excludedSection.html}
+                />
+              </article>
+            )}
+          </section>
+        )}
+
+        {otherVisibleSections.map((section) => (
+          <article id={section.id} class="scroll-mt-28 border border-base-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="text-3xl font-semibold text-base-900">{section.title}</h2>
+            <div
+              class="prose prose-lg prose-base-900 mt-5 max-w-none prose-p:text-base-700 prose-p:leading-relaxed prose-ul:text-base-700 prose-li:my-2 prose-strong:text-base-900"
+              set:html={section.html}
+            />
+          </article>
+        ))}
+
+        {(faqItems.length > 0 || faqSection) && (
+          <section id="faq" class="scroll-mt-28 border border-base-200 bg-white p-6 shadow-sm sm:p-8">
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">
+              FAQ
+            </p>
+            <h2 class="mt-2 text-3xl font-semibold text-base-900">
+              Goed om weten
+            </h2>
+            {faqSection?.html && (
+              <div
+                class="prose prose-base-900 mt-4 max-w-none prose-p:text-base-700 prose-p:leading-relaxed"
+                set:html={faqSection.html}
+              />
+            )}
+            {faqItems.length > 0 && (
+              <div class="mt-6 divide-y divide-base-200 border-y border-base-200">
+                {faqItems.map((item) => (
+                  <details class="group py-1">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-5 px-1 py-4 text-left text-base font-semibold text-base-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/50">
+                      <span>{item.question}</span>
+                      <span
+                        class="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-base-200 text-base-500 transition-colors group-open:border-accent-500 group-open:text-accent-700"
+                        aria-hidden="true"
+                      >
+                        +
+                      </span>
+                    </summary>
+                    <div
+                      class="prose prose-base-900 max-w-none px-1 pb-5 prose-p:text-base-700 prose-p:leading-relaxed prose-ul:text-base-700 prose-li:my-2"
+                      set:html={processMarkdown(item.answer).html}
+                    />
+                  </details>
+                ))}
+              </div>
+            )}
+          </section>
+        )}
+
+        <section id="boek-je-plek" class="scroll-mt-28 border border-base-200 bg-base-900 p-6 text-white shadow-sm sm:p-8">
+          <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+            <div class="space-y-6">
+              <div>
+                <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
+                  Inschrijven
+                </p>
+                <h2 class="mt-2 text-3xl font-semibold text-white">
+                  Klaar om bewust te investeren in dit weekend?
+                </h2>
+              </div>
+              {endCtaSections.length > 0 && (
+                <div class="grid gap-5 md:grid-cols-3">
+                  {endCtaSections.map((section) => (
+                    <article id={section.id === "boek-je-plek" ? undefined : section.id} class="border border-white/20 bg-white/10 p-4">
+                      <h3 class="text-lg font-semibold text-white">{section.title}</h3>
+                      <div
+                        class="prose prose-sm mt-2 max-w-none prose-p:text-white/80 prose-p:leading-relaxed prose-a:text-white prose-a:underline"
+                        set:html={section.html}
+                      />
+                    </article>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+              <a
+                href={ctaLinks.bookUrl}
+                target={ctaLinks.target}
+                rel={ctaLinks.rel}
+                class="inline-flex items-center justify-center rounded-full bg-accent-500 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+              >
+                Boek nu
+              </a>
+              <a
+                href={ctaLinks.consultUrl}
+                target={ctaLinks.target}
+                rel={ctaLinks.rel}
+                class="inline-flex items-center justify-center rounded-full border border-white/40 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+              >
+                Plan een gesprek
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-5 pb-28 sm:px-6 lg:pb-24">
+    <div class="border border-base-200 bg-white p-6 shadow-sm sm:p-8">
       <h2 class="text-2xl font-semibold text-base-900">
         Meer weten over SOLA
       </h2>
       <p
-        class="text-base-700 mt-2 max-w-2xl"
+        class="mt-2 max-w-2xl text-base-700"
         set:html={linkedMoreInfoCopy}
       />
-      <div class="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
+      <div class="mt-5 flex flex-wrap gap-x-5 gap-y-3 text-sm font-semibold">
         <a class="text-accent-700 hover:text-accent-800" href="/weekenden">
           Bekijk alle weekenden
         </a>
@@ -749,292 +1236,41 @@ const carouselImages = await Promise.all(
     </div>
   </section>
 
-  <div class="fixed inset-x-0 bottom-0 z-40 border-t border-base-200 bg-white/95 backdrop-blur lg:hidden">
-    <div class="max-w-6xl mx-auto px-4 py-3 space-y-3">
-      {keyFacts.length > 0 && (
-        <div class="flex gap-4 overflow-x-auto text-[11px] text-base-600 pb-1">
-          {keyFacts.map((fact) => (
-            <div class="shrink-0 min-w-[180px]">
-              <p class="uppercase tracking-[0.2em] text-[10px] text-base-400">
-                {fact.label}
-              </p>
-              <p class="text-[11px] text-base-700 leading-snug">
-                {fact.lines.join(" · ")}
-              </p>
-            </div>
-          ))}
-        </div>
-      )}
+  <div class="fixed inset-x-0 bottom-0 z-40 border-t border-base-200 bg-white/95 shadow-[0_-10px_30px_rgba(62,52,42,0.08)] backdrop-blur lg:hidden">
+    <div class="mx-auto max-w-6xl px-4 py-3">
       <div class="flex gap-3">
         <a
           href={ctaLinks.bookUrl}
-          data-accordion-target={ctaLinks.bookTarget}
           target={ctaLinks.target}
           rel={ctaLinks.rel}
-          class="flex-1 inline-flex items-center justify-center rounded-full bg-accent-600 px-4 py-3 text-sm font-semibold text-white hover:bg-accent-700 transition-colors"
+          class="flex-1 rounded-full bg-accent-500 px-4 py-3 text-center text-sm font-semibold text-white"
         >
           Boek nu
         </a>
         <a
           href={ctaLinks.consultUrl}
-          data-accordion-target={ctaLinks.consultTarget}
           target={ctaLinks.target}
           rel={ctaLinks.rel}
-          class="flex-1 inline-flex items-center justify-center rounded-full border border-base-300 px-4 py-3 text-sm font-semibold text-base-700 hover:border-base-400 hover:text-base-900 transition-colors"
+          class="flex-1 rounded-full border border-base-300 px-4 py-3 text-center text-sm font-semibold text-base-800"
         >
-          Vragen? Plan een gesprek
+          Plan gesprek
         </a>
       </div>
     </div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const accordionButtons = document.querySelectorAll(
-        '[data-accordion-trigger="weekend"]',
-      );
-      const faqButtons = document.querySelectorAll(
-        '[data-accordion-trigger="faq"]',
-      );
-      const ctaLinks = document.querySelectorAll("[data-accordion-target]");
-      const tocLinks = document.querySelectorAll(
-        '[data-accordion-link="weekend"]',
-      );
-
-      const getAnchorOffset = () => {
-        const value = getComputedStyle(document.body).getPropertyValue(
-          "--anchor-offset",
-        );
-        const parsed = Number.parseInt(value, 10);
-        return Number.isNaN(parsed) ? 120 : parsed;
-      };
-
-      const closePanel = (button) => {
-        const panelId = button.getAttribute("aria-controls");
-        const panel = document.getElementById(panelId);
-        const icon = button.querySelector("span[aria-hidden='true']");
-        if (!panel || !icon) return;
-        button.setAttribute("aria-expanded", "false");
-        panel.style.maxHeight = "0px";
-        panel.classList.remove("open");
-        panel.classList.remove("pb-4");
-        panel.classList.add("pb-0");
-        icon.textContent = "+";
-      };
-
-      const openPanel = (button) => {
-        const panelId = button.getAttribute("aria-controls");
-        const panel = document.getElementById(panelId);
-        const icon = button.querySelector("span[aria-hidden='true']");
-        if (!panel || !icon) return;
-        button.setAttribute("aria-expanded", "true");
-        panel.classList.add("open");
-        panel.classList.remove("pb-0");
-        panel.classList.add("pb-4");
-        panel.style.maxHeight = `${panel.scrollHeight}px`;
-        icon.textContent = "–";
-      };
-
-      const togglePanel = (button) => {
-        const isExpanded = button.getAttribute("aria-expanded") === "true";
-        accordionButtons.forEach((item) => closePanel(item));
-        if (!isExpanded) {
-          openPanel(button);
-        }
-      };
-
-      const updateParentPanelHeight = (button) => {
-        const parentPanel = button.closest('[data-accordion-panel="weekend"]');
-        if (!parentPanel || !parentPanel.classList.contains("open")) return;
-        window.requestAnimationFrame(() => {
-          parentPanel.style.maxHeight = `${parentPanel.scrollHeight}px`;
-        });
-      };
-
-      const setPanelAutoHeight = (panel) => {
-        if (!panel || !panel.classList.contains("open")) return;
-        panel.style.maxHeight = "none";
-      };
-
-      const getTriggerForTarget = (targetId) => {
-        if (!targetId) return null;
-        let button = document.querySelector(
-          `[data-accordion-id="${targetId}"]`,
-        );
-        if (!button) {
-          const anchor = document.getElementById(targetId);
-          const container = anchor?.closest("[data-accordion-section]");
-          button = container?.querySelector(
-            '[data-accordion-trigger="weekend"]',
-          );
-        }
-        return button;
-      };
-
-      const getPreviousAccordionTrigger = (button) => {
-        if (!button) return null;
-        const currentSection = button.closest("[data-accordion-section]");
-        if (!currentSection) return button;
-        let previousSection = currentSection.previousElementSibling;
-        while (
-          previousSection &&
-          !previousSection.matches("[data-accordion-section]")
-        ) {
-          previousSection = previousSection.previousElementSibling;
-        }
-        const previousTrigger = previousSection?.querySelector(
-          '[data-accordion-trigger="weekend"]',
-        );
-        return previousTrigger ?? button;
-      };
-
-      const openOnlyAndScroll = (targetHash) => {
-        const targetId = targetHash?.replace("#", "");
-        const button = getTriggerForTarget(targetId);
-        if (!button) return;
-        accordionButtons.forEach((item) => closePanel(item));
-        openPanel(button);
-        const scrollTarget = getPreviousAccordionTrigger(button);
-        if (!scrollTarget) return;
-        const offset = getAnchorOffset();
-        const targetTop =
-          scrollTarget.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top: Math.max(targetTop, 0), behavior: "smooth" });
-      };
-
-      accordionButtons.forEach((button) => {
-        button.addEventListener("click", () => togglePanel(button));
-        button.addEventListener("keydown", (event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            togglePanel(button);
-          }
-        });
-      });
-
-      faqButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          const isExpanded = button.getAttribute("aria-expanded") === "true";
-          const group = button.closest('[data-accordion-group="faq"]');
-          const panelId = button.getAttribute("aria-controls");
-          const panel = panelId ? document.getElementById(panelId) : null;
-          const closeSiblings = () => {
-            const siblingButtons = group?.querySelectorAll(
-              '[data-accordion-trigger="faq"]',
-            );
-            siblingButtons?.forEach((item) => {
-              if (item !== button) {
-                closePanel(item);
-              }
-            });
-          };
-          if (isExpanded) {
-            closePanel(button);
-            updateParentPanelHeight(button);
-          } else {
-            closeSiblings();
-            openPanel(button);
-            updateParentPanelHeight(button);
-            window.setTimeout(() => {
-              setPanelAutoHeight(panel);
-              updateParentPanelHeight(button);
-            }, 320);
-          }
-        });
-        button.addEventListener("keydown", (event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            const isExpanded = button.getAttribute("aria-expanded") === "true";
-            const group = button.closest('[data-accordion-group="faq"]');
-            const panelId = button.getAttribute("aria-controls");
-            const panel = panelId ? document.getElementById(panelId) : null;
-            const closeSiblings = () => {
-              const siblingButtons = group?.querySelectorAll(
-                '[data-accordion-trigger="faq"]',
-              );
-              siblingButtons?.forEach((item) => {
-                if (item !== button) {
-                  closePanel(item);
-                }
-              });
-            };
-            if (isExpanded) {
-              closePanel(button);
-              updateParentPanelHeight(button);
-            } else {
-              closeSiblings();
-              openPanel(button);
-              updateParentPanelHeight(button);
-              window.setTimeout(() => {
-                setPanelAutoHeight(panel);
-                updateParentPanelHeight(button);
-              }, 320);
-            }
-          }
-        });
-      });
-
-      ctaLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          const targetId = link.getAttribute("data-accordion-target");
-          window.setTimeout(() => openOnlyAndScroll(`#${targetId}`), 0);
-        });
-      });
-
-      tocLinks.forEach((link) => {
-        link.addEventListener("click", (event) => {
-          const href = link.getAttribute("href");
-          if (!href || !href.startsWith("#")) return;
-          event.preventDefault();
-          window.history.pushState(null, "", href);
-          openOnlyAndScroll(href);
-        });
-      });
-
-      const openFromHash = () => {
-        const hash = window.location.hash.replace("#", "");
-        if (hash) {
-          openOnlyAndScroll(`#${hash}`);
-        }
-      };
-
-      accordionButtons.forEach((button) => {
-        if (button.getAttribute("aria-expanded") === "true") {
-          openPanel(button);
-        }
-      });
-
-      window.addEventListener("hashchange", openFromHash);
-      openFromHash();
-    });
-  </script>
-
   <style>
-    .accordion-panel {
-      max-height: 0;
-      overflow: hidden;
-      transition:
-        max-height 0.3s ease,
-        opacity 0.3s ease,
-        padding 0.3s ease;
-      opacity: 0;
+    details summary::-webkit-details-marker {
+      display: none;
     }
 
-    .accordion-panel.open {
-      opacity: 1;
+    details[open] summary span[aria-hidden="true"] {
+      transform: rotate(45deg);
     }
 
-    .carousel-track::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .carousel-track::-webkit-scrollbar-thumb {
-      background: rgba(15, 23, 42, 0.2);
-      border-radius: 999px;
-    }
-
-    .carousel-track::-webkit-scrollbar-track {
-      background: transparent;
+    .program-prose h3 + p,
+    .program-prose h3 + ul {
+      margin-top: 0.75rem;
     }
   </style>
 </BaseLayout>
