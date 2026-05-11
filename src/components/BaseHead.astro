@@ -67,6 +67,56 @@ const serializeStructuredData = (item: Record<string, unknown>) =>
 {structuredDataItems.map((item) => (
   <script type="application/ld+json" set:html={serializeStructuredData(item)} />
 ))}
+<script is:inline>
+  (() => {
+    const prepareSolaVideo = (node) => {
+      const video =
+        node instanceof HTMLVideoElement
+          ? node
+          : node instanceof HTMLElement
+            ? node.closest("video")
+            : null;
+
+      if (!video) return;
+
+      const isSimonVideo = Array.from(video.querySelectorAll("source")).some(
+        (source) => source.getAttribute("src") === "/simon-uitleg-website.mp4",
+      );
+
+      if (!isSimonVideo) return;
+
+      video.removeAttribute("autoplay");
+      video.preload = "none";
+    };
+
+    const scanVideoNode = (node) => {
+      prepareSolaVideo(node);
+      if (node instanceof HTMLElement) {
+        node.querySelectorAll("video").forEach(prepareSolaVideo);
+      }
+    };
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach(scanVideoNode);
+      });
+    });
+
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+    });
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+        document.querySelectorAll("video").forEach(prepareSolaVideo);
+        observer.disconnect();
+      },
+      { once: true },
+    );
+  })();
+</script>
 {import.meta.env.PROD && (
   <>
     <script is:inline>
