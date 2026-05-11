@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import logoImage from "../../assets/images/logo.png";
+import { SOLA_FOOTER_SOCIAL_LINKS } from "../../utils/seo";
 ---
 
 <footer class="border-t border-base-200 mt-20 bg-base-50/60">
@@ -16,10 +17,27 @@ import logoImage from "../../assets/images/logo.png";
           class="hover:text-accent-700 text-xs mt-1 block"
           href="mailto:hello@solatravel.be">hello@solatravel.be</a
         >
+        <nav
+          class="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-xs text-base-500"
+          aria-label="SOLA social media"
+        >
+          {
+            SOLA_FOOTER_SOCIAL_LINKS.map((link) => (
+              <a
+                class="underline-offset-4 hover:text-accent-700 hover:underline"
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </nav>
       </div>
     </div>
     <p class="text-xs text-base-500">© 2026 SOLA</p>
-    <div class="flex flex-col gap-2 items-end">
+    <div class="flex flex-col gap-2 items-start lg:items-end">
       <div class="flex flex-wrap gap-4 items-center justify-end">
         <a class="hover:text-accent-700" href="/contact">Contact</a>
         <a class="hover:text-accent-700" href="/newsletter">Nieuwsbrief</a>
