@@ -53,6 +53,8 @@ body {
     font-family: "Tw Cen MT", "Inter", sans-serif;
     font-size: 1rem;
     /* Uses the 18px base */
+    max-width: 100%;
+    overflow-x: clip;
 }
 
 .journey-page {
@@ -201,4 +203,30 @@ button:not(:disabled),
     margin-top: 1.8rem;
     font-size: 0.95rem;
     color: var(--color-base-500);
+}
+
+@media (max-width: 640px) {
+    section.hero-bg-animated>.relative>.space-y-6 {
+        max-width: 20rem;
+    }
+
+    section.hero-bg-animated h1 {
+        font-size: 1.5rem;
+        line-height: 1.18;
+    }
+
+    section.hero-bg-animated p.text-lg {
+        font-size: 1rem;
+        line-height: 1.55;
+    }
+
+    section.hero-bg-animated .flex.flex-wrap.gap-3 {
+        display: grid;
+        width: 100%;
+        max-width: 20rem;
+    }
+
+    section.hero-bg-animated .flex.flex-wrap.gap-3>a {
+        width: 100%;
+    }
 }
