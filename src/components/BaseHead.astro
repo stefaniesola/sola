@@ -69,6 +69,8 @@ const serializeStructuredData = (item: Record<string, unknown>) =>
 ))}
 <script is:inline>
   (() => {
+    const preparedVideos = new WeakSet();
+
     const prepareSolaVideo = (node) => {
       const video =
         node instanceof HTMLVideoElement
@@ -77,16 +79,74 @@ const serializeStructuredData = (item: Record<string, unknown>) =>
             ? node.closest("video")
             : null;
 
-      if (!video) return;
+      if (!video || preparedVideos.has(video)) return;
 
       const isSimonVideo = Array.from(video.querySelectorAll("source")).some(
-        (source) => source.getAttribute("src") === "/simon-uitleg-website.mp4",
+        (source) =>
+          source.getAttribute("src")?.includes("simon-uitleg-website.mp4"),
       );
 
       if (!isSimonVideo) return;
 
+      preparedVideos.add(video);
       video.removeAttribute("autoplay");
+      video.defaultMuted = true;
+      video.muted = true;
+      video.playsInline = true;
       video.preload = "none";
+
+      let userInteracted = false;
+      const markUserInteracted = () => {
+        userInteracted = true;
+      };
+
+      video.addEventListener("pointerdown", markUserInteracted, {
+        passive: true,
+      });
+      video.addEventListener("keydown", markUserInteracted);
+
+      const startVideo = () => {
+        if (video.dataset.solaAutoplayStarted === "true") return;
+
+        video.dataset.solaAutoplayStarted = "true";
+        video.preload = "metadata";
+        const playAttempt = video.play();
+
+        if (playAttempt && typeof playAttempt.catch === "function") {
+          playAttempt.catch(() => {
+            video.dataset.solaAutoplayStarted = "false";
+          });
+        }
+      };
+
+      if ("IntersectionObserver" in window) {
+        const lazyAutoplayObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                startVideo();
+                return;
+              }
+
+              if (!userInteracted && !video.paused && entry.intersectionRatio < 0.05) {
+                video.pause();
+              }
+            });
+          },
+          {
+            rootMargin: "320px 0px",
+            threshold: [0.05, 0.35],
+          },
+        );
+
+        lazyAutoplayObserver.observe(video);
+      } else {
+        window.addEventListener(
+          "load",
+          () => window.setTimeout(startVideo, 1200),
+          { once: true },
+        );
+      }
     };
 
     const scanVideoNode = (node) => {
