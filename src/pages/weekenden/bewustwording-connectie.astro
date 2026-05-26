@@ -4,6 +4,7 @@ import type { Journey } from "../../data/content";
 import { journeys } from "../../data/content";
 import { getImage } from "astro:assets";
 import bewustwordingImage from "../../assets/images/2631991747.jpg";
+import WeekendAvailabilityEnhancements from "../../components/weekenden/WeekendAvailabilityEnhancements.astro";
 import { patchWeekendAvailability } from "../../utils/weekendAvailability";
 
 const sourceWeekend = journeys.find(
@@ -31,3 +32,4 @@ const weekend: Journey = {
 ---
 
 <WeekendTemplate weekend={weekend} />
+<WeekendAvailabilityEnhancements />
