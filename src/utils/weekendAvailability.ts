@@ -103,7 +103,7 @@ export const patchWeekendAvailability = (
   registrationDeadline: string,
 ): Journey => ({
   ...weekend,
-  shortDescription: `${STATUS_LABEL} ${weekend.shortDescription}`,
+  shortDescription: `${STATUS_LABEL} ${FOLLOW_UP_FACT} ${weekend.shortDescription}`,
   registrationDeadline,
   maxParticipants: 14,
   statusLabel: STATUS_LABEL,
