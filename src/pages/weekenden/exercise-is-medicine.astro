@@ -1,0 +1,36 @@
+---
+import WeekendTemplate from "./[slug].astro";
+import type { Journey } from "../../data/content";
+import { journeys } from "../../data/content";
+import { patchWeekendAvailability } from "../../utils/weekendAvailability";
+
+const sourceWeekend = journeys.find(
+  (journey) => journey.slug === "exercise-is-medicine",
+);
+
+if (!sourceWeekend) {
+  throw new Error("Beweging als medicijn weekend data not found.");
+}
+
+const heroImage = sourceWeekend.heroImage;
+const heroImageData =
+  heroImage && typeof heroImage !== "string"
+    ? {
+        src: heroImage.src,
+        width: heroImage.width,
+        height: heroImage.height,
+        format: heroImage.format,
+      }
+    : sourceWeekend.heroImageData;
+
+const weekend: Journey = {
+  ...patchWeekendAvailability(
+    sourceWeekend,
+    "Inschrijven voor dit weekend kan tot 30 juni 2026, zolang er plaatsen zijn.",
+  ),
+  heroImage: typeof heroImage === "string" ? heroImage : heroImage?.src,
+  heroImageData,
+};
+---
+
+<WeekendTemplate weekend={weekend} />
