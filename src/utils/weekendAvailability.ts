@@ -31,10 +31,13 @@ const isRegistrationFact = (fact: KeyFact) => {
   );
 };
 
-const buildKeyFacts = (facts: Journey["keyFacts"] = []) => {
+const buildKeyFacts = (
+  facts: Journey["keyFacts"] = [],
+  registrationDeadline: string,
+) => {
   const registrationFact: KeyFact = {
     label: "Inschrijven",
-    lines: [OPEN_REGISTRATION],
+    lines: [OPEN_REGISTRATION, registrationDeadline],
   };
   const cleaned = facts.filter((fact) => !isRegistrationFact(fact));
   const priceIndex = cleaned.findIndex((fact) =>
@@ -52,10 +55,10 @@ const buildKeyFacts = (facts: Journey["keyFacts"] = []) => {
   ];
 };
 
-const buildLongread = (longread = "") =>
+const buildLongread = (longread = "", registrationDeadline: string) =>
   longread.replace(
     /## Vroegboekcadeau\s*\n\n[\s\S]*?(?=\n## Wat is inbegrepen\?)/g,
-    `## Inschrijvingen\n\n${OPEN_REGISTRATION}\n`,
+    `## Inschrijvingen\n\n${OPEN_REGISTRATION}\n\n${registrationDeadline}\n`,
   );
 
 export const patchWeekendAvailability = (
@@ -68,6 +71,6 @@ export const patchWeekendAvailability = (
   statusLabel: STATUS_LABEL,
   includedFollowUp: INCLUDED_FOLLOW_UP,
   ...DEFAULT_WEEKEND_FIT,
-  keyFacts: buildKeyFacts(weekend.keyFacts),
-  longread: buildLongread(weekend.longread),
+  keyFacts: buildKeyFacts(weekend.keyFacts, registrationDeadline),
+  longread: buildLongread(weekend.longread, registrationDeadline),
 });
