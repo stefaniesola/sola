@@ -1,0 +1,32 @@
+<style is:global>
+  .journey-page a[href^="https://calendly.com/hello-solatravel/30min"] {
+    border-color: transparent !important;
+    background-color: var(--color-accent-500, #c9784d) !important;
+    color: #fff !important;
+  }
+
+  .journey-page a[href^="https://calendly.com/hello-solatravel/30min"]:hover {
+    background-color: var(--color-accent-600, #b7653d) !important;
+    color: #fff !important;
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    const cleanWeekendConsultLinks = () => {
+      document
+        .querySelectorAll('a[href^="https://calendly.com/hello-solatravel/30min"]')
+        .forEach((link) => {
+          link.setAttribute("href", "https://calendly.com/hello-solatravel/30min");
+          if (link.textContent && link.textContent.trim() === "Plan gesprek") {
+            link.textContent = "Plan een gesprek";
+          }
+        });
+    };
+
+    cleanWeekendConsultLinks();
+    document.addEventListener("DOMContentLoaded", cleanWeekendConsultLinks, {
+      once: true,
+    });
+  })();
+</script>
