@@ -6,6 +6,24 @@ const OPEN_REGISTRATION = "Inschrijvingen zijn nu open zolang er plaatsen zijn."
 const STATUS_LABEL = "Kleine groep: max. 14 deelnemers. Inschrijvingen nu open.";
 const INCLUDED_FOLLOW_UP =
   "Inbegrepen: een persoonlijke 1-op-1 opvolgsessie na het weekend, zodat je de inzichten concreet kan vertalen naar je dagelijks leven.";
+const FOLLOW_UP_FACT = "Persoonlijke 1-op-1 opvolgsessie inbegrepen.";
+const FIT_COPY = `
+
+### Voor jou / niet voor jou
+
+**Dit weekend is voor jou als...**
+
+- je bewust wil investeren in je energie, gezondheid en veerkracht
+- je houdt van een combinatie van natuur, beweging en inzichten
+- je openstaat voor reflectie, maar zonder zweverigheid
+- je graag leert in een kleine groep met professionele begeleiding
+
+**Dit weekend is minder geschikt als...**
+
+- je vooral op zoek bent naar een klassiek wellnessweekend
+- je geen interesse hebt in actief bewegen of buiten zijn
+- je liever volledig anoniem of zonder groepsmomenten deelneemt
+- je verwacht dat een weekend alles oplost`;
 
 const DEFAULT_WEEKEND_FIT = {
   isFor: [
@@ -39,7 +57,16 @@ const buildKeyFacts = (
     label: "Inschrijven",
     lines: [OPEN_REGISTRATION, registrationDeadline],
   };
-  const cleaned = facts.filter((fact) => !isRegistrationFact(fact));
+  const cleaned = facts
+    .filter((fact) => !isRegistrationFact(fact))
+    .map((fact) => {
+      if (!fact.label.toLowerCase().includes("prijs")) return fact;
+      if (fact.lines.some((line) => line.includes("1-op-1"))) return fact;
+      return {
+        ...fact,
+        lines: [...fact.lines, FOLLOW_UP_FACT],
+      };
+    });
   const priceIndex = cleaned.findIndex((fact) =>
     fact.label.toLowerCase().includes("prijs"),
   );
@@ -55,10 +82,20 @@ const buildKeyFacts = (
   ];
 };
 
+const addFitCopy = (longread: string) => {
+  if (longread.includes("Voor jou / niet voor jou")) return longread;
+  return longread.replace(
+    /\n## (Wat je leert|Wat mag je verwachten|Wat leer je|Na dit weekend)/,
+    `${FIT_COPY}\n\n## $1`,
+  );
+};
+
 const buildLongread = (longread = "", registrationDeadline: string) =>
-  longread.replace(
-    /## Vroegboekcadeau\s*\n\n[\s\S]*?(?=\n## Wat is inbegrepen\?)/g,
-    `## Inschrijvingen\n\n${OPEN_REGISTRATION}\n\n${registrationDeadline}\n`,
+  addFitCopy(
+    longread.replace(
+      /## Vroegboekcadeau\s*\n\n[\s\S]*?(?=\n## Wat is inbegrepen\?)/g,
+      `## Inschrijvingen\n\n${OPEN_REGISTRATION}\n\n${registrationDeadline}\n`,
+    ),
   );
 
 export const patchWeekendAvailability = (
@@ -66,6 +103,7 @@ export const patchWeekendAvailability = (
   registrationDeadline: string,
 ): Journey => ({
   ...weekend,
+  shortDescription: `${STATUS_LABEL} ${weekend.shortDescription}`,
   registrationDeadline,
   maxParticipants: 14,
   statusLabel: STATUS_LABEL,
