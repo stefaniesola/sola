@@ -1,0 +1,86 @@
+---
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const pageTitle = "SOLA inzichten | SOLA";
+const pageDescription =
+  "Gezondheid, beweging, herstel en SOLA achter de schermen helder en menselijk uitgelegd.";
+
+const kickoffHeroPath = "/images/blog/sola-kickoff/groepsfoto.jpg";
+const publicFileExists = (path: string) =>
+  existsSync(fileURLToPath(new URL(`../../../public${path}`, import.meta.url)));
+
+const posts = [
+  {
+    href: "/inzichten/sola-summer-loading-kickoff-event",
+    label: "Achter de schermen",
+    title: "SOLA summer loading: energie, expertise en veel goesting",
+    description:
+      "Een blik achter de schermen van het eerste SOLA kickoff event: buitenlucht, beweging, vers eten, sterke expertise en veel goesting voor de eerste SOLA-weekends.",
+    date: "6 juli 2026",
+    image: kickoffHeroPath,
+    hasImage: publicFileExists(kickoffHeroPath),
+  },
+  {
+    href: "/inzichten/spanning-in-je-kaak",
+    label: "SOLA inzicht",
+    title: "Voor wie niet gewoon weg, maar vooruit wil.",
+    description:
+      "Over spanning herkennen, lichaamsbewustzijn en hoe SOLA kennis en ervaring samenbrengt.",
+    date: "SOLA",
+    image: "",
+    hasImage: false,
+  },
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <section class="mx-auto max-w-6xl px-5 py-12 sm:px-6 lg:py-16">
+    <div class="mb-10 max-w-3xl space-y-5">
+      <p class="text-xs uppercase tracking-[0.24em] text-base-500">SOLA inzichten</p>
+      <h1 class="text-4xl font-semibold leading-tight text-base-900 sm:text-5xl">
+        Gezondheid, beweging en herstel helder uitgelegd.
+      </h1>
+      <p class="text-xl leading-relaxed text-base-700">
+        Artikels, updates en inzichten vanuit SOLA.
+      </p>
+    </div>
+
+    <div class="grid gap-5 md:grid-cols-2">
+      {
+        posts.map((post) => (
+          <a
+            href={post.href}
+            class="group overflow-hidden rounded-2xl border border-base-200 bg-base-25 transition hover:border-accent-500"
+          >
+            {post.hasImage ? (
+              <img
+                src={post.image}
+                alt=""
+                class="aspect-[16/10] w-full bg-base-100 object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="grid aspect-[16/10] place-items-center bg-base-100 px-8 text-center">
+                <p class="text-xs uppercase tracking-[0.22em] text-accent-700">{post.label}</p>
+              </div>
+            )}
+            <div class="space-y-4 p-6">
+              <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-base-500">
+                <span>{post.label}</span>
+                <span aria-hidden="true">/</span>
+                <span>{post.date}</span>
+              </div>
+              <h2 class="text-2xl font-semibold leading-tight text-base-900 group-hover:text-accent-700">
+                {post.title}
+              </h2>
+              <p class="text-base leading-relaxed text-base-700">{post.description}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

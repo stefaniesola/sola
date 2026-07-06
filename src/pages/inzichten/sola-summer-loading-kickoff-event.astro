@@ -1,0 +1,277 @@
+---
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const pageTitle = "SOLA summer loading: energie, expertise en veel goesting | SOLA";
+const pageDescription =
+  "Een blik achter de schermen van het eerste SOLA kickoff event: buitenlucht, beweging, vers eten, sterke expertise en veel goesting voor de eerste SOLA-weekends.";
+const publishedDate = "2026-07-06";
+
+const heroImagePath = "/images/blog/sola-kickoff/groepsfoto.jpg";
+const moodImagePath = "/images/blog/sola-kickoff/sfeerbeeld.jpg";
+const reelPosterPath = "/images/blog/sola-kickoff/sola-kickoff-reel-poster.jpg";
+const reelVideoPath = "/videos/blog/sola-kickoff/sola-kickoff-reel.mp4";
+
+const publicFileExists = (path: string) =>
+  existsSync(fileURLToPath(new URL(`../../../public${path}`, import.meta.url)));
+
+const hasHeroImage = publicFileExists(heroImagePath);
+const hasMoodImage = publicFileExists(moodImagePath);
+const hasReelPoster = publicFileExists(reelPosterPath);
+const hasReelVideo = publicFileExists(reelVideoPath);
+const siteUrl = Astro.site ?? Astro.url;
+const absoluteUrl = (path: string) => new URL(path, siteUrl).toString();
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: "SOLA summer loading: energie, expertise en veel goesting",
+  description: pageDescription,
+  datePublished: publishedDate,
+  dateModified: publishedDate,
+  mainEntityOfPage: absoluteUrl(Astro.url.pathname),
+  author: {
+    "@type": "Person",
+    name: "Stefanie Deleu",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "SOLA",
+    url: absoluteUrl("/"),
+  },
+  ...(hasHeroImage ? { image: absoluteUrl(heroImagePath) } : {}),
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  ogImage={hasHeroImage ? heroImagePath : undefined}
+  ogImageAlt="Groepsfoto van het eerste SOLA kickoff event"
+  structuredData={articleSchema}
+>
+  <article class="bg-base-25">
+    <header class="mx-auto max-w-6xl px-5 pt-10 sm:px-6 lg:pt-14">
+      <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.72fr)] lg:items-end">
+        <div class="space-y-6 pb-2">
+          <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.22em] text-base-500">
+            <span>SOLA inzicht</span>
+            <span aria-hidden="true">/</span>
+            <time datetime={publishedDate}>6 juli 2026</time>
+          </div>
+
+          <div class="space-y-5">
+            <h1 class="max-w-4xl text-4xl font-semibold leading-[1.05] text-base-900 sm:text-5xl lg:text-6xl">
+              SOLA summer loading: energie, expertise en veel goesting
+            </h1>
+            <p class="max-w-2xl text-xl leading-relaxed text-base-700">
+              Zondag trapten we de SOLA-zomer af met ons eerste kickoff event.
+            </p>
+          </div>
+        </div>
+
+        <figure class="overflow-hidden rounded-2xl border border-base-200 bg-base-100">
+          {
+            hasHeroImage ? (
+              <img
+                src={heroImagePath}
+                alt="Groepsfoto van het eerste SOLA kickoff event"
+                class="h-auto w-full"
+                loading="eager"
+                decoding="async"
+              />
+            ) : (
+              <div class="grid aspect-[4/3] place-items-center px-8 text-center sm:aspect-[16/11]">
+                <div class="space-y-3">
+                  <p class="text-xs uppercase tracking-[0.22em] text-accent-700">Beeld volgt</p>
+                  <p class="text-2xl font-semibold text-base-900">Groepsfoto SOLA kickoff</p>
+                </div>
+              </div>
+            )
+          }
+        </figure>
+      </div>
+    </header>
+
+    <div class="mx-auto grid max-w-6xl gap-10 px-5 py-10 sm:px-6 lg:grid-cols-[minmax(0,0.68fr)_minmax(260px,0.32fr)] lg:gap-14 lg:py-14">
+      <div class="space-y-12">
+        <section class="space-y-6 text-xl leading-relaxed text-base-700">
+          <p>
+            Niet in een vergaderzaal. Wel buiten, op de weide, in de tuin en tussen de
+            moestuinbedden. Met verse lasagne op tafel, mensen die elkaar voor het eerst
+            ontmoetten en vooral: veel goesting voor wat eraan komt.
+          </p>
+          <p>
+            Het werd zo’n dag waarop alles even samenvalt. Goede gesprekken. Frisse lucht.
+            Beweging in het bos. Eten dat lekker is. Mensen met vuur in hun vak. En een
+            sfeer die meteen duidelijk maakte: SOLA wordt geen klassiek weekendje weg.
+          </p>
+          <p class="text-2xl font-semibold leading-snug text-base-900">
+            Het wordt iets met inhoud en kracht.
+          </p>
+        </section>
+
+        <section aria-label="SOLA kickoff reel" class="flex justify-center border-y border-base-200 py-10">
+          <div class="w-full max-w-[360px]">
+            <div class="overflow-hidden rounded-2xl border border-base-200 bg-base-100 shadow-sm">
+              {
+                hasReelVideo ? (
+                  <video
+                    controls
+                    playsinline
+                    preload="metadata"
+                    poster={hasReelPoster ? reelPosterPath : undefined}
+                    class="aspect-[9/16] w-full bg-base-900 object-cover"
+                  >
+                    <source src={reelVideoPath} type="video/mp4" />
+                    Je browser ondersteunt deze video niet.
+                  </video>
+                ) : hasReelPoster ? (
+                  <img
+                    src={reelPosterPath}
+                    alt="Posterbeeld van de SOLA kickoff reel"
+                    class="aspect-[9/16] w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                ) : (
+                  <div class="grid aspect-[9/16] place-items-center px-8 text-center">
+                    <div class="space-y-3">
+                      <p class="text-xs uppercase tracking-[0.22em] text-accent-700">
+                        Reel volgt
+                      </p>
+                      <p class="text-2xl font-semibold text-base-900">SOLA kickoff</p>
+                    </div>
+                  </div>
+                )
+              }
+            </div>
+          </div>
+        </section>
+
+        <section class="space-y-6 text-lg leading-relaxed text-base-700">
+          <h2 class="text-3xl font-semibold leading-tight text-base-900">De mensen achter SOLA</h2>
+          <p>
+            Tijdens de kickoff brachten we de mensen samen die SOLA deze zomer mee
+            vormgeven. Experts, coaches, food en beeld achter de schermen. Iedereen vanuit
+            zijn eigen expertise, maar met dezelfde ambitie: weekends bouwen die kloppen
+            van begin tot einde.
+          </p>
+          <p>
+            Sarah brengt psychologie rond patronen, emoties en sterker staan in je
+            dagelijks leven. Lisa combineert beweging en yoga, zodat inzichten niet alleen
+            in je hoofd blijven hangen, maar ook voelbaar worden in je lichaam. Jorien
+            werkt rond stress en het zenuwstelsel. Simon brengt performance en
+            sportwetenschap binnen: hoe beweging je gezondheid kan versterken. Johan kijkt
+            vanuit KPNI naar voeding, leefstijl en wat je lichaam nodig heeft om beter te
+            functioneren.
+          </p>
+          <p>
+            Ook food maakt deel uit van het verhaal. Justine en Alexandra denken mee over
+            eten dat vers en voedend is. Verfijnd met smaak en kwaliteit. Klaas zorgt mee
+            voor beeld en sfeer, zodat ook achter de schermen alles goed zit.
+          </p>
+        </section>
+
+        <section class="space-y-6 text-lg leading-relaxed text-base-700">
+          <h2 class="text-3xl font-semibold leading-tight text-base-900">
+            Geen losse workshop. Wel een ervaring.
+          </h2>
+          <p>
+            Wat we met SOLA willen bouwen, is geen reeks losse sessies na elkaar.
+          </p>
+          <p>
+            Een SOLA-weekend moet voelen als één geheel. Je komt toe in de natuur, leert
+            van mensen die weten waarover ze spreken, beweegt zonder prestatiedruk, eet
+            goed, krijgt ruimte om vragen te stellen en gaat naar huis met inzichten waar
+            je echt iets mee bent.
+          </p>
+          <p class="border-l-2 border-accent-500 pl-5 text-2xl font-semibold leading-snug text-base-900">
+            Dat is SOLA: inhoud, beweging, buitenlucht en goesting.
+          </p>
+          <p>Niet zwaar. Niet zweverig.</p>
+          <p>Wel onderbouwd, actief en menselijk.</p>
+        </section>
+
+        <section class="space-y-6 text-lg leading-relaxed text-base-700">
+          <h2 class="text-3xl font-semibold leading-tight text-base-900">
+            Buitenlucht, beweging en vuur
+          </h2>
+          <p>Zondag liet al mooi zien waar SOLA voor staat.</p>
+          <p>
+            Buiten zijn. Samen eten. In beweging komen. Nieuwe mensen ontmoeten. Goede
+            gesprekken voeren en bijleren. Rust vinden zonder stil te moeten zitten. En
+            vooral: energie voelen.
+          </p>
+          <p>
+            Want rust hoeft niet saai te zijn. Inzicht hoeft niet zwaar te zijn. En
+            gezondheid hoeft niet te voelen als een checklist.
+          </p>
+          <p>
+            SOLA gaat over slimmer zorgen voor jezelf, met meer goesting, meer kennis en
+            meer verbinding.
+          </p>
+        </section>
+
+        <figure class="overflow-hidden rounded-2xl border border-base-200 bg-base-100">
+          {
+            hasMoodImage ? (
+              <img
+                src={moodImagePath}
+                alt="Sfeerbeeld van het SOLA kickoff event in de natuur"
+                class="h-auto w-full"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div class="grid aspect-[16/10] place-items-center px-8 text-center">
+                <div class="space-y-3">
+                  <p class="text-xs uppercase tracking-[0.22em] text-accent-700">
+                    Sfeerbeeld volgt
+                  </p>
+                  <p class="text-2xl font-semibold text-base-900">Buitenlucht, beweging en food</p>
+                </div>
+              </div>
+            )
+          }
+        </figure>
+
+        <section class="space-y-6 text-lg leading-relaxed text-base-700">
+          <h2 class="text-3xl font-semibold leading-tight text-base-900">
+            Deze zomer in de Hoge Venen
+          </h2>
+          <p>
+            De eerste SOLA-weekends gaan deze zomer door in de Hoge Venen. Een plek waar
+            natuur, stilte, beweging en focus vanzelf samenkomen.
+          </p>
+          <p>
+            Elk weekend heeft een duidelijk thema en een expert. Daarrond bouwen we een
+            volledige ervaring: inhoud, beweging, vers eten, buitenlucht, rust, sfeer en
+            een kleine groep waarin er ruimte is voor echte vragen.
+          </p>
+          <p>Dit is SOLA deze zomer.</p>
+          <p>Veel expertise. Veel natuur. Veel energie.</p>
+          <p>En vooral: veel goesting om eraan te beginnen.</p>
+        </section>
+
+        <footer class="border-t border-base-200 pt-8">
+          <a
+            href="/reizen"
+            class="inline-flex items-center rounded-full border border-base-300 px-5 py-3 text-base font-semibold text-base-900 transition hover:border-accent-500 hover:text-accent-700"
+          >
+            Bekijk de SOLA-weekends
+          </a>
+        </footer>
+      </div>
+
+      <aside class="lg:sticky lg:top-28 lg:self-start">
+        <div class="space-y-5 border-t border-base-200 pt-6 lg:border-l lg:border-t-0 lg:pl-7 lg:pt-0">
+          <p class="text-xs uppercase tracking-[0.22em] text-base-500">Achter de schermen</p>
+          <p class="text-lg leading-relaxed text-base-700">SOLA kickoff event</p>
+          <time class="block text-base text-base-500" datetime={publishedDate}>6 juli 2026</time>
+        </div>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>
