@@ -31,16 +31,16 @@ import sarahBewustwordingNieuw1 from "../assets/images/Water infused orange.jpg"
 import sarahBewustwordingNieuw2 from "../assets/images/EFT techniek - Sarah.jpg";
 import sarahBewustwordingNieuw5 from "../assets/images/Sarah - Logisch Gezond - Bewustwording en connectie (1).jpg";
 import intermittentHero from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (4).jpg";
-import intermittentSfeer1 from "../assets/images/Simon Endurance Lab - performance coach (1) bike.jpeg";
-import intermittentSfeer2 from "../assets/images/Justine Deleu - lopen.jpg";
-import intermittentSfeer3 from "../assets/images/Hoge Venen - Johan Annys (1).jpg";
-import intermittentSfeer4 from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg";
-import intermittentSfeer5 from "../assets/images/Hoge Venen - Barbara winter.jpeg";
-import intermittentSfeer6 from "../assets/images/Hoge Venen omgeving.jpeg";
-import intermittentSfeer7 from "../assets/images/Zaal Hoge Venen.avif";
-import intermittentSfeer8 from "../assets/images/Ontbijt op weekend.avif";
-import intermittentSfeer9 from "../assets/images/Verblijf in Hoge Venen.avif";
-import intermittentSfeer10 from "../assets/images/Kamer Sourbrodt.avif";
+import intermittentSfeer1 from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (1).jpg";
+import intermittentSfeer2 from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (4).jpg";
+import intermittentSfeer3 from "../assets/images/Intermittent Living - Hoge Venen - op weekend (4).jpeg";
+import intermittentSfeer4 from "../assets/images/Intermittent Living - Hoge Venen - op weekend (5).jpeg";
+import intermittentSfeer5 from "../assets/images/Intermittent Living - Hoge Venen - op weekend (10).jpeg";
+import intermittentSfeer6 from "../assets/images/johanportret.jpg";
+import intermittentSfeer7 from "../assets/images/Johan De Coninck - Antwerp Training - Intermittent Living - Kevin Hermans Photography-19 (1).jpeg";
+import intermittentSfeer8 from "../assets/images/Johan De Coninck - Antwerp Training - Intermittent Living - Kevin Hermans Photography-19 (3).jpeg";
+import intermittentSfeer9 from "../assets/images/Johan De Coninck - Antwerp Training - Intermittent Living - Kevin Hermans Photography-19 (4).jpeg";
+import intermittentSfeer10 from "../assets/images/Verblijf in Hoge Venen.avif";
 import solaTerraFrankrijk from "../assets/images/SOLA TERRA Frankrijk.jpg";
 
 export type JourneyType = "Weekend" | "Reis";
