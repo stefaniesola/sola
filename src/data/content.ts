@@ -816,7 +816,7 @@ Dit weekend is er voor wie:
 
 Een actief en onderbouwd weekend rond energie, herstel en performance.
 
-Je leert hoe je lichaam schakelt tussen actie en herstel, en hoe beweging, ademhaling, voeding en bioritme daarbij samenwerken. Niet alleen in theorie, maar ook door het te ervaren in de natuur, in je lichaam en in het ritme van het weekend.
+Je leert hoe je lichaam schakelt tussen actie en herstel, en hoe beweging, ademhaling, voeding en bioritme daarbij samenwerken. Niet alleen in theorie, maar ook door het te ervaren in je lichaam.
 
 We doen dat via een praktische aanpak met:
 
@@ -825,7 +825,7 @@ We doen dat via een praktische aanpak met:
 - voeding, bioritme en herstel
 - warmte en herstelmomenten
 - gerichte fysieke en mentale prikkels
-- eventueel een temperatuurprikkel, alleen voor wie ervoor openstaat
+- een temperatuurprikkel, alleen voor wie ervoor openstaat
 - vertaling naar je dagelijks leven
 
 Het programma is actief en begeleid, met voldoende maaltijden, duidelijke uitleg en ruimte om je grenzen aan te geven. Zo blijft de focus liggen op wat je leert: hoe je lichaam beter kan schakelen tussen inspanning, stress en herstel.

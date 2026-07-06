@@ -22,7 +22,6 @@ const FIT_COPY = `
 
 - je vooral op zoek bent naar een klassiek wellnessweekend
 - je geen interesse hebt in actief bewegen of buiten zijn
-- je liever volledig anoniem of zonder groepsmomenten deelneemt
 - je verwacht dat een weekend alles oplost`;
 
 const DEFAULT_WEEKEND_FIT = {
@@ -35,7 +34,6 @@ const DEFAULT_WEEKEND_FIT = {
   isNotFor: [
     "je vooral op zoek bent naar een klassiek wellnessweekend",
     "je geen interesse hebt in actief bewegen of buiten zijn",
-    "je liever volledig anoniem of zonder groepsmomenten deelneemt",
     "je verwacht dat een weekend alles oplost",
   ],
 };
