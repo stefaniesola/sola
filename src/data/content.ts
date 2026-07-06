@@ -650,7 +650,7 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
     name: "Intermittent Living",
     type: "Weekend",
     shortDescription:
-      "Een wetenschappelijk onderbouwde reset in de Hoge Venen. Je leert via gerichte prikkels hoe je energie, focus en herstel duurzaam versterkt.",
+      "Een actief weekend rond performance, herstel en stressregulatie. Je leert hoe beweging, ademhaling, voeding en bioritme je energie en veerkracht versterken.",
     location: "Hoge Venen, Ardennen",
     dates: "18 – 20 september 2026",
     price: "€685",
@@ -743,22 +743,22 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
       {
         question: "Is dit veilig?",
         answer:
-          "Ja. We werken met gecontroleerde prikkels (koude, warmte, ademhaling, fasting) en bouwen alles stap voor stap op. Niemand wordt in iets geduwd.",
+          "Ja. Alles wordt stap voor stap opgebouwd en begeleid. We werken met beweging, ademhaling, voeding, herstel en eventueel temperatuurprikkels, altijd in functie van wat haalbaar en zinvol is.",
       },
       {
         question: "Ga ik wel genoeg eten?",
         answer:
-          "Ja. Er is voldoende en doordachte voeding voorzien. We werken met principes zoals intermittent fasting, maar dit wordt begeleid en duidelijk uitgelegd.",
+          "Ja. Er zijn volwaardige maaltijden voorzien tijdens het weekend. Dit is geen vastenweekend. Voeding en timing komen aan bod als onderdeel van energie, herstel en bioritme.",
       },
       {
         question: "Moet ik honger lijden?",
         answer:
-          "Nee. Het gaat niet over afzien, maar over begrijpen hoe je lichaam werkt en daarop inspelen.",
+          "Nee. Je komt niet naar SOLA om honger te lijden. We gebruiken voeding als leerpunt: wat geeft energie, wat ondersteunt herstel en hoe vertaal je dat naar thuis?",
       },
       {
         question: "Mag ik drinken wanneer ik wil?",
         answer:
-          "We werken met intermittent drinking. Dat betekent dat we bewust omgaan met wanneer en hoeveel je drinkt. Dit wordt praktisch uitgelegd tijdens het weekend.",
+          "Ja. Er is voldoende drank voorzien. Als timing rond drinken of hydratatie aan bod komt, wordt dat duidelijk uitgelegd en altijd praktisch gehouden.",
       },
       {
         question: "Ga ik genoeg slapen?",
@@ -766,14 +766,14 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
           "Ja. Slaap en herstel zijn essentieel. We respecteren het ritme van het weekend en zorgen voor voldoende rust.",
       },
       {
-        question: "Moet ik ervaring hebben met ijsbaden of ademhaling?",
+        question: "Moet ik in een ijsbad?",
         answer:
-          "Nee. Alles wordt uitgelegd en rustig opgebouwd. Je hoeft niets te kunnen vooraf.",
+          "Nee. Koude kan aan bod komen voor wie ervoor openstaat, maar het is geen test en niemand wordt ergens in geduwd. Het doel is leren hoe je lichaam reageert op stress en herstel.",
       },
       {
         question: "Wat moet ik meebrengen?",
         answer:
-          "Na inschrijving krijg je een duidelijke paklijst. Denk aan sportkledij, warme kledij en handdoeken (ook voor koude training).",
+          "Na inschrijving krijg je een duidelijke paklijst. Denk aan sportkledij, warme kledij, laagjes voor buiten en handdoeken.",
       },
       {
         question: "Is er eten en drank voorzien?",
@@ -791,7 +791,8 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
       },
       {
         question: "Wordt het zwaar?",
-        answer: "Neen, het wordt uitdagend én fun. Je wordt geprikkeld.",
+        answer:
+          "Het wordt actief en soms uitdagend, maar altijd begeleid en opgebouwd. Je kiest mee hoe ver je gaat.",
       },
       {
         question: "Wat als ik twijfel?",
@@ -813,21 +814,21 @@ Dit weekend is er voor wie:
 
 ## Wat mag je verwachten?
 
-Een wetenschappelijk onderbouwde reset die je opnieuw energie geeft en je terug controle laat nemen over je eigen gezondheid.
+Een actief en onderbouwd weekend rond energie, herstel en performance.
 
-We leren je lichaam opnieuw omgaan met stress, zodat je veerkrachtiger, scherper en energieker wordt. Door gerichte, evolutionaire prikkels maken we je systeem terug anti-fragiel, precies wat nodig is om jouw volle potentieel te benutten.
+Je leert hoe je lichaam schakelt tussen actie en herstel, en hoe beweging, ademhaling, voeding en bioritme daarbij samenwerken. Niet alleen in theorie, maar ook door het te ervaren in de natuur, in je lichaam en in het ritme van het weekend.
 
-We doen dat via een innovatieve en praktische aanpak waarin we je lichaam stap voor stap opnieuw flexibel maken met:
+We doen dat via een praktische aanpak met:
 
-- ijsbaden en koude training
-- intensieve bewegingsprikkels zoals HIIT
-- intermittent fasting en drinking
-- ademhaling, met hypoxie- en CO₂-training
-- fysieke, mentale en cognitieve training en prikkels
-- nieuwe voedingsstrategieën
-- omgaan met acute en chronische stress
+- beweging en activatie
+- ademhaling en stressregulatie
+- voeding, bioritme en herstel
+- warmte en herstelmomenten
+- gerichte fysieke en mentale prikkels
+- eventueel een temperatuurprikkel, alleen voor wie ervoor openstaat
+- vertaling naar je dagelijks leven
 
-Daarnaast krijg je concrete inzichten in je bioritme en levensstijl, zodat je ook na de retreat consistent kan blijven groeien.
+Het programma is actief en begeleid, met voldoende maaltijden, duidelijke uitleg en ruimte om je grenzen aan te geven. Zo blijft de focus liggen op wat je leert: hoe je lichaam beter kan schakelen tussen inspanning, stress en herstel.
 
 ## Wat leer je?
 
@@ -836,11 +837,11 @@ Je mag rekenen op:
 
 - meer energie, minder dips
 - betere stressbestendigheid en focus
-- een sterker metabolisme en meer hormonale balans
-- efficiëntere vetverbranding
-- meer controle over lichaam en geest
+- meer inzicht in voeding, bioritme en herstel
+- praktische tools om je systeem beter te laten schakelen
+- meer vertrouwen in wat je lichaam aankan
 
-Het resultaat is een echte reset van body & mind. En een ervaring die blijft doorwerken: fysiek, mentaal en emotioneel.
+Het resultaat is een ervaring die blijft doorwerken: fysiek, mentaal en praktisch toepasbaar in je dagelijkse leven.
 
 ## Programma
 
@@ -854,9 +855,11 @@ Het resultaat is een echte reset van body & mind. En een ervaring die blijft doo
 ### Dag 2 - zaterdag
 
 - Ochtendroutine met ademhaling en gerichte activatie
-- Sessies rond koude- en warmteprikkels
-- Intermittent fasting en drinking in praktijk
-- Cognitieve en fysieke prikkels met integratie in de natuur
+- Bewegingssessie rond energie, focus en performance
+- Voeding en bioritme: wat timing, samenstelling en herstel doen met je energie
+- Begeleide sessie rond warmte, herstel en stressregulatie
+- Eventuele temperatuurprikkel voor wie ervoor openstaat
+- Integratie in de natuur
 - Avondmodule rond stressregulatie en herstel
 
 ### Dag 3 - zondag
