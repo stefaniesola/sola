@@ -436,7 +436,7 @@ Misschien voel je dat er iets schuurt, maar kan je er nog niet goed de vinger op
 
 Tijdens dit weekend krijg je inzicht in wat jouw gedrag, emoties en reacties stuurt — en leer je hoe je daar bewust mee omgaat.
 
-We werken met technieken uit de psychologie en stressregulatie, zoals Emotional Freedom Techniques (EFT) en systemisch werk. Daarmee maak je patronen zichtbaar én leer je hoe je ze doorbreekt.
+We werken met technieken rond stressregulatie, emotionele patronen en lichaamsgericht bewustzijn, zoals Emotional Freedom Techniques (EFT) en systemisch werk. Daarmee maak je patronen zichtbaar én leer je hoe je ze doorbreekt.
 
 Je ontwikkelt drie concrete vaardigheden:
 
@@ -477,13 +477,13 @@ Deze sessie is inbegrepen in het weekend en zorgt ervoor dat de inzichten niet b
 
 Expertise & begeleiding
 
-Dit weekend wordt begeleid door Sarah Deleu ([Logisch Gezond](https://logisch-gezond.be/)), psycholoog, biomedisch wetenschapper en EFT-therapeut en Lisa ([LIV](https://www.livyourlife.be/)), kinesitherapeut en yogadocent, in samenwerking met SOLA.
+Dit weekend wordt begeleid door Sarah Deleu ([Logisch Gezond](https://logisch-gezond.be/)), EFT & orthomoleculair therapeut en biomedisch wetenschapper, en Lisa ([LIV](https://www.livyourlife.be/)), kinesitherapeut en yogadocent, in samenwerking met SOLA.
 
 Sarah werkt rond emotionele en relationele patronen, met aandacht voor stressregulatie en het zenuwstelsel. Je krijgt inzicht in hoe bepaalde reacties ontstaan en hoe je hier op een meer bewuste manier mee kan omgaan.
 
 Lisa begeleidt de fysieke sessies en focust op beweging en herstel. Via yoga en circuit training werk je met afwisseling en beweging, waardoor je lichaam actief blijft.
 
-We combineren inzichten uit psychologie en lichaamsgericht werk met methodes die je meteen toepast:
+We combineren inzichten rond patronen, stressregulatie en lichaamsgericht werk met methodes die je meteen toepast:
 
 - EFT → helpt bij het reguleren van spanning en emotionele activatie
 - Systemisch werk → geeft inzicht in terugkerende patronen en relationele dynamieken
