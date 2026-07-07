@@ -100,9 +100,10 @@ const articleSchema = {
       </div>
     </header>
 
-    <div class="mx-auto max-w-4xl px-5 py-10 sm:px-6 lg:py-14">
-      <div class="space-y-12">
-        <section class="mx-auto max-w-3xl space-y-6 text-xl leading-relaxed text-base-700">
+    <div class="mx-auto max-w-6xl px-5 py-8 sm:px-6 lg:py-12">
+      <div class="space-y-10 lg:space-y-12">
+        <section class="mx-auto grid max-w-5xl gap-7 text-xl leading-relaxed text-base-700 lg:grid-cols-[minmax(0,0.66fr)_minmax(240px,0.34fr)] lg:items-start">
+          <div class="space-y-5">
           <p>
             Niet in een vergaderzaal. Wel buiten, op de weide, in de tuin en tussen de
             moestuinbedden. Met verse lasagne op tafel, mensen die elkaar voor het eerst
@@ -113,19 +114,20 @@ const articleSchema = {
             Beweging in het bos. Eten dat lekker is. Mensen met vuur in hun vak. En een
             sfeer die meteen duidelijk maakte: SOLA wordt geen klassiek weekendje weg.
           </p>
-          <p class="text-2xl font-semibold leading-snug text-base-900">
+          </div>
+          <p class="border-l-2 border-accent-500 pl-5 text-2xl font-semibold leading-snug text-base-900 lg:mt-1">
             Het wordt iets met inhoud en kracht.
           </p>
         </section>
 
-        <section class="grid gap-4 md:grid-cols-3" aria-label="Sfeerbeelden van het SOLA kickoff event">
+        <section class="grid gap-4 md:grid-cols-3 lg:gap-5" aria-label="Sfeerbeelden van het SOLA kickoff event">
           {
             portraitMedia.map((item) => (
               <figure class="overflow-hidden rounded-2xl border border-base-200 bg-base-100">
                 <img
                   src={item.src}
                   alt={item.alt}
-                  class="aspect-[3/4] w-full object-cover"
+                  class="aspect-[4/5] w-full object-cover"
                   loading="lazy"
                   decoding="async"
                 />
@@ -134,8 +136,9 @@ const articleSchema = {
           }
         </section>
 
-        <section class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-base-700">
+        <section class="grid gap-7 border-t border-base-200 pt-10 text-lg leading-relaxed text-base-700 lg:grid-cols-[minmax(220px,0.3fr)_minmax(0,0.7fr)] lg:gap-12">
           <h2 class="text-3xl font-semibold leading-tight text-base-900">De mensen achter SOLA</h2>
+          <div class="space-y-5">
           <p>
             Tijdens de kickoff brachten we de mensen samen die SOLA deze zomer mee
             vormgeven. Experts, coaches, food en beeld achter de schermen. Iedereen vanuit
@@ -156,12 +159,14 @@ const articleSchema = {
             eten dat vers en voedend is. Verfijnd met smaak en kwaliteit. Klaas zorgt mee
             voor beeld en sfeer, zodat ook achter de schermen alles goed zit.
           </p>
+          </div>
         </section>
 
-        <section class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-base-700">
+        <section class="grid gap-7 text-lg leading-relaxed text-base-700 lg:grid-cols-[minmax(240px,0.34fr)_minmax(0,0.66fr)] lg:gap-12">
           <h2 class="text-3xl font-semibold leading-tight text-base-900">
             Geen losse workshop. Wel een ervaring.
           </h2>
+          <div class="space-y-5">
           <p>
             Wat we met SOLA willen bouwen, is geen reeks losse sessies na elkaar.
           </p>
@@ -176,10 +181,11 @@ const articleSchema = {
           </p>
           <p>Niet zwaar. Niet zweverig.</p>
           <p>Wel onderbouwd, actief en menselijk.</p>
+          </div>
         </section>
 
-        <section class="grid gap-8 border-y border-base-200 py-10 lg:grid-cols-[minmax(250px,0.42fr)_minmax(0,0.58fr)] lg:items-center">
-          <div class="mx-auto w-full max-w-[330px] overflow-hidden rounded-2xl border border-base-200 bg-base-100">
+        <section class="grid gap-8 border-y border-base-200 py-9 lg:grid-cols-[minmax(240px,0.34fr)_minmax(0,0.66fr)] lg:items-center lg:gap-12">
+          <div class="mx-auto w-full max-w-[300px] overflow-hidden rounded-2xl border border-base-200 bg-base-100">
             {
               hasYoutubeEmbed ? (
                 <iframe
@@ -201,7 +207,7 @@ const articleSchema = {
             }
           </div>
 
-          <div class="space-y-6 text-lg leading-relaxed text-base-700">
+          <div class="space-y-5 text-lg leading-relaxed text-base-700">
             <h2 class="text-3xl font-semibold leading-tight text-base-900">
               Buitenlucht, beweging en vuur
             </h2>
@@ -222,10 +228,11 @@ const articleSchema = {
           </div>
         </section>
 
-        <section class="mx-auto max-w-3xl space-y-6 text-lg leading-relaxed text-base-700">
+        <section class="grid gap-7 text-lg leading-relaxed text-base-700 lg:grid-cols-[minmax(240px,0.34fr)_minmax(0,0.66fr)] lg:gap-12">
           <h2 class="text-3xl font-semibold leading-tight text-base-900">
             Deze zomer in de Hoge Venen
           </h2>
+          <div class="space-y-5">
           <p>
             De eerste SOLA-weekends gaan deze zomer door in de Hoge Venen. Een plek waar
             natuur, stilte, beweging en focus vanzelf samenkomen.
@@ -238,9 +245,10 @@ const articleSchema = {
           <p>Dit is SOLA deze zomer.</p>
           <p>Veel expertise. Veel natuur. Veel energie.</p>
           <p>En vooral: veel goesting om eraan te beginnen.</p>
+          </div>
         </section>
 
-        <footer class="mx-auto max-w-3xl border-t border-base-200 pt-8">
+        <footer class="mx-auto w-full max-w-5xl border-t border-base-200 pt-8">
           <a
             href="/reizen"
             class="inline-flex items-center rounded-full border border-base-300 px-5 py-3 text-base font-semibold text-base-900 transition hover:border-accent-500 hover:text-accent-700"
