@@ -73,6 +73,11 @@ Feel free to check Astro's [documentation](https://docs.astro.build)
 ---
 Maintained & updated by Bektur Aslan. Contributions welcome.
 
+## Meta conversion tracking
+
+De Meta Pixel, consentlogica, UTM-behoud en conversie-events voor de SOLA
+funnel staan beschreven in `docs/meta-conversion-tracking.md`.
+
 ## WWW canonical & redirect verification checklist
 
 Use this checklist after deploy when validating duplicate-host/canonical issues.

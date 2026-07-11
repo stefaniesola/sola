@@ -17,7 +17,18 @@
       document
         .querySelectorAll('a[href^="https://calendly.com/hello-solatravel/30min"]')
         .forEach((link) => {
-          link.setAttribute("href", "https://calendly.com/hello-solatravel/30min");
+          const cleanUrl = new URL("https://calendly.com/hello-solatravel/30min");
+          try {
+            const currentUrl = new URL(link.href);
+            currentUrl.searchParams.forEach((value, key) => {
+              if (key.startsWith("utm_")) {
+                cleanUrl.searchParams.set(key, value);
+              }
+            });
+          } catch {
+            // Keep the clean Calendly URL if the current href is malformed.
+          }
+          link.setAttribute("href", cleanUrl.toString());
           if (link.textContent && link.textContent.trim() === "Plan gesprek") {
             link.textContent = "Plan een gesprek";
           }
