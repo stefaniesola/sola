@@ -12,9 +12,11 @@ SOLA meet browser-events alleen na cookieconsent. Er is geen Meta Conversions AP
 
 ## Environment variables
 
+Gebruik uitsluitend de SOLA Pixel uit het SOLA TRAVEL-advertentieaccount: `1420882148906695`.
+
 | Variabele | Preview | Production |
 | --- | --- | --- |
-| `PUBLIC_META_PIXEL_ID` | `2265839607276716` | `2265839607276716` |
+| `PUBLIC_META_PIXEL_ID` | `1420882148906695` | `1420882148906695` |
 | `PUBLIC_META_PIXEL_ENABLED` | `true` | `true` |
 | `PUBLIC_META_PIXEL_ENV` | `preview` | `production` |
 | `PUBLIC_META_PIXEL_DEBUG` | `true` | `false` |
@@ -76,19 +78,23 @@ Er wordt geen voltooide afspraak gemeten.
 ## Testprocedure Preview
 
 1. Zet de Preview-env vars uit de tabel.
-2. Zonder consent mogen `connect.facebook.net` en `googletagmanager.com/gtag/js` niet laden.
-3. Met marketingconsent: controleer `PageView`, `ViewContent`, `InitiateCheckout`, `Lead` op exact `/bedankt?type=tally`, en `Contact` op Calendly-click.
-4. Refresh `/bedankt?type=tally`: geen tweede Meta `Lead`.
-5. Met analyticsconsent: controleer `generate_lead` op exact `/bedankt?type=tally` en `contact_click` op Calendly-click.
-6. Refresh `/bedankt?type=tally`: geen tweede GA4 `generate_lead`.
-7. Controleer dat `/bedankt`, `/bedankt?type=nieuwsbrief`, `/bedankt?type=contact` en URL's met extra queryparameters geen Tally Lead sturen.
-8. Controleer dat er geen aparte bedankroutes meer bestaan en dat de sitemap geen bedank-URL's bevat.
+2. Controleer dat de runtime `PUBLIC_META_PIXEL_ID=1420882148906695`, `PUBLIC_META_PIXEL_ENV=preview` en `PUBLIC_META_PIXEL_DEBUG=true` bevat.
+3. Zonder consent mogen `connect.facebook.net` en `googletagmanager.com/gtag/js` niet laden.
+4. Met marketingconsent: controleer `PageView`, `ViewContent`, `InitiateCheckout`, `Lead` op exact `/bedankt?type=tally`, en `Contact` op Calendly-click.
+5. Refresh `/bedankt?type=tally`: geen tweede Meta `Lead`.
+6. Met analyticsconsent: controleer `generate_lead` op exact `/bedankt?type=tally` en `contact_click` op Calendly-click.
+7. Refresh `/bedankt?type=tally`: geen tweede GA4 `generate_lead`.
+8. Controleer dat `/bedankt`, `/bedankt?type=nieuwsbrief`, `/bedankt?type=contact` en URL's met extra queryparameters geen Tally Lead sturen.
+9. Controleer dat er geen aparte bedankroutes meer bestaan en dat de sitemap geen bedank-URL's bevat.
+10. Controleer dat de oude Pixel ID nergens voorkomt in HTML, runtime-assets, testprocedure of PR-beschrijving.
 
 Gebruik Meta Events Manager Test Events en GA4 DebugView.
 
 ## Testprocedure Production
 
+Production pas volledig bevestigen na merge en een nieuwe Production-deployment.
+
 1. Zet de Production-env vars uit de tabel.
 2. Controleer maximaal een directe GA4 `gtag/js` load en geen GTM-script vanuit de websitecode.
-3. Controleer een enkele Meta Pixel-ID: `2265839607276716`.
+3. Controleer een enkele Meta Pixel-ID: `1420882148906695`.
 4. Herhaal de Preview-test voor de Tally-URL, refresh, alternatieve `type`-waarden, Calendly-clicks en sitemap.
