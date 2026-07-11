@@ -1,10 +1,9 @@
 export type MetaEventName =
-  | "PageView"
-  | "ViewContent"
-  | "InitiateCheckout"
-  | "Lead"
-  | "Contact"
-  | "Schedule";
+  | 'PageView'
+  | 'ViewContent'
+  | 'InitiateCheckout'
+  | 'Lead'
+  | 'Contact';
 
 export type MetaEventParameters = {
   content_name?: string;
@@ -12,16 +11,15 @@ export type MetaEventParameters = {
   content_type?: string;
   content_ids?: string[];
   value?: number;
-  currency?: "EUR";
+  currency?: 'EUR';
 };
 
 export type MetaPageEvent = {
-  eventName: Exclude<MetaEventName, "PageView">;
+  eventName: Exclude<MetaEventName, 'PageView'>;
   parameters?: MetaEventParameters;
-  dedupe?: "pageview" | "session";
+  dedupe?: 'pageview' | 'session';
   dedupeKey?: string;
 };
 
-export const INTERMITTENT_LIVING_CONTENT_ID = "intermittent-living";
+export const INTERMITTENT_LIVING_CONTENT_ID = 'intermittent-living';
 export const INTERMITTENT_LIVING_PRICE = 685;
-

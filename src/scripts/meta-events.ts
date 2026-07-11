@@ -2,36 +2,31 @@ import type {
   MetaEventName,
   MetaEventParameters,
   MetaPageEvent,
-} from "../lib/meta";
+} from '../lib/meta';
 import {
   INTERMITTENT_LIVING_CONTENT_ID,
   INTERMITTENT_LIVING_PRICE,
-} from "../lib/meta";
-import { hasConsent, onConsentChange } from "./consent";
+} from '../lib/meta';
+import { hasConsent, onConsentChange } from './consent';
+import { trackGoogleEvent } from './google-tracking';
 
-const META_SCRIPT_SRC = "https://connect.facebook.net/en_US/fbevents.js";
-const PAGE_EVENT_SCRIPT_ID = "sola-meta-page-event";
-const UTM_STORAGE_KEY = "sola_session_utm_v1";
-const SESSION_DEDUPE_PREFIX = "sola_meta_event:";
+const META_SCRIPT_SRC = 'https://connect.facebook.net/en_US/fbevents.js';
+const PAGE_EVENT_SCRIPT_ID = 'sola-meta-page-event';
+const UTM_STORAGE_KEY = 'sola_session_utm_v1';
+const SESSION_DEDUPE_PREFIX = 'sola_meta_event:';
+const TALLY_THANK_YOU_PATH = '/bedankt';
+const TALLY_THANK_YOU_SEARCH = '?type=tally';
 const UTM_KEYS = [
-  "utm_source",
-  "utm_medium",
-  "utm_campaign",
-  "utm_content",
-  "utm_term",
-] as const;
-const COMPLETION_ID_KEYS = [
-  "submissionId",
-  "submission_id",
-  "responseId",
-  "response_id",
-  "invitee_uuid",
-  "event_type_uuid",
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_content',
+  'utm_term',
 ] as const;
 
 type FbqArguments =
-  | ["init", string]
-  | ["track", MetaEventName, MetaEventParameters?];
+  | ['init', string]
+  | ['track', MetaEventName, MetaEventParameters?];
 
 type FbqFunction = {
   (...args: FbqArguments): void;
@@ -50,21 +45,20 @@ type SolaMetaConfig = {
 };
 
 const standardEvents: ReadonlySet<MetaEventName> = new Set([
-  "PageView",
-  "ViewContent",
-  "InitiateCheckout",
-  "Lead",
-  "Contact",
-  "Schedule",
+  'PageView',
+  'ViewContent',
+  'InitiateCheckout',
+  'Lead',
+  'Contact',
 ]);
 
-let lastPageViewKey = "";
-let lastPageEventKey = "";
+let lastPageViewKey = '';
+let lastPageEventKey = '';
 const recentClickEvents = new WeakMap<Element, number>();
 
 const debugLog = (message: string, details?: unknown) => {
   if (!window.solaMetaConfig?.debug) return;
-  console.info(`[SOLA Meta] ${message}`, details ?? "");
+  console.info(`[SOLA Meta] ${message}`, details ?? '');
 };
 
 const getConfig = (): SolaMetaConfig | null => {
@@ -88,19 +82,19 @@ const installFbqStub = () => {
   fbqStub.queue = [];
   fbqStub.push = fbqStub;
   fbqStub.loaded = true;
-  fbqStub.version = "2.0";
+  fbqStub.version = '2.0';
   window.fbq = fbqStub;
   window._fbq = fbqStub;
 };
 
 const appendMetaScript = () => {
   if (window.__solaMetaPixelScriptLoaded) return;
-  if (document.querySelector(`script[src="${META_SCRIPT_SRC}"]`)) {
+  if (document.querySelector(`script[src='${META_SCRIPT_SRC}']`)) {
     window.__solaMetaPixelScriptLoaded = true;
     return;
   }
 
-  const script = document.createElement("script");
+  const script = document.createElement('script');
   script.async = true;
   script.src = META_SCRIPT_SRC;
   document.head.appendChild(script);
@@ -109,21 +103,21 @@ const appendMetaScript = () => {
 
 const ensurePixelReady = (): boolean => {
   const config = getConfig();
-  if (!config || !hasConsent("marketing")) return false;
+  if (!config || !hasConsent('marketing')) return false;
 
   installFbqStub();
   appendMetaScript();
 
   if (!window.__solaMetaPixelInitialized) {
-    window.fbq?.("init", config.pixelId);
+    window.fbq?.('init', config.pixelId);
     window.__solaMetaPixelInitialized = true;
-    debugLog("Pixel initialized", {
+    debugLog('Pixel initialized', {
       pixelId: config.pixelId,
       environment: config.environment,
     });
   }
 
-  return typeof window.fbq === "function";
+  return typeof window.fbq === 'function';
 };
 
 const cleanParameters = (
@@ -132,31 +126,25 @@ const cleanParameters = (
   const cleaned: MetaEventParameters = {};
 
   if (parameters.content_name) cleaned.content_name = parameters.content_name;
-  if (parameters.content_category) {
-    cleaned.content_category = parameters.content_category;
-  }
+  if (parameters.content_category) cleaned.content_category = parameters.content_category;
   if (parameters.content_type) cleaned.content_type = parameters.content_type;
   if (parameters.content_ids?.length) {
     cleaned.content_ids = parameters.content_ids.filter(Boolean);
   }
-  if (typeof parameters.value === "number" && Number.isFinite(parameters.value)) {
+  if (typeof parameters.value === 'number' && Number.isFinite(parameters.value)) {
     cleaned.value = parameters.value;
   }
-  if (parameters.currency === "EUR") cleaned.currency = "EUR";
+  if (parameters.currency === 'EUR') cleaned.currency = 'EUR';
 
   return cleaned;
 };
 
 const isSessionDuplicate = (key: string): boolean => {
   try {
-    if (window.sessionStorage.getItem(`${SESSION_DEDUPE_PREFIX}${key}`)) {
-      return true;
-    }
+    return window.sessionStorage.getItem(`${SESSION_DEDUPE_PREFIX}${key}`) !== null;
   } catch {
     return false;
   }
-
-  return false;
 };
 
 const markSessionDedupe = (key: string) => {
@@ -173,12 +161,12 @@ const markSessionDedupe = (key: string) => {
 export const trackMetaEvent = (
   eventName: MetaEventName,
   parameters?: MetaEventParameters,
-  options: { dedupe?: "session"; dedupeKey?: string } = {},
+  options: { dedupe?: 'session'; dedupeKey?: string } = {},
 ) => {
   if (!standardEvents.has(eventName)) return;
-  if (options.dedupe === "session" && options.dedupeKey) {
+  if (options.dedupe === 'session' && options.dedupeKey) {
     if (isSessionDuplicate(options.dedupeKey)) {
-      debugLog("Skipped duplicate session event", {
+      debugLog('Skipped duplicate session event', {
         eventName,
         dedupeKey: options.dedupeKey,
       });
@@ -187,7 +175,7 @@ export const trackMetaEvent = (
   }
 
   if (!ensurePixelReady()) {
-    debugLog("Skipped event before marketing consent or Pixel config", {
+    debugLog('Skipped event before marketing consent or Pixel config', {
       eventName,
       parameters,
     });
@@ -195,13 +183,13 @@ export const trackMetaEvent = (
   }
 
   const cleaned = cleanParameters(parameters);
-  window.fbq?.("track", eventName, cleaned);
+  window.fbq?.('track', eventName, cleaned);
 
-  if (options.dedupe === "session" && options.dedupeKey) {
+  if (options.dedupe === 'session' && options.dedupeKey) {
     markSessionDedupe(options.dedupeKey);
   }
 
-  debugLog("Tracked event", { eventName, parameters: cleaned });
+  debugLog('Tracked event', { eventName, parameters: cleaned });
 };
 
 const parsePageEvent = (): MetaPageEvent | null => {
@@ -210,11 +198,11 @@ const parsePageEvent = (): MetaPageEvent | null => {
 
   try {
     const parsed: unknown = JSON.parse(element.textContent);
-    if (!parsed || typeof parsed !== "object") return null;
+    if (!parsed || typeof parsed !== 'object') return null;
 
     const event = parsed as Partial<MetaPageEvent>;
     if (!event.eventName || !standardEvents.has(event.eventName)) return null;
-    if (event.eventName === "PageView") return null;
+    if (event.eventName === 'PageView') return null;
 
     return {
       eventName: event.eventName,
@@ -227,22 +215,12 @@ const parsePageEvent = (): MetaPageEvent | null => {
   }
 };
 
-const getCompletionId = (): string | null => {
-  const params = new URLSearchParams(window.location.search);
-  for (const key of COMPLETION_ID_KEYS) {
-    const value = params.get(key);
-    if (value) return `${key}:${value}`;
-  }
-
-  return null;
-};
-
 const trackCurrentPage = () => {
-  if (!hasConsent("marketing")) return;
+  if (!hasConsent('marketing')) return;
 
   const pageKey = `${window.location.pathname}${window.location.search}`;
   if (lastPageViewKey !== pageKey) {
-    trackMetaEvent("PageView");
+    trackMetaEvent('PageView');
     lastPageViewKey = pageKey;
   }
 
@@ -252,15 +230,11 @@ const trackCurrentPage = () => {
   const baseDedupeKey =
     pageEvent.dedupeKey ?? `${pageEvent.eventName}:${window.location.pathname}`;
   const pageEventKey = `${pageKey}:${baseDedupeKey}`;
-  const completionId = getCompletionId();
-  const sessionDedupeKey = `${baseDedupeKey}:${
-    completionId ?? window.location.pathname
-  }`;
 
-  if (pageEvent.dedupe === "session") {
+  if (pageEvent.dedupe === 'session') {
     trackMetaEvent(pageEvent.eventName, pageEvent.parameters, {
-      dedupe: "session",
-      dedupeKey: sessionDedupeKey,
+      dedupe: 'session',
+      dedupeKey: baseDedupeKey,
     });
     return;
   }
@@ -278,11 +252,11 @@ const readStoredUtm = (): URLSearchParams => {
     if (!raw) return params;
 
     const parsed: unknown = JSON.parse(raw);
-    if (!parsed || typeof parsed !== "object") return params;
+    if (!parsed || typeof parsed !== 'object') return params;
 
     for (const key of UTM_KEYS) {
       const value = (parsed as Record<string, unknown>)[key];
-      if (typeof value === "string" && value) params.set(key, value);
+      if (typeof value === 'string' && value) params.set(key, value);
     }
   } catch {
     return params;
@@ -309,9 +283,14 @@ const captureUtmParams = () => {
   }
 };
 
+const normalizedHost = (host: string): string => {
+  const value = host.toLowerCase();
+  return value.startsWith('www.') ? value.slice(4) : value;
+};
+
 const shouldDecorateUrl = (url: URL): boolean => {
-  const host = url.hostname.replace(/^www\./, "");
-  return host === "tally.so" || host === "calendly.com";
+  const host = normalizedHost(url.hostname);
+  return host === 'tally.so' || host === 'calendly.com';
 };
 
 const withStoredUtmParams = (href: string): string => {
@@ -333,7 +312,7 @@ const withStoredUtmParams = (href: string): string => {
 };
 
 const decorateOutboundAttribution = () => {
-  document.querySelectorAll<HTMLAnchorElement>("a[href]").forEach((link) => {
+  document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((link) => {
     const nextHref = withStoredUtmParams(link.href);
     if (nextHref !== link.href) link.href = nextHref;
   });
@@ -355,13 +334,13 @@ const paramsFromDataset = (
   const contentCategory = element.dataset.metaContentCategory;
   const contentType = element.dataset.metaContentType;
   const contentIds = element.dataset.metaContentIds
-    ?.split(",")
+    ?.split(',')
     .map((item) => item.trim())
     .filter(Boolean);
   const value = element.dataset.metaValue
     ? Number(element.dataset.metaValue)
     : undefined;
-  const currency = element.dataset.metaCurrency === "EUR" ? "EUR" : undefined;
+  const currency = element.dataset.metaCurrency === 'EUR' ? 'EUR' : undefined;
 
   return cleanParameters({
     content_name: contentName,
@@ -374,42 +353,59 @@ const paramsFromDataset = (
 };
 
 const intermittentLivingContactParams = (): MetaEventParameters => ({
-  content_name: "Intermittent Living - Plan een gesprek",
-  content_category: "SOLA weekend",
+  content_name: 'Intermittent Living - Plan een gesprek',
+  content_category: 'SOLA weekend',
 });
 
 const intermittentLivingBookingParams = (): MetaEventParameters => ({
-  content_name: "Intermittent Living inschrijving",
-  content_category: "SOLA weekend",
+  content_name: 'Intermittent Living inschrijving',
+  content_category: 'SOLA weekend',
   content_ids: [INTERMITTENT_LIVING_CONTENT_ID],
   value: INTERMITTENT_LIVING_PRICE,
-  currency: "EUR",
+  currency: 'EUR',
 });
 
 const intermittentLivingViewContentEvent = (): MetaPageEvent => ({
-  eventName: "ViewContent",
-  dedupe: "pageview",
-  dedupeKey: "view-content:intermittent-living",
+  eventName: 'ViewContent',
+  dedupe: 'pageview',
+  dedupeKey: 'view-content:intermittent-living',
   parameters: {
-    content_name: "Intermittent Living",
-    content_category: "SOLA weekend",
-    content_type: "product",
+    content_name: 'Intermittent Living',
+    content_category: 'SOLA weekend',
+    content_type: 'product',
     content_ids: [INTERMITTENT_LIVING_CONTENT_ID],
     value: INTERMITTENT_LIVING_PRICE,
-    currency: "EUR",
+    currency: 'EUR',
+  },
+});
+
+const tallyLeadEvent = (): MetaPageEvent => ({
+  eventName: 'Lead',
+  dedupe: 'session',
+  dedupeKey: 'lead:sola-tally-inzending',
+  parameters: {
+    content_name: 'SOLA Tally inzending',
+    content_category: 'SOLA lead',
   },
 });
 
 const defaultCalendlyParams = (): MetaEventParameters => ({
-  content_name: "SOLA kennismakingsgesprek",
-  content_category: "Contact",
+  content_name: 'SOLA kennismakingsgesprek',
+  content_category: 'Contact',
 });
 
 const isIntermittentLivingPage = (): boolean =>
-  window.location.pathname === "/weekenden/intermittent-living";
+  window.location.pathname === '/weekenden/intermittent-living';
 
-const implicitPageEventForCurrentRoute = (): MetaPageEvent | null =>
-  isIntermittentLivingPage() ? intermittentLivingViewContentEvent() : null;
+const isTallyThankYouPage = (): boolean =>
+  window.location.pathname === TALLY_THANK_YOU_PATH &&
+  window.location.search === TALLY_THANK_YOU_SEARCH;
+
+const implicitPageEventForCurrentRoute = (): MetaPageEvent | null => {
+  if (isTallyThankYouPage()) return tallyLeadEvent();
+  if (isIntermittentLivingPage()) return intermittentLivingViewContentEvent();
+  return null;
+};
 
 const fallbackEventForLink = (
   link: HTMLAnchorElement,
@@ -422,11 +418,11 @@ const fallbackEventForLink = (
   }
 
   if (
-    url.hostname.replace(/^www\./, "") === "calendly.com" &&
-    url.pathname.startsWith("/hello-solatravel/30min")
+    normalizedHost(url.hostname) === 'calendly.com' &&
+    url.pathname.startsWith('/hello-solatravel/30min')
   ) {
     return {
-      eventName: "Contact",
+      eventName: 'Contact',
       parameters: isIntermittentLivingPage()
         ? intermittentLivingContactParams()
         : defaultCalendlyParams(),
@@ -435,11 +431,11 @@ const fallbackEventForLink = (
 
   if (
     isIntermittentLivingPage() &&
-    url.hostname.replace(/^www\./, "") === "tally.so" &&
-    url.pathname === "/r/pbogoy"
+    normalizedHost(url.hostname) === 'tally.so' &&
+    url.pathname === '/r/pbogoy'
   ) {
     return {
-      eventName: "InitiateCheckout",
+      eventName: 'InitiateCheckout',
       parameters: intermittentLivingBookingParams(),
     };
   }
@@ -449,13 +445,35 @@ const fallbackEventForLink = (
 
 const handleMetaClick = (event: MouseEvent) => {
   const target = event.target instanceof Element ? event.target : null;
-  const link = target?.closest<HTMLAnchorElement>("a[href]");
+  const link = target?.closest<HTMLAnchorElement>('a[href]');
   if (!link) return;
 
   const now = Date.now();
   const lastClick = recentClickEvents.get(link) ?? 0;
   if (now - lastClick < 900) return;
   recentClickEvents.set(link, now);
+
+  let linkUrl: URL;
+  try {
+    linkUrl = new URL(link.href);
+  } catch {
+    return;
+  }
+
+  const isCalendlyClick =
+    normalizedHost(linkUrl.hostname) === 'calendly.com' &&
+    linkUrl.pathname.startsWith('/hello-solatravel/30min');
+
+  if (isCalendlyClick) {
+    trackGoogleEvent('contact_click', {
+      content_name: isIntermittentLivingPage()
+        ? 'Intermittent Living - Plan een gesprek'
+        : 'SOLA kennismakingsgesprek',
+      content_category: isIntermittentLivingPage()
+        ? 'SOLA weekend'
+        : 'Contact',
+    });
+  }
 
   const explicitEvent = link.dataset.metaEvent as MetaEventName | undefined;
   const fallback = fallbackEventForLink(link);
@@ -464,7 +482,7 @@ const handleMetaClick = (event: MouseEvent) => {
       ? explicitEvent
       : fallback?.eventName;
 
-  if (!eventName || eventName === "PageView") return;
+  if (!eventName || eventName === 'PageView') return;
 
   trackMetaEvent(
     eventName,
@@ -472,23 +490,36 @@ const handleMetaClick = (event: MouseEvent) => {
   );
 };
 
+const trackCurrentGooglePageEvents = () => {
+  if (!isTallyThankYouPage()) return;
+
+  trackGoogleEvent('generate_lead', undefined, {
+    dedupe: 'session',
+    dedupeKey: 'generate_lead:sola-tally-inzending',
+  });
+};
+
 const initDomListeners = () => {
   captureUtmParams();
   decorateOutboundAttribution();
   trackCurrentPage();
+  trackCurrentGooglePageEvents();
 };
 
 export const initSolaMetaTracking = () => {
-  if (typeof window === "undefined") return;
+  if (typeof window === 'undefined') return;
   if (window.__solaMetaTrackingReady) return;
   window.__solaMetaTrackingReady = true;
 
-  document.addEventListener("click", handleMetaClick, { capture: true });
-  onConsentChange(() => trackCurrentPage());
-  document.addEventListener("astro:page-load", initDomListeners);
+  document.addEventListener('click', handleMetaClick, { capture: true });
+  onConsentChange(() => {
+    trackCurrentPage();
+    trackCurrentGooglePageEvents();
+  });
+  document.addEventListener('astro:page-load', initDomListeners);
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initDomListeners, {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDomListeners, {
       once: true,
     });
   } else {
