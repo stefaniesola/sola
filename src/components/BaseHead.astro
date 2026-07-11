@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import MetaPixel from "./analytics/MetaPixel.astro";
+import type { MetaPageEvent } from "../lib/meta";
 import { DEFAULT_DESCRIPTION, DEFAULT_TITLE, SITE_NAME } from "../utils/seo";
 
 interface Props {
@@ -8,6 +10,8 @@ interface Props {
   ogImage?: string;
   ogImageAlt?: string;
   ogType?: string;
+  robots?: string;
+  metaPageEvent?: MetaPageEvent;
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
@@ -17,6 +21,8 @@ const {
   ogImage,
   ogImageAlt = "SOLA Travel",
   ogType = "website",
+  robots = "index, follow",
+  metaPageEvent,
   structuredData,
 } = Astro.props as Props;
 
@@ -41,7 +47,7 @@ const serializeStructuredData = (item: Record<string, unknown>) =>
 <title>{title}</title>
 <meta name="description" content={description} />
 <meta name="author" content={SITE_NAME} />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content={robots} />
 <meta name="theme-color" content="#f6f4f0" />
 <link rel="icon" href="/favicon.ico" sizes="any" />
 <link rel="shortcut icon" href="/apple-touch-icon.png" type="image/png" />
@@ -67,6 +73,7 @@ const serializeStructuredData = (item: Record<string, unknown>) =>
 {structuredDataItems.map((item) => (
   <script type="application/ld+json" set:html={serializeStructuredData(item)} />
 ))}
+<MetaPixel pageEvent={metaPageEvent} />
 <script is:inline>
   (() => {
     const preparedVideos = new WeakSet();
@@ -178,59 +185,9 @@ const serializeStructuredData = (item: Record<string, unknown>) =>
   })();
 </script>
 {import.meta.env.PROD && (
-  <>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){window.dataLayer.push(arguments);}
-      window.gtag = window.gtag || gtag;
+  <script>
+    import { initSolaGoogleTracking } from "../scripts/google-tracking";
 
-      const loadSolaTracking = () => {
-        if (window.__solaTrackingLoaded) return;
-        window.__solaTrackingLoaded = true;
-
-        const gtagScript = document.createElement('script');
-        gtagScript.async = true;
-        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-QKFM5L5T7R';
-        document.head.appendChild(gtagScript);
-        gtag('js', new Date());
-        gtag('config', 'G-QKFM5L5T7R');
-
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-WXRV8S6Z');
-
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '2265839607276716');
-        fbq('track', 'PageView');
-      };
-
-      const scheduleSolaTracking = () => {
-        if ('requestIdleCallback' in window) {
-          window.requestIdleCallback(loadSolaTracking, { timeout: 2500 });
-          return;
-        }
-        window.setTimeout(loadSolaTracking, 1200);
-      };
-
-      if (document.readyState === 'complete') {
-        scheduleSolaTracking();
-      } else {
-        window.addEventListener('load', scheduleSolaTracking, { once: true });
-      }
-    </script>
-    <noscript>
-    <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2265839607276716&ev=PageView&noscript=1"
-    />
-    </noscript>
-  </>
+    initSolaGoogleTracking();
+  </script>
 )}

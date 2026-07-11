@@ -1,0 +1,45 @@
+---
+import type { MetaPageEvent } from "../../lib/meta";
+
+interface Props {
+  pageEvent?: MetaPageEvent;
+}
+
+const { pageEvent } = Astro.props as Props;
+const pixelId = import.meta.env.PUBLIC_META_PIXEL_ID ?? "";
+const pixelEnv =
+  import.meta.env.PUBLIC_META_PIXEL_ENV ?? (import.meta.env.PROD ? "production" : "development");
+const pixelEnabled =
+  Boolean(pixelId) &&
+  import.meta.env.PUBLIC_META_PIXEL_ENABLED !== "false" &&
+  (import.meta.env.PROD || import.meta.env.PUBLIC_META_PIXEL_ENABLED === "true");
+const debug =
+  import.meta.env.PUBLIC_META_PIXEL_DEBUG === "true" ||
+  (!import.meta.env.PROD && import.meta.env.PUBLIC_META_PIXEL_ENABLED === "true");
+const serializedPageEvent = pageEvent
+  ? JSON.stringify(pageEvent).replace(/</g, "\\u003c")
+  : undefined;
+---
+
+{
+  serializedPageEvent && (
+    <script
+      id="sola-meta-page-event"
+      type="application/json"
+      set:html={serializedPageEvent}
+    />
+  )
+}
+<script define:vars={{ pixelId, pixelEnabled, pixelEnv, debug }}>
+  window.solaMetaConfig = {
+    pixelId,
+    enabled: pixelEnabled,
+    environment: pixelEnv,
+    debug,
+  };
+</script>
+<script>
+  import { initSolaMetaTracking } from "../../scripts/meta-events";
+
+  initSolaMetaTracking();
+</script>

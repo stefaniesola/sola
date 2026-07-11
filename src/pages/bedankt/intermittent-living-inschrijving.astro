@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import type { MetaPageEvent } from "../../lib/meta";
+import { INTERMITTENT_LIVING_CONTENT_ID } from "../../lib/meta";
+
+const metaPageEvent: MetaPageEvent = {
+  eventName: "Lead",
+  dedupe: "session",
+  dedupeKey: "lead:intermittent-living-inschrijving",
+  parameters: {
+    content_name: "Intermittent Living inschrijving",
+    content_category: "SOLA weekend",
+    content_ids: [INTERMITTENT_LIVING_CONTENT_ID],
+  },
+};
+---
+
+<BaseLayout
+  title="Bedankt voor je inschrijving | SOLA Travel"
+  description="We hebben je inschrijving voor Intermittent Living goed ontvangen."
+  robots="noindex, nofollow"
+  metaPageEvent={metaPageEvent}
+>
+  <section class="sola-thankyou-page">
+    <div class="sola-thankyou-container">
+      <h1>Bedankt, je inschrijving is goed ontvangen.</h1>
+      <p>
+        We bekijken je gegevens en sturen je zo snel mogelijk een persoonlijke
+        bevestiging met de volgende praktische stappen.
+      </p>
+
+      <h2>Wat gebeurt er nu?</h2>
+      <ul>
+        <li>Je ontvangt een bevestiging via e-mail.</li>
+        <li>We nemen contact op als er nog iets nodig is.</li>
+        <li>Bewaar de weekendpagina gerust voor de praktische info.</li>
+      </ul>
+
+      <div class="sola-thankyou-cta" aria-label="Vervolgacties">
+        <a class="btn btn-primary" href="/weekenden/intermittent-living">
+          Terug naar Intermittent Living
+        </a>
+        <div class="sola-thankyou-cta-links">
+          <a class="btn btn-secondary" href="/faq">Veelgestelde vragen</a>
+          <a class="btn btn-secondary" href="/">Naar de startpagina</a>
+        </div>
+      </div>
+
+      <p class="sola-thankyou-fineprint">
+        Tip: voeg solatravel.be toe aan je contacten zodat je onze e-mails zeker
+        ontvangt.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
