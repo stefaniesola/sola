@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { homeCopy, journeys, people, homePage } from "../data/content";
 import { getImage } from "astro:assets";
-import heroImage from "../assets/images/hero.jpg";
+import heroImage from "../assets/images/Stefanie Deleu - Haute Loire.jpg";
 import exerciseImage from "../assets/images/2596052607.jpg";
 import bewustwordingImage from "../assets/images/2631991747.jpg";
 import terraImage from "../assets/images/1513986998.jpg";
@@ -110,7 +110,10 @@ const pillarsWithImages = await Promise.all(
       pillar.image === "/src/assets/images/Verblijf in Hoge Venen.avif"
     ) {
       imageSrc = verblijfHogeVenenImage;
-    } else if (pillar.image === "/src/assets/images/hero.jpg") {
+    } else if (
+      pillar.image ===
+      "/src/assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg"
+    ) {
       imageSrc = natureImage;
     } else if (pillar.image === "/src/assets/images/1513986998.jpg") {
       imageSrc = terraImage;
@@ -157,8 +160,20 @@ const optimizedHauteLoire = await getImage({
       decoding="async"
       fetchpriority="high"
     />
+    <video
+      class="hero-video absolute inset-0 w-full h-full object-cover object-center motion-reduce:hidden"
+      autoplay
+      muted
+      playsinline
+      loop
+      preload="metadata"
+      poster={optimizedHero.src}
+      aria-hidden="true"
+    >
+      <source src="/videos/homepage-runners.mp4" type="video/mp4" />
+    </video>
     <div
-      class="absolute inset-0 bg-gradient-to-r from-base-900/80 via-base-900/60 to-base-900/40"
+      class="absolute inset-0 bg-gradient-to-r from-base-900/70 via-base-900/50 to-base-900/30"
     >
     </div>
     <div
