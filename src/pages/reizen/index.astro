@@ -155,7 +155,15 @@ const tripsWithImages = await Promise.all(
     }
     {
       tripsWithImages.map((trip) => (
-        <article class="relative rounded-3xl border border-base-200 overflow-hidden bg-base-25 shadow-sm flex flex-col opacity-75">
+        <a
+          href={trip.isTeaser || trip.longread ? `/reizen/${trip.slug}` : undefined}
+          aria-disabled={trip.isTeaser || trip.longread ? undefined : "true"}
+          class={`relative rounded-3xl border border-base-200 overflow-hidden bg-base-25 shadow-sm flex flex-col ${
+            trip.isTeaser || trip.longread
+              ? "hover:shadow-lg transition group cursor-pointer"
+              : "opacity-75"
+          }`}
+        >
           <div class="absolute top-4 right-4 z-10 bg-base-900 text-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wide shadow-lg rounded">
             Coming Soon
           </div>
@@ -182,12 +190,21 @@ const tripsWithImages = await Promise.all(
               <span>{trip.dates}</span>
             </div>
             <h2 class="text-xl font-semibold text-base-900">{trip.name}</h2>
-            <p class="text-base-700">{trip.shortDescription}</p>
+            <p class="text-base-700">
+              {trip.slug === "altijd-aan"
+                ? "Samen met Jorien Raeymaekers onderzoek je hoe herstel fysiologisch werkt. Waarom blijft je systeem aan, ook wanneer je rust neemt? En hoe kan je je zenuwstelsel opnieuw leren schakelen via ademhaling, yoga, beweging en natuur?"
+                : trip.shortDescription}
+            </p>
             <div class="mt-auto flex items-center justify-between text-sm font-semibold text-base-900 pt-2">
-              <span>{trip.price}</span>
+              <span>{trip.slug === "altijd-aan" ? "Prijs TBA" : trip.price}</span>
+              {(trip.isTeaser || trip.longread) && (
+                <span class="text-accent-700 group-hover:underline">
+                  {trip.ctaLabel ?? "Bekijk details"}
+                </span>
+              )}
             </div>
           </div>
-        </article>
+        </a>
       ))
     }
   </section>

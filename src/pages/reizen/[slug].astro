@@ -127,11 +127,25 @@ const touristTripSchema = {
         >
       </div>
       <div class="flex flex-wrap gap-3">
-        <a
-          href="#content"
-          class="inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold"
-          >Lees meer</a
-        >
+        {
+          trip.ctaHref ? (
+            <a
+              href={trip.ctaHref}
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold"
+            >
+              {trip.ctaLabel ?? "Ik heb interesse"}
+            </a>
+          ) : (
+            <a
+              href="#content"
+              class="inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold"
+            >
+              Lees meer
+            </a>
+          )
+        }
         <a
           href="/contact"
           class="inline-flex items-center px-5 py-3 rounded-full border border-white/60 text-white font-semibold"

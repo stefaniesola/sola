@@ -65,6 +65,16 @@ export interface Journey {
   keyFacts?: { label: string; lines: string[] }[];
   faq?: { question: string; answer: string }[];
   longread?: string; // Markdown content for the full article
+  categoryLabel?: string;
+  subtitle?: string;
+  badgeLabel?: string;
+  isTeaser?: boolean;
+  maxParticipants?: number;
+  statusLabel?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  secondaryCtaLabel?: string;
+  tags?: string[];
 }
 
 export interface Person {
@@ -942,6 +952,27 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
 
 ## Goed om weten - FAQ
 `,
+  },
+  {
+    slug: "altijd-aan",
+    name: "Altijd aan?",
+    type: "Reis",
+    categoryLabel: "OVERDRIVE",
+    subtitle: "Herstel begint bij je zenuwstelsel",
+    badgeLabel: "Nieuw SOLA-weekend in ontwikkeling",
+    shortDescription:
+      "Een SOLA-weekend in ontwikkeling over fysiologie, zenuwstelsel en herstel.",
+    location: "Sourbrodt, Hoge Venen, Ardennen",
+    dates: "16 - 18 april 2027",
+    price: "TBA - in lijn met andere weekends",
+    isTeaser: true,
+    maxParticipants: 14,
+    statusLabel: "Binnenkort meer info.",
+    heroImage: intermittentHero,
+    ctaLabel: "Zet mij op de interesselijst",
+    ctaHref: "https://tally.so/r/pbZY8y",
+    secondaryCtaLabel: "Bekijk weekends die nu openstaan",
+    tags: ["Fysiologie", "Zenuwstelsel", "Herstel", "Slaap", "Energie"],
   },
   {
     slug: "sola-terra-frankrijk",
