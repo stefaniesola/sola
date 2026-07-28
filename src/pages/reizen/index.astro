@@ -4,6 +4,7 @@ import { journeys, uspTags, reizenPage } from "../../data/content";
 import { getImage } from "astro:assets";
 import bewustwordingImage from "../../assets/images/2631991747.jpg";
 import terraImage from "../../assets/images/1513986998.jpg";
+import altijdAanCardImage from "../../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg";
 
 const weekends = journeys.filter((journey) => journey.type === "Weekend");
 const trips = journeys.filter((journey) => journey.type === "Reis");
@@ -173,9 +174,9 @@ const tripsWithImages = await Promise.all(
             {trip.heroImage && (
               <img
                 class="absolute inset-0 w-full h-full object-cover"
-                src={trip.slug === "altijd-aan" ? "/images/blog/sola-kickoff/jorien-portret.jpg" : trip.heroImage}
-                width={trip.heroImageData?.width ?? 1400}
-                height={trip.heroImageData?.height ?? 933}
+                src={trip.slug === "altijd-aan" ? altijdAanCardImage.src : trip.heroImage}
+                width={trip.slug === "altijd-aan" ? altijdAanCardImage.width : (trip.heroImageData?.width ?? 1400)}
+                height={trip.slug === "altijd-aan" ? altijdAanCardImage.height : (trip.heroImageData?.height ?? 933)}
                 alt={`${trip.name} in ${trip.location}`}
                 loading="lazy"
                 decoding="async"
