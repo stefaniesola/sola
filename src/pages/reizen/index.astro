@@ -173,7 +173,7 @@ const tripsWithImages = await Promise.all(
             {trip.heroImage && (
               <img
                 class="absolute inset-0 w-full h-full object-cover"
-                src={trip.heroImage}
+                src={trip.slug === "altijd-aan" ? "/images/blog/sola-kickoff/jorien-portret.jpg" : trip.heroImage}
                 width={trip.heroImageData?.width ?? 1400}
                 height={trip.heroImageData?.height ?? 933}
                 alt={`${trip.name} in ${trip.location}`}
