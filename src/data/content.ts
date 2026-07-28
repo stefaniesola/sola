@@ -68,6 +68,7 @@ export interface Journey {
   categoryLabel?: string;
   subtitle?: string;
   badgeLabel?: string;
+  isHidden?: boolean;
   isTeaser?: boolean;
   maxParticipants?: number;
   statusLabel?: string;
