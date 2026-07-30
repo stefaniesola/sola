@@ -23,18 +23,13 @@ const { heading, description } = Astro.props as Props;
       </div>
       <div class="relative w-full mx-auto font-normal lg:col-span-2">
         {
-          faqItems.map((item, index) => (
-            <div class="group text-zinc-600" data-faq-item>
-              <button
-                type="button"
-                aria-expanded="false"
-                aria-controls={`faq-answer-${index}`}
-                id={`faq-question-${index}`}
-                data-faq-trigger
-                class="flex items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
+          faqItems.map((item) => (
+            <details class="faq-item group text-zinc-600 open:text-black">
+              <summary
+                class="flex cursor-pointer items-center justify-between w-full p-4 pb-1 text-left font-medium select-none">
                 <span>{item.question}</span>
                 <svg
-                  class="w-5 h-5 shrink-0 duration-300 ease-out text-accent-500"
+                  class="w-5 h-5 shrink-0 duration-300 ease-out text-accent-500 group-open:-rotate-45"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -46,16 +41,9 @@ const { heading, description } = Astro.props as Props;
                     d="M12 6v12m6-6H6">
                   </path>
                 </svg>
-              </button>
-              <div
-                id={`faq-answer-${index}`}
-                role="region"
-                aria-labelledby={`faq-question-${index}`}
-                hidden
-                data-faq-answer>
-                <div class="p-4 pt-2 text-zinc-500" set:html={item.answerHtml} />
-              </div>
-            </div>
+              </summary>
+              <div class="p-4 pt-2 text-zinc-500" set:html={item.answerHtml} />
+            </details>
           ))
         }
       </div>
@@ -63,21 +51,12 @@ const { heading, description } = Astro.props as Props;
   </div>
 </section>
 
-<script is:inline>
-  document.querySelectorAll("[data-faq-item]").forEach((item) => {
-    const trigger = item.querySelector("[data-faq-trigger]");
-    const answer = item.querySelector("[data-faq-answer]");
-    const icon = trigger && trigger.querySelector("svg");
+<style>
+  summary {
+    list-style: none;
+  }
 
-    if (!trigger) return;
-    trigger.addEventListener("click", () => {
-      if (!answer) return;
-
-      const willOpen = answer.hidden;
-      answer.hidden = !willOpen;
-      trigger.setAttribute("aria-expanded", String(willOpen));
-      item.classList.toggle("text-black", willOpen);
-      if (icon) icon.classList.toggle("-rotate-45", willOpen);
-    });
-  });
-</script>
+  summary::-webkit-details-marker {
+    display: none;
+  }
+</style>
