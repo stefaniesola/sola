@@ -131,8 +131,9 @@ const previousEditions = weekendsWithImages
         </h2>
       </div>
       <article
-        class="group grid overflow-hidden rounded-3xl border border-base-200 bg-base-25 shadow-sm transition hover:shadow-lg lg:grid-cols-[1.15fr_1fr]"
+        class="group relative grid overflow-hidden rounded-3xl border border-base-200 bg-base-25 shadow-sm transition hover:shadow-lg lg:grid-cols-[1.15fr_1fr]"
       >
+        <a href={`/reizen/${nextEdition.slug}`} class="absolute inset-0 z-10" aria-label={`Ontdek ${nextEdition.name}`}></a>
         <a href={`/reizen/${nextEdition.slug}`} class="relative min-h-[280px] overflow-hidden bg-base-200 lg:min-h-[430px]">
           <img
             class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
@@ -173,7 +174,7 @@ const previousEditions = weekendsWithImages
           </div>
           <div class="mt-7 border-t border-base-200 pt-5 text-sm font-semibold">
             <span class="text-base-900">Prijs TBA</span>
-            <div class="mt-4 flex flex-wrap gap-3">
+            <div class="relative z-20 mt-4 flex flex-wrap gap-3">
               <a href={`/reizen/${nextEdition.slug}`} class="inline-flex items-center rounded-full border border-base-300 px-5 py-3 text-base-900 transition hover:border-base-500">Bekijk details</a>
               <a href={altijdAanBookingHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-accent-600 px-5 py-3 text-white transition hover:bg-accent-700">Boek nu</a>
               <a href={nextEdition.ctaHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full border border-base-300 px-5 py-3 text-base-900 transition hover:border-base-500">{nextEdition.ctaLabel ?? "Zet mij op de interesselijst"}</a>

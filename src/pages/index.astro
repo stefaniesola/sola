@@ -233,7 +233,8 @@ const optimizedHauteLoire = await getImage({
       <div class="mb-6">
         <h2 class="text-3xl font-semibold text-base-900">Volgend weekend</h2>
       </div>
-      <article class="grid overflow-hidden rounded-3xl border border-base-200 bg-base-25 shadow-sm lg:grid-cols-[1.15fr_1fr]">
+      <article class="relative grid overflow-hidden rounded-3xl border border-base-200 bg-base-25 shadow-sm transition hover:shadow-lg lg:grid-cols-[1.15fr_1fr]">
+        <a href="/reizen/altijd-aan" class="absolute inset-0 z-10" aria-label="Ontdek Altijd aan?"></a>
         <a href="/reizen/altijd-aan" class="group relative min-h-[280px] overflow-hidden bg-base-200 lg:min-h-[430px]">
           <img
             class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
@@ -268,7 +269,7 @@ const optimizedHauteLoire = await getImage({
               Samen met Jorien Raeymaekers onderzoek je hoe herstel fysiologisch werkt. Waarom blijft je systeem aan, ook wanneer je rust neemt? En hoe kan je je zenuwstelsel opnieuw leren schakelen via ademhaling, yoga, beweging en natuur?
             </p>
           </div>
-          <div class="mt-7 flex flex-wrap items-center gap-3 border-t border-base-200 pt-5">
+          <div class="relative z-20 mt-7 flex flex-wrap items-center gap-3 border-t border-base-200 pt-5">
             <a href={altijdAanBookingHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-accent-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-700">
               Boek nu
             </a>
