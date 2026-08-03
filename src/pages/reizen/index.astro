@@ -79,6 +79,19 @@ const tripsWithImages = await Promise.all(
     return { ...trip, heroImage: imageUrl, heroImageData };
   })
 );
+
+const nextEdition = tripsWithImages.find((trip) => trip.slug === "altijd-aan");
+const previousEditions = weekendsWithImages
+  .filter((weekend) =>
+    ["exercise-is-medicine", "bewustwording-connectie"].includes(weekend.slug),
+  )
+  .map((weekend) => ({
+    ...weekend,
+    dates:
+      weekend.slug === "bewustwording-connectie"
+        ? "31 juli – 2 augustus 2026"
+        : weekend.dates,
+  }));
 ---
 
 <BaseLayout
@@ -108,19 +121,72 @@ const tripsWithImages = await Promise.all(
     </div>
   </section>
 
-  <section class="max-w-6xl mx-auto px-6 py-14 grid md:grid-cols-2 gap-6">
+  {nextEdition && (
+    <section class="max-w-6xl mx-auto px-6 pt-14">
+      <div class="mb-6">
+        <h2 class="text-3xl font-semibold text-base-900">
+          Volgende editie
+        </h2>
+      </div>
+      <a
+        href={`/reizen/${nextEdition.slug}`}
+        class="group grid overflow-hidden rounded-3xl border border-base-200 bg-base-25 shadow-sm transition hover:shadow-lg lg:grid-cols-[1.15fr_1fr]"
+      >
+        <div class="relative min-h-[280px] overflow-hidden bg-base-200 lg:min-h-[430px]">
+          <img
+            class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+            src={altijdAanCardImage.src}
+            width={altijdAanCardImage.width}
+            height={altijdAanCardImage.height}
+            alt={`${nextEdition.name} in ${nextEdition.location}`}
+            loading="eager"
+            decoding="async"
+          />
+          <div class="absolute left-5 top-5 rounded-full bg-base-25 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-base-900 shadow-sm">
+            Volgende editie
+          </div>
+        </div>
+        <div class="flex flex-col justify-center p-7 sm:p-9 lg:p-12">
+          <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-wide text-base-500">
+            <span class="rounded-full border border-base-200 bg-base-100 px-3 py-1">
+              {nextEdition.location}
+            </span>
+            <span>{nextEdition.dates}</span>
+          </div>
+          <h2 class="mt-5 text-3xl font-semibold text-base-900 lg:text-4xl">
+            {nextEdition.name}
+          </h2>
+          <p class="mt-4 text-base leading-relaxed text-base-700">
+            Samen met Jorien Raeymaekers onderzoek je hoe herstel fysiologisch werkt. Waarom blijft je systeem aan, ook wanneer je rust neemt? En hoe kan je je zenuwstelsel opnieuw leren schakelen via ademhaling, yoga, beweging en natuur?
+          </p>
+          <div class="mt-7 flex flex-wrap items-center justify-between gap-4 border-t border-base-200 pt-5 text-sm font-semibold">
+            <span class="text-base-900">Prijs TBA</span>
+            <span class="inline-flex items-center rounded-full bg-accent-600 px-5 py-3 text-white transition group-hover:bg-accent-700">
+              {nextEdition.ctaLabel ?? "Bekijk details"}
+            </span>
+          </div>
+        </div>
+      </a>
+    </section>
+  )}
+
+  <section class="max-w-6xl mx-auto px-6 py-14">
+    <div class="mb-6">
+      <h2 class="text-3xl font-semibold text-base-900">
+        Eerdere SOLA-edities
+      </h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2">
     {
-      weekendsWithImages.map((weekend) => (
+      previousEditions.map((weekend) => (
         <a
           href={`/weekenden/${weekend.slug}`}
-          class="rounded-3xl border border-base-200 overflow-hidden bg-base-25 shadow-sm hover:shadow-lg transition flex flex-col group cursor-pointer"
+          class="group flex flex-col overflow-hidden rounded-3xl border border-base-200 bg-base-25 shadow-sm transition hover:shadow-md"
         >
-          <div
-            class="relative aspect-video bg-base-200 overflow-hidden"
-          >
+          <div class="relative aspect-[16/8] overflow-hidden bg-base-200">
             {weekend.heroImage && (
               <img
-                class="absolute inset-0 w-full h-full object-cover"
+                class="absolute inset-0 h-full w-full object-cover"
                 src={weekend.heroImage}
                 width={weekend.heroImageData?.width ?? 1400}
                 height={weekend.heroImageData?.height ?? 933}
@@ -129,85 +195,29 @@ const tripsWithImages = await Promise.all(
                 decoding="async"
               />
             )}
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-              <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold">
-                Bekijk weekend
-              </span>
+            <div class="absolute left-4 top-4 rounded-full bg-base-25/95 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-base-700 shadow-sm">
+              Eerdere editie
             </div>
           </div>
-          <div class="p-6 space-y-3 flex-1 flex flex-col">
-            <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-base-500">
-              <span class="px-3 py-1 rounded-full bg-base-100 border border-base-200">
+          <div class="flex flex-1 flex-col space-y-3 p-6">
+            <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-wide text-base-500">
+              <span class="rounded-full border border-base-200 bg-base-100 px-3 py-1">
                 {weekend.location}
               </span>
               <span>{weekend.dates}</span>
             </div>
             <h2 class="text-xl font-semibold text-base-900">{weekend.name}</h2>
             <p class="text-base-700">{weekend.shortDescription}</p>
-            <div class="mt-auto flex items-center justify-between text-sm font-semibold text-base-900 pt-2">
-              <span>{weekend.price}</span>
+            <div class="mt-auto border-t border-base-200 pt-4 text-sm font-semibold">
               <span class="text-accent-700 group-hover:underline">
-                Bekijk weekend
+                Bekijk eerdere editie
               </span>
             </div>
           </div>
         </a>
       ))
     }
-    {
-      tripsWithImages.map((trip) => (
-        <a
-          href={trip.isTeaser || trip.longread ? `/reizen/${trip.slug}` : undefined}
-          aria-disabled={trip.isTeaser || trip.longread ? undefined : "true"}
-          class={`relative rounded-3xl border border-base-200 overflow-hidden bg-base-25 shadow-sm flex flex-col ${
-            trip.isTeaser || trip.longread
-              ? "hover:shadow-lg transition group cursor-pointer"
-              : "opacity-75"
-          }`}
-        >
-          <div class="absolute top-4 right-4 z-10 bg-base-900 text-white px-4 py-1.5 text-xs font-semibold uppercase tracking-wide shadow-lg rounded">
-            Coming Soon
-          </div>
-          <div
-            class="relative aspect-video bg-base-200 overflow-hidden"
-          >
-            {trip.heroImage && (
-              <img
-                class="absolute inset-0 w-full h-full object-cover"
-                src={trip.slug === "altijd-aan" ? altijdAanCardImage.src : trip.heroImage}
-                width={trip.slug === "altijd-aan" ? altijdAanCardImage.width : (trip.heroImageData?.width ?? 1400)}
-                height={trip.slug === "altijd-aan" ? altijdAanCardImage.height : (trip.heroImageData?.height ?? 933)}
-                alt={`${trip.name} in ${trip.location}`}
-                loading="lazy"
-                decoding="async"
-              />
-            )}
-          </div>
-          <div class="p-6 space-y-3 flex-1 flex flex-col">
-            <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-base-500">
-              <span class="px-3 py-1 rounded-full bg-base-100 border border-base-200">
-                {trip.location}
-              </span>
-              <span>{trip.dates}</span>
-            </div>
-            <h2 class="text-xl font-semibold text-base-900">{trip.name}</h2>
-            <p class="text-base-700">
-              {trip.slug === "altijd-aan"
-                ? "Samen met Jorien Raeymaekers onderzoek je hoe herstel fysiologisch werkt. Waarom blijft je systeem aan, ook wanneer je rust neemt? En hoe kan je je zenuwstelsel opnieuw leren schakelen via ademhaling, yoga, beweging en natuur?"
-                : trip.shortDescription}
-            </p>
-            <div class="mt-auto flex items-center justify-between text-sm font-semibold text-base-900 pt-2">
-              <span>{trip.slug === "altijd-aan" ? "Prijs TBA" : trip.price}</span>
-              {(trip.isTeaser || trip.longread) && (
-                <span class="text-accent-700 group-hover:underline">
-                  {trip.ctaLabel ?? "Bekijk details"}
-                </span>
-              )}
-            </div>
-          </div>
-        </a>
-      ))
-    }
+    </div>
   </section>
 
   <section class="bg-accent-600 text-white py-12">
@@ -229,3 +239,4 @@ const tripsWithImages = await Promise.all(
     </div>
   </section>
 </BaseLayout>
+
