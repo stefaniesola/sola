@@ -965,7 +965,7 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
       "Een SOLA-weekend in ontwikkeling over fysiologie, zenuwstelsel en herstel.",
     location: "Sourbrodt, Hoge Venen, Ardennen",
     dates: "23 - 25 april 2027",
-    price: "TBA - in lijn met andere weekends",
+    price: "€670",
     isTeaser: true,
     maxParticipants: 14,
     statusLabel: "Binnenkort meer info.",
