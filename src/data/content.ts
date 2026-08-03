@@ -462,7 +462,7 @@ Meer keuzevrijheid in contact met anderen
 
 Via yoga en beweging in de natuur ondersteunen we ook je lichaam en zenuwstelsel, zodat wat je leert niet alleen inzicht blijft, maar ook echt voelbaar en toepasbaar wordt.
 
-Je werkt in een kleine groep, met duidelijke begeleiding en ruimte om te integreren — zodat je naar huis gaat met rust, helderheid en concrete t…3996 tokens truncated…ehab & Training (ART).
+Je werkt in een kleine groep, met duidelijke begeleiding en ruimte om te integreren — zodat je naar huis gaat met rust, helderheid en concrete t…3994 tokens truncated…ntwerp Rehab & Training (ART).
 Hij werkt sinds 2004 met mensen rond gezondheid, beweging en gedragsverandering. Zijn aanpak vertrekt vanuit de samenhang tussen het zenuwstelsel, het immuunsysteem en psycho-emotionele processen.
 
 Binnen KPNI combineert hij onder andere:
@@ -599,7 +599,7 @@ export const people: Person[] = [
     role: "Klinisch psycholoog & systemisch werker",
     type: "Expert",
     bio: "Jorien werkt rond stress, herstel en het autonome zenuwstelsel: het systeem dat je lichaam helpt schakelen tussen actie en rust. Ze helpt deelnemers begrijpen waarom herstel soms uitblijft, ook wanneer ze slapen, bewegen en gezond leven.",
-    logo: "/images/jorien-raeymaekers.jpg",
+    logo: "jorien-raeymaekers.jpg",
     isTeamMember: false,
     website: "https://ikbenjorien.be/",
   },

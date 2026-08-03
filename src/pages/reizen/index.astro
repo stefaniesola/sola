@@ -5,6 +5,7 @@ import { getImage } from "astro:assets";
 import bewustwordingImage from "../../assets/images/2631991747.jpg";
 import terraImage from "../../assets/images/1513986998.jpg";
 import altijdAanCardImage from "../../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg";
+import jorienPortrait from "../../assets/images/jorien-raeymaekers.jpg";
 
 const weekends = journeys.filter((journey) => journey.type === "Weekend");
 const trips = journeys.filter((journey) => journey.type === "Reis");
@@ -158,9 +159,9 @@ const previousEditions = weekendsWithImages
           </h2>
           <div class="mt-4 flex items-start gap-4">
             <img
-              src="/images/jorien-raeymaekers.jpg"
-              width="80"
-              height="80"
+              src={jorienPortrait.src}
+              width={jorienPortrait.width}
+              height={jorienPortrait.height}
               alt="Jorien Raeymaekers"
               loading="lazy"
               decoding="async"
