@@ -12,6 +12,11 @@ const { weekend } = Astro.props as Props;
 const archivedDate = "31 juli – 2 augustus 2026";
 const archiveDetails = {
   "exercise-is-medicine": {
+    interestHref: "https://tally.so/r/QKqRJA",
+    video: {
+      src: "/simon-uitleg-website.mp4",
+      label: "Simon Helleputte legt uit wat je tijdens het weekend Beweging als medicijn leert",
+    },
     forWho: [
       "Graag beweegt en actief in het leven staat, zonder dat sport je volledige identiteit moet zijn",
       "voelt dat beweging essentieel is voor je gezondheid, en daar graag meer inzicht in krijgt",
@@ -32,6 +37,8 @@ const archiveDetails = {
     },
   },
   "bewustwording-connectie": {
+    interestHref: "https://tally.so/r/b5Me82",
+    video: null,
     forWho: [
       "merkt dat je soms vastloopt in terugkerende gedachten, emoties of situaties",
       "beter wil begrijpen hoe je reageert onder druk of in contact met anderen",
@@ -110,16 +117,18 @@ const metaDescription = `${weekend.shortDescription} Eerdere SOLA-editie in ${we
         </p>
         <div class="flex flex-wrap gap-3">
           <a
-            href="/reizen/altijd-aan"
+            href="/reizen"
             class="inline-flex items-center justify-center rounded-full bg-accent-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-700"
           >
-            Bekijk de volgende editie
+            Bekijk volgende edities
           </a>
           <a
-            href="/newsletter"
+            href={details.interestHref}
+            target="_blank"
+            rel="noopener noreferrer"
             class="inline-flex items-center justify-center rounded-full border border-base-300 bg-white px-5 py-3 text-sm font-semibold text-base-800 transition hover:border-base-400"
           >
-            Blijf op de hoogte
+            Interesse in dit weekend
           </a>
         </div>
       </div>
@@ -158,6 +167,22 @@ const metaDescription = `${weekend.shortDescription} Eerdere SOLA-editie in ${we
         </article>
       </div>
 
+      {details.video && (
+        <figure class="mt-8 overflow-hidden bg-base-900 shadow-sm">
+          <video
+            class="block aspect-video h-auto w-full object-contain"
+            controls
+            preload="metadata"
+            playsinline
+            poster={details.expert.image.src}
+            aria-label={details.video.label}
+          >
+            <source src={details.video.src} type="video/mp4" />
+            Je browser ondersteunt deze video niet.
+          </video>
+        </figure>
+      )}
+
       <article class="mt-8 grid overflow-hidden border border-base-200 bg-white shadow-sm md:grid-cols-[220px_1fr]">
         <a href={details.expert.website} target="_blank" rel="noopener noreferrer" class="bg-base-100">
           <img
@@ -192,11 +217,11 @@ const metaDescription = `${weekend.shortDescription} Eerdere SOLA-editie in ${we
           <p class="mt-2 text-white/75">Nieuwe reizen, weekenden en plekken zijn in voorbereiding. Blijf op de hoogte van wat eraan komt.</p>
         </div>
         <div class="flex flex-wrap gap-3">
-          <a href="/reizen/altijd-aan" class="rounded-full bg-accent-500 px-5 py-3 text-sm font-semibold text-white hover:bg-accent-600">
-            Bekijk de volgende editie
+          <a href="/reizen" class="rounded-full bg-accent-500 px-5 py-3 text-sm font-semibold text-white hover:bg-accent-600">
+            Bekijk volgende edities
           </a>
-          <a href="/reizen" class="rounded-full border border-white/35 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
-            Bekijk alle reizen
+          <a href={details.interestHref} target="_blank" rel="noopener noreferrer" class="rounded-full border border-white/35 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+            Interesse in dit weekend
           </a>
         </div>
       </div>
