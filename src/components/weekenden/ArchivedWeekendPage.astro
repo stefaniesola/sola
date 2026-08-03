@@ -13,6 +13,20 @@ const archivedDate = "31 juli – 2 augustus 2026";
 const archiveDetails = {
   "exercise-is-medicine": {
     interestHref: "https://tally.so/r/QKqRJA",
+    reviews: [
+      {
+        name: "Stéphanie",
+        quote: "Er wordt een gezellige sfeer gecreëerd waar rust en activiteiten organisch in elkaar overgaan. Leefstijlfactoren worden op een heel toegankelijke manier geïntegreerd in een weekend vol vakantievibes.",
+      },
+      {
+        name: "Stefanie",
+        quote: "Een heel spontaan weekend met een leuke dynamiek en inhoudelijk zeer boeiende sessies. Ik kom rijker terug thuis.",
+      },
+      {
+        name: "Rik",
+        quote: "Een super fijn team dat interessante weekends organiseert waarbij je als completer persoon terug naar huis gaat.",
+      },
+    ],
     video: {
       src: "/simon-uitleg-website.mp4",
       label: "Simon Helleputte legt uit wat je tijdens het weekend Beweging als medicijn leert",
@@ -38,6 +52,20 @@ const archiveDetails = {
   },
   "bewustwording-connectie": {
     interestHref: "https://tally.so/r/b5Me82",
+    reviews: [
+      {
+        name: "Virginie",
+        quote: "Als je wil groeien en bloeien en werken aan jezelf op mentaal en fysiek vlak, én nieuwe mensen wil ontmoeten en uit je comfortzone wil komen, dan moet je bij SOLA zijn.",
+      },
+      {
+        name: "Klaas",
+        quote: "Ben je al geprikkeld om gezondheid een centrale plek te geven in je levensstijl, dan kan een SOLA-weekend een eerste stap zijn naar handvatten, energie en motivatie.",
+      },
+      {
+        name: "Justine",
+        quote: "De combinatie van gezellig samenzijn en inhoud zorgt ervoor dat iedereen elkaar iets bijbrengt. Een leuke reis ontstaat door mensen samen te brengen.",
+      },
+    ],
     video: null,
     forWho: [
       "merkt dat je soms vastloopt in terugkerende gedachten, emoties of situaties",
@@ -209,6 +237,46 @@ const metaDescription = `${weekend.shortDescription} Eerdere SOLA-editie in ${we
         </div>
       </article>
     </section>
+
+    <section class="border-t border-accent-700 bg-accent-600 text-white">
+      <div class="mx-auto max-w-6xl px-6 py-14 sm:py-16">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">
+              Ervaringen
+            </p>
+            <h2 class="mt-2 text-2xl font-semibold text-white sm:text-3xl">
+              Wat deelnemers meenamen
+            </h2>
+          </div>
+          <div class="inline-flex w-fit items-center gap-3 rounded-full border border-white/20 bg-base-900 px-4 py-2 shadow-sm">
+            <span class="text-2xl font-semibold leading-none text-white">9/10</span>
+            <span class="text-xs font-semibold uppercase tracking-[0.14em] text-white/75">Gemiddelde beoordeling</span>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-5 lg:grid-cols-3">
+          {details.reviews.map((review) => (
+            <blockquote class="relative flex h-full flex-col overflow-hidden border border-base-200 bg-base-25 p-6 text-base-900 shadow-lg sm:p-7">
+              <span class="absolute -right-1 -top-5 font-serif text-8xl leading-none text-base-100" aria-hidden="true">“</span>
+              <span class="relative text-3xl font-serif leading-none text-accent-600" aria-hidden="true">“</span>
+              <p class="relative mt-3 flex-1 text-lg leading-relaxed text-base-800">{review.quote}</p>
+              <footer class="relative mt-6 flex items-center gap-3 border-t border-base-100 pt-4">
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-base-900 text-sm font-semibold text-white" aria-hidden="true">
+                  {review.name.charAt(0)}
+                </span>
+                <span>
+                  <span class="block text-sm font-semibold text-base-900">{review.name}</span>
+                  <span class="block text-xs text-base-500">Deelnemer</span>
+                </span>
+              </footer>
+            </blockquote>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <div class="h-8 bg-white sm:h-10" aria-hidden="true"></div>
 
     <section class="bg-base-900 text-white">
       <div class="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
