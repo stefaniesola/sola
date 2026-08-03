@@ -228,7 +228,8 @@ const optimizedHauteLoire = await getImage({
   </section>
 
   {nextEdition && (
-    <section class="max-w-6xl mx-auto px-6 py-14 lg:py-20">
+    <section class="bg-white">
+    <div class="max-w-6xl mx-auto px-6 py-14 lg:py-20">
       <div class="mb-6">
         <h2 class="text-3xl font-semibold text-base-900">Volgend weekend</h2>
       </div>
@@ -267,19 +268,20 @@ const optimizedHauteLoire = await getImage({
               Samen met Jorien Raeymaekers onderzoek je hoe herstel fysiologisch werkt. Waarom blijft je systeem aan, ook wanneer je rust neemt? En hoe kan je je zenuwstelsel opnieuw leren schakelen via ademhaling, yoga, beweging en natuur?
             </p>
           </div>
-          <div class="mt-7 flex flex-wrap gap-3 border-t border-base-200 pt-5">
-            <a href="/reizen/altijd-aan" class="inline-flex items-center rounded-full border border-base-300 px-5 py-3 text-sm font-semibold text-base-900 transition hover:border-base-500">
-              Ontdek deze editie
-            </a>
+          <div class="mt-7 flex flex-wrap items-center gap-3 border-t border-base-200 pt-5">
             <a href={altijdAanBookingHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-accent-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-700">
               Boek nu
             </a>
-            <a href={nextEdition.ctaHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full border border-base-300 px-5 py-3 text-sm font-semibold text-base-900 transition hover:border-base-500">
+            <a href="/reizen/altijd-aan" class="inline-flex items-center rounded-full border border-base-300 px-5 py-3 text-sm font-semibold text-base-900 transition hover:border-base-500 hover:bg-base-25">
+              Ontdek het weekend
+            </a>
+            <a href={nextEdition.ctaHref} target="_blank" rel="noopener noreferrer" class="w-full pt-1 text-sm font-semibold text-base-700 underline decoration-base-300 underline-offset-4 transition hover:text-accent-700 hover:decoration-accent-600">
               {nextEdition.ctaLabel}
             </a>
           </div>
         </div>
       </article>
+    </div>
     </section>
   )}
 
@@ -310,8 +312,6 @@ const optimizedHauteLoire = await getImage({
       </div>
     </div>
   </section>
-
-  <div class="h-8 bg-white sm:h-10" aria-hidden="true"></div>
 
   <section class="max-w-6xl mx-auto px-6 pt-8 lg:pt-14 pb-0">
     <h2 class="text-3xl lg:text-4xl font-semibold text-base-900 text-center">
@@ -556,7 +556,7 @@ const optimizedHauteLoire = await getImage({
     }
   </style>
 
-  <section class="order-1 max-w-6xl mx-auto px-6 py-8 lg:py-14 space-y-8 scroll-fade-in">
+  <section class="order-1 max-w-6xl mx-auto my-8 rounded-3xl bg-white px-6 py-8 lg:my-14 lg:py-14 space-y-8 scroll-fade-in">
     <div class="flex flex-col lg:flex-row gap-12 items-center">
       <div class="flex-1 space-y-4 lg:pr-8">
         <p class="uppercase text-xs tracking-[0.25em] text-base-500">
