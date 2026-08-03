@@ -89,6 +89,7 @@ const touristTripSchema = {
     : {}),
 };
 const isInterestTeaser = trip.isTeaser && trip.slug === "altijd-aan";
+const altijdAanBookingHref = "https://tally.so/r/pbogoy";
 const teaserFacts = [
   ["Data", "Vrijdag 23 april t.e.m. zondag 25 april 2027"],
   ["Locatie", "Sourbrodt, Hoge Venen, Ardennen"],
@@ -153,7 +154,7 @@ const buildingBlocks = [
   "een persoonlijk herstelprotocol om thuis verder te gaan",
 ];
 const teaserFaqs = [
-  ["Kan ik al inschrijven?", "Nog niet. Dit weekend is in ontwikkeling. Je kan je wel op de interesselijst zetten. Dan krijg je als eerste bericht wanneer het programma en de prijs definitief zijn."],
+  ["Kan ik al inschrijven?", "Ja. Je kan je nu inschrijven via de knop Boek nu. Wil je eerst updates ontvangen, dan kan je je ook op de interesselijst zetten."],
   ["Voor wie is dit weekend bedoeld?", "Voor mensen die veel doen om gezond te leven, maar merken dat hun lichaam moeilijk oplaadt. Denk aan moe wakker worden, moeilijk schakelen tussen actie en rust, spanning die blijft hangen of het gevoel dat je systeem voortdurend aan staat."],
   ["Moet ik sportief zijn?", "Nee. We bewegen buiten, maar dit is geen sportweekend. Wandelen, yoga en eenvoudige oefeningen worden ingezet om herstel tastbaar te maken. Je hoeft geen sportieve ervaring te hebben."],
   ["Is dit een wellnessweekend?", "Nee. Er is ruimte voor rust, natuur en vertraging, maar de kern is inhoudelijk. Je krijgt heldere uitleg, praktische oefeningen en concrete handvaten rond zenuwstelsel, herstel, slaap en ritme."],
@@ -209,6 +210,16 @@ const teaserFaqs = [
         >
       </div>
       <div class="flex flex-wrap gap-3">
+        {isInterestTeaser && (
+          <a
+            href={altijdAanBookingHref}
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex items-center px-5 py-3 rounded-full bg-accent-600 text-white font-semibold hover:bg-accent-700"
+          >
+            Boek nu
+          </a>
+        )}
         {
           trip.ctaHref ? (
             <a
