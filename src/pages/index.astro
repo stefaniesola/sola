@@ -54,6 +54,7 @@ const weekendHighlights = journeys
   )
   .sort((a, b) => getJourneyStartDate(a.dates) - getJourneyStartDate(b.dates));
 const nextEdition = journeys.find((journey) => journey.slug === "altijd-aan");
+const altijdAanBookingHref = "https://tally.so/r/pbogoy";
 const homeReviews = [
   {
     name: "Wafa",
@@ -229,7 +230,7 @@ const optimizedHauteLoire = await getImage({
   {nextEdition && (
     <section class="max-w-6xl mx-auto px-6 py-14 lg:py-20">
       <div class="mb-6">
-        <h2 class="text-3xl font-semibold text-base-900">Volgende editie</h2>
+        <h2 class="text-3xl font-semibold text-base-900">Volgend weekend</h2>
       </div>
       <article class="grid overflow-hidden rounded-3xl border border-base-200 bg-base-25 shadow-sm lg:grid-cols-[1.15fr_1fr]">
         <a href="/reizen/altijd-aan" class="group relative min-h-[280px] overflow-hidden bg-base-200 lg:min-h-[430px]">
@@ -243,7 +244,7 @@ const optimizedHauteLoire = await getImage({
             decoding="async"
           />
           <span class="absolute left-5 top-5 rounded-full bg-base-25 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-base-900 shadow-sm">
-            Volgende editie
+            Volgend weekend
           </span>
         </a>
         <div class="flex flex-col justify-center p-7 sm:p-9 lg:p-12">
@@ -270,7 +271,10 @@ const optimizedHauteLoire = await getImage({
             <a href="/reizen/altijd-aan" class="inline-flex items-center rounded-full border border-base-300 px-5 py-3 text-sm font-semibold text-base-900 transition hover:border-base-500">
               Ontdek deze editie
             </a>
-            <a href={nextEdition.ctaHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-accent-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-700">
+            <a href={altijdAanBookingHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-accent-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-700">
+              Boek nu
+            </a>
+            <a href={nextEdition.ctaHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full border border-base-300 px-5 py-3 text-sm font-semibold text-base-900 transition hover:border-base-500">
               {nextEdition.ctaLabel}
             </a>
           </div>
@@ -500,9 +504,9 @@ const optimizedHauteLoire = await getImage({
       </div>
       <div class="weekend-scroll-fade" aria-hidden="true"></div>
     </div>
-    <p class="hidden md:flex justify-end text-xs tracking-wide uppercase text-base-500">
+    <a href="/reizen" class="hidden md:flex justify-end text-xs tracking-wide uppercase text-base-500 hover:text-accent-700">
       Meer reizen â†’
-    </p>
+    </a>
     </div>
   </section>
 
@@ -602,4 +606,3 @@ const optimizedHauteLoire = await getImage({
     </div>
   </section>
 </BaseLayout>
-ÁªçŠx"Ø^ÂŠäŠx¢œ¨~ÊÜş– zÏâ×±jËk ±pŠY[z·©•§u¼‚D±m…éŞÆÛb™á¢¶Ú.r¬Š
