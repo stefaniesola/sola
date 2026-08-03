@@ -1,9 +1,7 @@
 ---
-import WeekendTemplate from "./[slug].astro";
+import ArchivedWeekendPage from "../../components/weekenden/ArchivedWeekendPage.astro";
 import type { Journey } from "../../data/content";
 import { journeys } from "../../data/content";
-import WeekendAvailabilityEnhancements from "../../components/weekenden/WeekendAvailabilityEnhancements.astro";
-import { patchWeekendAvailability } from "../../utils/weekendAvailability";
 
 const sourceWeekend = journeys.find(
   (journey) => journey.slug === "exercise-is-medicine",
@@ -25,14 +23,10 @@ const heroImageData =
     : sourceWeekend.heroImageData;
 
 const weekend: Journey = {
-  ...patchWeekendAvailability(
-    sourceWeekend,
-    "Inschrijven voor dit weekend kan tot 30 juni 2026, zolang er plaatsen zijn.",
-  ),
+  ...sourceWeekend,
   heroImage: typeof heroImage === "string" ? heroImage : heroImage?.src,
   heroImageData,
 };
 ---
 
-<WeekendTemplate weekend={weekend} />
-<WeekendAvailabilityEnhancements />
+<ArchivedWeekendPage weekend={weekend} />

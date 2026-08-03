@@ -1,11 +1,9 @@
 ---
-import WeekendTemplate from "./[slug].astro";
+import ArchivedWeekendPage from "../../components/weekenden/ArchivedWeekendPage.astro";
 import type { Journey } from "../../data/content";
 import { journeys } from "../../data/content";
 import { getImage } from "astro:assets";
 import bewustwordingImage from "../../assets/images/2631991747.jpg";
-import WeekendAvailabilityEnhancements from "../../components/weekenden/WeekendAvailabilityEnhancements.astro";
-import { patchWeekendAvailability } from "../../utils/weekendAvailability";
 
 const sourceWeekend = journeys.find(
   (journey) => journey.slug === "bewustwording-connectie",
@@ -22,14 +20,10 @@ const heroImageData = await getImage({
 });
 
 const weekend: Journey = {
-  ...patchWeekendAvailability(
-    sourceWeekend,
-    "Inschrijven voor dit weekend kan tot 7 juli 2026, zolang er plaatsen zijn.",
-  ),
+  ...sourceWeekend,
   heroImage: heroImageData.src,
   heroImageData,
 };
 ---
 
-<WeekendTemplate weekend={weekend} />
-<WeekendAvailabilityEnhancements />
+<ArchivedWeekendPage weekend={weekend} />

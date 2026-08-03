@@ -1,0 +1,229 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import type { Journey } from "../../data/content";
+import simonPortrait from "../../assets/images/Simon Endurance Lab - performance coach (1).png";
+import sarahPortrait from "../../assets/images/Sarah Deleu therapeut - groen.jpg";
+
+interface Props {
+  weekend: Journey;
+}
+
+const { weekend } = Astro.props as Props;
+const archivedDate = "31 juli – 2 augustus 2026";
+const archiveDetails = {
+  "exercise-is-medicine": {
+    interestHref: "https://tally.so/r/QKqRJA",
+    video: {
+      src: "/simon-uitleg-website.mp4",
+      label: "Simon Helleputte legt uit wat je tijdens het weekend Beweging als medicijn leert",
+    },
+    forWho: [
+      "Graag beweegt en actief in het leven staat, zonder dat sport je volledige identiteit moet zijn",
+      "voelt dat beweging essentieel is voor je gezondheid, en daar graag meer inzicht in krijgt",
+      "nieuwsgierig bent naar wat beweging doet met je metabole en cardiovasculaire gezondheid",
+    ],
+    focus: [
+      "waarom fysieke inspanning essentieel is voor gezondheid en vitaliteit",
+      "hoe beweging werkt als medicijn voor zowel lichaam als geest",
+      "wat er écht gebeurt in je lichaam tijdens inspanning (metabolisme en hart)",
+      "hoe voeding, herstel en beweging samenhangen",
+    ],
+    expert: {
+      name: "Simon Helleputte",
+      role: "Bewegingswetenschapper en coach",
+      image: simonPortrait,
+      website: "https://www.instagram.com/simonendurancelab/",
+      bio: "Simon is bewegingswetenschapper en coach, gespecialiseerd in de impact van fysieke activiteit op gezondheid, prestaties en mentale veerkracht. Hij vertaalt wetenschap naar begrijpelijke, relevante en toepasbare inzichten, zonder dogma’s.",
+    },
+  },
+  "bewustwording-connectie": {
+    interestHref: "https://tally.so/r/b5Me82",
+    video: null,
+    forWho: [
+      "merkt dat je soms vastloopt in terugkerende gedachten, emoties of situaties",
+      "beter wil begrijpen hoe je reageert onder druk of in contact met anderen",
+      "wil leren wat voor jou werkt en wat niet, in plaats van automatisch door te gaan",
+      "meer inzicht wil in wat je energie geeft en wat ze kost",
+    ],
+    focus: [
+      "Patronen herkennen — Inzicht in terugkerende gedachten en reacties",
+      "Emoties reguleren — Spanning herkennen en actief tot rust brengen",
+      "Bewuster reageren — Meer keuzevrijheid in contact met anderen",
+    ],
+    expert: {
+      name: "Sarah Deleu",
+      role: "Biomedisch wetenschapper en therapeut",
+      image: sarahPortrait,
+      website: "https://logisch-gezond.be",
+      bio: "Sarah is biomedisch wetenschapper en therapeut in Emotional Freedom Techniques (EFT). Ze werkt rond emotionele en relationele patronen en leert je spanning reguleren, zodat je met meer rust en helderheid aanwezig kan zijn bij jezelf en anderen.",
+    },
+  },
+} as const;
+
+const details = archiveDetails[weekend.slug as keyof typeof archiveDetails];
+
+if (!details) {
+  throw new Error(`Geen archiefweergave gevonden voor ${weekend.slug}.`);
+}
+
+const heroImage =
+  typeof weekend.heroImage === "string" ? weekend.heroImage : weekend.heroImage?.src;
+const heroWidth = weekend.heroImageData?.width ?? 1600;
+const heroHeight = weekend.heroImageData?.height ?? 1067;
+const metaDescription = `${weekend.shortDescription} Eerdere SOLA-editie in ${weekend.location}, ${archivedDate}.`;
+---
+
+<BaseLayout
+  title={`SOLA | ${weekend.name}`}
+  description={metaDescription}
+  ogImage={heroImage}
+  ogImageAlt={`${weekend.name} in ${weekend.location}`}
+>
+    <section class="relative overflow-hidden bg-base-900 text-white">
+      {heroImage && (
+        <img
+          src={heroImage}
+          width={heroWidth}
+          height={heroHeight}
+          alt={`${weekend.name} in ${weekend.location}`}
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          class="absolute inset-0 h-full w-full object-cover opacity-40"
+        />
+      )}
+      <div class="relative mx-auto max-w-6xl px-6 py-20 sm:py-24">
+        <span class="inline-flex rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em]">
+          Eerdere editie
+        </span>
+        <h1 class="mt-5 max-w-4xl text-4xl font-semibold sm:text-5xl">
+          {weekend.name}
+        </h1>
+        <div class="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/85">
+          <span>{weekend.location}</span>
+          <span aria-hidden="true">·</span>
+          <span>{archivedDate}</span>
+        </div>
+        <p class="mt-6 max-w-3xl text-lg leading-relaxed text-white/90">
+          {weekend.shortDescription}
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-base-200 bg-accent-50/60">
+      <div class="mx-auto grid max-w-6xl gap-6 px-6 py-8 md:grid-cols-[1fr_auto] md:items-center">
+        <p class="max-w-3xl leading-relaxed text-base-800">
+          Deze editie vond plaats van 31 juli tot 2 augustus 2026. Het thema kan later in een vernieuwde vorm terugkeren.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="/reizen"
+            class="inline-flex items-center justify-center rounded-full bg-accent-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-700"
+          >
+            Bekijk volgende edities
+          </a>
+          <a
+            href={details.interestHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center rounded-full border border-base-300 bg-white px-5 py-3 text-sm font-semibold text-base-800 transition hover:border-base-400"
+          >
+            Interesse in dit weekend
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-6xl px-6 py-14 sm:py-16">
+      <div class="grid gap-8 lg:grid-cols-2">
+        <article class="border border-base-200 bg-white p-6 shadow-sm sm:p-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent-700">
+            Over deze editie
+          </p>
+          <h2 class="mt-2 text-2xl font-semibold text-base-900">Voor wie</h2>
+          <ul class="mt-5 space-y-3 text-base-700">
+            {details.forWho.map((item) => (
+              <li class="flex gap-3">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-600" aria-hidden="true"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        <article class="border border-base-200 bg-base-25 p-6 shadow-sm sm:p-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent-700">
+            Over deze editie
+          </p>
+          <h2 class="mt-2 text-2xl font-semibold text-base-900">Focus</h2>
+          <ul class="mt-5 space-y-3 text-base-700">
+            {details.focus.map((item) => (
+              <li class="flex gap-3">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-600" aria-hidden="true"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </div>
+
+      {details.video && (
+        <figure class="mt-8 overflow-hidden bg-base-900 shadow-sm">
+          <video
+            class="block aspect-video h-auto w-full object-contain"
+            controls
+            preload="metadata"
+            playsinline
+            poster={details.expert.image.src}
+            aria-label={details.video.label}
+          >
+            <source src={details.video.src} type="video/mp4" />
+            Je browser ondersteunt deze video niet.
+          </video>
+        </figure>
+      )}
+
+      <article class="mt-8 grid overflow-hidden border border-base-200 bg-white shadow-sm md:grid-cols-[220px_1fr]">
+        <a href={details.expert.website} target="_blank" rel="noopener noreferrer" class="bg-base-100">
+          <img
+            src={details.expert.image.src}
+            width={details.expert.image.width}
+            height={details.expert.image.height}
+            alt={details.expert.name}
+            loading="lazy"
+            decoding="async"
+            class="h-64 w-full object-cover md:h-full"
+          />
+        </a>
+        <div class="p-6 sm:p-8">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent-700">
+            Expertise
+          </p>
+          <h2 class="mt-2 text-2xl font-semibold text-base-900">
+            {details.expert.name}
+          </h2>
+          <p class="mt-1 text-base-600">{details.expert.role}</p>
+          <p class="mt-5 max-w-3xl leading-relaxed text-base-700">
+            {details.expert.bio}
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section class="bg-base-900 text-white">
+      <div class="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 class="text-2xl font-semibold">Binnenkort beschikbaar</h2>
+          <p class="mt-2 text-white/75">Nieuwe reizen, weekenden en plekken zijn in voorbereiding. Blijf op de hoogte van wat eraan komt.</p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="/reizen" class="rounded-full bg-accent-500 px-5 py-3 text-sm font-semibold text-white hover:bg-accent-600">
+            Bekijk volgende edities
+          </a>
+          <a href={details.interestHref} target="_blank" rel="noopener noreferrer" class="rounded-full border border-white/35 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+            Interesse in dit weekend
+          </a>
+        </div>
+      </div>
+    </section>
+</BaseLayout>
