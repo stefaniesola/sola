@@ -5,6 +5,7 @@ import { getImage } from "astro:assets";
 import bewustwordingImage from "../../assets/images/2631991747.jpg";
 import terraImage from "../../assets/images/1513986998.jpg";
 import altijdAanCardImage from "../../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg";
+import jorienPortrait from "../../assets/images/jorien-raeymaekers.jpg";
 
 const weekends = journeys.filter((journey) => journey.type === "Weekend");
 const trips = journeys.filter((journey) => journey.type === "Reis");
@@ -156,9 +157,20 @@ const previousEditions = weekendsWithImages
           <h2 class="mt-5 text-3xl font-semibold text-base-900 lg:text-4xl">
             {nextEdition.name}
           </h2>
-          <p class="mt-4 text-base leading-relaxed text-base-700">
-            Samen met Jorien Raeymaekers onderzoek je hoe herstel fysiologisch werkt. Waarom blijft je systeem aan, ook wanneer je rust neemt? En hoe kan je je zenuwstelsel opnieuw leren schakelen via ademhaling, yoga, beweging en natuur?
-          </p>
+          <div class="mt-4 flex items-start gap-4">
+            <img
+              src={jorienPortrait.src}
+              width={jorienPortrait.width}
+              height={jorienPortrait.height}
+              alt="Jorien Raeymaekers"
+              loading="lazy"
+              decoding="async"
+              class="h-16 w-16 shrink-0 rounded-full border-2 border-white object-cover shadow-sm sm:h-20 sm:w-20"
+            />
+            <p class="text-base leading-relaxed text-base-700">
+              Samen met Jorien Raeymaekers onderzoek je hoe herstel fysiologisch werkt. Waarom blijft je systeem aan, ook wanneer je rust neemt? En hoe kan je je zenuwstelsel opnieuw leren schakelen via ademhaling, yoga, beweging en natuur?
+            </p>
+          </div>
           <div class="mt-7 flex flex-wrap items-center justify-between gap-4 border-t border-base-200 pt-5 text-sm font-semibold">
             <span class="text-base-900">Prijs TBA</span>
             <span class="inline-flex items-center rounded-full bg-accent-600 px-5 py-3 text-white transition group-hover:bg-accent-700">
@@ -239,4 +251,3 @@ const previousEditions = weekendsWithImages
     </div>
   </section>
 </BaseLayout>
-

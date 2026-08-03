@@ -1014,6 +1014,15 @@ export const people: Person[] = [
     isTeamMember: true,
   },
   {
+    name: "Jorien Raeymaekers",
+    role: "Klinisch psycholoog & systemisch werker",
+    type: "Expert",
+    bio: "Jorien werkt rond stress, herstel en het autonome zenuwstelsel: het systeem dat je lichaam helpt schakelen tussen actie en rust. Ze helpt deelnemers begrijpen waarom herstel soms uitblijft, ook wanneer ze slapen, bewegen en gezond leven.",
+    logo: "jorien-raeymaekers.jpg",
+    isTeamMember: false,
+    website: "https://ikbenjorien.be/",
+  },
+  {
     name: "Simon Helleputte",
     role: "Performance coach & sportwetenschapper",
     type: "Expert",
