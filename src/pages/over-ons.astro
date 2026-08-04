@@ -16,7 +16,7 @@ import fermentistaKlejmanImage from "../assets/images/Marta-Klejman-Fermentista-
 import croutonAlexandraImage from "../assets/images/Alexandra Eemans - Crouton Biosoep profiel.png";
 
 const coreTeam = people.filter((person) => person.isTeamMember === true);
-const partners = people.filter((person) => person.isTeamMember === false);
+const partners = people.filter(\n  (person) => person.isTeamMember === false && person.name !== "Johan De Coninck",\n);
 const linkClass = "text-accent-700 hover:text-accent-800";
 const linkedLabel = aboutPage.label.replace(
   "reizen",
