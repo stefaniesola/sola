@@ -89,6 +89,10 @@ const previousEditions = weekendsWithImages
   )
   .map((weekend) => ({
     ...weekend,
+    interestHref:
+      weekend.slug === "exercise-is-medicine"
+        ? "https://tally.so/r/QKqRJA"
+        : "https://tally.so/r/b5Me82",
     dates:
       weekend.slug === "bewustwording-connectie"
         ? "31 juli – 2 augustus 2026"
@@ -188,17 +192,19 @@ const previousEditions = weekendsWithImages
   <section class="max-w-6xl mx-auto px-6 py-14">
     <div class="mb-6">
       <h2 class="text-3xl font-semibold text-base-900">
-        Eerdere SOLA-edities
+        Eerdere edities die terugkeren in 2027
       </h2>
+      <p class="mt-2 max-w-3xl text-base-700">
+        Deze SOLA-weekenden vonden eerder plaats en krijgen in 2027 een vervolg. Bekijk de inhoud en ervaringen van de eerdere editie of schrijf je in om als eerste de nieuwe data te ontvangen.
+      </p>
     </div>
     <div class="grid gap-6 md:grid-cols-2">
     {
       previousEditions.map((weekend) => (
-        <a
-          href={`/weekenden/${weekend.slug}`}
+        <article
           class="group flex flex-col overflow-hidden rounded-3xl border border-base-200 bg-base-25 shadow-sm transition hover:shadow-md"
         >
-          <div class="relative aspect-[16/8] overflow-hidden bg-base-200">
+          <a href={`/weekenden/${weekend.slug}`} class="relative aspect-[16/8] overflow-hidden bg-base-200">
             {weekend.heroImage && (
               <img
                 class="absolute inset-0 h-full w-full object-cover"
@@ -211,25 +217,35 @@ const previousEditions = weekendsWithImages
               />
             )}
             <div class="absolute left-4 top-4 rounded-full bg-base-25/95 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-base-700 shadow-sm">
-              Eerdere editie
+              Terug in 2027
             </div>
-          </div>
+          </a>
           <div class="flex flex-1 flex-col space-y-3 p-6">
-            <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-wide text-base-500">
-              <span class="rounded-full border border-base-200 bg-base-100 px-3 py-1">
+            <div class="flex flex-col items-start gap-2 text-xs uppercase tracking-wide text-base-500 sm:flex-row sm:items-center sm:gap-3">
+              <span class="whitespace-nowrap rounded-full border border-base-200 bg-base-100 px-3 py-1">
                 {weekend.location}
               </span>
-              <span>{weekend.dates}</span>
+              <span>Eerdere editie · {weekend.dates}</span>
             </div>
-            <h2 class="text-xl font-semibold text-base-900">{weekend.name}</h2>
+            <h2 class="text-xl font-semibold text-base-900">
+              <a class="hover:text-accent-700" href={`/weekenden/${weekend.slug}`}>{weekend.name}</a>
+            </h2>
             <p class="text-base-700">{weekend.shortDescription}</p>
-            <div class="mt-auto border-t border-base-200 pt-4 text-sm font-semibold">
-              <span class="text-accent-700 group-hover:underline">
+            <div class="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-base-200 pt-4 text-sm font-semibold">
+              <a class="text-accent-700 hover:underline" href={`/weekenden/${weekend.slug}`}>
                 Bekijk eerdere editie
-              </span>
+              </a>
+              <a
+                href={weekend.interestHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center rounded-full bg-accent-600 px-4 py-2.5 text-white transition hover:bg-accent-700"
+              >
+                Zet mij op de interesselijst
+              </a>
             </div>
           </div>
-        </a>
+        </article>
       ))
     }
     </div>
@@ -254,3 +270,4 @@ const previousEditions = weekendsWithImages
     </div>
   </section>
 </BaseLayout>
+

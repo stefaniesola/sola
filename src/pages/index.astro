@@ -55,6 +55,10 @@ const weekendHighlights = journeys
   .sort((a, b) => getJourneyStartDate(a.dates) - getJourneyStartDate(b.dates));
 const nextEdition = journeys.find((journey) => journey.slug === "altijd-aan");
 const altijdAanBookingHref = "https://tally.so/r/pbogoy";
+const returningWeekendInterestLinks: Record<string, string> = {
+  "exercise-is-medicine": "https://tally.so/r/QKqRJA",
+  "bewustwording-connectie": "https://tally.so/r/b5Me82",
+};
 const homeReviews = [
   {
     name: "Wafa",
@@ -440,15 +444,17 @@ const optimizedHauteLoire = await getImage({
   <div class="flex flex-col">
   <section class="order-2 bg-base-50/80 border-y border-base-200 scroll-fade-in">
     <div class="max-w-6xl mx-auto px-6 py-8 lg:py-14 space-y-8">
-      <div class="flex items-end justify-between gap-4">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p class="uppercase text-xs tracking-[0.25em] text-base-500">
             Eerdere edities
           </p>
           <h3 class="text-3xl font-semibold text-base-900">
-            Eerdere SOLA-edities
+            Deze SOLA-weekenden keren terug in 2027
           </h3>
-          <p class="text-base-700">Weekenden die plaatsvonden van 31 juli tot 2 augustus 2026.</p>
+          <p class="mt-2 max-w-3xl text-base-700">
+            Beweging als medicijn en Van inzicht naar verdiepend denken en voelen krijgen in 2027 een nieuwe editie. De nieuwe data worden later bekendgemaakt.
+          </p>
         </div>
         <a class="text-sm font-semibold hover:text-accent-700" href="/reizen"
           >Bekijk alle reizen →</a
@@ -458,11 +464,11 @@ const optimizedHauteLoire = await getImage({
       <div class="weekend-scroll-track" aria-label="Eerdere SOLA-edities">
         {
           weekendHighlightsWithImages.map((weekend) => (
-            <a
-              href={`/weekenden/${weekend.slug}`}
+            <article
               class="rounded-3xl border border-base-200 overflow-hidden bg-base-25 shadow-sm hover:shadow-lg transition flex flex-col group cursor-pointer"
             >
-              <div
+              <a
+                href={`/weekenden/${weekend.slug}`}
                 class="relative aspect-video bg-base-200 overflow-hidden"
               >
                 {weekend.heroImage && (
@@ -476,34 +482,46 @@ const optimizedHauteLoire = await getImage({
                     decoding="async"
                   />
                 )}
+                <span class="absolute left-4 top-4 rounded-full bg-base-25/95 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-base-800 shadow-sm">
+                  Terug in 2027
+                </span>
                 <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
                   <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold">
                     Bekijk deze editie
                   </span>
                 </div>
-              </div>
+              </a>
               <div class="p-6 space-y-3 flex-1 flex flex-col">
-                <div class="flex items-center gap-3 text-xs uppercase tracking-wide text-base-500">
-                  <span class="px-3 py-1 rounded-full bg-base-100 border border-base-200">
+                <div class="flex flex-col items-start gap-2 text-xs uppercase tracking-wide text-base-500 sm:flex-row sm:items-center sm:gap-3">
+                  <span class="whitespace-nowrap px-3 py-1 rounded-full bg-base-100 border border-base-200">
                     {weekend.location}
                   </span>
-                  <span>31 juli – 2 augustus 2026</span>
+                  <span>Eerdere editie · 31 juli – 2 augustus 2026</span>
                 </div>
                 <h4 class="text-xl font-semibold text-base-900">
-                  {weekend.name}
+                  <a class="hover:text-accent-700" href={`/weekenden/${weekend.slug}`}>
+                    {weekend.name}
+                  </a>
                 </h4>
                 <p class="text-base-700">{weekend.shortDescription}</p>
-                <div class="mt-auto flex items-center justify-end text-sm font-semibold text-base-900 pt-2">
-                  <span class="text-accent-700 group-hover:underline">
-                    Bekijk deze editie
-                  </span>
+                <div class="mt-auto flex flex-wrap items-center justify-between gap-3 border-t border-base-200 pt-4 text-sm font-semibold">
+                  <a class="text-accent-700 hover:underline" href={`/weekenden/${weekend.slug}`}>
+                    Bekijk eerdere editie
+                  </a>
+                  <a
+                    href={returningWeekendInterestLinks[weekend.slug]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center justify-center rounded-full bg-accent-600 px-4 py-2.5 text-white transition hover:bg-accent-700"
+                  >
+                    Zet mij op de interesselijst
+                  </a>
                 </div>
               </div>
-            </a>
+            </article>
           ))
         }
       </div>
-      <div class="weekend-scroll-fade" aria-hidden="true"></div>
     </div>
     <a href="/reizen" class="hidden md:flex justify-end text-xs tracking-wide uppercase text-base-500 hover:text-accent-700">
       Meer reizen →
@@ -525,19 +543,9 @@ const optimizedHauteLoire = await getImage({
       scrollbar-color: rgba(53, 65, 46, 0.35) transparent;
     }
 
-    .weekend-scroll-track > a {
+    .weekend-scroll-track > article {
       scroll-snap-align: start;
       min-width: 0;
-    }
-
-    .weekend-scroll-fade {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 7rem;
-      height: calc(100% - 0.5rem);
-      pointer-events: none;
-      background: linear-gradient(90deg, rgba(246, 244, 240, 0) 0%, rgba(246, 244, 240, 0.92) 70%);
     }
 
     @media (max-width: 1023px) {
@@ -549,10 +557,6 @@ const optimizedHauteLoire = await getImage({
     @media (max-width: 767px) {
       .weekend-scroll-track {
         grid-auto-columns: minmax(260px, 90%);
-      }
-
-      .weekend-scroll-fade {
-        display: none;
       }
     }
   </style>
@@ -607,3 +611,4 @@ const optimizedHauteLoire = await getImage({
     </div>
   </section>
 </BaseLayout>
+
