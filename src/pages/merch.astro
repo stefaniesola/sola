@@ -80,14 +80,18 @@ const features = [
         </p>
       </div>
     </div>
-    <div class="relative min-h-[420px] overflow-hidden bg-base-100 p-6 sm:p-8">
-      <img
-        class="h-full w-full object-contain"
-        src="/images/sola-performance-tee-front.png"
-        alt="Voorzijde van het SOLA Performance Tee"
-        loading="eager"
-        decoding="async"
-      />
+    <div class="relative min-h-[420px] overflow-hidden bg-base-200">
+      <video
+        class="absolute inset-0 h-full w-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-label="SOLA Performance Tee in beweging"
+      >
+        <source src="/videos/sola-performance-tee.mp4" type="video/mp4" />
+      </video>
     </div>
   </section>
 
