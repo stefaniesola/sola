@@ -1,0 +1,225 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import heroImage from "../../assets/images/Simon Endurance Lab - performance coach (1) fiets.jpeg";
+import yogaImage from "../../assets/images/yoga Lisa LIV.png";
+import simonImage from "../../assets/images/simon-helleputte.webp";
+import hogeVenenImage from "../../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg";
+
+const pageTitle = "Beweging als medicijn: wat gebeurt er in je lichaam? | SOLA";
+const pageDescription =
+  "Ontdek wat beweging doet met je energie, bloedsuiker, hart, bloedvaten en herstel, samen met sportwetenschapper Simon Helleputte.";
+const publishedDate = "2026-08-16";
+const interestListUrl = "https://tally.so/r/QKqRJA";
+const siteUrl = Astro.site ?? Astro.url;
+const absoluteUrl = (path: string) => new URL(path, siteUrl).toString();
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: "Beweging als medicijn: wat gebeurt er wanneer je lichaam in beweging komt?",
+  description: pageDescription,
+  datePublished: publishedDate,
+  dateModified: publishedDate,
+  mainEntityOfPage: absoluteUrl(Astro.url.pathname),
+  author: {
+    "@type": "Person",
+    name: "Stefanie Deleu",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "SOLA",
+    url: absoluteUrl("/"),
+  },
+};
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  structuredData={articleSchema}
+>
+  <article class="bg-base-25">
+    <header>
+      <figure class="relative overflow-hidden border-y border-base-200 bg-base-100">
+        <Image
+          src={heroImage}
+          alt="Simon Helleputte fietst door een groene, heuvelachtige omgeving"
+          class="h-[clamp(310px,56vh,620px)] w-full object-cover object-[center_18%]"
+          loading="eager"
+          sizes="100vw"
+        />
+        <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-base-25/70 to-transparent"></div>
+      </figure>
+
+      <div class="mx-auto mt-8 max-w-4xl space-y-6 px-5 text-center sm:px-6 lg:mt-12">
+        <div class="flex flex-wrap items-center justify-center gap-3 text-xs uppercase tracking-[0.22em] text-base-500">
+          <span>SOLA inzicht</span>
+          <span aria-hidden="true">/</span>
+          <time datetime={publishedDate}>16 augustus 2026</time>
+        </div>
+        <h1 class="text-4xl font-semibold leading-[1.08] text-base-900 sm:text-5xl lg:text-6xl">
+          Beweging als medicijn: wat gebeurt er wanneer je lichaam in beweging komt?
+        </h1>
+        <p class="mx-auto max-w-3xl text-xl leading-relaxed text-base-700">
+          We weten dat bewegen gezond is. Maar waarom eigenlijk? Wat gebeurt er in je lichaam wanneer je beweegt, welke energie gebruikt het en wat hebben je bloedsuiker, hart, bloedvaten en herstel daarmee te maken?
+        </p>
+      </div>
+    </header>
+
+    <div class="mx-auto max-w-6xl px-5 py-10 sm:px-6 lg:py-16">
+      <div class="space-y-12 lg:space-y-16">
+        <section class="mx-auto grid max-w-5xl gap-8 text-lg leading-relaxed text-base-700 lg:grid-cols-[minmax(0,0.68fr)_minmax(240px,0.32fr)] lg:items-start lg:gap-12">
+          <div class="space-y-5">
+            <p>
+              Tijdens het SOLA-weekend <em>Beweging als medicijn</em> kijken we samen met performance coach en sportwetenschapper Simon Helleputte naar de wetenschap achter beweging. Niet om te bepalen welke sport je moet doen, maar om beter te begrijpen wat verschillende vormen van beweging in je lichaam teweegbrengen. Of je nu wandelt, yoga of pilates doet, met gewichten traint of aan een Hyrox deelneemt: je lichaam reageert vooral op hoe intensief, hoe lang en hoe regelmatig je beweegt.
+            </p>
+            <h2 class="pt-3 text-3xl font-semibold leading-tight text-base-900">Je lichaam kent geen sporthokjes</h2>
+            <p>
+              We delen beweging graag op in cardio, kracht, mobiliteit of ontspanning, maar voor je lichaam lopen die grenzen veel meer door elkaar. Een stevige wandeling bergop kan je hartslag flink verhogen, terwijl een gecontroleerde yogahouding behoorlijk wat kracht vraagt. Tijdens één activiteit worden vaak tegelijk je spieren, uithouding, evenwicht en coördinatie aangesproken.
+            </p>
+            <p>
+              Er bestaat daarom niet één bewegingsvorm die voor iedereen de beste is. Belangrijker is welke prikkel je lichaam krijgt en of die aansluit bij wat je nodig hebt. De ene dag kan dat een intensieve inspanning zijn, de andere dag een rustige wandeling. Wie beter begrijpt wat beweging doet, kan daarin bewuster kiezen.
+            </p>
+          </div>
+
+          <figure class="space-y-3 lg:sticky lg:top-28">
+            <Image
+              src={simonImage}
+              alt="Portret van performance coach en sportwetenschapper Simon Helleputte"
+              class="aspect-[4/5] w-full rounded-2xl border border-base-200 object-cover"
+              loading="lazy"
+              sizes="(max-width: 1024px) 100vw, 320px"
+            />
+            <figcaption class="text-sm leading-relaxed text-base-500">
+              Simon Helleputte, performance coach en sportwetenschapper
+            </figcaption>
+          </figure>
+        </section>
+
+        <figure class="mx-auto max-w-5xl overflow-hidden rounded-2xl border border-base-200 bg-base-100">
+          <Image
+            src={yogaImage}
+            alt="Groep mensen die samen buiten yoga beoefenen"
+            class="aspect-[16/8] w-full object-cover object-center"
+            loading="lazy"
+            sizes="(max-width: 1100px) 100vw, 1024px"
+          />
+          <figcaption class="px-5 py-3 text-sm leading-relaxed text-base-500">
+            Beweging laat zich niet in één vorm vatten: intensiteit, duur en regelmaat bepalen mee welke prikkel je lichaam krijgt.
+          </figcaption>
+        </figure>
+
+        <div class="mx-auto grid max-w-5xl gap-x-12 gap-y-10 text-lg leading-relaxed text-base-700 lg:grid-cols-2">
+          <section class="space-y-5">
+            <h2 class="text-3xl font-semibold leading-tight text-base-900">Waar haalt je lichaam zijn energie?</h2>
+            <p>
+              Zodra je begint te bewegen, hebben je spieren energie nodig. Die halen ze voornamelijk uit vetten en koolhydraten, maar niet altijd in dezelfde verhouding. Tijdens een rustige inspanning kan je lichaam relatief veel vet gebruiken, terwijl koolhydraten belangrijker worden wanneer de intensiteit stijgt omdat ze sneller energie kunnen leveren.
+            </p>
+            <p>
+              Welke energiebron je lichaam aanspreekt, hangt daarnaast af van de duur van de inspanning, wat je gegeten hebt en hoeveel energie beschikbaar is. Rustig, langer of intensiever bewegen vraagt dus telkens iets anders van je energiesysteem.
+            </p>
+          </section>
+
+          <section class="space-y-5">
+            <h2 class="text-3xl font-semibold leading-tight text-base-900">Wat heeft nuchter bewegen werkelijk te bieden?</h2>
+            <p>
+              Over nuchter bewegen bestaan veel stellige claims. Het zou de vetverbranding verhogen en helpen om af te vallen. Tijdens rustige, nuchtere beweging gebruikt je lichaam inderdaad relatief meer vet als energiebron, maar dat betekent niet automatisch dat je op langere termijn meer lichaamsvet verliest.
+            </p>
+            <p>
+              Daarvoor telt het volledige plaatje: hoeveel je beweegt, hoeveel energie je inneemt en verbruikt, hoe intensief je beweegt en hoe goed je herstelt. Een rustige wandeling voor het ontbijt is bovendien iets anders dan een zware training zonder vooraf te eten. Tijdens het weekend bekijken we daarom wanneer nuchter bewegen zinvol kan zijn en wanneer het weinig extra voordeel biedt.
+            </p>
+          </section>
+        </div>
+
+        <section class="mx-auto grid max-w-5xl gap-8 border-y border-base-200 py-10 text-lg leading-relaxed text-base-700 lg:grid-cols-2 lg:gap-12">
+          <div class="space-y-5">
+            <h2 class="text-3xl font-semibold leading-tight text-base-900">Beweging helpt je lichaam om energie te verwerken</h2>
+            <p>
+              Wanneer je spieren actief worden, hebben ze meer glucose nodig. Ze nemen die uit je bloed op om energie vrij te maken. Ook na het bewegen kan je lichaam tijdelijk gevoeliger reageren op insuline, het hormoon dat helpt om je bloedsuiker te regelen.
+            </p>
+            <p>
+              Je spieren spelen daardoor niet alleen een rol in kracht of sportprestaties, maar ook in je stofwisseling. En daarvoor hoef je niet altijd een volledige training af te werken. Ook wandelen, fietsen, tuinieren of regelmatig opstaan tijdens een zittende dag draagt bij aan de beweging die je lichaam doorheen de dag krijgt.
+            </p>
+          </div>
+
+          <div class="space-y-5">
+            <h2 class="text-3xl font-semibold leading-tight text-base-900">Je hart en bloedvaten passen zich aan</h2>
+            <p>
+              Ook je hart en bloedvaten reageren zodra je beweegt. Je hart pompt meer bloed rond, je bloedvaten passen zich aan en je spieren krijgen meer zuurstof en voedingsstoffen. Wanneer je regelmatig beweegt, wordt je lichaam daar efficiënter in. Dat kan onder meer een positieve invloed hebben op je bloeddruk, bloedsuikerregulatie en cardiovasculaire gezondheid.
+            </p>
+            <p>
+              Ook je vermogen om zuurstof op te nemen en te gebruiken speelt daarin een rol. Dat wordt vaak uitgedrukt als VO₂max, een cijfer dat steeds vaker op sporthorloges verschijnt. Zo’n meting kan interessante informatie geven, maar vertelt slechts één deel van het verhaal. Tijdens het weekend leer je daarom zowel wat zulke cijfers betekenen als waar hun beperkingen liggen.
+            </p>
+          </div>
+        </section>
+
+        <div class="mx-auto grid max-w-5xl gap-x-12 gap-y-10 text-lg leading-relaxed text-base-700 lg:grid-cols-2">
+          <section class="space-y-5">
+            <h2 class="text-3xl font-semibold leading-tight text-base-900">Herstel maakt deel uit van bewegen</h2>
+            <p>
+              De aandacht gaat vaak naar het actieve moment: hoe lang heb je bewogen en hoe intensief was het? Maar ook daarna heeft je lichaam nog werk te doen. Het moet vocht aanvullen, energievoorraden herstellen en zich aanpassen aan de prikkel die het kreeg. Voeding, hydratatie en slaap bepalen mee hoe goed dat proces verloopt.
+            </p>
+            <p>
+              Herstel betekent daarbij niet automatisch volledig stilvallen. Rustige beweging kan er juist deel van uitmaken. Belangrijk is de balans tussen belasting en herstel, en leren herkennen wanneer je lichaam opnieuw klaar is voor een zwaardere prikkel.
+            </p>
+          </section>
+
+          <section class="space-y-5">
+            <h2 class="text-3xl font-semibold leading-tight text-base-900">Data kan helpen, maar vertelt niet alles</h2>
+            <p>
+              Sporthorloges en andere wearables geven steeds meer informatie over slaap, rustpols, belasting en hartritmevariabiliteit of HRV. Die data kan nuttig zijn om patronen te herkennen, maar één afwijkende waarde zegt weinig zonder context. Beweging, stress, slaap, alcohol of ziekte kunnen allemaal invloed hebben op wat je ziet.
+            </p>
+            <p>
+              Daarom is een evolutie over een langere periode vaak interessanter dan één groene of rode score. Data wordt vooral waardevol wanneer je ze combineert met wat er in je leven gebeurt en met hoe je je werkelijk voelt. Tijdens het weekend bekijken we hoe je die informatie kan gebruiken zonder dat je horloge bepaalt of je een goede of slechte dag hebt.
+            </p>
+          </section>
+        </div>
+
+        <section class="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[minmax(260px,0.4fr)_minmax(0,0.6fr)] lg:items-center lg:gap-12">
+          <figure class="overflow-hidden rounded-2xl border border-base-200 bg-base-100">
+            <Image
+              src={hogeVenenImage}
+              alt="Uitgestrekt landschap in de Hoge Venen"
+              class="aspect-[4/5] w-full object-cover"
+              loading="lazy"
+              sizes="(max-width: 1024px) 100vw, 400px"
+            />
+          </figure>
+
+          <div class="space-y-5 text-lg leading-relaxed text-base-700">
+            <h2 class="text-3xl font-semibold leading-tight text-base-900">Begrijpen wat bij jou past</h2>
+            <p>
+              Online vind je eindeloos veel adviezen over bewegen, voeding en herstel. Beweeg meer, train intensiever, neem rust, sport nuchter, eet vooraf, volg je data of luister vooral naar je gevoel. Zonder context lijken veel van die adviezen elkaar tegen te spreken.
+            </p>
+            <p>
+              Tijdens <em>Beweging als medicijn</em> brengt Simon de wetenschappelijke achtergrond terug naar begrijpelijke principes. Je ontdekt hoe je lichaam energie gebruikt, hoe beweging je stofwisseling en cardiovasculaire gezondheid beïnvloedt en welke rol herstel daarin speelt. We koppelen die kennis meteen aan de ervaring van het weekend: bewegen in de Hoge Venen, vers en voedzaam eten en bewust ruimte maken voor herstel.
+            </p>
+            <p>
+              Je hoeft daarvoor geen specifieke sport te beoefenen of een bepaald niveau te hebben. Dit weekend is er voor mensen die bewegen — veel, weinig of ergens daartussenin — en beter willen begrijpen wat dat met hun lichaam doet.
+            </p>
+          </div>
+        </section>
+
+        <section class="mx-auto max-w-5xl rounded-3xl border border-base-200 bg-base-50/80 p-7 text-center sm:p-10 lg:p-12">
+          <div class="mx-auto max-w-3xl space-y-5">
+            <p class="text-xs uppercase tracking-[0.22em] text-accent-700">Terug in 2027</p>
+            <h2 class="text-3xl font-semibold leading-tight text-base-900 sm:text-4xl">Beweging als medicijn keert terug</h2>
+            <p class="text-lg leading-relaxed text-base-700">
+              Wil je erbij zijn wanneer we dit weekend opnieuw organiseren? Zet je op de interesselijst en ontvang als eerste de nieuwe datum, locatie en verdere details.
+            </p>
+            <a
+              href={interestListUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center rounded-full bg-accent-600 px-6 py-3.5 font-semibold text-white transition hover:bg-accent-700"
+            >
+              Zet mij op de interesselijst
+            </a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
