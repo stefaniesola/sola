@@ -1,0 +1,429 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import heroWalkImage from "../assets/images/bedrijven/hero-teamwandeling.jpg";
+import heroWorkshopImage from "../assets/images/bedrijven/hero-workshop-buiten.jpg";
+import heroSessionImage from "../assets/images/bedrijven/hero-sessie-binnen.jpg";
+import heroConversationImage from "../assets/images/bedrijven/hero-gesprek-buiten.jpg";
+import movementExampleImage from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (1).jpg";
+import dinnerWideImage from "../assets/images/bedrijven/teamtafel-buiten.jpeg";
+import dinnerCloseImage from "../assets/images/bedrijven/teamtafel-verbinding.jpeg";
+import recoveryImage from "../assets/images/bedrijven/team-herstel-buiten.jpeg";
+import skyImage from "../assets/images/bedrijven/natuur-zonsondergang.jpeg";
+
+const title = "SOLA voor bedrijven | Actieve teambuildings rond gezondheid";
+const description =
+  "SOLA organiseert actieve teambuildings rond gezondheid, beweging en natuur, op maat van teams tot 50 personen.";
+
+const themes = [
+  "Ademhaling en stress",
+  "Energie en herstel",
+  "Beweging en gezondheid",
+  "Focus en veerkracht",
+  "Gezonde gewoontes",
+  "Patronen en emotieregulatie",
+  "Verbinding binnen het team",
+];
+
+const organization = [
+  "Een geschikte expert en een passend programma",
+  "Activiteiten en workshops",
+  "Een locatie dicht bij de natuur",
+  "Maaltijden en eventuele overnachting",
+  "Planning en praktische coördinatie",
+  "Vervoer, trein- of vliegtickets wanneer dat past bij de locatie",
+];
+
+const gallery = [
+  { src: dinnerWideImage, alt: "Deelnemers samen aan een lange tafel in de buitenlucht" },
+  { src: dinnerCloseImage, alt: "Deelnemers die samen buiten eten" },
+  { src: recoveryImage, alt: "Deelnemers die buiten ontspannen bij zonsondergang" },
+  { src: skyImage, alt: "Zonsondergang tijdens een SOLA-ervaring in de natuur" },
+];
+
+const heroGallery = [
+  { src: heroWalkImage, alt: "Deelnemers wandelen samen door het groen" },
+  { src: heroWorkshopImage, alt: "Deelnemers volgen een begeleide sessie in de natuur" },
+  { src: heroSessionImage, alt: "Deelnemers volgen samen een inhoudelijke sessie" },
+  { src: heroConversationImage, alt: "Deelnemers tijdens een groepsgesprek in de buitenlucht" },
+];
+
+const movementTopics = [
+  "Waarom fysieke inspanning belangrijk is voor gezondheid en vitaliteit",
+  "Wat er in het lichaam gebeurt tijdens inspanning",
+  "De invloed van beweging op hart, uithouding en stofwisseling",
+  "De samenhang tussen beweging, voeding en herstel",
+  "Hoe medewerkers beweging haalbaar kunnen inpassen in hun dagelijks leven",
+];
+
+const teamTakeaways = [
+  "Begrijpelijke informatie over het gekozen gezondheidsthema",
+  "Praktische inzichten die medewerkers in hun dagelijks leven kunnen toepassen",
+  "Meer inzicht in de samenhang tussen beweging, belasting en herstel",
+  "Ideeën om beweging haalbaar in te passen tijdens of rond de werkdag",
+  "Een gezamenlijke ervaring buiten de gewone werkomgeving",
+  "De kans om collega’s op een andere manier te leren kennen",
+];
+
+const processSteps = [
+  {
+    title: "Kennismaking",
+    text: "Jullie vertellen ons over het team, de aanleiding, de gewenste timing en het beschikbare budget.",
+  },
+  {
+    title: "Voorstel",
+    text: "Wij stellen een thema, expert, programma en mogelijke locatie voor.",
+  },
+  {
+    title: "Afstemming",
+    text: "We leggen samen de inhoud en praktische details vast.",
+  },
+  {
+    title: "Teamdag",
+    text: "SOLA coördineert de organisatie en blijft jullie aanspreekpunt.",
+  },
+];
+---
+
+<BaseLayout
+  {title}
+  {description}
+  ogImage={heroWalkImage.src}
+  ogImageAlt="Deelnemers wandelen samen in de natuur"
+>
+  <section class="border-b border-base-200 bg-base-25">
+    <div class="mx-auto grid max-w-6xl gap-7 px-6 py-8 lg:grid-cols-[1.04fr_0.96fr] lg:items-center lg:py-12">
+      <div class="max-w-2xl space-y-5">
+        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-accent-700">SOLA voor bedrijven</p>
+        <h1 class="text-4xl font-semibold leading-[1.06] text-base-900 sm:text-5xl lg:text-6xl">
+          Breng je team samen én in beweging
+        </h1>
+        <p class="text-lg leading-relaxed text-base-700">
+          SOLA organiseert actieve teamdagen rond gezondheid. We combineren heldere uitleg van
+          een deskundige met beweging in de natuur en praktische inzichten die medewerkers ook
+          na de teamdag kunnen gebruiken.
+        </p>
+        <p class="leading-relaxed text-base-700">
+          Van een halve dag tot een meerdaagse ervaring: we stemmen het programma en de
+          praktische organisatie af op jullie team.
+        </p>
+        <a
+          href="#vertel-ons"
+          class="inline-flex items-center justify-center rounded-full bg-accent-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/50"
+        >
+          Vertel ons meer over jullie team
+        </a>
+      </div>
+      <div class="relative overflow-hidden rounded-[1.75rem] bg-base-200">
+        <div
+          data-hero-gallery
+          class="flex snap-x snap-mandatory gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {heroGallery.map((photo, index) => (
+            <figure class="min-w-full snap-start sm:min-w-[calc(50%-0.25rem)]">
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                class="h-[340px] w-full object-cover lg:h-[440px]"
+                widths={[480, 720, 960]}
+                sizes="(min-width: 640px) 22vw, 100vw"
+                loading={index < 2 ? "eager" : "lazy"}
+              />
+            </figure>
+          ))}
+        </div>
+        <div class="absolute bottom-4 right-4 flex gap-2">
+          <button
+            type="button"
+            data-hero-prev
+            aria-label="Vorige foto"
+            class="grid size-11 place-items-center rounded-full border border-white/70 bg-base-25/90 text-xl text-base-900 shadow-sm backdrop-blur transition hover:bg-base-25 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/70"
+          >
+            ←
+          </button>
+          <button
+            type="button"
+            data-hero-next
+            aria-label="Volgende foto"
+            class="grid size-11 place-items-center rounded-full border border-white/70 bg-base-25/90 text-xl text-base-900 shadow-sm backdrop-blur transition hover:bg-base-25 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/70"
+          >
+            →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-8 lg:py-10">
+    <div class="grid gap-6 lg:grid-cols-2">
+      <article class="rounded-2xl border border-base-200 bg-base-25 p-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">De formule</p>
+        <h2 class="mt-3 text-3xl font-semibold leading-tight text-base-900">Een programma dat past</h2>
+        <p class="mt-4 leading-relaxed text-base-700">
+          Kies voor een halve dag, een volledige teamdag, een tweedaagse of een meerdaagse
+          ervaring. SOLA richt zich op teams tot maximaal 50 personen.
+        </p>
+      </article>
+      <article class="rounded-2xl border border-accent-200 bg-accent-50/70 p-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Mogelijke thema’s</p>
+        <h2 class="mt-3 text-3xl font-semibold leading-tight text-base-900">Gezondheid als vertrekpunt</h2>
+        <ul class="mt-5 flex flex-wrap gap-2" aria-label="Mogelijke gezondheidsthema's">
+          {themes.map((theme) => (
+            <li class="rounded-full border border-accent-200 bg-base-25/75 px-3 py-1.5 text-sm text-base-800">{theme}</li>
+          ))}
+        </ul>
+        <p class="mt-5 text-sm leading-relaxed text-base-700">
+          Dit zijn mogelijke richtingen. De precieze inhoud stemmen we af op jullie vraag en team.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="border-y border-base-200 bg-base-25">
+    <div class="mx-auto max-w-6xl px-6 py-8 lg:py-10">
+      <div class="grid gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:items-start">
+        <figure class="overflow-hidden rounded-[1.5rem] bg-base-200">
+          <Image
+            src={movementExampleImage}
+            alt="Landschap in de Hoge Venen tijdens de eerdere SOLA-editie Beweging als medicijn"
+            class="aspect-[16/10] w-full object-cover lg:aspect-[4/3]"
+            widths={[560, 840, 1120]}
+            sizes="(min-width: 1024px) 40vw, 100vw"
+            loading="lazy"
+          />
+        </figure>
+
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Een concreet voorbeeld</p>
+          <h2 class="mt-3 text-3xl font-semibold leading-tight text-base-900 sm:text-4xl">
+            Beweging als medicijn, vertaald naar jullie team
+          </h2>
+          <div class="mt-4 space-y-3 leading-relaxed text-base-700">
+            <p>
+              Tijdens een eerdere SOLA-editie stond de impact van beweging op onze gezondheid
+              centraal. Bewegingswetenschapper Simon Helleputte legde op een begrijpelijke manier
+              uit wat fysieke inspanning doet met het hart, de uithouding en de stofwisseling. Ook
+              de samenhang tussen beweging, voeding en herstel kwam aan bod.
+            </p>
+            <p>
+              Die inhoud kunnen we samen met de expert vertalen naar een teamdag of meerdaags
+              programma. De precieze invulling stemmen we af op jullie team, de beschikbare tijd
+              en het gewenste activiteitenniveau.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 grid gap-4 lg:grid-cols-2 lg:items-stretch">
+        <div class="h-full rounded-2xl border border-base-200 bg-white p-5">
+          <h3 class="text-xl font-semibold text-base-900">Wat kan aan bod komen?</h3>
+          <ul class="mt-4 grid gap-x-6 gap-y-3 sm:grid-cols-2">
+            {movementTopics.map((topic) => (
+              <li class="flex gap-3 leading-snug text-base-700">
+                <span aria-hidden="true" class="mt-1 text-accent-700">→</span>
+                <span>{topic}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="flex flex-col">
+          <div class="flex flex-1 flex-col gap-4 rounded-2xl border border-accent-200 bg-accent-50/70 p-5 sm:flex-row sm:items-start">
+            <div class="flex shrink-0 items-center gap-3 sm:block sm:w-24">
+              <p class="text-3xl font-semibold leading-none text-base-900">9/10</p>
+              <p class="text-xs font-semibold uppercase tracking-[0.15em] text-base-600 sm:mt-2">
+                Eerdere editie
+              </p>
+            </div>
+            <blockquote class="min-w-0 sm:border-l sm:border-accent-200 sm:pl-5">
+              <p class="leading-relaxed text-base-800">
+                “Een heel spontaan weekend met een leuke dynamiek en inhoudelijk zeer boeiende
+                sessies. Ik kom rijker terug thuis.”
+              </p>
+              <footer class="mt-3 text-sm font-semibold text-base-700">
+                Deelnemer aan de eerdere SOLA-editie
+              </footer>
+              <p class="mt-2 text-xs leading-relaxed text-base-600">
+                De eerdere SOLA-editie kreeg van de deelnemers een gemiddelde beoordeling van
+                9/10. Beoordeling van het SOLA-weekend voor particulieren, niet van een bedrijfsprogramma.
+              </p>
+            </blockquote>
+          </div>
+
+          <a
+            href="/weekenden/exercise-is-medicine"
+            class="mt-4 inline-flex self-start items-center justify-center rounded-full border border-base-300 px-5 py-2.5 text-sm font-semibold text-base-900 transition hover:border-accent-500 hover:text-accent-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/50"
+          >
+            Bekijk de eerdere SOLA-editie
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-8 lg:py-10">
+    <div class="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+      <article class="rounded-2xl border border-base-200 bg-base-25 p-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Na de teamdag</p>
+        <h2 class="mt-3 text-3xl font-semibold leading-tight text-base-900">Wat neemt je team mee?</h2>
+        <ul class="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+          {teamTakeaways.map((takeaway) => (
+            <li class="flex gap-3 leading-snug text-base-700">
+              <span aria-hidden="true" class="mt-1 text-accent-700">→</span>
+              <span>{takeaway}</span>
+            </li>
+          ))}
+        </ul>
+      </article>
+
+      <article class="rounded-2xl border border-accent-200 bg-accent-50/70 p-6">
+        <h2 class="text-3xl font-semibold leading-tight text-base-900">Vertrekken vanuit jullie vraag</h2>
+        <p class="mt-5 leading-relaxed text-base-700">
+          Elk team is anders. Daarom vertrekken we niet van een standaardpakket, maar van jullie
+          vraag. Willen jullie medewerkers meer inzicht geven in een gezondheidsthema, praktische
+          handvatten aanbieden of samen een actieve dag beleven? Op basis daarvan zoeken we een
+          geschikte expert, activiteiten, locatie en timing.
+        </p>
+        <a
+          href="#vertel-ons"
+          class="mt-5 inline-flex items-center justify-center rounded-full bg-accent-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-500/50"
+        >
+          Vraag een voorstel op maat aan
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <section class="bg-base-900 text-white">
+    <div class="mx-auto grid max-w-6xl gap-7 px-6 py-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:py-10">
+      <div class="space-y-4">
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-300">Praktisch ontzorgd</p>
+        <h2 class="text-3xl font-semibold leading-tight text-white">Jullie team, onze organisatie</h2>
+        <p class="leading-relaxed text-white/80">
+          Op basis van jullie vraag stellen we een programma samen en zoeken we een geschikte
+          expert, activiteit en locatie. Indien gewenst regelen we ook maaltijden, overnachting en
+          vervoer.
+        </p>
+        <p class="font-semibold text-white">Jullie brengen het team samen. Wij zorgen dat het geheel klopt.</p>
+      </div>
+      <ul class="grid gap-x-8 border-y border-white/25 sm:grid-cols-2">
+        {organization.map((item) => (
+          <li class="flex gap-3 border-b border-white/20 py-3.5 text-white/85 last:border-b-0 sm:[&:nth-last-child(-n+2)]:border-b-0">
+            <span aria-hidden="true" class="mt-1 text-accent-300">→</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-6 py-8 lg:py-10" aria-labelledby="sfeer-heading">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Samen beleven</p>
+        <h2 id="sfeer-heading" class="mt-2 text-3xl font-semibold text-base-900">Een indruk van SOLA</h2>
+      </div>
+      <div class="hidden gap-2 sm:flex">
+        <button type="button" data-gallery-prev aria-label="Vorige foto" class="grid size-11 place-items-center rounded-full border border-base-300 text-xl text-base-900 transition hover:border-accent-500 hover:text-accent-700">←</button>
+        <button type="button" data-gallery-next aria-label="Volgende foto" class="grid size-11 place-items-center rounded-full border border-base-300 text-xl text-base-900 transition hover:border-accent-500 hover:text-accent-700">→</button>
+      </div>
+    </div>
+    <div data-gallery class="mt-5 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      {gallery.map((photo) => (
+        <figure class="min-w-[82%] snap-start overflow-hidden rounded-2xl bg-base-200 sm:min-w-[56%] lg:min-w-[42%]">
+          <Image
+            src={photo.src}
+            alt={photo.alt}
+            class="aspect-[16/10] w-full object-cover"
+            widths={[480, 720, 960]}
+            sizes="(min-width: 1024px) 42vw, (min-width: 640px) 56vw, 82vw"
+            loading="lazy"
+          />
+        </figure>
+      ))}
+    </div>
+  </section>
+
+  <section class="border-t border-base-200 bg-base-25">
+    <div class="mx-auto max-w-6xl px-6 py-8 lg:py-10">
+      <h2 class="text-3xl font-semibold leading-tight text-base-900">Hoe pakken we het aan?</h2>
+      <ol class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {processSteps.map((step, index) => (
+          <li class="grid grid-cols-[auto_1fr] gap-x-3 rounded-2xl border border-base-200 bg-white p-4">
+            <span class="row-span-2 grid size-8 place-items-center rounded-full bg-base-900 text-sm font-semibold text-white">
+              {index + 1}
+            </span>
+            <h3 class="text-lg font-semibold leading-tight text-base-900">{step.title}</h3>
+            <p class="mt-1 text-sm leading-snug text-base-700">{step.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section id="vertel-ons" class="scroll-mt-28 border-t border-base-200 bg-base-25">
+    <div class="mx-auto grid max-w-6xl gap-7 px-6 py-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-start lg:py-10">
+      <div class="space-y-4 lg:sticky lg:top-28">
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Aanvraag</p>
+        <h2 class="text-3xl font-semibold leading-tight text-base-900">Vertel ons over jullie team</h2>
+        <p class="leading-relaxed text-base-700">
+          Vertel ons kort over jullie team, wat jullie zoeken, wanneer de teamdag kan plaatsvinden
+          en welk budget jullie voorzien. We nemen persoonlijk contact op en bekijken samen wat
+          haalbaar is. De aanvraag is volledig vrijblijvend.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-base-200 bg-base-25 p-3 shadow-sm sm:p-5">
+        <iframe
+          data-tally-src="https://tally.so/embed/44VDvY?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+          loading="lazy"
+          width="100%"
+          height="760"
+          frameborder="0"
+          title="Vertel ons over jullie team"
+          class="w-full"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    const heroGallery = document.querySelector("[data-hero-gallery]");
+    const moveHeroGallery = (direction) => {
+      if (!heroGallery) return;
+      const card = heroGallery.querySelector("figure");
+      const distance = card ? card.getBoundingClientRect().width + 8 : heroGallery.clientWidth;
+      heroGallery.scrollBy({ left: direction * distance, behavior: "smooth" });
+    };
+    document.querySelector("[data-hero-prev]")?.addEventListener("click", () => moveHeroGallery(-1));
+    document.querySelector("[data-hero-next]")?.addEventListener("click", () => moveHeroGallery(1));
+
+    const gallery = document.querySelector("[data-gallery]");
+    const moveGallery = (direction) => {
+      if (!gallery) return;
+      const card = gallery.querySelector("figure");
+      const distance = card ? card.getBoundingClientRect().width + 16 : gallery.clientWidth * 0.8;
+      gallery.scrollBy({ left: direction * distance, behavior: "smooth" });
+    };
+    document.querySelector("[data-gallery-prev]")?.addEventListener("click", () => moveGallery(-1));
+    document.querySelector("[data-gallery-next]")?.addEventListener("click", () => moveGallery(1));
+
+    const loadTallyEmbeds = () => {
+      if (window.Tally) {
+        window.Tally.loadEmbeds();
+        return;
+      }
+      document.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((iframe) => {
+        iframe.src = iframe.dataset.tallySrc;
+      });
+    };
+    if (!document.querySelector('script[src="https://tally.so/widgets/embed.js"]')) {
+      const script = document.createElement("script");
+      script.src = "https://tally.so/widgets/embed.js";
+      script.onload = loadTallyEmbeds;
+      script.onerror = loadTallyEmbeds;
+      document.body.appendChild(script);
+    } else {
+      loadTallyEmbeds();
+    }
+  </script>
+</BaseLayout>
