@@ -1,65 +1,43 @@
 ---
+import { getImage } from "astro:assets";
+import AltijdAanContent from "../../components/reizen/AltijdAanContent.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import type { Journey } from "../../data/content";
 import { journeys } from "../../data/content";
-import { getImage } from "astro:assets";
 import terraImage from "../../assets/images/1513986998.jpg";
 import { processMarkdown } from "../../utils/markdown";
 
 export async function getStaticPaths() {
-  const trips = journeys.filter((journey) => journey.type === "Reis");
   return Promise.all(
-    trips.map(async (trip) => {
-      let imageUrl =
-        typeof trip.heroImage === "string" ? trip.heroImage : trip.heroImage?.src;
+    journeys.filter((journey) => journey.type === "Reis").map(async (trip) => {
+      let imageUrl = typeof trip.heroImage === "string" ? trip.heroImage : trip.heroImage?.src;
       let heroImageData;
+
       if (trip.heroImage) {
-        // If it's a local image path, process it
-        if (typeof trip.heroImage === "string") {
-          if (trip.heroImage.startsWith("/src/assets/images/")) {
-            if (trip.slug === "sola-terra-frankrijk") {
-              heroImageData = await getImage({
-                src: terraImage,
-                width: 1400,
-                quality: 85,
-              });
-              imageUrl = heroImageData.src;
-            }
-          }
-        } else {
-          heroImageData = await getImage({
-            src: trip.heroImage,
-            width: 1400,
-            quality: 85,
-          });
+        if (typeof trip.heroImage === "string" && trip.heroImage.startsWith("/src/assets/images/") && trip.slug === "sola-terra-frankrijk") {
+          heroImageData = await getImage({ src: terraImage, width: 1400, quality: 85 });
+          imageUrl = heroImageData.src;
+        } else if (typeof trip.heroImage !== "string") {
+          heroImageData = await getImage({ src: trip.heroImage, width: 1400, quality: 85 });
           imageUrl = heroImageData.src;
         }
       }
-      return {
-        params: { slug: trip.slug },
-        props: { trip: { ...trip, heroImage: imageUrl, heroImageData } },
-      };
+
+      return { params: { slug: trip.slug }, props: { trip: { ...trip, heroImage: imageUrl, heroImageData } } };
     }),
   );
 }
 
 const { trip } = Astro.props as { trip: Journey };
-
-// Process markdown content and extract TOC
-const markdownContent = trip.longread || "";
-const { html: htmlContent, toc } = processMarkdown(markdownContent);
+const isAltijdAan = trip.slug === "altijd-aan";
+const { html: htmlContent, toc } = processMarkdown(trip.longread || "");
 const metaDescriptionBase = `${trip.shortDescription} Locatie: ${trip.location}. Data: ${trip.dates}.`;
-const metaDescription =
-  metaDescriptionBase.length > 160
-    ? `${metaDescriptionBase.slice(0, 157).trimEnd()}...`
-    : metaDescriptionBase;
+const metaDescription = metaDescriptionBase.length > 160 ? `${metaDescriptionBase.slice(0, 157).trimEnd()}...` : metaDescriptionBase;
 const tripTitle = `SOLA Travel | ${trip.name} | ${trip.location}`;
 const heroImageAlt = `${trip.name} in ${trip.location}`;
 const baseUrl = Astro.site ?? Astro.url;
 const canonicalUrl = new URL(Astro.url.pathname, baseUrl).toString();
-const absoluteHeroImage = trip.heroImage
-  ? new URL(trip.heroImage, baseUrl).toString()
-  : undefined;
+const absoluteHeroImage = trip.heroImage ? new URL(trip.heroImage, baseUrl).toString() : undefined;
 const priceValue = trip.price.match(/\d+([.,]\d+)?/g)?.join("");
 const touristTripSchema = {
   "@context": "https://schema.org",
@@ -68,355 +46,48 @@ const touristTripSchema = {
   description: trip.shortDescription,
   image: absoluteHeroImage,
   url: canonicalUrl,
-  provider: {
-    "@type": "Organization",
-    name: "SOLA",
-    url: baseUrl.toString(),
-  },
-  location: {
-    "@type": "Place",
-    name: trip.location,
-  },
-  ...(priceValue
-    ? {
-        offers: {
-          "@type": "Offer",
-          price: priceValue,
-          priceCurrency: "EUR",
-          url: canonicalUrl,
-        },
-      }
-    : {}),
+  provider: { "@type": "Organization", name: "SOLA", url: baseUrl.toString() },
+  location: { "@type": "Place", name: trip.location },
+  ...(priceValue ? { offers: { "@type": "Offer", price: priceValue, priceCurrency: "EUR", url: canonicalUrl } } : {}),
 };
-const isInterestTeaser = trip.isTeaser && trip.slug === "altijd-aan";
-const altijdAanBookingHref = "https://tally.so/r/pbogoy";
-const teaserFacts = [
-  ["Data", "Vrijdag 23 april t.e.m. zondag 25 april 2027"],
-  ["Locatie", "Sourbrodt, Hoge Venen, Ardennen"],
-  ["Prijs", "€670"],
-  ["Groep", "Min. 8 - max. 14 deelnemers"],
-];
-const teaserHeroIntro = [
-  "Voor wie niet moe is van te weinig doen, maar van te lang aan staan.",
-  "Je neemt rust, maar je lichaam blijft alert. Je slaapt, maar wordt niet echt opgeladen wakker. Je doet veel goed, maar je systeem schakelt niet vanzelf terug naar herstel.",
-  "Dit SOLA-weekend vertrekt vanuit fysiologie: wat gebeurt er in je lichaam wanneer je te lang in actiestand blijft? En hoe kan je je zenuwstelsel via beweging, yoga en lichaamsbewustzijn opnieuw leren schakelen?",
-];
-const shortIntroParagraphs = [
-  "Altijd aan? is een SOLA-weekend rond fysiologie, zenuwstelsel en herstel.",
-  "We vertrekken vanuit een herkenbaar gevoel: je doet veel goed, maar je lichaam schakelt niet meer vanzelf naar herstel. Je kan rust nemen, maar toch alert blijven. Je kan slapen, maar niet opgeladen wakker worden. Je kan weinig op je planning hebben, maar toch spanning of vermoeidheid voelen.",
-  "Tijdens dit weekend leer je beter begrijpen hoe je zenuwstelsel werkt, waarom je lichaam soms in actiestand blijft hangen en wat herstel fysiologisch nodig heeft.",
-  "We combineren duidelijke uitleg met wandelen, ademhaling, lichaamsgerichte oefeningen, prikkels en natuur. Niet om nog meer te moeten doen, maar om slimmer te leren schakelen tussen actie en herstel.",
-];
-const whyBlocks = [
-  ["Je systeem blijft aan", "Je hoofd weet dat het rusttijd is, maar je lichaam blijft alert. Je leert herkennen waarom je systeem moeilijk zakt en welke signalen tonen dat je te lang in actiestand blijft."],
-  ["Herstel is fysiologie", "Herstellen is geen luxe en geen kwestie van wilskracht. Het vraagt veiligheid, ritme, slaapdruk, voldoende prikkelarme momenten en een zenuwstelsel dat opnieuw kan schakelen."],
-  ["Trainbaar, maar niet forceerbaar", "Je kan herstel niet afdwingen, maar je kan het wel beter ondersteunen. Via kleine, concrete keuzes in gedrag, omgeving, beweging en dagritme bouw je opnieuw herstelvermogen op. Herstel is meer dan ontspannen of niets doen. Net zoals je je conditie kan trainen, kan je ook je herstelvermogen beter leren ondersteunen. Niet door harder je best te doen, maar door te begrijpen welke prikkels, gewoontes en ritmes je lichaam helpen om opnieuw richting herstel te schakelen."],
-];
-const learningPoints = [
-  "waarom herstel begint bij je zenuwstelsel",
-  "waarom slapen en herstellen niet altijd hetzelfde zijn",
-  "hoe je herkent dat je systeem te lang in actiestand blijft",
-  "welke rol ritme, licht, ademhaling, beweging en prikkels spelen",
-  "hoe je herstelvermogen concreet kan ondersteunen in je dagelijkse leven",
-  "hoe natuur en yoga helpen om opnieuw te schakelen",
-  "een persoonlijk herstelprotocol met haalbare micro-interventies rond timing, gedrag, omgeving en dagstructuur",
-  "een eenvoudig kader om je eigen energie- en spanningssignalen sneller te herkennen",
-  "concrete aanpassingen rond slaaphygiëne, prikkels en dagritme",
-  "één of twee technieken om piekeren of overdenken te onderbreken",
-];
-const forYou = [
-  "je vaak moe wakker wordt, ook wanneer je voldoende slaapt",
-  "je moeilijk schakelt tussen actie en rust",
-  "je lichaam snel alert, gespannen of opgejaagd aanvoelt",
-  "je graag begrijpt wat er fysiologisch gebeurt bij stress en herstel",
-  "je concrete handvaten wil rond ritme, ademhaling, beweging, licht en prikkels",
-  "je houdt van natuur, inhoud en praktische toepassing",
-  "je merkt dat je herstel langer duurt dan vroeger, bijvoorbeeld na drukke periodes, sport of mentale belasting",
-  "je last hebt van brain fog, cravings, demotivatie of kleine terugkerende blessures",
-  "je hoofd ’s avonds blijft doordraaien, ook wanneer je lichaam moe is",
-  "je op vakantie of in het weekend niet echt tot rust komt",
-  "je jezelf herkent in een gevoeliger of sneller geprikkeld zenuwstelsel, bijvoorbeeld bij ADHD, hoogbegaafdheid of hoogsensitiviteit",
-];
-const notForYou = [
-  "je vooral een wellnessweekend zoekt zonder inhoudelijk programma",
-  "je een intensief sportweekend met prestatiedoelen verwacht",
-  "je geen zin hebt om naar je eigen ritme, gedrag en herstelpatronen te kijken",
-  "je snelle hacks verwacht zonder bredere kijk op je lichaam en dagelijkse gewoontes",
-];
-const buildingBlocks = [
-  "psycho-educatieve sessies over het autonome zenuwstelsel en de stress-herstelcyclus",
-  "wandelen in de natuur en gerichte bewegingsprikkels als regulatietool",
-  "ademhalings- en lichaamsgerichte oefeningen om spanning en activatie beter te herkennen",
-  "een sessie rond slaaphygiëne, dagstructuur en herstelritme",
-  "een sessie rond overdenken en eenvoudige technieken om piekeren te onderbreken",
-  "voorbereidend reflectiewerk rond energieverlies, triggers en lichaamssignalen",
-  "individueel of in kleine groep: opstellen van een persoonlijk herstelprofiel",
-  "een persoonlijk herstelprotocol om thuis verder te gaan",
-];
-const teaserFaqs = [
-  ["Kan ik al inschrijven?", "Ja. Je kan je nu inschrijven via de knop Boek nu. Wil je eerst updates ontvangen, dan kan je je ook op de interesselijst zetten."],
-  ["Voor wie is dit weekend bedoeld?", "Voor mensen die veel doen om gezond te leven, maar merken dat hun lichaam moeilijk oplaadt. Denk aan moe wakker worden, moeilijk schakelen tussen actie en rust, spanning die blijft hangen of het gevoel dat je systeem voortdurend aan staat."],
-  ["Moet ik sportief zijn?", "Nee. We bewegen buiten, maar dit is geen sportweekend. Wandelen, yoga en eenvoudige oefeningen worden ingezet om herstel tastbaar te maken. Je hoeft geen sportieve ervaring te hebben."],
-  ["Is dit een wellnessweekend?", "Nee. Er is ruimte voor rust, natuur en vertraging, maar de kern is inhoudelijk. Je krijgt heldere uitleg, praktische oefeningen en concrete handvaten rond zenuwstelsel, herstel, slaap en ritme."],
-  ["Wat is inbegrepen?", "De prijs bedraagt €670. De inbegrepen onderdelen volgen zodra het programma definitief is."],
-  ["Moet ik ervaring hebben met mindfulness of meditatie?", "Nee. Dit weekend vertrekt niet vanuit één bepaalde techniek, maar vanuit het begrijpen van je lichaam en zenuwstelsel. Voorkennis is niet nodig. De oefeningen zijn laagdrempelig en praktisch."],
-  ["Ik ben sportief en beweeg al veel. Heb ik hier dan wel iets aan?", "Ja. Dit weekend gaat niet over méér bewegen, maar over hoe beweging je zenuwstelsel beïnvloedt. Veel actieve mensen blijven net in een verhoogde staat van activatie hangen, ook tijdens hun vrije tijd. Je leert beter voelen welke prikkels je opladen, welke je uitputten en hoe je beweging slimmer inzet voor herstel."],
-  ["Wat als ik merk dat er meer speelt dan vermoeidheid?", "Dit weekend is gericht op preventie, lichaamsbewustzijn en zelfinzicht. Het is geen behandeling en vervangt geen professionele begeleiding. Bij ernstigere klachten, zoals burn-outklachten of aanhoudende uitputting, kan het wel helpen om signalen beter te herkennen en gerichter verdere stappen te zetten."],
-  ["Hoeveel voorbereiding wordt er verwacht?", "Vooraf vragen we je om kort iets bij te houden, bijvoorbeeld een eenvoudig energie-overzicht. Dat is laagdrempelig en kost maar enkele minuten per dag. Zo kunnen we tijdens het weekend concreter werken met jouw eigen situatie."],
-  ["Is dit fysiek zwaar?", "Nee, dit is geen intensief sportweekend. We bewegen wel bewust: via wandelingen, yoga en eenvoudige lichaamsgerichte oefeningen. Sommige bewegingsprikkels kunnen actiever zijn, maar altijd met het doel om je lichaam beter te leren reguleren, niet om prestaties neer te zetten. Je hoeft dus geen sportieve basis te hebben, maar wel bereid zijn om buiten te bewegen."],
+const altijdAanIntro = [
+  "Je traint. Je slaapt. Je eet goed. En toch voel je dat je niet volledig herstelt.",
+  "Je neemt rust, maar je lichaam blijft alert. Je slaapt voldoende, maar wordt niet echt opgeladen wakker.",
+  "Tijdens dit weekend leer je begrijpen waarom je lichaam moeilijk terugschakelt van actie naar herstel en welke rol slaap, dagritme, prikkels, ademhaling en beweging daarin spelen.",
 ];
 ---
 
-<BaseLayout
-  title={tripTitle}
-  description={metaDescription}
-  ogImage={trip.heroImage}
-  ogImageAlt={heroImageAlt}
-  structuredData={touristTripSchema}
->
+<BaseLayout title={tripTitle} description={metaDescription} ogImage={trip.heroImage} ogImageAlt={heroImageAlt} structuredData={touristTripSchema}>
   <section class="relative bg-base-900 text-white">
-    {trip.heroImage && (
-      <img
-        class="absolute inset-0 w-full h-full object-cover opacity-45"
-        src={trip.heroImage}
-        width={trip.heroImageData?.width ?? 1400}
-        height={trip.heroImageData?.height ?? 933}
-        alt={heroImageAlt}
-        loading="eager"
-        decoding="async"
-        fetchpriority="high"
-      />
-    )}
-    <div class="relative max-w-6xl mx-auto px-6 py-24 space-y-6">
-      <p class="uppercase text-xs tracking-[0.25em] text-white/70">
-        {trip.type}
-      </p>
-      <h1 class="text-4xl lg:text-5xl font-semibold">{trip.name}</h1>
+    {trip.heroImage && <img class="absolute inset-0 h-full w-full object-cover opacity-45" src={trip.heroImage} width={trip.heroImageData?.width ?? 1400} height={trip.heroImageData?.height ?? 933} alt={heroImageAlt} loading="eager" decoding="async" fetchpriority="high" />}
+    <div class="relative mx-auto max-w-6xl space-y-6 px-6 py-24">
+      <p class="text-xs uppercase tracking-[0.25em] text-white/70">{trip.type}</p>
+      <h1 class="text-4xl font-semibold lg:text-5xl">{trip.name}</h1>
       {trip.subtitle && <p class="max-w-2xl text-2xl font-semibold">{trip.subtitle}</p>}
-      {isInterestTeaser && (
-        <div class="max-w-2xl space-y-3 text-white/85">
-          {teaserHeroIntro.map((paragraph) => <p>{paragraph}</p>)}
-        </div>
-      )}
+      {isAltijdAan && <div class="max-w-2xl space-y-3 text-white/85">{altijdAanIntro.map((paragraph) => <p>{paragraph}</p>)}</div>}
       <div class="flex flex-wrap gap-3 text-sm">
-        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/30"
-          >{trip.location}</span
-        >
-        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/30"
-          >{trip.dates}</span
-        >
-        <span class="px-3 py-1 rounded-full bg-white/15 border border-white/30"
-          >{trip.price}</span
-        >
+        <span class="rounded-full border border-white/30 bg-white/15 px-3 py-1">{trip.location}</span>
+        <span class="rounded-full border border-white/30 bg-white/15 px-3 py-1">{trip.dates}</span>
+        <span class="rounded-full border border-white/30 bg-white/15 px-3 py-1">{trip.price}</span>
       </div>
+      {trip.statusLabel && <p class="text-sm font-semibold text-white/80">{trip.statusLabel}</p>}
       <div class="flex flex-wrap gap-3">
-        {isInterestTeaser && (
-          <a
-            href={altijdAanBookingHref}
-            target="_blank"
-            rel="noreferrer"
-            class="inline-flex items-center px-5 py-3 rounded-full bg-accent-600 text-white font-semibold hover:bg-accent-700"
-          >
-            Boek nu
-          </a>
-        )}
-        {
-          trip.ctaHref ? (
-            <a
-              href={trip.ctaHref}
-              target="_blank"
-              rel="noreferrer"
-              class="inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold"
-            >
-              {trip.ctaLabel ?? "Ik heb interesse"}
-            </a>
-          ) : (
-            <a
-              href="#content"
-              class="inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold"
-            >
-              Lees meer
-            </a>
-          )
-        }
-        <a
-          href="/contact"
-          class="inline-flex items-center px-5 py-3 rounded-full border border-white/60 text-white font-semibold"
-          >Plan een gesprek</a
-        >
+        {trip.ctaHref ? <a href={trip.ctaHref} target="_blank" rel="noreferrer" class="inline-flex rounded-full bg-accent-600 px-5 py-3 font-semibold text-white hover:bg-accent-700">{trip.ctaLabel ?? "Ik heb interesse"}</a> : <a href="#content" class="inline-flex rounded-full bg-base-25 px-5 py-3 font-semibold text-base-900">Lees meer</a>}
+        <a href="/contact" class="inline-flex rounded-full border border-white/60 px-5 py-3 font-semibold text-white">Plan een gesprek</a>
       </div>
     </div>
   </section>
 
-  {isInterestTeaser && (
-    <>
-      <section class="max-w-6xl mx-auto px-6 py-12">
-        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {teaserFacts.map(([label, value]) => (
-            <div class="border border-base-200 bg-base-25 p-5 shadow-sm">
-              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-base-500">{label}</p>
-              <p class="mt-2 font-semibold text-base-900">{value}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+  {isAltijdAan && <AltijdAanContent />}
 
-      <section id="content" class="bg-base-50/80 border-y border-base-200">
-        <div class="max-w-6xl mx-auto px-6 py-14 grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-          <div class="space-y-4">
-            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">In het kort</p>
-            <h2 class="text-3xl font-semibold leading-tight text-base-900">Voor wie niet moe is van te weinig doen, maar van te lang aan staan.</h2>
-            <div class="space-y-4 text-base-700 leading-relaxed">{shortIntroParagraphs.map((paragraph) => <p>{paragraph}</p>)}</div>
-          </div>
-          <div class="grid gap-4 sm:grid-cols-3">
-            {whyBlocks.map(([title, text]) => (
-              <article class="border border-base-200 bg-white p-5 shadow-sm">
-                <h3 class="text-lg font-semibold text-base-900">{title}</h3>
-                <p class="mt-3 text-sm leading-relaxed text-base-700">{text}</p>
-              </article>
-            ))}
-          </div>
+  {!isAltijdAan && htmlContent && (
+    <section id="content" class="mx-auto max-w-6xl px-6 py-14">
+      <div class="flex flex-col gap-8 lg:flex-row">
+        {toc.length > 0 && <aside class="shrink-0 lg:w-64"><div class="sticky top-6"><h2 class="mb-4 text-lg font-semibold text-base-900">Inhoudsopgave</h2><nav class="space-y-2">{toc.map((item) => <a href={`#${item.id}`} class={`block text-sm text-base-600 transition-colors hover:text-accent-600 ${item.level === 2 ? "font-medium" : item.level === 3 ? "ml-4" : item.level === 4 ? "ml-8" : ""}`}>{item.text}</a>)}</nav></div></aside>}
+        <div class="min-w-0 flex-1">
+          <div class="prose prose-lg prose-base-900 max-w-none prose-headings:font-semibold prose-headings:text-base-900 prose-h2:mt-12 prose-h2:mb-6 prose-h2:scroll-mt-6 prose-h2:text-2xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:scroll-mt-6 prose-h3:text-xl prose-h4:mt-6 prose-h4:mb-3 prose-h4:scroll-mt-6 prose-h4:text-lg prose-p:mb-4 prose-p:leading-relaxed prose-p:text-base-700 prose-ul:my-4 prose-ul:text-base-700 prose-li:my-2 prose-strong:font-semibold prose-strong:text-base-900 prose-a:text-accent-600 prose-a:no-underline hover:prose-a:underline" set:html={htmlContent} />
         </div>
-      </section>
-
-      <section class="max-w-6xl mx-auto px-6 py-14 grid gap-10 lg:grid-cols-2">
-        <div class="space-y-4">
-          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Fysiologie en zenuwstelsel</p>
-          <div class="space-y-4 text-base-700 leading-relaxed">
-            <p>Samen met Jorien Raeymaekers werken we een weekend uit waarin herstel niet vaag of zweverig wordt benaderd, maar als iets dat je in je lichaam kan begrijpen.</p>
-            <p>We kijken naar de rol van je autonome zenuwstelsel, stressrespons, slaap, ademhaling, licht, beweging en prikkelverwerking. Niet als losse tips, maar als onderdelen van een systeem dat voortdurend schakelt tussen actie, alertheid en herstel.</p>
-            <p>Het doel is niet om perfect te leven. Het doel is dat je beter leert voelen, begrijpen en bijsturen wanneer je lichaam te lang aan staat.</p>
-          </div>
-        </div>
-        <div class="grid gap-4">
-          <article class="border border-base-200 bg-base-25 p-5 shadow-sm"><h3 class="text-lg font-semibold text-base-900">Zenuwstelsel</h3><p class="mt-2 text-base-700">Hoe je lichaam schakelt tussen actie, alertheid en herstel.</p></article>
-          <article class="border border-base-200 bg-base-25 p-5 shadow-sm"><h3 class="text-lg font-semibold text-base-900">Slaap en ritme</h3><p class="mt-2 text-base-700">Waarom voldoende slapen niet altijd hetzelfde is als uitgerust wakker worden.</p></article>
-          <article class="border border-base-200 bg-base-25 p-5 shadow-sm"><h3 class="text-lg font-semibold text-base-900">Stressrespons</h3><p class="mt-2 text-base-700">Hoe aanhoudende activatie je energie, ademhaling, spierspanning, focus en herstel beïnvloedt.</p></article>
-          <article class="border border-base-200 bg-base-25 p-5 shadow-sm"><h3 class="text-lg font-semibold text-base-900">Lichaamssignalen</h3><p class="mt-2 text-base-700">Hoe je sneller merkt wanneer je te lang doorgaat en wat helpt om bij te sturen.</p></article>
-        </div>
-      </section>
-
-      <section class="bg-base-900 text-white">
-        <div class="max-w-6xl mx-auto px-6 py-14 grid gap-8 lg:grid-cols-[1fr_0.9fr]">
-          <div class="space-y-4">
-            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">Beweging en natuur</p>
-            <h2 class="text-3xl font-semibold">Buiten bewegen, zonder prestatiedruk.</h2>
-            <p class="text-white/80 leading-relaxed">De Hoge Venen vormen geen decor, maar een actieve herstelprikkel. Wandelen, yoga en eenvoudige oefeningen helpen je uit je hoofd en terug in je lichaam.</p>
-            <p class="text-white/80 leading-relaxed">Niet om grenzen te verleggen. Wel om opnieuw te voelen wat spanning, ademhaling, tempo, omgeving en herstel met elkaar doen.</p>
-          </div>
-          <div class="border border-white/20 bg-white/10 p-6">
-            <h3 class="text-xl font-semibold">Wat je meeneemt</h3>
-            <ul class="mt-4 space-y-3 text-white/85">{learningPoints.map((point) => <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent-300"></span><span>{point}</span></li>)}</ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="max-w-6xl mx-auto px-6 py-14 grid gap-6 lg:grid-cols-2">
-        <article class="border border-base-200 bg-base-25 p-6 shadow-sm">
-          <h2 class="text-2xl font-semibold text-base-900">Voor jou als...</h2>
-          <ul class="mt-5 space-y-3 text-base-700">{forYou.map((item) => <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent-500"></span><span>{item}</span></li>)}</ul>
-        </article>
-        <article class="border border-base-200 bg-white p-6 shadow-sm">
-          <h2 class="text-2xl font-semibold text-base-900">Minder passend als...</h2>
-          <ul class="mt-5 space-y-3 text-base-700">{notForYou.map((item) => <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-base-300"></span><span>{item}</span></li>)}</ul>
-        </article>
-      </section>
-
-      <section class="bg-base-50/80 border-y border-base-200">
-        <div class="max-w-6xl mx-auto px-6 py-14 grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-          <div class="space-y-4">
-            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Programma in opbouw</p>
-            <h2 class="text-3xl font-semibold text-base-900">De exacte dagindeling volgt binnenkort.</h2>
-            <p class="text-base-700 leading-relaxed">De richting ligt vast. Het volledige programma volgt zodra de inhoud scherp genoeg staat.</p>
-          </div>
-          <div class="grid gap-3">{buildingBlocks.map((item) => <div class="border border-base-200 bg-white px-5 py-4 font-semibold text-base-900 shadow-sm">{item}</div>)}</div>
-        </div>
-      </section>
-
-      <section class="max-w-6xl mx-auto px-6 py-14">
-        <article class="grid overflow-hidden border border-base-200 bg-white shadow-sm lg:grid-cols-[minmax(260px,0.38fr)_minmax(0,1fr)]">
-          <a href="https://ikbenjorien.be/" target="_blank" rel="noreferrer" class="bg-base-100"><img src="/images/blog/sola-kickoff/jorien-portret.jpg" alt="Jorien Raeymaekers" loading="lazy" class="h-72 w-full object-cover sm:h-96 lg:h-full lg:min-h-[430px]" /></a>
-          <div class="p-6 sm:p-8 lg:p-10">
-            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Expertise</p>
-            <h2 class="mt-2 text-3xl font-semibold text-base-900">Met Jorien Raeymaekers</h2>
-            <div class="prose prose-lg mt-5 max-w-none prose-p:text-base-700">
-              <p>Dit weekend wordt begeleid door <a href="https://ikbenjorien.be/" target="_blank" rel="noreferrer">Jorien Raeymaekers</a>, klinisch psycholoog en systemisch werker.</p>
-              <p>Jorien werkt rond stress, herstel en het autonome zenuwstelsel: het systeem dat je lichaam helpt schakelen tussen actie en rust. Ze helpt deelnemers begrijpen waarom herstel soms uitblijft, ook wanneer ze slapen, bewegen en gezond leven.</p>
-              <p>Tijdens het weekend vertaalt ze die kennis naar concrete oefeningen rond lichaamssignalen, slaap, beweging en herstelroutines. Deelnemers leren hoe ze hun herstelcapaciteit kunnen versterken, zodat ze beter kunnen presteren zonder voortdurend in overdrive te gaan.</p>
-              <p>SOLA zorgt voor de omkadering.</p>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      <section class="bg-base-900 text-white">
-        <div class="max-w-6xl mx-auto px-6 py-14">
-          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">Praktische info</p>
-          <h2 class="mt-3 text-3xl font-semibold">Alles wat al vastligt.</h2>
-          <div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">{teaserFacts.map(([label, value]) => <div class="border border-white/20 bg-white/10 p-5"><p class="text-xs font-semibold uppercase tracking-[0.18em] text-white/60">{label}</p><p class="mt-2 font-semibold">{value}</p></div>)}</div>
-        </div>
-      </section>
-
-      <section class="max-w-6xl mx-auto px-6 py-14">
-        <div class="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
-          <div><p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">FAQ</p><h2 class="mt-3 text-3xl font-semibold text-base-900">Veelgestelde vragen</h2></div>
-          <div class="divide-y divide-base-200 border-y border-base-200">{teaserFaqs.map(([question, answer]) => <details class="group py-5"><summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-base-900"><span>{question}</span><span class="text-accent-700 group-open:rotate-45 transition">+</span></summary><p class="mt-3 text-base-700 leading-relaxed">{answer}</p></details>)}</div>
-        </div>
-      </section>
-    </>
+      </div>
+    </section>
   )}
-
-  {
-    htmlContent && (
-      <section id="content" class="max-w-6xl mx-auto px-6 py-14">
-        <div class="flex flex-col lg:flex-row gap-8">
-          {/* Table of Contents */}
-          {toc.length > 0 && (
-            <aside class="lg:w-64 shrink-0">
-              <div class="sticky top-6">
-                <h2 class="text-lg font-semibold text-base-900 mb-4">
-                  Inhoudsopgave
-                </h2>
-                <nav class="space-y-2">
-                  {toc.map((item) => (
-                    <a
-                      href={`#${item.id}`}
-                      class={`block text-sm text-base-600 hover:text-accent-600 transition-colors ${
-                        item.level === 2
-                          ? "font-medium"
-                          : item.level === 3
-                            ? "ml-4"
-                            : item.level === 4
-                              ? "ml-8"
-                              : ""
-                      }`}
-                    >
-                      {item.text}
-                    </a>
-                  ))}
-                </nav>
-              </div>
-            </aside>
-          )}
-
-          {/* Main Content */}
-          <div class="flex-1 min-w-0">
-            <div
-              class="prose prose-lg prose-base-900 max-w-none
-              prose-headings:font-semibold prose-headings:text-base-900
-              prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:scroll-mt-6
-              prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:scroll-mt-6
-              prose-h4:text-lg prose-h4:mt-6 prose-h4:mb-3 prose-h4:scroll-mt-6
-              prose-p:text-base-700 prose-p:leading-relaxed prose-p:mb-4
-              prose-ul:text-base-700 prose-ul:my-4
-              prose-li:my-2
-              prose-strong:text-base-900 prose-strong:font-semibold
-              prose-a:text-accent-600 prose-a:no-underline hover:prose-a:underline"
-              set:html={htmlContent}
-            />
-          </div>
-        </div>
-      </section>
-    )
-  }
 </BaseLayout>

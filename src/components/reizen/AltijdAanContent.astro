@@ -1,0 +1,294 @@
+---
+import { Image } from "astro:assets";
+import avondmaalImage from "../../assets/images/altijd-aan/avondmaal.jpg";
+import bewegingImage from "../../assets/images/altijd-aan/beweging.jpg";
+import hotTubImage from "../../assets/images/altijd-aan/hot-tub.jpg";
+import jorienImage from "../../assets/images/altijd-aan/jorien-portret.jpeg";
+import samenBuitenImage from "../../assets/images/altijd-aan/samen-buiten.jpg";
+
+const bookingHref = "https://tally.so/r/pbogoy";
+
+const forYou = [
+  "je wordt moe wakker, ook wanneer je voldoende hebt geslapen",
+  "je hoofd blijft doordraaien terwijl je lichaam moe is",
+  "je vindt het moeilijk om van actie naar rust te schakelen",
+  "je raakt snel overprikkeld",
+  "spanning blijft langer hangen",
+  "je herstel duurt langer dan vroeger",
+  "je wil beter begrijpen wat je lichaam nodig heeft",
+];
+
+const focus = [
+  "hoe het autonome zenuwstelsel schakelt tussen actie en herstel",
+  "waar overbelasting vandaan kan komen",
+  "hoe je signalen van stress en energieverlies herkent",
+  "wat over- en onderprikkeling met je doen",
+  "waarom slapen niet altijd hetzelfde is als herstellen",
+  "welke invloed licht, koffie, gsm-gebruik, beweging en dagritme hebben",
+  "wat jou energie geeft en wat energie vraagt",
+  "hoe je een persoonlijk herstelprotocol opstelt",
+];
+
+const included = [
+  "driedaags weekend met twee overnachtingen",
+  "inhoudelijke begeleiding door Jorien Raeymaekers",
+  "alle sessies en oefeningen",
+  "yoga en HIIT onder begeleiding van de SOLA-crew",
+  "wandeling of trailrun onder begeleiding van de SOLA-crew",
+  "verblijf op locatie",
+  "alle maaltijden van vrijdagavond tot en met zondagmiddag",
+  "koffie, thee, water, aperitief en tussendoortjes",
+  "een SOLA-shirt",
+];
+
+const faqs = [
+  [
+    "Voor wie is dit weekend bedoeld?",
+    "Voor wie merkt dat ontspannen of voldoende slapen niet altijd leidt tot echt herstel. Misschien sta je vaak aan, blijf je piekeren, raak je snel overprikkeld of word je moe wakker. Tijdens het weekend leer je beter begrijpen waar dat vandaan komt en wat jou kan helpen.",
+  ],
+  [
+    "Is het programma wetenschappelijk onderbouwd?",
+    "Ja. Het programma vertrekt vanuit wetenschappelijke inzichten uit de psychologie en fysiologie, onder meer over stress, het autonome zenuwstelsel, slaap, prikkelverwerking en gedragsverandering. Je krijgt geen vaag wellnessverhaal of een verzameling losse ontspanningstips. We leggen uit welke mechanismen een rol spelen, helpen je jouw eigen patronen herkennen en vertalen die inzichten naar acties voor thuis.",
+  ],
+  [
+    "Wat mag ik van het weekend verwachten?",
+    "We combineren heldere uitleg met oefeningen, beweging en tijd in de natuur. Je onderzoekt wat jou energie geeft of kost en welke signalen aangeven dat je lichaam moeilijk overschakelt naar herstel. Aan het einde van het weekend stel je een persoonlijk herstelprotocol op.",
+  ],
+  [
+    "Moet ik sportief zijn?",
+    "Nee. De bewegingssessies zijn toegankelijk en worden aangepast aan de groep. Het doel is niet om te presteren, maar om te ervaren wat verschillende vormen van beweging met je lichaam en energieniveau doen. De beweging vóór het ontbijt is volledig optioneel.",
+  ],
+  [
+    "Moet ik persoonlijke ervaringen delen?",
+    "Nee. Er is ruimte om ervaringen uit te wisselen, maar je kiest altijd zelf wat je wel en niet wilt delen. Je kunt de meeste oefeningen ook individueel maken.",
+  ],
+  [
+    "Moet ik iets voorbereiden?",
+    "Dat hoeft niet. Wie wil, kan gedurende de twee weken vóór het weekend een eenvoudig energiedagboek bijhouden. Je noteert enkele minuten per dag welke activiteiten energie geven of vragen, wanneer je veel of weinig energie hebt en welke signalen je opmerkt. Tijdens het weekend kun je deze informatie gebruiken om je eigen stress- en herstelpatroon beter in kaart te brengen.",
+  ],
+  [
+    "Hoe groot is de groep?",
+    "We werken met minimaal 6 en maximaal 12 deelnemers.",
+  ],
+  [
+    "Hoe zijn de kamers geregeld?",
+    "Je slaapt standaard met twee personen op een kamer. De kamerindeling gebeurt per hetzelfde geslacht. Schrijf je je samen met je partner in, dan kunnen jullie een kamer delen. Elke kamer heeft een eigen badkamer. Een eenpersoonskamer is mogelijk tegen een supplement en afhankelijk van de beschikbaarheid.",
+  ],
+  [
+    "Kan er rekening worden gehouden met allergieën of blessures?",
+    "Ja. Bij je inschrijving kun je allergieën, voedingsvoorkeuren, blessures en andere aandachtspunten doorgeven. We bekijken vooraf hoe we daar rekening mee kunnen houden.",
+  ],
+];
+---
+
+<section class="max-w-6xl mx-auto px-6 py-12">
+  <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    {[
+      ["Wanneer", "23–25 april 2027", "Aankomst vrijdag vanaf 18.00 uur"],
+      ["Waar", "Sourbrodt", "Hoge Venen, Ardennen"],
+      ["Prijs", "€580 vroegboekprijs", "Daarna €650"],
+      ["Groep", "Minimaal 6", "Maximaal 12 deelnemers"],
+    ].map(([label, value, detail]) => (
+      <article class="border border-base-200 bg-base-25 p-5 shadow-sm">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-base-500">{label}</p>
+        <p class="mt-2 text-lg font-semibold text-base-900">{value}</p>
+        <p class="mt-1 text-sm text-base-600">{detail}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<section id="content" class="border-y border-base-200 bg-base-50/80">
+  <div class="max-w-6xl mx-auto px-6 py-14 grid gap-10 lg:grid-cols-2">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Voor wie?</p>
+      <h2 class="mt-3 text-3xl font-semibold text-base-900">Je neemt rust, maar je lichaam blijft alert.</h2>
+      <p class="mt-4 leading-relaxed text-base-700">Dit weekend is bedoeld voor wie merkt dat ontspannen of voldoende slapen niet altijd tot echt herstel leidt.</p>
+      <ul class="mt-6 space-y-3 text-base-700">
+        {forYou.map((item) => <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent-500"></span><span>{item}</span></li>)}
+      </ul>
+    </div>
+    <div class="border border-base-200 bg-white p-6 shadow-sm sm:p-8">
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Focus</p>
+      <h2 class="mt-3 text-3xl font-semibold text-base-900">Wat je leert</h2>
+      <ul class="mt-6 space-y-3 text-base-700">
+        {focus.map((item) => <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent-500"></span><span>{item}</span></li>)}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 py-14">
+  <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Alles voor het weekend</p>
+      <h2 class="mt-3 text-3xl font-semibold text-base-900">Wat is inbegrepen?</h2>
+      <ul class="mt-6 grid gap-3 sm:grid-cols-2 text-base-700">
+        {included.map((item) => <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent-500"></span><span>{item}</span></li>)}
+      </ul>
+      <p class="mt-6 text-base-700"><strong>Niet inbegrepen:</strong> transport van en naar Sourbrodt.</p>
+      <p class="mt-2 text-base-700">Iedereen komt op eigen vervoer. Kort voor het weekend bekijken we samen de mogelijkheden om te carpoolen, zodat iedereen ter plaatse geraakt.</p>
+    </div>
+    <Image src={samenBuitenImage} alt="Deelnemers samen buiten tijdens een SOLA-weekend" class="h-full min-h-80 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 40vw, 100vw" />
+  </div>
+</section>
+
+<section class="bg-base-900 text-white">
+  <div class="max-w-6xl mx-auto px-6 py-14">
+    <div class="grid overflow-hidden border border-white/20 bg-white/10 lg:grid-cols-[minmax(280px,0.42fr)_minmax(0,1fr)]">
+      <a href="https://ikbenjorien.be/" target="_blank" rel="noreferrer">
+        <Image src={jorienImage} alt="Jorien Raeymaekers" class="h-96 w-full object-cover lg:h-full" widths={[420, 640, 840]} sizes="(min-width: 1024px) 38vw, 100vw" />
+      </a>
+      <div class="p-6 sm:p-8 lg:p-10">
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/60">Expertise & coördinatie</p>
+        <h2 class="mt-3 text-3xl font-semibold">Jorien Raeymaekers</h2>
+        <div class="mt-5 space-y-4 leading-relaxed text-white/80">
+          <p>Jorien is klinisch psycholoog en systemisch werker. Ze volgde onder meer vervolgopleidingen in familieopstellingen en EMDR.</p>
+          <p>Tijdens dit weekend begeleidt ze de sessies over het autonome zenuwstelsel, stress, slaap, prikkelverwerking en herstel. Ze vertrekt vanuit inzichten uit de psychologie en fysiologie en vertaalt die naar herkenbare situaties en oefeningen.</p>
+          <p>Jorien kijkt niet alleen naar afzonderlijke klachten, maar ook naar gewoontes, omgeving en patronen die invloed hebben op hoe iemand functioneert. Haar stijl is warm, helder en direct.</p>
+        </div>
+        <h3 class="mt-8 text-xl font-semibold">SOLA-crew</h3>
+        <ul class="mt-4 space-y-2 text-white/80">
+          <li>Justine Deleu verzorgt de maaltijden</li>
+          <li>Klaas Annys begeleidt de wandeling</li>
+          <li>Stefanie Deleu begeleidt de trailrun</li>
+          <li>Yoga en HIIT worden begeleid door de SOLA-crew</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 py-14">
+  <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Van vrijdagavond tot zondagmiddag</p>
+  <h2 class="mt-3 text-3xl font-semibold text-base-900">Programma</h2>
+  <div class="mt-8 grid gap-6 lg:grid-cols-3">
+    <article class="border border-base-200 bg-base-25 p-6 shadow-sm">
+      <h3 class="text-2xl font-semibold text-base-900">Vrijdag 23 april</h3>
+      <div class="mt-5 space-y-5 text-base-700">
+        <div><p class="font-semibold text-base-900">Vanaf 18.00 uur</p><p>Aankomst, kennismaking en inchecken<br />Aperitief, briefing en eerste inhoudelijke schets van het weekend</p></div>
+        <div><p class="font-semibold text-base-900">19.30 uur</p><p>Avondmaal</p></div>
+        <div><p class="font-semibold text-base-900">20.30 uur</p><p>Openingssessie</p></div>
+        <div><p class="font-semibold text-base-900">Na de openingssessie</p><p>Hot tub, drankje en vrije tijd</p></div>
+      </div>
+    </article>
+    <article class="border border-base-200 bg-white p-6 shadow-sm">
+      <h3 class="text-2xl font-semibold text-base-900">Zaterdag 24 april</h3>
+      <div class="mt-5 space-y-5 text-base-700">
+        <div><p class="font-semibold text-base-900">Vanaf 06.00 uur — vrijblijvend</p><p>Ochtendwandeling voor wie wil</p></div>
+        <div><p class="font-semibold text-base-900">07.30 uur</p><p>Actieve sessie met oefeningen</p></div>
+        <div><p class="font-semibold text-base-900">08.15 uur</p><p>Ontbijt</p></div>
+        <div><p class="font-semibold text-base-900">09.00 uur</p><p>Waarom rust soms niets doet</p><p class="mt-2 text-sm">Over het autonome zenuwstelsel, overbelasting, prikkels en signalen van stress en energieverlies.</p></div>
+        <div><p class="font-semibold text-base-900">10.30 uur</p><p>Pauze</p></div>
+        <div><p class="font-semibold text-base-900">11.00 uur</p><p>Vervolg over triggers, lichaamssignalen en energieritme</p></div>
+        <div><p class="font-semibold text-base-900">12.30 uur</p><p>Lunch</p></div>
+        <div><p class="font-semibold text-base-900">14.30 uur</p><p>Wandeling van ongeveer 8 km of trailrun van ongeveer 12 km</p><p class="mt-2 text-sm">Je kiest zelf wat bij je niveau en goesting past.</p></div>
+        <div><p class="font-semibold text-base-900">Vanaf 17.30 uur</p><p>Terugkomst, douche en vrije tijd</p></div>
+        <div><p class="font-semibold text-base-900">19.00 uur</p><p>Avondmaal</p></div>
+        <div><p class="font-semibold text-base-900">20.30 uur</p><p>Je hoofd uitzetten — over overdenken</p></div>
+        <div><p class="font-semibold text-base-900">Vanaf 21.30 uur</p><p>Hot tub, drankje en vrije tijd</p></div>
+      </div>
+    </article>
+    <article class="border border-base-200 bg-base-25 p-6 shadow-sm">
+      <h3 class="text-2xl font-semibold text-base-900">Zondag 25 april</h3>
+      <div class="mt-5 space-y-5 text-base-700">
+        <div><p class="font-semibold text-base-900">07.30 uur</p><p>Actieve sessie: yoga of HIIT</p></div>
+        <div><p class="font-semibold text-base-900">08.30 uur</p><p>Ontbijt</p></div>
+        <div><p class="font-semibold text-base-900">09.30 uur</p><p>Slaap en herstel — de fysiologie</p><p class="mt-2 text-sm">Over slaap, gsm-gebruik, koffie en dagstructuur.</p></div>
+        <div><p class="font-semibold text-base-900">11.00 uur</p><p>Pauze</p></div>
+        <div><p class="font-semibold text-base-900">11.15 uur</p><p>Jouw herstelprotocol</p></div>
+        <div><p class="font-semibold text-base-900">13.00 uur</p><p>Lunch</p></div>
+        <div><p class="font-semibold text-base-900">14.00 uur</p><p>Afronding en vertrek</p></div>
+      </div>
+    </article>
+  </div>
+  <p class="mt-6 text-sm text-base-500">De precieze volgorde van het programma kan nog wijzigen. Voor vertrek ontvang je het definitieve programma.</p>
+</section>
+
+<section class="border-y border-base-200 bg-base-50/80">
+  <div class="max-w-6xl mx-auto px-6 py-14 grid gap-10 lg:grid-cols-2">
+    <article>
+      <Image src={hotTubImage} alt="Hot tub bij het verblijf in Sourbrodt" class="h-72 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
+      <h2 class="mt-6 text-3xl font-semibold text-base-900">Verblijf</h2>
+      <div class="mt-4 space-y-4 leading-relaxed text-base-700">
+        <p>We verblijven in Sourbrodt, in de Hoge Venen, in een ruim en comfortabel groepshuis.</p>
+        <p>Je slaapt standaard met twee personen op een kamer. De kamerindeling gebeurt per hetzelfde geslacht. Schrijf je je samen met je partner in, dan kunnen jullie een kamer delen.</p>
+        <p>Elke kamer heeft een eigen badkamer. Een eenpersoonskamer is mogelijk tegen een supplement en afhankelijk van de beschikbaarheid.</p>
+      </div>
+    </article>
+    <article>
+      <Image src={avondmaalImage} alt="Avondmaal tijdens een SOLA-weekend" class="h-72 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
+      <h2 class="mt-6 text-3xl font-semibold text-base-900">Maaltijden</h2>
+      <div class="mt-4 space-y-4 leading-relaxed text-base-700">
+        <p>Alle maaltijden zijn inbegrepen, van het avondmaal op vrijdag tot en met de lunch op zondag.</p>
+        <p>Justine zorgt voor gezonde, evenwichtige en vooral lekkere maaltijden, met aandacht voor energie. Een deel van de groenten komt uit eigen kweek.</p>
+        <p>Allergieën en voedingsvoorkeuren kun je bij je inschrijving doorgeven.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 py-14">
+  <div class="grid overflow-hidden bg-accent-700 text-white lg:grid-cols-[1fr_0.75fr]">
+    <div class="p-7 sm:p-10">
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">Vroegboekkorting</p>
+      <h2 class="mt-3 text-4xl font-semibold">€70 korting</h2>
+      <p class="mt-4 text-lg text-white/90">Boek uiterlijk op 30 november 2026 en betaal <strong>€580</strong> in plaats van €650.</p>
+      <p class="mt-2 text-white/80">Vanaf 1 december 2026 bedraagt de prijs €650. Er zijn maximaal 12 plaatsen.</p>
+      <a href={bookingHref} target="_blank" rel="noreferrer" class="mt-7 inline-flex rounded-full bg-white px-6 py-3 font-semibold text-accent-800 hover:bg-base-50">Boek je plek</a>
+    </div>
+    <Image src={bewegingImage} alt="Beweging in de natuur tijdens een SOLA-weekend" class="h-full min-h-80 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 40vw, 100vw" />
+  </div>
+  <div class="mt-8 grid gap-6 md:grid-cols-2">
+    <article class="border border-base-200 p-6">
+      <h2 class="text-2xl font-semibold text-base-900">Verder werken met Jorien?</h2>
+      <p class="mt-3 leading-relaxed text-base-700">Een individuele opvolgsessie is niet inbegrepen en volledig vrijblijvend. Na een SOLA-weekend krijg je korting op een sessie bij Jorien. Je stemt de datum rechtstreeks met haar af.</p>
+    </article>
+    <article class="border border-base-200 p-6">
+      <h2 class="text-2xl font-semibold text-base-900">Twijfel je nog?</h2>
+      <p class="mt-3 leading-relaxed text-base-700">Wil je eerst weten of dit weekend bij je past? Plan een gesprek met SOLA.</p>
+      <a href="/contact" class="mt-5 inline-flex rounded-full border border-base-400 px-5 py-3 font-semibold text-base-900 hover:border-accent-600 hover:text-accent-700">Plan een gesprek</a>
+    </article>
+  </div>
+</section>
+
+<section class="border-y border-base-200 bg-base-50/80">
+  <div class="max-w-6xl mx-auto px-6 py-14 grid gap-8 lg:grid-cols-[0.65fr_1.35fr]">
+    <div><p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Goed om te weten</p><h2 class="mt-3 text-3xl font-semibold text-base-900">Veelgestelde vragen</h2></div>
+    <div class="divide-y divide-base-200 border-y border-base-200">
+      {faqs.map(([question, answer]) => (
+        <details class="group py-5">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-base-900"><span>{question}</span><span class="text-accent-700 transition group-open:rotate-45">+</span></summary>
+          <p class="mt-3 leading-relaxed text-base-700">{answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="max-w-6xl mx-auto px-6 py-14">
+  <div class="grid gap-10 lg:grid-cols-2">
+    <div>
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Na je inschrijving</p>
+      <h2 class="mt-3 text-3xl font-semibold text-base-900">Alles op tijd in je mailbox</h2>
+      <p class="mt-4 leading-relaxed text-base-700">Na je inschrijving ontvang je een bevestigingsmail met de betaalinformatie en de belangrijkste praktische afspraken.</p>
+      <p class="mt-4 leading-relaxed text-base-700">Ongeveer twee weken vóór het weekend ontvang je de vrijblijvende opdracht voor het energiedagboek.</p>
+    </div>
+    <div class="border border-base-200 bg-base-25 p-6 sm:p-8">
+      <p class="font-semibold text-base-900">Kort voor vertrek sturen we je:</p>
+      <ul class="mt-5 space-y-3 text-base-700">
+        {["het volledige adres en de routebeschrijving", "de paklijst", "de kamerindeling", "het definitieve programma", "de afspraken rond aankomst en vertrek", "een contactnummer voor dringende vragen", "informatie over carpoolmogelijkheden"].map((item) => <li class="flex gap-3"><span class="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent-500"></span><span>{item}</span></li>)}
+      </ul>
+      <p class="mt-6 text-base-700">Allergieën, voedingsvoorkeuren, blessures en eventuele kamerwensen kun je bij je inschrijving doorgeven.</p>
+    </div>
+  </div>
+</section>
+
+<section class="bg-base-900 text-white">
+  <div class="max-w-4xl mx-auto px-6 py-16 text-center">
+    <p class="text-sm font-semibold uppercase tracking-[0.22em] text-white/60">23–25 april 2027 · maximaal 12 plaatsen</p>
+    <h2 class="mt-4 text-3xl font-semibold sm:text-4xl">Klaar om beter te leren schakelen tussen actie en herstel?</h2>
+    <p class="mt-4 text-lg text-white/80">Boek tot en met 30 november voor €580.</p>
+    <a href={bookingHref} target="_blank" rel="noreferrer" class="mt-7 inline-flex rounded-full bg-accent-600 px-6 py-3 font-semibold text-white hover:bg-accent-700">Boek je plek</a>
+  </div>
+</section>

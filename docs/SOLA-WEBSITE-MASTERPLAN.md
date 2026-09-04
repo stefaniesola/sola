@@ -1,8 +1,8 @@
 # SOLA Website Masterplan
 
 **Status:** gezaghebbende, levende referentie  
-**Versie:** 1.1  
-**Laatst bijgewerkt:** 16 augustus 2026  
+**Versie:** 1.3  
+**Laatst bijgewerkt:** 4 september 2026  
 **Eigenaar en eindbeslisser:** Stefanie Deleu  
 **Toepassing:** alle toekomstige inhoudelijke, visuele en technische wijzigingen aan de SOLA-website
 
@@ -45,6 +45,12 @@ SOLA communiceert:
 - uitnodigend zonder schreeuwerige marketingtaal;
 - concreet en zorgvuldig met feiten.
 
+### Schrijfwijze van opsommingen
+
+- Gebruik geen puntkomma's aan het einde van opsommingsregels.
+- Pas deze schrijfwijze consequent toe op alle nieuwe en aangepaste websitecopy.
+- Bestaande pagina's worden niet uitsluitend om deze reden aangepast; de regel wordt toegepast zodra hun inhoud binnen een goedgekeurde wijziging valt.
+
 ### Werken met bestaande teksten
 
 Bij een kortere tekst wordt deze volgorde gevolgd:
@@ -78,7 +84,21 @@ Huidige prioriteit:
 - **Altijd aan?**
 - 23–25 april 2027
 - Sourbrodt, Hoge Venen, Ardennen
-- primaire actie: interesselijst
+- status: boekbaar
+- primaire actie: boek je plek
+- geen interesselijst zolang het weekend boekbaar is
+
+### Beschikbaarheidsstatus per reis
+
+Elke reis krijgt één duidelijke status die de zichtbare hoofdactie bepaalt:
+
+- boekbaar: toon alleen de boekingsactie
+- nog niet boekbaar: toon de interesselijst
+- volzet: toon alleen een wachtlijst wanneer die beschikbaar is
+- afgelopen: toon geen boekingsactie
+- concept: toon een passende actie om op de hoogte te blijven
+
+Een boekingsactie en interesselijst worden niet tegelijk getoond. Deze regel geldt ook voor alle toekomstige weekends.
 
 ### 2. Eerdere SOLA-edities
 
@@ -142,13 +162,23 @@ Doel: alle waardevolle bestaande informatie behouden en de status van de editie 
 
 Mogelijke onderdelen, voor zover ze al bestaan of afzonderlijk zijn goedgekeurd:
 
-1. hero en status;
-2. voor wie;
-3. programma;
-4. expert;
-5. locatie;
-6. ervaringen;
-7. passende call-to-action.
+1. hero met titel, kernboodschap, foto en hoofdactie
+2. praktisch overzicht met datum, locatie, prijs en groepsgrootte
+3. voor wie
+4. wat je leert en de inhoudelijke focus
+5. wat inbegrepen en niet inbegrepen is
+6. expertise en coördinatie
+7. programma
+8. verblijf
+9. maaltijden
+10. prijs en vroegboekkorting
+11. boekingsactie
+12. gesprek plannen bij twijfel
+13. veelgestelde vragen
+14. wat er na inschrijving gebeurt
+15. afsluitende boekingsoproep
+
+Ontbrekende onderdelen worden niet met verzonnen inhoud aangevuld. De structuur is het vaste uitgangspunt; alleen relevante, bevestigde onderdelen verschijnen op een specifieke reispagina.
 
 Voor een afgelopen editie wordt een boekingsactie niet stilzwijgend behouden, verwijderd of vervangen. De nieuwe status en actie worden vooraf afgesproken.
 
@@ -318,8 +348,21 @@ Het rapport noemt afwijkingen tussen voorstel en uitvoering altijd expliciet.
 | 3 augustus 2026 | Intermittent Living ging niet door en is geen eerdere editie. | Feitelijke juistheid. | Actief |
 | 3 augustus 2026 | Elke update vereist vooraf een impactanalyse en achteraf een wijzigingsrapport. | Onverwachte verwijderingen, inhoudswijzigingen en functieverlies voorkomen. | Actief |
 | 16 augustus 2026 | Afwijkingen door technische beperkingen worden vóór publicatie gemeld en vereisen expliciete goedkeuring. Voor en na publicatie wordt benoemd wat wel, niet en anders live gaat. | Voorkomen dat ontbrekende of vervangen inhoud pas na publicatie zichtbaar wordt. | Actief |
+| 4 september 2026 | Opsommingsregels in SOLA-websitecopy eindigen niet met een puntkomma. | De teksten sober, natuurlijk en makkelijk scanbaar houden. | Actief |
+| 4 september 2026 | Elke reis krijgt één beschikbaarheidsstatus. Boekbare reizen tonen geen interesselijst; niet-boekbare reizen behouden de interesselijst. | De volgende stap voor bezoekers ondubbelzinnig maken en de regel herbruikbaar maken voor volgende weekends. | Actief |
+| 4 september 2026 | Alle reispagina's volgen dezelfde inhoudelijke basisstructuur van hero tot afsluitende boekingsoproep. | Reizen makkelijker aanvullen, vergelijken en publiceren zonder de essentie te verliezen. | Actief |
 
 ## 12. Wijzigingslog masterplan
+
+### Versie 1.3 — 4 september 2026
+
+- Vaste beschikbaarheidsstatussen en bijbehorende hoofdacties toegevoegd.
+- Vastgelegd dat een boekbaar weekend geen interesselijst toont.
+- De goedgekeurde vaste inhoudsstructuur voor reispagina's toegevoegd.
+
+### Versie 1.2 — 4 september 2026
+
+- Vaste schrijfregel toegevoegd: geen puntkomma's aan het einde van opsommingsregels.
 
 ### Versie 1.1 — 16 augustus 2026
 
@@ -340,4 +383,3 @@ Het rapport noemt afwijkingen tussen voorstel en uitvoering altijd expliciet.
 - Elke inhoudelijke wijziging aan het masterplan krijgt een nieuwe versie en een regel in het wijzigingslog.
 - Verouderde afspraken worden niet stilzwijgend gewist: ze worden vervangen met datum, reden en status in het beslisregister.
 - Een update aan het masterplan geeft op zichzelf geen toestemming om de website te wijzigen.
-

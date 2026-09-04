@@ -44,6 +44,12 @@ import intermittentSfeer10 from "../assets/images/Verblijf in Hoge Venen.avif";
 import solaTerraFrankrijk from "../assets/images/SOLA TERRA Frankrijk.jpg";
 
 export type JourneyType = "Weekend" | "Reis";
+export type JourneyAvailability =
+  | "bookable"
+  | "interest-list"
+  | "sold-out"
+  | "past"
+  | "concept";
 
 export interface Journey {
   slug: string;
@@ -70,6 +76,7 @@ export interface Journey {
   badgeLabel?: string;
   isHidden?: boolean;
   isTeaser?: boolean;
+  availability?: JourneyAvailability;
   maxParticipants?: number;
   statusLabel?: string;
   ctaLabel?: string;
@@ -960,19 +967,20 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
     type: "Reis",
     categoryLabel: "OVERDRIVE",
     subtitle: "Herstel begint bij je zenuwstelsel",
-    badgeLabel: "Nieuw SOLA-weekend in ontwikkeling",
+    badgeLabel: "Boekbaar",
     shortDescription:
-      "Een SOLA-weekend in ontwikkeling over fysiologie, zenuwstelsel en herstel.",
+      "Een SOLA-weekend over fysiologie, het zenuwstelsel en herstel.",
     location: "Sourbrodt, Hoge Venen, Ardennen",
     dates: "23 - 25 april 2027",
-    price: "€670",
+    price: "Vanaf €580",
     isTeaser: true,
-    maxParticipants: 14,
-    statusLabel: "Binnenkort meer info.",
+    availability: "bookable",
+    maxParticipants: 12,
+    statusLabel: "Inschrijvingen geopend · min. 6 en max. 12 deelnemers",
     heroImage: intermittentHero,
-    ctaLabel: "Zet mij op de interesselijst",
-    ctaHref: "https://tally.so/r/pbZY8y",
-    secondaryCtaLabel: "Bekijk weekends die nu openstaan",
+    ctaLabel: "Boek je plek",
+    ctaHref: "https://tally.so/r/pbogoy",
+    secondaryCtaLabel: "Plan een gesprek",
     tags: ["Fysiologie", "Zenuwstelsel", "Herstel", "Slaap", "Energie"],
   },
   {
