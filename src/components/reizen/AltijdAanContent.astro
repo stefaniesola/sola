@@ -98,7 +98,22 @@ const faqs = [
   </div>
 </section>
 
-<section id="content" class="border-y border-base-200 bg-base-50/80">
+<nav aria-label="Inhoud van deze pagina" class="border-y border-base-200 bg-white">
+  <div class="mx-auto max-w-6xl px-6 py-4">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-base-500">Op deze pagina</p>
+    <div class="flex gap-x-6 gap-y-2 overflow-x-auto pb-1 text-sm font-semibold text-base-700">
+      <a class="whitespace-nowrap hover:text-accent-700" href="#voor-wie">Voor wie</a>
+      <a class="whitespace-nowrap hover:text-accent-700" href="#inbegrepen">Inbegrepen</a>
+      <a class="whitespace-nowrap hover:text-accent-700" href="#begeleiding">Begeleiding</a>
+      <a class="whitespace-nowrap hover:text-accent-700" href="#programma">Programma</a>
+      <a class="whitespace-nowrap hover:text-accent-700" href="#verblijf">Verblijf & maaltijden</a>
+      <a class="whitespace-nowrap hover:text-accent-700" href="#boeken">Prijs & boeken</a>
+      <a class="whitespace-nowrap hover:text-accent-700" href="#faq">FAQ</a>
+    </div>
+  </div>
+</nav>
+
+<section id="voor-wie" class="scroll-mt-28 border-y border-base-200 bg-base-50/80">
   <div class="max-w-6xl mx-auto px-6 py-14 grid gap-10 lg:grid-cols-2">
     <div>
       <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Voor wie?</p>
@@ -118,7 +133,7 @@ const faqs = [
   </div>
 </section>
 
-<section class="max-w-6xl mx-auto px-6 py-14">
+<section id="inbegrepen" class="scroll-mt-28 max-w-6xl mx-auto px-6 py-14">
   <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
     <div>
       <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Alles voor het weekend</p>
@@ -133,7 +148,7 @@ const faqs = [
   </div>
 </section>
 
-<section class="bg-base-900 text-white">
+<section id="begeleiding" class="scroll-mt-28 bg-base-900 text-white">
   <div class="max-w-6xl mx-auto px-6 py-14">
     <div class="grid overflow-hidden border border-white/20 bg-white/10 lg:grid-cols-[minmax(280px,0.42fr)_minmax(0,1fr)]">
       <a href="https://ikbenjorien.be/" target="_blank" rel="noreferrer">
@@ -159,22 +174,26 @@ const faqs = [
   </div>
 </section>
 
-<section class="max-w-6xl mx-auto px-6 py-14">
+<section id="programma" class="scroll-mt-28 max-w-5xl mx-auto px-6 py-14">
   <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Van vrijdagavond tot zondagmiddag</p>
   <h2 class="mt-3 text-3xl font-semibold text-base-900">Programma</h2>
-  <div class="mt-8 grid gap-6 lg:grid-cols-3">
-    <article class="border border-base-200 bg-base-25 p-6 shadow-sm">
-      <h3 class="text-2xl font-semibold text-base-900">Vrijdag 23 april</h3>
-      <div class="mt-5 space-y-5 text-base-700">
+  <div class="mt-8 divide-y divide-base-200 border-y border-base-200">
+    <details class="group py-6">
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-2xl font-semibold text-base-900">
+        <span>Vrijdag 23 april</span><span class="text-accent-700 transition group-open:rotate-45">+</span>
+      </summary>
+      <div class="mt-6 space-y-5 text-base-700">
         <div><p class="font-semibold text-base-900">Vanaf 18.00 uur</p><p>Aankomst, kennismaking en inchecken<br />Aperitief, briefing en eerste inhoudelijke schets van het weekend</p></div>
         <div><p class="font-semibold text-base-900">19.30 uur</p><p>Avondmaal</p></div>
         <div><p class="font-semibold text-base-900">20.30 uur</p><p>Openingssessie</p></div>
         <div><p class="font-semibold text-base-900">Na de openingssessie</p><p>Hot tub, drankje en vrije tijd</p></div>
       </div>
-    </article>
-    <article class="border border-base-200 bg-white p-6 shadow-sm">
-      <h3 class="text-2xl font-semibold text-base-900">Zaterdag 24 april</h3>
-      <div class="mt-5 space-y-5 text-base-700">
+    </details>
+    <details class="group py-6" open>
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-2xl font-semibold text-base-900">
+        <span>Zaterdag 24 april</span><span class="text-accent-700 transition group-open:rotate-45">+</span>
+      </summary>
+      <div class="mt-6 space-y-5 text-base-700">
         <div><p class="font-semibold text-base-900">Vanaf 06.00 uur — vrijblijvend</p><p>Ochtendwandeling voor wie wil</p></div>
         <div><p class="font-semibold text-base-900">07.30 uur</p><p>Actieve sessie met oefeningen</p></div>
         <div><p class="font-semibold text-base-900">08.15 uur</p><p>Ontbijt</p></div>
@@ -188,10 +207,12 @@ const faqs = [
         <div><p class="font-semibold text-base-900">20.30 uur</p><p>Je hoofd uitzetten — over overdenken</p></div>
         <div><p class="font-semibold text-base-900">Vanaf 21.30 uur</p><p>Hot tub, drankje en vrije tijd</p></div>
       </div>
-    </article>
-    <article class="border border-base-200 bg-base-25 p-6 shadow-sm">
-      <h3 class="text-2xl font-semibold text-base-900">Zondag 25 april</h3>
-      <div class="mt-5 space-y-5 text-base-700">
+    </details>
+    <details class="group py-6">
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-2xl font-semibold text-base-900">
+        <span>Zondag 25 april</span><span class="text-accent-700 transition group-open:rotate-45">+</span>
+      </summary>
+      <div class="mt-6 space-y-5 text-base-700">
         <div><p class="font-semibold text-base-900">07.30 uur</p><p>Actieve sessie: yoga of HIIT</p></div>
         <div><p class="font-semibold text-base-900">08.30 uur</p><p>Ontbijt</p></div>
         <div><p class="font-semibold text-base-900">09.30 uur</p><p>Slaap en herstel — de fysiologie</p><p class="mt-2 text-sm">Over slaap, gsm-gebruik, koffie en dagstructuur.</p></div>
@@ -200,12 +221,12 @@ const faqs = [
         <div><p class="font-semibold text-base-900">13.00 uur</p><p>Lunch</p></div>
         <div><p class="font-semibold text-base-900">14.00 uur</p><p>Afronding en vertrek</p></div>
       </div>
-    </article>
+    </details>
   </div>
   <p class="mt-6 text-sm text-base-500">De precieze volgorde van het programma kan nog wijzigen. Voor vertrek ontvang je het definitieve programma.</p>
 </section>
 
-<section class="border-y border-base-200 bg-base-50/80">
+<section id="verblijf" class="scroll-mt-28 border-y border-base-200 bg-base-50/80">
   <div class="max-w-6xl mx-auto px-6 py-14 grid gap-10 lg:grid-cols-2">
     <article>
       <Image src={hotTubImage} alt="Hot tub bij het verblijf in Sourbrodt" class="h-72 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
@@ -228,7 +249,7 @@ const faqs = [
   </div>
 </section>
 
-<section class="max-w-6xl mx-auto px-6 py-14">
+<section id="boeken" class="scroll-mt-28 max-w-6xl mx-auto px-6 py-14">
   <div class="grid overflow-hidden bg-accent-700 text-white lg:grid-cols-[1fr_0.75fr]">
     <div class="p-7 sm:p-10">
       <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">Vroegboekkorting</p>
@@ -252,7 +273,7 @@ const faqs = [
   </div>
 </section>
 
-<section class="border-y border-base-200 bg-base-50/80">
+<section id="faq" class="scroll-mt-28 border-y border-base-200 bg-base-50/80">
   <div class="max-w-6xl mx-auto px-6 py-14 grid gap-8 lg:grid-cols-[0.65fr_1.35fr]">
     <div><p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Goed om te weten</p><h2 class="mt-3 text-3xl font-semibold text-base-900">Veelgestelde vragen</h2></div>
     <div class="divide-y divide-base-200 border-y border-base-200">
@@ -266,7 +287,7 @@ const faqs = [
   </div>
 </section>
 
-<section class="max-w-6xl mx-auto px-6 py-14">
+<section id="na-inschrijving" class="scroll-mt-28 max-w-6xl mx-auto px-6 py-14">
   <div class="grid gap-10 lg:grid-cols-2">
     <div>
       <p class="text-xs font-semibold uppercase tracking-[0.22em] text-accent-700">Na je inschrijving</p>
