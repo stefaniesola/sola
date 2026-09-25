@@ -59,6 +59,7 @@ export interface Journey {
   location: string;
   dates: string;
   price: string;
+  priceDetails?: string;
   heroImage?: string | ImageMetadata;
   galleryImages?: ImageMetadata[];
   galleryAlts?: string[];
@@ -972,7 +973,8 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
       "Een SOLA-weekend over fysiologie, het zenuwstelsel en herstel.",
     location: "Sourbrodt, Hoge Venen, Ardennen",
     dates: "23 - 25 april 2027",
-    price: "Vanaf €580",
+    price: "€580 vroegboekprijs",
+    priceDetails: "Tot en met 30 november 2026. Vanaf 1 december 2026: €650. Maximaal 12 plaatsen.",
     isTeaser: true,
     availability: "bookable",
     maxParticipants: 12,

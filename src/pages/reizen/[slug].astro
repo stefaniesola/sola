@@ -71,6 +71,7 @@ const altijdAanIntro = [
         <span class="rounded-full border border-white/30 bg-white/15 px-3 py-1">{trip.price}</span>
       </div>
       {trip.statusLabel && <p class="text-sm font-semibold text-white/80">{trip.statusLabel}</p>}
+      {trip.priceDetails && <p class="text-sm text-white/80">{trip.priceDetails}</p>}
       <div class="flex flex-wrap gap-3">
         {trip.ctaHref ? <a href={trip.ctaHref} target="_blank" rel="noreferrer" class="inline-flex rounded-full bg-accent-600 px-5 py-3 font-semibold text-white hover:bg-accent-700">{trip.ctaLabel ?? "Ik heb interesse"}</a> : <a href="#content" class="inline-flex rounded-full bg-base-25 px-5 py-3 font-semibold text-base-900">Lees meer</a>}
         <a href="/contact" class="inline-flex rounded-full border border-white/60 px-5 py-3 font-semibold text-white">Plan een gesprek</a>
