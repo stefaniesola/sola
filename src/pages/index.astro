@@ -57,7 +57,6 @@ const nextEdition = journeys.find((journey) => journey.slug === "altijd-aan");
 const altijdAanBookingHref = "https://tally.so/r/pbogoy";
 const returningWeekendInterestLinks: Record<string, string> = {
   "exercise-is-medicine": "https://tally.so/r/QKqRJA",
-  "bewustwording-connectie": "https://tally.so/r/b5Me82",
 };
 const homeReviews = [
   {
@@ -259,6 +258,7 @@ const optimizedHauteLoire = await getImage({
             <span>{nextEdition.dates}</span>
           </div>
           <h2 class="mt-5 text-3xl font-semibold text-base-900 lg:text-4xl">{nextEdition.name}</h2>
+          <p class="mt-2 text-lg font-semibold text-accent-700">Je zenuwstelsel begrijpen. Leren schakelen.</p>
           <div class="mt-4 flex items-start gap-4">
             <img
               src={jorienPortrait.src}
@@ -270,26 +270,24 @@ const optimizedHauteLoire = await getImage({
               class="h-16 w-16 shrink-0 rounded-full border-2 border-white object-cover shadow-sm sm:h-20 sm:w-20"
             />
             <p class="text-base leading-relaxed text-base-700">
-              Samen met Jorien Raeymaekers onderzoek je hoe herstel fysiologisch werkt. Waarom blijft je systeem aan, ook wanneer je rust neemt? En hoe kan je je zenuwstelsel opnieuw leren schakelen via ademhaling, yoga, beweging en natuur?
+              Waarom blijft je lichaam alert, ook wanneer je probeert te ontspannen? Ontdek hoe je zenuwstelsel reageert op spanning en herstel. Met Jorien ga je aan de slag met ademhaling, yoga, beweging en natuur.
             </p>
           </div>
           <div class="relative z-20 mt-7 flex flex-wrap items-center gap-3 border-t border-base-200 pt-5">
-            <div class="w-full text-sm">
-              <p class="font-semibold text-base-900">{nextEdition.price}</p>
-              <p class="mt-1 text-base-600">{nextEdition.priceDetails}</p>
-            </div>
+            <p class="w-full text-sm font-semibold text-accent-700">€580 t.e.m. 30 november 2026 · daarna €650</p>
             <a href={altijdAanBookingHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-accent-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-700">
-              Boek nu
+              Boek je plek
             </a>
             <a href="/reizen/altijd-aan" class="inline-flex items-center rounded-full border border-base-300 px-5 py-3 text-sm font-semibold text-base-900 transition hover:border-base-500 hover:bg-base-25">
               Ontdek het weekend
             </a>
-            <a href={nextEdition.ctaHref} target="_blank" rel="noopener noreferrer" class="w-full pt-1 text-sm font-semibold text-base-700 underline decoration-base-300 underline-offset-4 transition hover:text-accent-700 hover:decoration-accent-600">
-              {nextEdition.ctaLabel}
-            </a>
           </div>
         </div>
       </article>
+      <a href="/reizen#agenda-2027" class="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-base-200 bg-base-100 px-6 py-5 text-base-900 transition hover:bg-base-200">
+        <span><span class="block text-xs uppercase tracking-[0.18em] text-accent-700">Meer SOLA in 2027</span><span class="mt-1 block text-xl font-semibold">Sport. Verdieping. Leefstijl. Ademhaling.</span></span>
+        <span class="text-sm font-semibold">Bekijk de SOLA-agenda 2027 <span aria-hidden="true">↗</span></span>
+      </a>
     </div>
     </section>
   )}
@@ -454,10 +452,10 @@ const optimizedHauteLoire = await getImage({
             Eerdere edities
           </p>
           <h3 class="text-3xl font-semibold text-base-900">
-            Deze SOLA-weekenden keren terug in 2027
+            Eerdere SOLA-edities
           </h3>
           <p class="mt-2 max-w-3xl text-base-700">
-            Beweging als medicijn en Van inzicht naar verdiepend denken en voelen krijgen in 2027 een nieuwe editie. De nieuwe data worden later bekendgemaakt.
+            Ontdek de inhoud en ervaringen van eerdere SOLA-weekenden.
           </p>
         </div>
         <a class="text-sm font-semibold hover:text-accent-700" href="/reizen"
@@ -487,11 +485,11 @@ const optimizedHauteLoire = await getImage({
                   />
                 )}
                 <span class="absolute left-4 top-4 rounded-full bg-base-25/95 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-base-800 shadow-sm">
-                  Terug in 2027
+                  {weekend.slug === "bewustwording-connectie" ? "Eerdere editie" : "Terug in 2027"}
                 </span>
                 <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
                   <span class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 inline-flex items-center px-5 py-3 rounded-full bg-base-25 text-base-900 font-semibold">
-                    Bekijk deze editie
+                    {weekend.slug === "bewustwording-connectie" ? "Bekijk eerdere editie" : "Bekijk deze editie"}
                   </span>
                 </div>
               </a>
@@ -512,14 +510,14 @@ const optimizedHauteLoire = await getImage({
                   <a class="text-accent-700 hover:underline" href={`/weekenden/${weekend.slug}`}>
                     Bekijk eerdere editie
                   </a>
-                  <a
+                  {returningWeekendInterestLinks[weekend.slug] && <a
                     href={returningWeekendInterestLinks[weekend.slug]}
                     target="_blank"
                     rel="noopener noreferrer"
                     class="inline-flex items-center justify-center rounded-full bg-accent-600 px-4 py-2.5 text-white transition hover:bg-accent-700"
                   >
                     Zet mij op de interesselijst
-                  </a>
+                  </a>}
                 </div>
               </div>
             </article>
@@ -615,4 +613,3 @@ const optimizedHauteLoire = await getImage({
     </div>
   </section>
 </BaseLayout>
-

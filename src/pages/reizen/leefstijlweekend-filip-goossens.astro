@@ -1,0 +1,78 @@
+---
+import UpcomingWeekendPage from '../../components/weekenden/UpcomingWeekendPage.astro';
+const topics = [
+  { title: 'Je eetgewoontes onder de loep', copy: 'Wat eet je op een doorsneedag? Welke vragen heb je over voeding? Je eigen gewoontes en vragen vormen het vertrekpunt voor de sessies met Filip.' },
+  { title: 'Van zitten naar bewegen', copy: 'We wisselen de inhoudelijke sessies af met beweging. Wandelen en samen buiten zijn krijgen een plek in het programma. Je bekijkt ook hoe beweging in je gewone week past.' },
+  { title: 'Je eigen avondritueel', copy: 'Hoe ziet het laatste uur van je dag eruit? Tijdens een sessie over slaap werk je aan een eigen avondritueel om thuis mee aan de slag te gaan.' },
+  { title: 'Stress in je dagelijkse ritme', copy: 'Je bespreekt stress samen met voeding, beweging en slaap. Welke gewoontes hangen bij jou samen? En waar wil je als eerste iets aan veranderen?' },
+  { title: 'Je leefomgeving', copy: 'Gezondheid speelt zich ook af op de plekken waar je woont, werkt en ontspant. Je leefomgeving krijgt daarom een plaats naast je persoonlijke gewoontes.' },
+  { title: 'Middelengebruik', copy: 'Ook alcohol, tabak en andere middelen horen bij het gesprek over leefstijl. Welke plaats nemen ze in je dagelijkse leven in?' },
+  { title: 'Sociale verbinding', copy: 'Met wie eet, beweeg en ontspan je? We staan stil bij sociale contacten als onderdeel van je leefstijl. Tijdens het weekend trek je samen naar buiten en schuif je samen aan tafel.' },
+];
+---
+<UpcomingWeekendPage
+  title="Leefstijlweekend met Filip Goossens"
+  description="SOLA-leefstijlweekend met leefstijlarts Filip Goossens in september 2027. Voeding, beweging, slaap en stress. Ontvang als eerste het programma."
+  label="Leefstijlgeneeskunde · samen met LifeLab"
+  date="September 2027 · exacte datum volgt"
+  expert="Met huisarts en leefstijlarts Filip Goossens"
+  headline="Begrijp je gewoontes. Probeer uit. Neem mee naar huis."
+  intro="Wat eet je, hoe beweeg je en hoe sluit je je dag af? Trek met SOLA en Filip Goossens naar de Hoge Venen voor een weekend rond leefstijlgeneeskunde. Je combineert wetenschappelijk onderbouwde sessies met beweging, voedingsadvies aan tafel en oefeningen. Vanuit je eigen vragen kies je met welke gewoontes je thuis aan de slag wilt."
+  price="€610 vroegboekprijs · €680 standaardprijs"
+  href="https://tally.so/r/lbQGek"
+  cta="Hou me op de hoogte"
+  topics={topics}
+  topicsTitle="Zeven pijlers. Jouw dagelijks leven."
+  closing="We werken het programma verder uit voor september 2027. Ontvang als eerste de exacte datum, het volledige programma en bericht zodra de inschrijvingen openen."
+>
+  <div slot="before-topics" class="opening">
+    <section aria-labelledby="filip-title">
+      <p class="kicker">Je expert</p>
+      <h2 id="filip-title">Maak kennis met Filip.</h2>
+      <p>Filip Goossens is huisarts bij Familiepraktijk Nijlen en leefstijlarts bij LifeLab. In zijn werk brengt hij medische kennis en dagelijkse gewoontes samen: hoe help je mensen om bewustere keuzes te maken rond hun gezondheid, op een manier die bij hun leven past?</p>
+      <p>Die aanpak neemt hij mee naar SOLA. Hij begeleidt de leefstijlsessies, geeft voedingsadvies bij de maaltijden en werkt met de groep rond meditatie en slaap. Je kunt je vragen rechtstreeks aan hem stellen en gaat ook zelf aan de slag.</p>
+    </section>
+    <section class="panel" aria-labelledby="preparation-title">
+      <p class="kicker">Het begint bij jou</p>
+      <h2 id="preparation-title">Je vragen reizen mee.</h2>
+      <p>Wil je gezonder leven, maar weet je niet waar te beginnen? Of lees je veel over voeding, slaap en beweging en wil je begrijpen wat je ermee kunt doen? Dit weekend is voor wie zijn eigen leefstijl wil onderzoeken.</p>
+      <p>In de voorbereiding voorzien we een korte vragenlijst over je voedings-, beweeg- en slaapgewoontes. Je vertelt ook waar je grootste vraag zit, bijvoorbeeld rond energie, gewicht of je dagelijkse ritme. Filip gebruikt de antwoorden om de accenten in de sessies te bepalen.</p>
+    </section>
+    <p>De zeven pijlers vormen de basis van het weekend. Hoeveel aandacht elk thema krijgt, stemmen we af op de vragen van de groep.</p>
+  </div>
+  <section class="programme" aria-labelledby="programme-title">
+    <p class="kicker">Van sessie naar zelf doen</p>
+    <h2 id="programme-title">Zo krijgt het weekend vorm.</h2>
+    <p>Dit is de opbouw uit het voorstel. We werken de activiteiten en begeleiding verder uit; het definitieve programma volgt bij de lancering.</p>
+    <div class="days">
+      <article><p class="kicker">Vrijdag</p><h3>Aankomen & kennismaken</h3><p>Elkaar leren kennen en rustig aan het weekend beginnen. Het voorstel voorziet een hot tub-moment als aanknopingspunt voor een gesprek over je avondritueel en slaap.</p></article>
+      <article><p class="kicker">Zaterdag</p><h3>Naar buiten. Aan tafel. In gesprek.</h3><p>Een ochtendwandeling of lichte jog, yoga en leefstijlsessies op basis van de vragenlijst. In de namiddag staat een hike of trailrun op de planning. Bij de maaltijden bespreekt Filip voeding met de groep.</p><p>Ook sauna en een ijsbad maken deel uit van het voorstel. De precieze invulling, begeleiding en voorwaarden voor deelname werken we nog uit.</p></article>
+      <article><p class="kicker">Zondag</p><h3>Oefenen & meenemen</h3><p>Beweging, met krachttraining als voorgesteld onderdeel, en yoga. Korte sessies rond onder meer voeding en slaap ronden het weekend af. Je stelt je eigen avondritueel samen en kiest welke tips je thuis wilt uitproberen.</p></article>
+    </div>
+  </section>
+  <section class="panel" aria-labelledby="take-home-title">
+    <p class="kicker">Na het weekend</p>
+    <h2 id="take-home-title">Waar begin jij maandag mee?</h2>
+    <p>Je hoeft niet je hele leven om te gooien. Je kiest uit de sessies en oefeningen de stappen die bij jou passen: iets veranderen aan je eetgewoontes, beweging inplannen of je avond anders afsluiten. Je eigen avondritueel is een eerste uitwerking om thuis mee verder te gaan.</p>
+  </section>
+  <section class="practical" aria-labelledby="practical-title">
+    <h2 id="practical-title">Goed om te weten</h2>
+    <dl><div><dt>Wanneer</dt><dd>Vermoedelijk eind september 2027. De exacte datum volgt.</dd></div><div><dt>Waar</dt><dd>We bereiden het weekend voor in Sourbrodt, in de Hoge Venen.</dd></div><div><dt>Prijs</dt><dd>€610 vroegboekprijs · €680 standaardprijs. De vroegboekvoorwaarden volgen bij de opening van de inschrijvingen.</dd></div><div><dt>Persoonlijke opvolging</dt><dd>Een bloedafname en een individueel traject via LifeLab zijn mogelijke extra’s buiten het weekend. Ze zijn niet inbegrepen in de weekendprijs.</dd></div></dl>
+  </section>
+</UpcomingWeekendPage>
+<style>
+  .opening { margin-bottom: 3rem; }
+  .kicker { font-size: .7rem; text-transform: uppercase; letter-spacing: .14em; font-weight: 600; color: var(--color-accent-700); }
+  h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 600; line-height: 1.15; margin: .65rem 0 1rem; }
+  p { line-height: 1.6; max-width: 850px; }
+  p + p { margin-top: .9rem; }
+  .panel { background: #eee8df; border-radius: 1rem; padding: 2rem; margin: 2rem 0; }
+  .programme, .practical { margin-top: 3.5rem; }
+  .days { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .days article { border-top: 3px solid #d16a3c; padding: 1.4rem; background: #eee8df; border-radius: 0 0 1rem 1rem; }
+  h3 { font-size: 1.3rem; font-weight: 600; line-height: 1.2; margin: .7rem 0 1rem; }
+  dl { margin-top: 1.5rem; }
+  dl div { display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem; padding: 1rem 0; border-top: 1px solid #ded3c3; line-height: 1.5; }
+  dt { font-weight: 600; }
+  @media(max-width: 767px) { .days { grid-template-columns: 1fr; } .panel { padding: 1.4rem; } dl div { grid-template-columns: 1fr; gap: .35rem; } }
+</style>

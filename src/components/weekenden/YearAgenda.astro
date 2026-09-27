@@ -1,0 +1,140 @@
+---
+const weekends = [
+  {
+    id: 'jorien-2027', month: 'APR', date: '23–25 april', label: 'Boek je plek',
+    title: 'Altijd aan?', subtitle: 'Je zenuwstelsel begrijpen. Leren schakelen.',
+    expert: 'Met Jorien Raeymaekers',
+    copy: 'Waarom blijft je lichaam alert, ook wanneer je probeert te ontspannen? Ontdek hoe je zenuwstelsel reageert op spanning en herstel.',
+    note: '€580 vroegboekprijs t.e.m. 30 november 2026. Daarna €650.',
+    href: 'https://tally.so/r/pbogoy', cta: 'Boek je plek', featured: true,
+    detailHref: '/reizen/altijd-aan/', detailLabel: 'Ontdek het weekend',
+  },
+  {
+    id: 'simon-2027', month: 'MEI', date: 'Datum volgt', label: 'Sport & gezondheid',
+    title: 'Sportweekend met Simon', subtitle: 'Wat doet beweging met je lichaam?',
+    expert: 'Met Simon Helleputte',
+    copy: 'Je hart, je uithouding, je stofwisseling: beweging zet meer in gang dan je denkt. Met Simon bereiden we een nieuw weekend voor rond sport en gezondheid.',
+    note: 'Ontvang de datum en het programma zodra ze bekend zijn.',
+    href: 'https://tally.so/r/QKqRJA', cta: 'Hou me op de hoogte',
+    detailHref: '/weekenden/exercise-is-medicine/', detailLabel: 'Bekijk de eerdere editie',
+  },
+  {
+    id: 'sarah-2027', month: 'JUN', date: '4–6 juni', label: 'Nieuw · voor professionals',
+    title: 'Verdiepingsweekend met Sarah Deleu', subtitle: 'Emotional Freedom Techniques (EFT), systemisch werk en lichaamsbewustzijn',
+    expert: 'Met Sarah Deleu',
+    copy: 'Een nieuw SOLA-weekend voor professionals, met Emotional Freedom Techniques (EFT) als centraal onderdeel. Samen met Sarah staan we stil bij emoties, terugkerende patronen en relaties. Ook voeding komt aan bod.',
+    note: 'Noteer 4–6 juni alvast. Ontvang het programma, de prijs en bericht zodra de inschrijvingen openen. Je interesse is vrijblijvend.',
+    href: 'https://tally.so/r/b5Me82', cta: 'Zet me op de interesselijst',
+    detailHref: '/reizen/verdiepingsweekend-sarah-deleu/', detailLabel: 'Ontdek het weekend',
+  },
+  {
+    id: 'filip-2027', month: 'SEP', date: 'Datum volgt', label: 'Voeding · beweging · slaap · stress',
+    title: 'Leefstijlweekend', subtitle: 'Wat ligt er op je bord? Hoe ziet je avond eruit?',
+    expert: 'Met leefstijlarts Filip Goossens',
+    copy: 'Met huisarts en leefstijlarts Filip Goossens duik je in de zeven pijlers van leefstijl: van voeding, beweging en slaap tot stress, je leefomgeving, middelengebruik en sociale verbinding. Sessies, voedingsadvies aan tafel en samen naar buiten gaan wisselen elkaar af. Je eigen vragen bepalen mee de inhoud. Je stelt een avondritueel samen en kiest welke gewoontes je thuis wilt aanpakken.',
+    price: '€610 vroegboekprijs · €680 standaardprijs',
+    note: 'Ontvang als eerste de exacte datum, het programma en de start van de inschrijvingen.',
+    href: 'https://tally.so/r/lbQGek', cta: 'Hou me op de hoogte',
+    detailHref: '/reizen/leefstijlweekend-filip-goossens/', detailLabel: 'Ontdek het weekend',
+  },
+  {
+    id: 'ademhaling-2027', month: 'OKT', date: 'Datum volgt', label: 'Workshops & oefeningen',
+    title: 'Ademhaling: van inzicht naar oefening', subtitle: 'Hoe adem je? Wat gebeurt er in je lichaam?',
+    expert: 'Expert wordt aangekondigd',
+    copy: 'Je doet het de hele dag. Maar hoe werkt je ademhaling eigenlijk? Tijdens workshops en praktische oefeningen ontdek je de lichamelijke kant van ademhalen en ga je zelf aan de slag.',
+    note: 'Volg de SOLA-updates voor de datum, de expert en het programma.',
+    href: '/newsletter', cta: 'Hou me op de hoogte via de nieuwsbrief',
+  },
+];
+---
+
+<section id="agenda-2027" class="agenda" aria-labelledby="agenda-title">
+  <header class="agenda-header">
+    <div>
+      <p class="agenda-eyebrow">Buiten. In beweging. Met inhoud.</p>
+      <h2 id="agenda-title">SOLA 2027.<br /><span>Kies je weekend.</span></h2>
+      <p class="agenda-intro">Je zenuwstelsel, je beweging, je gewoontes, je ademhaling. In 2027 duiken we met experten in wat je lichaam doet en hoe je daar bewust mee aan de slag kunt.</p>
+    </div>
+    <div class="agenda-year" aria-hidden="true">20<br />27<span>zon voor onderweg</span></div>
+  </header>
+  <nav class="agenda-months" aria-label="Ga naar een weekend in 2027">
+    {weekends.map((weekend) => <a href={`#${weekend.id}`}><span>{weekend.month}</span><span aria-hidden="true">↘</span></a>)}
+  </nav>
+  <div class="agenda-list">
+    {weekends.map((weekend, index) => (
+      <article id={weekend.id} class:list={['agenda-row', { 'agenda-row-bookable': weekend.featured }]}>
+        <div class="agenda-date">
+          <span class="agenda-index">SOLA / 0{index + 1}</span>
+          <span class="agenda-month">{weekend.month}</span>
+          <span class="agenda-day">{weekend.date} · 2027</span>
+        </div>
+        <div class="agenda-content">
+          <p class="agenda-label">{weekend.label}</p>
+          <h3>{weekend.title}</h3>
+          <p class="agenda-subtitle">{weekend.subtitle}</p>
+          <p class="agenda-expert">{weekend.expert}</p>
+          <p class="agenda-copy">{weekend.copy}</p>
+          {'price' in weekend && <p class="agenda-expert">{weekend.price}</p>}
+          <p class="agenda-note">{weekend.note}</p>
+          <div class="agenda-actions"><a class:list={['agenda-cta', { 'agenda-cta-book': weekend.featured }]} href={weekend.href} target={weekend.href.startsWith('https:') ? '_blank' : undefined} rel={weekend.href.startsWith('https:') ? 'noopener noreferrer' : undefined}>
+            {weekend.cta}<span aria-hidden="true">↗</span>
+          </a>
+          {'detailHref' in weekend && <a class="agenda-detail" href={weekend.detailHref}>{weekend.detailLabel}<span aria-hidden="true"> →</span></a>}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .agenda { max-width: 1152px; margin: 4.5rem auto 0; padding: 0 1.5rem; scroll-margin-top: 110px; color: var(--color-base-900); }
+  .agenda-header { display: grid; grid-template-columns: 1fr auto; gap: 3rem; background: var(--color-base-900); color: #f6f4f0; border-radius: 1.5rem 1.5rem 0 0; padding: 3rem; overflow: hidden; }
+  .agenda-eyebrow { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 1rem; color: #ded3c3; }
+  .agenda-header h2 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: .98; letter-spacing: -.035em; font-weight: 600; }
+  .agenda-header h2 span { color: #ded3c3; }
+  .agenda-intro { max-width: 580px; margin-top: 1.5rem; line-height: 1.55; color: #f6f4f0; }
+  .agenda-year { align-self: center; font-size: 6rem; line-height: .72; letter-spacing: -.075em; color: #d16a3c; text-align: right; font-weight: 600; }
+  .agenda-year span { display: block; font-size: .6rem; line-height: 1.4; letter-spacing: .12em; text-transform: uppercase; color: #ded3c3; margin-top: 1.4rem; }
+  .agenda-months { display: grid; grid-template-columns: repeat(5, 1fr); background: #ded3c3; border: 1px solid #ded3c3; }
+  .agenda-months a { display: flex; justify-content: space-between; padding: .85rem 1.2rem; border-right: 1px solid #3e342a22; font-size: .75rem; letter-spacing: .12em; font-weight: 600; transition: background .2s; }
+  .agenda-months a:last-child { border-right: 0; }
+  .agenda-months a:hover { background: #f6f4f0; }
+  .agenda-list { border: 1px solid var(--color-base-200); border-top: 0; border-radius: 0 0 1.5rem 1.5rem; overflow: hidden; }
+  .agenda-row { display: grid; grid-template-columns: 185px 1fr; gap: 2.5rem; padding: 2.5rem 3rem; background: #f6f4f0; scroll-margin-top: 100px; }
+  .agenda-row + .agenda-row { border-top: 1px solid #ded3c3; }
+  .agenda-row:nth-child(even) { background: #eee8df; }
+  .agenda-date { display: flex; flex-direction: column; align-items: flex-start; }
+  .agenda-index { font-size: .65rem; letter-spacing: .16em; color: var(--color-base-600); }
+  .agenda-month { font-size: 3.5rem; letter-spacing: -.05em; line-height: 1.1; margin-top: .6rem; font-weight: 600; }
+  .agenda-day { font-size: .8rem; margin-top: .35rem; }
+  .agenda-label { display: inline-block; font-size: .65rem; text-transform: uppercase; letter-spacing: .12em; color: var(--color-accent-700); font-weight: 600; margin-bottom: .7rem; }
+  .agenda-content h3 { font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.08; letter-spacing: -.025em; font-weight: 600; }
+  .agenda-subtitle { font-size: 1.05rem; margin-top: .5rem; line-height: 1.4; }
+  .agenda-expert { font-size: .75rem; font-weight: 600; margin-top: .9rem; }
+  .agenda-copy { margin-top: .8rem; line-height: 1.6; max-width: 670px; }
+  .agenda-note { font-size: .85rem; line-height: 1.5; margin-top: 1rem; color: var(--color-base-700); }
+  .agenda-cta { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.5rem; border: 1px solid var(--color-base-400); border-radius: 999px; padding: .7rem 1.1rem; margin-top: 1.2rem; font-size: .85rem; font-weight: 600; transition: background .2s, color .2s; }
+  .agenda-cta:hover { background: var(--color-base-900); color: #f6f4f0; }
+  .agenda-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.4rem; margin-top: 1.2rem; }
+  .agenda-actions .agenda-cta { margin-top: 0; }
+  .agenda-detail { font-size: .85rem; font-weight: 600; text-decoration: underline; text-underline-offset: .25em; }
+  .agenda-detail:hover { color: var(--color-accent-700); }
+  .agenda-cta-book { background: var(--color-accent-600); border-color: var(--color-accent-600); color: white; }
+  .agenda-row-bookable .agenda-month { color: var(--color-accent-700); }
+  .agenda a:focus-visible { outline: 3px solid var(--color-accent-600); outline-offset: 4px; }
+  @media (max-width: 767px) {
+    .agenda { margin-top: 3rem; }
+    .agenda-header { padding: 1.6rem; grid-template-columns: 1fr; gap: 0; }
+    .agenda-year { display: none; }
+    .agenda-header h2 { font-size: 2.8rem; }
+    .agenda-months a { padding: .8rem .5rem; justify-content: center; }
+    .agenda-months a span:last-child { display: none; }
+    .agenda-row { grid-template-columns: 1fr; gap: 1.2rem; padding: 1.6rem; }
+    .agenda-date { display: grid; grid-template-columns: auto 1fr; column-gap: .8rem; align-items: center; border-bottom: 1px solid #3e342a22; padding-bottom: 1rem; }
+    .agenda-index { grid-column: 1 / -1; margin-bottom: .4rem; }
+    .agenda-month { font-size: 2.1rem; margin: 0; }
+    .agenda-day { margin: 0; }
+    .agenda-cta { max-width: 100%; gap: .7rem; }
+  }
+</style>

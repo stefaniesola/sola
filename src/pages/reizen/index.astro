@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import YearAgenda from "../../components/weekenden/YearAgenda.astro";
 import { journeys, uspTags, reizenPage } from "../../data/content";
 import { getImage } from "astro:assets";
 import bewustwordingImage from "../../assets/images/2631991747.jpg";
@@ -92,7 +93,7 @@ const previousEditions = weekendsWithImages
     interestHref:
       weekend.slug === "exercise-is-medicine"
         ? "https://tally.so/r/QKqRJA"
-        : "https://tally.so/r/b5Me82",
+        : undefined,
     dates:
       weekend.slug === "bewustwording-connectie"
         ? "31 juli – 2 augustus 2026"
@@ -115,6 +116,7 @@ const previousEditions = weekendsWithImages
       <p class="text-base-700 max-w-3xl">
         {reizenPage.description}
       </p>
+      <a href="#agenda-2027" class="inline-flex items-center gap-4 rounded-full border border-base-400 px-5 py-3 text-sm font-semibold text-base-900 hover:bg-base-25">Bekijk de SOLA-agenda 2027 <span aria-hidden="true">↘</span></a>
       <div class="flex flex-wrap gap-2">
         {
           uspTags.map((tag) => (
@@ -128,7 +130,7 @@ const previousEditions = weekendsWithImages
   </section>
 
   {nextEdition && (
-    <section class="max-w-6xl mx-auto px-6 pt-14">
+    <section id="volgende-editie" class="max-w-6xl mx-auto px-6 pt-14">
       <div class="mb-6">
         <h2 class="text-3xl font-semibold text-base-900">
           Volgende editie
@@ -162,6 +164,7 @@ const previousEditions = weekendsWithImages
           <h2 class="mt-5 text-3xl font-semibold text-base-900 lg:text-4xl">
             <a href={`/reizen/${nextEdition.slug}`} class="hover:text-accent-700">{nextEdition.name}</a>
           </h2>
+          <p class="mt-2 text-lg font-semibold text-accent-700">Je zenuwstelsel begrijpen. Leren schakelen.</p>
           <div class="mt-4 flex items-start gap-4">
             <img
               src={jorienPortrait.src}
@@ -173,16 +176,15 @@ const previousEditions = weekendsWithImages
               class="h-16 w-16 shrink-0 rounded-full border-2 border-white object-cover shadow-sm sm:h-20 sm:w-20"
             />
             <p class="text-base leading-relaxed text-base-700">
-              Samen met Jorien Raeymaekers onderzoek je hoe herstel fysiologisch werkt. Waarom blijft je systeem aan, ook wanneer je rust neemt? En hoe kan je je zenuwstelsel opnieuw leren schakelen via ademhaling, yoga, beweging en natuur?
+              Waarom blijft je lichaam alert, ook wanneer je probeert te ontspannen? Ontdek hoe je zenuwstelsel reageert op spanning en herstel. Met Jorien ga je aan de slag met ademhaling, yoga, beweging en natuur.
             </p>
           </div>
           <div class="mt-7 border-t border-base-200 pt-5 text-sm font-semibold">
-            <span class="text-base-900">{nextEdition.price}</span>
-            <p class="mt-1 font-normal text-base-600">{nextEdition.priceDetails}</p>
+            <p class="text-base-900"><span class="text-3xl">€580</span> <span class="ml-2 font-normal">vroegboekprijs</span></p>
+            <p class="mt-2 text-accent-700">Boek t.e.m. 30 november 2026. Daarna €650.</p>
             <div class="relative z-20 mt-4 flex flex-wrap gap-3">
               <a href={`/reizen/${nextEdition.slug}`} class="inline-flex items-center rounded-full border border-base-300 px-5 py-3 text-base-900 transition hover:border-base-500">Bekijk details</a>
-              <a href={altijdAanBookingHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-accent-600 px-5 py-3 text-white transition hover:bg-accent-700">Boek nu</a>
-              <a href={nextEdition.ctaHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full border border-base-300 px-5 py-3 text-base-900 transition hover:border-base-500">{nextEdition.ctaLabel ?? "Zet mij op de interesselijst"}</a>
+              <a href={altijdAanBookingHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-accent-600 px-5 py-3 text-white transition hover:bg-accent-700">Boek je plek</a>
             </div>
           </div>
         </div>
@@ -190,13 +192,15 @@ const previousEditions = weekendsWithImages
     </section>
   )}
 
+  <YearAgenda />
+
   <section class="max-w-6xl mx-auto px-6 py-14">
     <div class="mb-6">
       <h2 class="text-3xl font-semibold text-base-900">
-        Eerdere edities die terugkeren in 2027
+        Eerdere SOLA-edities
       </h2>
       <p class="mt-2 max-w-3xl text-base-700">
-        Deze SOLA-weekenden vonden eerder plaats en krijgen in 2027 een vervolg. Bekijk de inhoud en ervaringen van de eerdere editie of schrijf je in om als eerste de nieuwe data te ontvangen.
+        Ontdek de inhoud en ervaringen van eerdere SOLA-weekenden.
       </p>
     </div>
     <div class="grid gap-6 md:grid-cols-2">
@@ -218,7 +222,7 @@ const previousEditions = weekendsWithImages
               />
             )}
             <div class="absolute left-4 top-4 rounded-full bg-base-25/95 px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-base-700 shadow-sm">
-              Terug in 2027
+              {weekend.slug === "bewustwording-connectie" ? "Eerdere editie" : "Terug in 2027"}
             </div>
           </a>
           <div class="flex flex-1 flex-col space-y-3 p-6">
@@ -236,14 +240,14 @@ const previousEditions = weekendsWithImages
               <a class="text-accent-700 hover:underline" href={`/weekenden/${weekend.slug}`}>
                 Bekijk eerdere editie
               </a>
-              <a
+              {weekend.interestHref && <a
                 href={weekend.interestHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="inline-flex items-center justify-center rounded-full bg-accent-600 px-4 py-2.5 text-white transition hover:bg-accent-700"
               >
                 Zet mij op de interesselijst
-              </a>
+              </a>}
             </div>
           </div>
         </article>
@@ -271,4 +275,3 @@ const previousEditions = weekendsWithImages
     </div>
   </section>
 </BaseLayout>
-

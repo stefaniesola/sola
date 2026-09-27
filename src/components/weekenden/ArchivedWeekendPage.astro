@@ -51,7 +51,7 @@ const archiveDetails = {
     },
   },
   "bewustwording-connectie": {
-    interestHref: "https://tally.so/r/b5Me82",
+    interestHref: "/reizen#sarah-2027",
     reviews: [
       {
         name: "Virginie",
@@ -152,11 +152,11 @@ const metaDescription = `${weekend.shortDescription} Eerdere SOLA-editie in ${we
           </a>
           <a
             href={details.interestHref}
-            target="_blank"
+            target={details.interestHref.startsWith("https:") ? "_blank" : undefined}
             rel="noopener noreferrer"
             class="inline-flex items-center justify-center rounded-full border border-base-300 bg-white px-5 py-3 text-sm font-semibold text-base-800 transition hover:border-base-400"
           >
-            Interesse in dit weekend
+            {weekend.slug === "bewustwording-connectie" ? "Ontdek het nieuwe weekend voor professionals" : "Interesse in dit weekend"}
           </a>
         </div>
       </div>
@@ -287,8 +287,8 @@ const metaDescription = `${weekend.shortDescription} Eerdere SOLA-editie in ${we
           <a href="/reizen" class="rounded-full bg-accent-500 px-5 py-3 text-sm font-semibold text-white hover:bg-accent-600">
             Bekijk volgende edities
           </a>
-          <a href={details.interestHref} target="_blank" rel="noopener noreferrer" class="rounded-full border border-white/35 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
-            Interesse in dit weekend
+          <a href={details.interestHref} target={details.interestHref.startsWith("https:") ? "_blank" : undefined} rel="noopener noreferrer" class="rounded-full border border-white/35 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+            {weekend.slug === "bewustwording-connectie" ? "Ontdek het nieuwe weekend voor professionals" : "Interesse in dit weekend"}
           </a>
         </div>
       </div>

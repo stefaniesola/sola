@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+interface Props {
+  title: string; description: string; label: string; date: string;
+  headline: string; intro: string; expert: string; href: string; cta: string;
+  topics: { title: string; copy: string }[];
+  closing: string; price?: string; topicsTitle?: string;
+}
+const { title, description, label, date, headline, intro, expert, href, cta, topics, closing, price, topicsTitle = 'Hier duiken we in.' } = Astro.props;
+---
+<BaseLayout title={`${title} | SOLA Travel`} description={description}>
+  <div class="weekend-preview">
+    <section class="weekend-hero">
+      <div class="weekend-wrap">
+        <a class="back" href="/reizen/#agenda-2027">← Alle SOLA-weekends in 2027</a>
+        <p class="eyebrow">{label}</p>
+        <h1>{title}</h1>
+        <p class="headline">{headline}</p>
+        <p class="intro">{intro}</p>
+        <div class="facts"><span>{date}</span><span>{expert}</span></div>
+        {price && <p class="price">{price}</p>}
+        <a class="button" href={href} target="_blank" rel="noopener noreferrer">{cta} <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+    <section class="weekend-wrap content" aria-labelledby="content-title">
+      <slot name="before-topics" />
+      <p class="eyebrow">Buiten. In beweging. Met inhoud.</p>
+      <h2 id="content-title">{topicsTitle}</h2>
+      <div class="topics">
+        {topics.map((topic, index) => <article><span class="number" aria-hidden="true">0{index + 1}</span><h3>{topic.title}</h3><p>{topic.copy}</p></article>)}
+      </div>
+      <slot />
+      <aside class="next-step">
+        <div><h2>Als eerste op de hoogte?</h2><p>{closing}</p><p class="small">Je interesse is vrijblijvend.</p></div>
+        <a class="button" href={href} target="_blank" rel="noopener noreferrer">{cta} <span aria-hidden="true">↗</span></a>
+      </aside>
+    </section>
+  </div>
+</BaseLayout>
+<style>
+  .weekend-preview { color: #3e342a; }
+  .weekend-wrap { max-width: 1152px; padding: 0 1.5rem; margin: 0 auto; }
+  .weekend-hero { background: #3e342a; color: #f6f4f0; padding: 2rem 0 4rem; }
+  .back { font-size: .8rem; text-decoration: underline; text-underline-offset: .25em; }
+  .eyebrow { font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 600; }
+  .weekend-hero .eyebrow { margin-top: 3rem; color: #ded3c3; }
+  h1 { max-width: 850px; font-size: clamp(2.5rem, 6vw, 4.4rem); line-height: 1.02; letter-spacing: -.035em; font-weight: 600; margin-top: 1rem; }
+  .headline { font-size: clamp(1.3rem, 3vw, 1.8rem); color: #ded3c3; max-width: 760px; margin-top: 1.25rem; line-height: 1.3; }
+  .intro { max-width: 730px; margin-top: 1.4rem; line-height: 1.6; }
+  .facts { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.6rem 0; }
+  .facts span { border: 1px solid #ded3c366; padding: .4rem .8rem; border-radius: 2rem; font-size: .8rem; }
+  .price { margin-bottom: 1.4rem; font-weight: 600; }
+  .button { display: inline-flex; align-items: center; justify-content: space-between; gap: 1rem; border-radius: 2rem; padding: .85rem 1.3rem; background: var(--color-accent-600); color: white; font-size: .85rem; font-weight: 600; }
+  .button:hover { background: var(--color-accent-700); }
+  a:focus-visible { outline: 3px solid #d16a3c; outline-offset: 5px; }
+  .content { padding-top: 3.5rem; padding-bottom: 4rem; }
+  h2 { font-size: 2rem; line-height: 1.15; font-weight: 600; letter-spacing: -.025em; margin-top: .6rem; }
+  .topics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
+  article { padding: 1.7rem; border: 1px solid #ded3c3; border-radius: 1rem; }
+  article:nth-child(2), article:nth-child(3) { background: #eee8df; }
+  .number { font-size: .75rem; color: var(--color-accent-700); font-weight: 600; }
+  h3 { font-size: 1.4rem; font-weight: 600; line-height: 1.2; margin-top: .65rem; }
+  article p { margin-top: .7rem; line-height: 1.6; }
+  .next-step { display: flex; align-items: center; gap: 2rem; justify-content: space-between; background: #ded3c3; border-radius: 1rem; padding: 2rem; margin-top: 2rem; }
+  .next-step div { max-width: 620px; }
+  .next-step h2 { font-size: 1.6rem; margin-top: 0; }
+  .next-step p { margin-top: .7rem; line-height: 1.5; }
+  .next-step .button { flex-shrink: 0; }
+  .small { font-size: .8rem; }
+  @media (max-width: 767px) {
+    .weekend-hero { padding-bottom: 2.5rem; }
+    .weekend-hero .eyebrow { margin-top: 2rem; }
+    .topics { grid-template-columns: 1fr; }
+    .next-step { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
+    .content { padding-top: 2.5rem; }
+  }
+</style>
