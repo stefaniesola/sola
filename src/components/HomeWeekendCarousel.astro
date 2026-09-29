@@ -23,7 +23,7 @@ const photoAlts = ['', 'Bewegingsoefeningen buiten met Simon', 'Drie vrouwen sam
     </header>
     <div class="weekend-deck">
     {weekends2027.map((weekend, index) => (
-      <article hidden={index !== 0} data-carousel-slide aria-roledescription="dia" aria-label={`${index + 1} van ${weekends2027.length}: ${weekend.title}`} class="weekend-slide overflow-hidden rounded-3xl border border-base-200 bg-base-25 shadow-sm">
+      <article class:list={{ "is-hidden": index !== 0 }} aria-hidden={index !== 0 ? "true" : undefined} inert={index !== 0} data-carousel-slide aria-roledescription="dia" aria-label={`${index + 1} van ${weekends2027.length}: ${weekend.title}`} class="weekend-slide overflow-hidden rounded-3xl border border-base-200 bg-base-25 shadow-sm">
         <a href={weekend.detailHref ?? weekend.href} class="weekend-photo relative overflow-hidden bg-base-200" aria-label={weekend.detailHref ? `${weekend.detailLabel}: ${weekend.title}` : weekend.cta}>
           <img src={photos[index].src} width={photos[index].width} height={photos[index].height} style={{ objectPosition: photoPositions[index] }} alt={index === 0 ? `${weekend.title} in ${weekend.location}` : photoAlts[index]} loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover" />
           <span class="absolute left-5 top-5 rounded-full bg-base-25 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-base-900 shadow-sm">{index === 0 ? 'Volgend weekend' : weekend.label}</span>
@@ -61,7 +61,7 @@ const photoAlts = ['', 'Bewegingsoefeningen buiten met Simon', 'Drie vrouwen sam
   .carousel-controls { display:flex; align-items:center; gap:.5rem; flex-shrink:0; }
   .carousel-controls[hidden] { display:none; }
   .weekend-deck { display:grid; }
-  .weekend-slide[hidden] { display:grid !important; visibility:hidden; pointer-events:none; }
+  .weekend-slide.is-hidden { visibility:hidden; pointer-events:none; }
   .carousel-count { font-size:.8rem; color:#746859; margin-right:.25rem; }
   .carousel-controls button { width:44px; height:44px; border:1px solid #b8afa0; border-radius:50%; color:#ad552e; font-size:1.5rem; }
   .carousel-controls button:hover { background:#f0e8db; }
@@ -80,7 +80,7 @@ const photoAlts = ['', 'Bewegingsoefeningen buiten met Simon', 'Drie vrouwen sam
     let current = 0;
     const show = (step: number) => {
       current = (current + step + slides.length) % slides.length;
-      slides.forEach((slide, index) => { slide.hidden = index !== current; });
+      slides.forEach((slide, index) => { slide.classList.toggle("is-hidden", index !== current); slide.setAttribute("aria-hidden", String(index !== current)); slide.inert = index !== current; });
       count.textContent = `${current + 1} / ${slides.length}`;
       heading.textContent = current === 0 ? 'Volgend weekend' : 'Meer SOLA in 2027';
     };
