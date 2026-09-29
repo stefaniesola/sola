@@ -1,4 +1,5 @@
 ---
+import { sarah2027 as edition, fullDate, priceSummary, priceTerms } from "../../data/weekends2027";
 import UpcomingWeekendPage from '../../components/weekenden/UpcomingWeekendPage.astro';
 const topics = [
   { title: 'Emotional Freedom Techniques (EFT)', copy: 'De tappingtechniek staat centraal: met je vingertoppen tikken op specifieke punten op je lichaam, terwijl je aandacht geeft aan een emotie of ervaring.' },
@@ -8,15 +9,15 @@ const topics = [
 ];
 ---
 <UpcomingWeekendPage
-  title="Verdiepingsweekend met Sarah Deleu"
-  description="Nieuw SOLA-weekend voor professionals, 4–6 juni 2027. Emotional Freedom Techniques (EFT), systemisch werk, lichaamsbewustzijn en voeding. Toon je interesse."
+  title={edition.title}
+  description={`${edition.title}, ${fullDate(edition)}. Emotional Freedom Techniques (EFT), systemisch werk, lichaamsbewustzijn en voeding. Voor professionals.`}
   label="Nieuw in 2027 · voor professionals"
-  date="4–6 juni 2027"
-  expert="Met Sarah Deleu"
+  date={fullDate(edition)}
+  expert={edition.expert}
   headline="Emoties, patronen en wat je lichaam je vertelt."
   intro="Een nieuw SOLA-weekend voor professionals, met Emotional Freedom Techniques (EFT) als centraal onderdeel. Samen met Sarah verdiepen we ons in emoties, terugkerende patronen en relaties. Systemisch werk, lichaamsbewustzijn en voeding komen ook aan bod."
-  href="https://tally.so/r/b5Me82"
-  cta="Zet me op de interesselijst"
+  href={edition.href}
+  cta={edition.cta}
   topics={topics}
-  closing="Zet 4–6 juni alvast in je agenda. Via de interesselijst ontvang je het volledige programma, de prijs en bericht zodra de inschrijvingen openen."
+  closing={`Zet ${fullDate(edition)} alvast in je agenda. Via de interesselijst ontvang je het volledige programma, de prijs en bericht zodra de inschrijvingen openen.`}
 />

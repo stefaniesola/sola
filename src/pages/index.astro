@@ -1,4 +1,5 @@
 ---
+import HomeWeekendCarousel from "../components/HomeWeekendCarousel.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { homeCopy, journeys, people, homePage } from "../data/content";
 import { getImage } from "astro:assets";
@@ -6,7 +7,10 @@ import heroImage from "../assets/images/Stefanie Deleu - Haute Loire.jpg";
 import exerciseImage from "../assets/images/2596052607.jpg";
 import bewustwordingImage from "../assets/images/2631991747.jpg";
 import terraImage from "../assets/images/1513986998.jpg";
-import hauteLoireImage from "../assets/images/haute-loire.jpg";
+import deskundigImage from "../assets/images/home-portret/Deskundig-wetenschappelijk.jpeg";
+import ervaringImage from "../assets/images/home-portret/Ervaringsgericht-leren.jpeg";
+import buitenImage from "../assets/images/home-portret/voeten-in-natuur.jpeg";
+import teamImage from "../assets/images/home-portret/wie-sola-draagt.jpg";
 import verblijfHogeVenenImage from "../assets/images/Verblijf in Hoge Venen.avif";
 import natureImage from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg";
 import altijdAanCardImage from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg";
@@ -53,8 +57,6 @@ const weekendHighlights = journeys
       ["exercise-is-medicine", "bewustwording-connectie"].includes(journey.slug),
   )
   .sort((a, b) => getJourneyStartDate(a.dates) - getJourneyStartDate(b.dates));
-const nextEdition = journeys.find((journey) => journey.slug === "altijd-aan");
-const altijdAanBookingHref = "https://tally.so/r/pbogoy";
 const returningWeekendInterestLinks: Record<string, string> = {
   "exercise-is-medicine": "https://tally.so/r/QKqRJA",
 };
@@ -121,49 +123,22 @@ const weekendHighlightsWithImages = await Promise.all(
   }),
 );
 
-// Process images for pillars
+// Preserve the complete portrait composition for each homepage pillar.
+const portraitImages = [deskundigImage, ervaringImage, buitenImage];
+const portraitAlts = [
+  "Een expert geeft uitleg aan SOLA-deelnemers tijdens een sessie binnen",
+  "SOLA-deelnemers oefenen samen tijdens een begeleide sessie in de tuin",
+  "Een groep beweegt op yogamatten in het groene landschap",
+];
 const pillarsWithImages = await Promise.all(
-  homeCopy.pillars.map(async (pillar, index) => {
-    if (!pillar.image) return { ...pillar, imageUrl: null };
-
-    let imageSrc;
-    if (pillar.image === "/src/assets/images/2596052607.jpg") {
-      imageSrc = exerciseImage;
-    } else if (pillar.image === "/src/assets/images/2631991747.jpg") {
-      imageSrc = bewustwordingImage;
-    } else if (
-      pillar.image === "/src/assets/images/Verblijf in Hoge Venen.avif"
-    ) {
-      imageSrc = verblijfHogeVenenImage;
-    } else if (
-      pillar.image ===
-      "/src/assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg"
-    ) {
-      imageSrc = natureImage;
-    } else if (pillar.image === "/src/assets/images/1513986998.jpg") {
-      imageSrc = terraImage;
-    } else {
-      return { ...pillar, imageUrl: null };
-    }
-
-    // Vary image sizes for visual interest
-    const widths = [1200, 1400, 1000, 1600, 1100];
-    const optimized = await getImage({
-      src: imageSrc,
-      width: widths[index % widths.length],
-      quality: 90,
-    });
-
-    return { ...pillar, imageData: optimized };
-  }),
+  homeCopy.pillars.map(async (pillar, index) => ({
+    ...pillar,
+    imageAlt: portraitAlts[index],
+    imageData: await getImage({ src: portraitImages[index], width: 900, format: "webp", quality: 85 }),
+  })),
 );
+const optimizedTeam = await getImage({ src: teamImage, width: 900, format: "webp", quality: 85 });
 
-// Optimize haute-loire image for founder section
-const optimizedHauteLoire = await getImage({
-  src: hauteLoireImage,
-  width: 1200,
-  quality: 90,
-});
 ---
 
 <BaseLayout
@@ -173,7 +148,7 @@ const optimizedHauteLoire = await getImage({
   ogImageAlt="SOLA reiservaring in de natuur"
 >
   <section
-    class="relative overflow-hidden min-h-screen sm:min-h-[700px] lg:min-h-[850px] hero-bg-animated"
+    class="home-hero relative overflow-hidden hero-bg-animated"
   >
     <img
       class="absolute inset-0 w-full h-full hero-bg-animated"
@@ -202,13 +177,13 @@ const optimizedHauteLoire = await getImage({
     >
     </div>
     <div
-      class="relative max-w-6xl mx-auto px-6 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-center min-h-screen sm:min-h-[700px] lg:min-h-[850px]"
+      class="home-hero-content relative max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center"
     >
       <div class="space-y-6">
         <p class="uppercase text-xs tracking-[0.25em] text-white/80">
           {homePage.brandLabel}
         </p>
-        <h1 class="text-4xl lg:text-5xl font-semibold leading-tight text-white">
+        <h1 class="hero-headline font-semibold text-white">
           {homeCopy.tagline}
         </h1>
         <p class="text-lg text-white/90 max-w-xl">{linkedWaarom}</p>
@@ -217,7 +192,7 @@ const optimizedHauteLoire = await getImage({
             href="/reizen"
             class="inline-flex items-center justify-center px-5 py-3 rounded-full bg-accent-600 text-white font-semibold hover:bg-accent-700 transition"
           >
-            {homePage.ctaDiscover}
+            Ontdek de weekends
           </a>
           <a
             href="/contact"
@@ -230,149 +205,63 @@ const optimizedHauteLoire = await getImage({
     </div>
   </section>
 
-  {nextEdition && (
-    <section class="bg-white">
-    <div class="max-w-6xl mx-auto px-6 py-14 lg:py-20">
-      <div class="mb-6">
-        <h2 class="text-3xl font-semibold text-base-900">Volgend weekend</h2>
-      </div>
-      <article class="relative grid overflow-hidden rounded-3xl border border-base-200 bg-base-25 shadow-sm transition hover:shadow-lg lg:grid-cols-[1.15fr_1fr]">
-        <a href="/reizen/altijd-aan" class="absolute inset-0 z-10" aria-label="Ontdek Altijd aan?"></a>
-        <a href="/reizen/altijd-aan" class="group relative min-h-[280px] overflow-hidden bg-base-200 lg:min-h-[430px]">
-          <img
-            class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
-            src={altijdAanCardImage.src}
-            width={altijdAanCardImage.width}
-            height={altijdAanCardImage.height}
-            alt={`${nextEdition.name} in ${nextEdition.location}`}
-            loading="lazy"
-            decoding="async"
-          />
-          <span class="absolute left-5 top-5 rounded-full bg-base-25 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-base-900 shadow-sm">
-            Volgend weekend
-          </span>
-        </a>
-        <div class="flex flex-col justify-center p-7 sm:p-9 lg:p-12">
-          <div class="flex flex-wrap items-center gap-3 text-xs uppercase tracking-wide text-base-500">
-            <span class="rounded-full border border-base-200 bg-base-100 px-3 py-1">{nextEdition.location}</span>
-            <span>{nextEdition.dates}</span>
+  <HomeWeekendCarousel />
+
+  <section id="sola-aanpak" class="approach-section">
+    <header class="approach-heading">
+      <p class="section-kicker">De SOLA-aanpak</p>
+      <h2>Zo bouwen we elke SOLA-reis op<span aria-hidden="true">.</span></h2>
+    </header>
+    <div class="approach-grid">
+      {pillarsWithImages.map((pillar, index) => (
+        <article class="approach-item">
+          <div class="approach-image">
+            <img src={pillar.imageData.src} width={pillar.imageData.width} height={pillar.imageData.height} alt={pillar.imageAlt} loading="lazy" decoding="async" />
+            <span class="approach-number" aria-hidden="true">0{index + 1}</span>
           </div>
-          <h2 class="mt-5 text-3xl font-semibold text-base-900 lg:text-4xl">{nextEdition.name}</h2>
-          <p class="mt-2 text-lg font-semibold text-accent-700">Je zenuwstelsel begrijpen. Leren schakelen.</p>
-          <div class="mt-4 flex items-start gap-4">
-            <img
-              src={jorienPortrait.src}
-              width={jorienPortrait.width}
-              height={jorienPortrait.height}
-              alt="Jorien Raeymaekers"
-              loading="lazy"
-              decoding="async"
-              class="h-16 w-16 shrink-0 rounded-full border-2 border-white object-cover shadow-sm sm:h-20 sm:w-20"
-            />
-            <p class="text-base leading-relaxed text-base-700">
-              Waarom blijft je lichaam alert, ook wanneer je probeert te ontspannen? Ontdek hoe je zenuwstelsel reageert op spanning en herstel. Met Jorien ga je aan de slag met ademhaling, yoga, beweging en natuur.
-            </p>
-          </div>
-          <div class="relative z-20 mt-7 flex flex-wrap items-center gap-3 border-t border-base-200 pt-5">
-            <p class="w-full text-sm font-semibold text-accent-700">€580 t.e.m. 30 november 2026 · daarna €650</p>
-            <a href={altijdAanBookingHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-accent-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-accent-700">
-              Boek je plek
-            </a>
-            <a href="/reizen/altijd-aan" class="inline-flex items-center rounded-full border border-base-300 px-5 py-3 text-sm font-semibold text-base-900 transition hover:border-base-500 hover:bg-base-25">
-              Ontdek het weekend
-            </a>
-          </div>
-        </div>
-      </article>
-      <a href="/reizen#agenda-2027" class="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-base-200 bg-base-100 px-6 py-5 text-base-900 transition hover:bg-base-200">
-        <span><span class="block text-xs uppercase tracking-[0.18em] text-accent-700">Meer SOLA in 2027</span><span class="mt-1 block text-xl font-semibold">Sport. Verdieping. Leefstijl. Ademhaling.</span></span>
-        <span class="text-sm font-semibold">Bekijk de SOLA-agenda 2027 <span aria-hidden="true">↗</span></span>
-      </a>
+          <h3>{pillar.title}</h3>
+          <p>{pillar.description}</p>
+        </article>
+      ))}
     </div>
-    </section>
-  )}
-
-  <section class="border-y border-accent-700 bg-accent-600 text-white">
-    <div class="max-w-6xl mx-auto px-6 py-12 lg:py-16">
-      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div>
-          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">Ervaringen</p>
-          <h2 class="mt-2 text-3xl font-semibold">Wat deelnemers meenamen</h2>
-        </div>
-        <div class="inline-flex w-fit items-center gap-3 rounded-full border border-white/20 bg-base-900 px-4 py-2 shadow-sm">
-          <span class="text-2xl font-semibold leading-none">9/10</span>
-          <span class="text-xs font-semibold uppercase tracking-[0.14em] text-white/75">Gemiddelde beoordeling</span>
-        </div>
-      </div>
-      <div class="mt-8 grid gap-5 lg:grid-cols-3">
-        {homeReviews.map((review) => (
-          <blockquote class="relative flex h-full flex-col overflow-hidden border border-base-200 bg-base-25 p-6 text-base-900 shadow-lg sm:p-7">
-            <span class="absolute -right-1 -top-5 font-serif text-8xl leading-none text-base-100" aria-hidden="true">“</span>
-            <span class="relative text-3xl font-serif leading-none text-accent-600" aria-hidden="true">“</span>
-            <p class="relative mt-3 flex-1 text-lg leading-relaxed text-base-800">{review.quote}</p>
-            <footer class="relative mt-6 flex items-center gap-3 border-t border-base-100 pt-4">
-              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-base-900 text-sm font-semibold text-white" aria-hidden="true">{review.name.charAt(0)}</span>
-              <span class="text-sm font-semibold text-base-900">{review.name}</span>
-            </footer>
-          </blockquote>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="max-w-6xl mx-auto px-6 pt-8 lg:pt-14 pb-0">
-    <h2 class="text-3xl lg:text-4xl font-semibold text-base-900 text-center">
-      Zo bouwen we elke SOLA-reis op
-    </h2>
-  </section>
-
-  <section class="max-w-6xl mx-auto px-6 pt-2 lg:pt-4 pb-8 lg:pb-14 space-y-10 scroll-fade-in">
-    <div class="space-y-8 lg:space-y-16 py-4 lg:py-8">
-      <div class="space-y-8 lg:space-y-12">
-        {
-          pillarsWithImages.map((pillar, index) => {
-            const isEven = index % 2 === 0;
-            const hasBackground = index % 2 === 1;
-            return (
-              <div
-                class={`flex flex-col lg:flex-row gap-12 items-center scroll-fade-in ${
-                  isEven ? "lg:flex-row" : "lg:flex-row-reverse"
-                } ${hasBackground ? "bg-base-50/50 rounded-3xl p-8 lg:p-12" : ""}`}
-                style={`animation-delay: ${index * 0.2}s;`}
-              >
-                <div
-                  class={`flex-1 space-y-4 ${isEven ? "lg:pr-8" : "lg:pl-8"}`}
-                >
-                  <h4 class="text-xl lg:text-2xl font-semibold text-base-900">
-                    {pillar.title}
-                  </h4>
-                  <p class="text-lg text-base-700 leading-relaxed">
-                    {pillar.description}
-                  </p>
-                </div>
-                {pillar.imageData && (
-                  <div class={`flex-1 ${isEven ? "lg:pl-8" : "lg:pr-8"}`}>
-                    <div class="skewed-image-frame">
-                      <img
-                        class="skewed-image-inner"
-                        src={pillar.imageData.src}
-                        width={pillar.imageData.width}
-                        height={pillar.imageData.height}
-                        alt={pillar.title}
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })
-        }
-      </div>
-    </div>
-
     <style>
+
+      .home-hero-content { min-height: 590px; padding-top: 4rem; padding-bottom: 4rem; }
+      .hero-headline { font-size: clamp(2.7rem, 4.5vw, 4.3rem); letter-spacing: -.045em; line-height: 1.02; }
+      .approach-section { max-width: 1152px; margin: 0 auto; padding: 3rem 1.5rem; scroll-margin-top: 100px; }
+      .approach-heading { display: flex; flex-direction: column; align-items: flex-start; gap: .8rem; text-align: left; border-top: 1px solid #b8afa0; padding-top: 1.3rem; margin-bottom: 2rem; }
+      .section-kicker { font-size: .7rem; text-transform: uppercase; letter-spacing: .17em; color: #3e342a; padding-top: .5rem; }
+      .approach-heading h2 { font-size: clamp(2rem, 4vw, 3.1rem); font-weight: 600; line-height: 1.05; letter-spacing: -.035em; max-width: 700px; }
+      .approach-heading h2 span { color: #d16a3c; }
+      .approach-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 2rem; row-gap: 0; }
+      .approach-item { display: grid; grid-row: span 3; grid-template-rows: subgrid; row-gap: 0; }
+      .approach-image { position: relative; height: 300px; display: flex; align-items: flex-end; }
+      .approach-image img { height: 100%; width: auto; max-width: 100%; object-fit: contain; border-radius: 5px; }
+      .approach-number { position: absolute; right: 0; bottom: -.2rem; color: #d16a3c; font-size: 3.6rem; font-weight: 600; line-height: 1; letter-spacing: -.065em; }
+      .approach-item h3 { font-weight: 600; font-size: 1.3rem; line-height: 1.16; margin: 1.2rem 0 .8rem; }
+      .approach-item p { font-size: .95rem; line-height: 1.6; color: #3e342a; }
+      .team-section { width: 100%; max-width: 1152px; margin: 0 auto; padding: 3rem 1.5rem; scroll-margin-top: 100px; }
+      .team-grid { display: grid; grid-template-columns: minmax(180px, 260px) minmax(0, 1fr); align-items: center; gap: clamp(2rem, 6vw, 5rem); border-bottom: 1px solid #b8afa0; padding-bottom: 3rem; }
+      .team-photo { grid-column: 1; grid-row: 1; }
+      .team-copy { grid-column: 2; grid-row: 1; max-width: 620px; }
+      .team-image { width: 100%; height: auto; border-radius: 5px; }
+      .team-copy h3 { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.035em; line-height: 1.05; }
+      .team-copy p { line-height: 1.6; }
+      @media(max-width: 767px) {
+        .home-hero-content { min-height: 530px; padding-top: 3rem; padding-bottom: 3rem; }
+        .approach-section, .team-section { padding-top: 2rem; padding-bottom: 2rem; }
+        .approach-heading { display: block; margin-bottom: 1.5rem; }
+        .approach-heading h2 { margin-top: .8rem; }
+        .approach-grid { grid-template-columns: 1fr; gap: 2rem; }
+        .approach-item { display: block; grid-row: auto; border-bottom: 1px solid #ded3c3; padding-bottom: 1.5rem; }
+        .approach-image { height: 240px; }
+        .approach-number { right: 1rem; font-size: 4.5rem; }
+        .approach-item h3 { margin-top: 1rem; max-width: 330px; }
+        .team-grid { grid-template-columns: 1fr; gap: 1.5rem; padding-bottom: 2rem; }
+        .team-photo, .team-copy { grid-column: auto; grid-row: auto; }
+        .team-photo { width: min(100%, 240px); order: -1; }
+      }
+
       .hero-bg-animated {
         object-fit: cover;
         object-position: center;
@@ -386,25 +275,6 @@ const optimizedHauteLoire = await getImage({
         100% {
           object-position: 55% 45%;
         }
-      }
-
-      .skewed-image-frame {
-        position: relative;
-        padding: 0.25rem;
-        background: linear-gradient(135deg, #f6f4f0 0%, #d6d2c8 100%);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        overflow: hidden;
-        border-radius: 1rem;
-      }
-
-      .skewed-image-inner {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        object-fit: cover;
-        object-position: center;
-        display: block;
-        margin: 0;
-        border-radius: 0.75rem;
       }
 
       .scroll-fade-in {
@@ -441,6 +311,34 @@ const optimizedHauteLoire = await getImage({
         });
       });
     </script>
+  </section>
+
+  <section class="border-y border-accent-700 bg-accent-600 text-white">
+    <div class="max-w-6xl mx-auto px-6 py-12 lg:py-16">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/75">Ervaringen</p>
+          <h2 class="mt-2 text-3xl font-semibold">Wat deelnemers meenamen</h2>
+        </div>
+        <div class="inline-flex w-fit items-center gap-3 rounded-full border border-white/20 bg-base-900 px-4 py-2 shadow-sm">
+          <span class="text-2xl font-semibold leading-none">9/10</span>
+          <span class="text-xs font-semibold uppercase tracking-[0.14em] text-white/75">Gemiddelde beoordeling</span>
+        </div>
+      </div>
+      <div class="mt-8 grid gap-5 lg:grid-cols-3">
+        {homeReviews.map((review) => (
+          <blockquote class="relative flex h-full flex-col overflow-hidden border border-base-200 bg-base-25 p-6 text-base-900 shadow-lg sm:p-7">
+            <span class="absolute -right-1 -top-5 font-serif text-8xl leading-none text-base-100" aria-hidden="true">“</span>
+            <span class="relative text-3xl font-serif leading-none text-accent-600" aria-hidden="true">“</span>
+            <p class="relative mt-3 flex-1 text-lg leading-relaxed text-base-800">{review.quote}</p>
+            <footer class="relative mt-6 flex items-center gap-3 border-t border-base-100 pt-4">
+              <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-base-900 text-sm font-semibold text-white" aria-hidden="true">{review.name.charAt(0)}</span>
+              <span class="text-sm font-semibold text-base-900">{review.name}</span>
+            </footer>
+          </blockquote>
+        ))}
+      </div>
+    </div>
   </section>
 
   <div class="flex flex-col">
@@ -563,9 +461,9 @@ const optimizedHauteLoire = await getImage({
     }
   </style>
 
-  <section class="order-1 max-w-6xl mx-auto my-8 rounded-3xl bg-white px-6 py-8 lg:my-14 lg:py-14 space-y-8 scroll-fade-in">
-    <div class="flex flex-col lg:flex-row gap-12 items-center">
-      <div class="flex-1 space-y-4 lg:pr-8">
+  <section id="wie-sola-draagt" class="team-section order-1">
+    <div class="team-grid">
+      <div class="team-copy space-y-4">
         <p class="uppercase text-xs tracking-[0.25em] text-base-500">
           {homePage.sectionOverOns.label}
         </p>
@@ -580,14 +478,14 @@ const optimizedHauteLoire = await getImage({
           {homePage.sectionOverOns.cta}
         </a>
       </div>
-      <div class="flex-1 lg:pl-8">
-        <div class="skewed-image-frame">
+      <div class="team-photo">
+        <div class="team-image-frame">
           <img
-            class="skewed-image-inner"
-            src={optimizedHauteLoire.src}
-            width={optimizedHauteLoire.width}
-            height={optimizedHauteLoire.height}
-            alt="SOLA reis in de natuur"
+            class="team-image"
+            src={optimizedTeam.src}
+            width={optimizedTeam.width}
+            height={optimizedTeam.height}
+            alt="De groep achter SOLA, samen buiten tussen het groen"
             loading="lazy"
             decoding="async"
           />
@@ -610,6 +508,7 @@ const optimizedHauteLoire = await getImage({
           href="/contact">{homeCopy.afsluiting.secondary}</a
         >
       </div>
+      <p class="mt-5 text-sm text-white/85">Liever later aansluiten? <a class="underline underline-offset-4" href="/newsletter">Ontvang de SOLA-nieuwsbrief</a></p>
     </div>
   </section>
 </BaseLayout>

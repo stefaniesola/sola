@@ -1,3 +1,4 @@
+import { jorien2027, fullDate, priceLabel, priceTerms } from "./weekends2027";
 import type { ImageMetadata } from "astro";
 import heroExerciseMedicine from "../assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (1).jpg";
 import sfeer1 from "../assets/images/Ardennen Belgiê.jpg";
@@ -964,24 +965,24 @@ Je ontvangt praktische info, een overzicht van wat mee te brengen en alle timing
   },
   {
     slug: "altijd-aan",
-    name: "Altijd aan?",
+    name: jorien2027.title,
     type: "Reis",
     categoryLabel: "OVERDRIVE",
     subtitle: "Herstel begint bij je zenuwstelsel",
     badgeLabel: "Boekbaar",
     shortDescription:
       "Een SOLA-weekend over fysiologie, het zenuwstelsel en herstel.",
-    location: "Sourbrodt, Hoge Venen, Ardennen",
-    dates: "23 - 25 april 2027",
-    price: "€580 vroegboekprijs",
-    priceDetails: "Tot en met 30 november 2026. Vanaf 1 december 2026: €650. Maximaal 12 plaatsen.",
+    location: jorien2027.location!,
+    dates: fullDate(jorien2027),
+    price: priceLabel(jorien2027),
+    priceDetails: `${priceTerms(jorien2027)} Maximaal 12 plaatsen.`,
     isTeaser: true,
     availability: "bookable",
     maxParticipants: 12,
     statusLabel: "Inschrijvingen geopend · min. 6 en max. 12 deelnemers",
     heroImage: intermittentHero,
-    ctaLabel: "Boek je plek",
-    ctaHref: "https://tally.so/r/pbogoy",
+    ctaLabel: jorien2027.cta,
+    ctaHref: jorien2027.href,
     secondaryCtaLabel: "Plan een gesprek",
     tags: ["Fysiologie", "Zenuwstelsel", "Herstel", "Slaap", "Energie"],
   },
@@ -1097,17 +1098,17 @@ export const homeCopy = {
   pillars: [
     {
       title: "Deskundige begeleiding en wetenschappelijke onderbouwing",
-      description: "Tijdens een SOLA-reis verdiep je je samen met een expert in een concreet gezondheidsthema. Je bouwt bewustwording op rond aspecten van mentale gezondheid, ontdekt hoe voeding en beweging samen de basis vormen voor een vitaal en lang leven, of leert hoe je met een chronische aandoening een actieve levensstijl kan verzoenen. Op een interactieve manier bouwen we samen een helder theoretisch kader op. Dat geeft je houvast en een dieper begrip van jouw persoonlijke focusthema, zodat je niet alleen ervaart, maar ook begrijpt wat je doet en waarom.",
+      description: "Tijdens een SOLA-reis verdiep je je samen met een gespecialiseerde expert in een gezondheidsthema. Van mentale gezondheid tot voeding, beweging of actief leven met een chronische aandoening: de focus verschilt per reis. Wetenschappelijk onderbouwde inzichten helpen je begrijpen wat je doet en waarom.",
       image: "/src/assets/images/2596052607.jpg",
     },
     {
       title: "Ervaringsgericht leren in kleine groepen",
-      description: "Binnen de veilige omgeving van een kleine groep ga je tijdens de reis actief aan de slag met de opgebouwde kennis. Je toetst de theorie aan de praktijk en leert technieken die je via herhaling helpen om echte verandering in gang te zetten. Je gaat terug naar huis met een stevig pakket handvatten waar je op kunt teruggrijpen voor houvast en continuïteit.",
+      description: "In een kleine groep ga je zelf aan de slag met wat je leert. Je toetst de theorie aan de praktijk en oefent technieken die je ook thuis kunt gebruiken. Zo neem je inzichten én tools mee naar huis.",
       image: "/src/assets/images/Verblijf in Hoge Venen.avif",
     },
     {
       title: "Beweging met beide voeten in de natuur",
-      description: "Het fundament van de SOLA-reizen ligt in de natuur. Een natuurlijke omgeving biedt schoonheid, stilte en verwondering. De mentale rust die je daar ervaart scherpt je focus, stimuleert beweging en inspireert tot gerichte actie. De natuur vormt zo de onmisbare basis en het krachtige decor van jouw reis.",
+      description: "De natuur vormt de basis van elke SOLA-reis. Je beweegt, vindt rust en ontdekt de omgeving. Die combinatie helpt je om met aandacht bij te leren en zelf aan de slag te gaan.",
       image:
         "/src/assets/images/GeoPark Famenne Ardenne - landschap Hoge Venen (6).jpg",
     },
@@ -1197,7 +1198,7 @@ export const homePage = {
     label: "Over ons",
     title: "Wie SOLA draagt",
     description:
-      "SOLA wordt gedragen door Stefanie Deleu, samen met een netwerk van experten, coaches, therapeuten en betrokken SOLA-enthousiastelingen. SOLA ontstond op het kruispunt van reizen en gezondheid. Per reis werken we rond één gezondheidsthema waarvoor we een geschikte specialist zoeken. We willen beweging, wetenschap en natuur samenbrengen in een ervaring die verder gaat dan ontspanning alleen. Hier wandel je in de natuur, beweeg je bewust, leer je bij over je lichaam en kom je mentaal tot rust. Die nieuwe inzichten en gewoontes kun je ook thuis integreren.",
+      "SOLA wordt gedragen door Stefanie Deleu en een netwerk van experten, coaches, therapeuten en betrokken SOLA-enthousiastelingen. Stefanie coördineert het geheel; gespecialiseerde experten brengen de inhoud. Samen verbinden we reizen en gezondheid, met beweging, wetenschap en natuur als basis.",
     cta: "Leer ons kennen",
   },
 };

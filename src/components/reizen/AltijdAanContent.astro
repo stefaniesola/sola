@@ -1,4 +1,5 @@
 ---
+import { jorien2027 as edition, fullDate, priceLabel, priceTerms, dayLabel } from "../../data/weekends2027";
 import { Image } from "astro:assets";
 import avondmaalImage from "../../assets/images/altijd-aan/avondmaal.jpg";
 import bewegingImage from "../../assets/images/altijd-aan/beweging.jpg";
@@ -6,7 +7,7 @@ import hotTubImage from "../../assets/images/altijd-aan/hot-tub.jpg";
 import jorienImage from "../../assets/images/altijd-aan/jorien-portret.jpeg";
 import samenBuitenImage from "../../assets/images/altijd-aan/samen-buiten.jpg";
 
-const bookingHref = "https://tally.so/r/pbogoy";
+const bookingHref = edition.href;
 
 const forYou = [
   "je wordt moe wakker, ook wanneer je voldoende hebt geslapen",
@@ -84,9 +85,9 @@ const faqs = [
 <section class="max-w-6xl mx-auto px-6 py-12">
   <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
     {[
-      ["Wanneer", "23–25 april 2027", "Aankomst vrijdag vanaf 18.00 uur"],
+      ["Wanneer", fullDate(edition), "Aankomst vrijdag vanaf 18.00 uur"],
       ["Waar", "Sourbrodt", "Hoge Venen, Ardennen"],
-      ["Prijs", "€580 vroegboekprijs", "Tot en met 30 november 2026. Vanaf 1 december 2026: €650."],
+      ["Prijs", priceLabel(edition), priceTerms(edition)],
       ["Groep", "Minimaal 6", "Maximaal 12 deelnemers"],
     ].map(([label, value, detail]) => (
       <article class="border border-base-200 bg-base-25 p-5 shadow-sm">
@@ -180,7 +181,7 @@ const faqs = [
   <div class="mt-8 divide-y divide-base-200 border-y border-base-200">
     <details class="group py-6">
       <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-2xl font-semibold text-base-900">
-        <span>Vrijdag 23 april</span><span class="text-accent-700 transition group-open:rotate-45">+</span>
+        <span>{dayLabel(edition.startDate!, 0)}</span><span class="text-accent-700 transition group-open:rotate-45">+</span>
       </summary>
       <div class="mt-6 space-y-5 text-base-700">
         <div><p class="font-semibold text-base-900">Vanaf 18.00 uur</p><p>Aankomst, kennismaking en inchecken<br />Aperitief, briefing en eerste inhoudelijke schets van het weekend</p></div>
@@ -191,7 +192,7 @@ const faqs = [
     </details>
     <details class="group py-6" open>
       <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-2xl font-semibold text-base-900">
-        <span>Zaterdag 24 april</span><span class="text-accent-700 transition group-open:rotate-45">+</span>
+        <span>{dayLabel(edition.startDate!, 1)}</span><span class="text-accent-700 transition group-open:rotate-45">+</span>
       </summary>
       <div class="mt-6 space-y-5 text-base-700">
         <div><p class="font-semibold text-base-900">Vanaf 06.00 uur — vrijblijvend</p><p>Ochtendwandeling voor wie wil</p></div>
@@ -210,7 +211,7 @@ const faqs = [
     </details>
     <details class="group py-6">
       <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-2xl font-semibold text-base-900">
-        <span>Zondag 25 april</span><span class="text-accent-700 transition group-open:rotate-45">+</span>
+        <span>{dayLabel(edition.startDate!, 2)}</span><span class="text-accent-700 transition group-open:rotate-45">+</span>
       </summary>
       <div class="mt-6 space-y-5 text-base-700">
         <div><p class="font-semibold text-base-900">07.30 uur</p><p>Actieve sessie: yoga of HIIT</p></div>
@@ -254,8 +255,8 @@ const faqs = [
     <div class="p-7 sm:p-10">
       <p class="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">Vroegboekkorting</p>
       <h2 class="mt-3 text-4xl font-semibold">€70 korting</h2>
-      <p class="mt-4 text-lg text-white/90">Boek uiterlijk op 30 november 2026 en betaal <strong>€580</strong> in plaats van €650.</p>
-      <p class="mt-2 text-white/80">Vanaf 1 december 2026 bedraagt de prijs €650. Er zijn maximaal 12 plaatsen.</p>
+      <p class="mt-4 text-lg text-white/90">{priceLabel(edition)}. {priceTerms(edition)}</p>
+      <p class="mt-2 text-white/80">Er zijn maximaal 12 plaatsen.</p>
       <a href={bookingHref} target="_blank" rel="noreferrer" class="mt-7 inline-flex rounded-full bg-white px-6 py-3 font-semibold text-accent-800 hover:bg-base-50">Boek je plek</a>
     </div>
     <Image src={bewegingImage} alt="Beweging in de natuur tijdens een SOLA-weekend" class="h-full min-h-80 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 40vw, 100vw" />
@@ -307,10 +308,10 @@ const faqs = [
 
 <section class="bg-base-900 text-white">
   <div class="max-w-4xl mx-auto px-6 py-16 text-center">
-    <p class="text-sm font-semibold uppercase tracking-[0.22em] text-white/60">23–25 april 2027 · maximaal 12 plaatsen</p>
+    <p class="text-sm font-semibold uppercase tracking-[0.22em] text-white/60">{fullDate(edition)} · maximaal 12 plaatsen</p>
     <h2 class="mt-4 text-3xl font-semibold sm:text-4xl">Klaar om beter te leren schakelen tussen actie en herstel?</h2>
-    <p class="mt-4 text-lg text-white/80">Boek uiterlijk op 30 november 2026 en betaal <strong>€580</strong> in plaats van €650.</p>
-    <p class="mt-2 text-white/80">Vanaf 1 december 2026 bedraagt de prijs €650. Er zijn maximaal 12 plaatsen.</p>
+    <p class="mt-4 text-lg text-white/80">{priceLabel(edition)}. {priceTerms(edition)}</p>
+    <p class="mt-2 text-white/80">Er zijn maximaal 12 plaatsen.</p>
     <a href={bookingHref} target="_blank" rel="noreferrer" class="mt-7 inline-flex rounded-full bg-accent-600 px-6 py-3 font-semibold text-white hover:bg-accent-700">Boek je plek</a>
   </div>
 </section>

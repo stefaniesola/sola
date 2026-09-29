@@ -1,4 +1,5 @@
 ---
+import { jorien2027, priceLabel, priceTerms } from "../../data/weekends2027";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import YearAgenda from "../../components/weekenden/YearAgenda.astro";
 import { journeys, uspTags, reizenPage } from "../../data/content";
@@ -83,7 +84,7 @@ const tripsWithImages = await Promise.all(
 );
 
 const nextEdition = tripsWithImages.find((trip) => trip.slug === "altijd-aan");
-const altijdAanBookingHref = "https://tally.so/r/pbogoy";
+const altijdAanBookingHref = jorien2027.href;
 const previousEditions = weekendsWithImages
   .filter((weekend) =>
     ["exercise-is-medicine", "bewustwording-connectie"].includes(weekend.slug),
@@ -164,7 +165,7 @@ const previousEditions = weekendsWithImages
           <h2 class="mt-5 text-3xl font-semibold text-base-900 lg:text-4xl">
             <a href={`/reizen/${nextEdition.slug}`} class="hover:text-accent-700">{nextEdition.name}</a>
           </h2>
-          <p class="mt-2 text-lg font-semibold text-accent-700">Je zenuwstelsel begrijpen. Leren schakelen.</p>
+          <p class="mt-2 text-lg font-semibold text-accent-700">{jorien2027.subtitle}</p>
           <div class="mt-4 flex items-start gap-4">
             <img
               src={jorienPortrait.src}
@@ -176,12 +177,12 @@ const previousEditions = weekendsWithImages
               class="h-16 w-16 shrink-0 rounded-full border-2 border-white object-cover shadow-sm sm:h-20 sm:w-20"
             />
             <p class="text-base leading-relaxed text-base-700">
-              Waarom blijft je lichaam alert, ook wanneer je probeert te ontspannen? Ontdek hoe je zenuwstelsel reageert op spanning en herstel. Met Jorien ga je aan de slag met ademhaling, yoga, beweging en natuur.
+              {jorien2027.copy}
             </p>
           </div>
           <div class="mt-7 border-t border-base-200 pt-5 text-sm font-semibold">
-            <p class="text-base-900"><span class="text-3xl">€580</span> <span class="ml-2 font-normal">vroegboekprijs</span></p>
-            <p class="mt-2 text-accent-700">Boek t.e.m. 30 november 2026. Daarna €650.</p>
+            <p class="text-base-900"><span class="text-3xl">€{jorien2027.earlyPrice}</span> <span class="ml-2 font-normal">vroegboekprijs</span></p>
+            <p class="mt-2 text-accent-700">{priceTerms(jorien2027)}</p>
             <div class="relative z-20 mt-4 flex flex-wrap gap-3">
               <a href={`/reizen/${nextEdition.slug}`} class="inline-flex items-center rounded-full border border-base-300 px-5 py-3 text-base-900 transition hover:border-base-500">Bekijk details</a>
               <a href={altijdAanBookingHref} target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-full bg-accent-600 px-5 py-3 text-white transition hover:bg-accent-700">Boek je plek</a>

@@ -1,51 +1,5 @@
 ---
-const weekends = [
-  {
-    id: 'jorien-2027', month: 'APR', date: '23–25 april', label: 'Boek je plek',
-    title: 'Altijd aan?', subtitle: 'Je zenuwstelsel begrijpen. Leren schakelen.',
-    expert: 'Met Jorien Raeymaekers',
-    copy: 'Waarom blijft je lichaam alert, ook wanneer je probeert te ontspannen? Ontdek hoe je zenuwstelsel reageert op spanning en herstel.',
-    note: '€580 vroegboekprijs t.e.m. 30 november 2026. Daarna €650.',
-    href: 'https://tally.so/r/pbogoy', cta: 'Boek je plek', featured: true,
-    detailHref: '/reizen/altijd-aan/', detailLabel: 'Ontdek het weekend',
-  },
-  {
-    id: 'simon-2027', month: 'MEI', date: 'Datum volgt', label: 'Sport & gezondheid',
-    title: 'Sportweekend met Simon', subtitle: 'Wat doet beweging met je lichaam?',
-    expert: 'Met Simon Helleputte',
-    copy: 'Je hart, je uithouding, je stofwisseling: beweging zet meer in gang dan je denkt. Met Simon bereiden we een nieuw weekend voor rond sport en gezondheid.',
-    note: 'Ontvang de datum en het programma zodra ze bekend zijn.',
-    href: 'https://tally.so/r/QKqRJA', cta: 'Hou me op de hoogte',
-    detailHref: '/weekenden/exercise-is-medicine/', detailLabel: 'Bekijk de eerdere editie',
-  },
-  {
-    id: 'sarah-2027', month: 'JUN', date: '4–6 juni', label: 'Nieuw · voor professionals',
-    title: 'Verdiepingsweekend met Sarah Deleu', subtitle: 'Emotional Freedom Techniques (EFT), systemisch werk en lichaamsbewustzijn',
-    expert: 'Met Sarah Deleu',
-    copy: 'Een nieuw SOLA-weekend voor professionals, met Emotional Freedom Techniques (EFT) als centraal onderdeel. Samen met Sarah staan we stil bij emoties, terugkerende patronen en relaties. Ook voeding komt aan bod.',
-    note: 'Noteer 4–6 juni alvast. Ontvang het programma, de prijs en bericht zodra de inschrijvingen openen. Je interesse is vrijblijvend.',
-    href: 'https://tally.so/r/b5Me82', cta: 'Zet me op de interesselijst',
-    detailHref: '/reizen/verdiepingsweekend-sarah-deleu/', detailLabel: 'Ontdek het weekend',
-  },
-  {
-    id: 'filip-2027', month: 'SEP', date: 'Datum volgt', label: 'Voeding · beweging · slaap · stress',
-    title: 'Leefstijlweekend', subtitle: 'Wat ligt er op je bord? Hoe ziet je avond eruit?',
-    expert: 'Met leefstijlarts Filip Goossens',
-    copy: 'Met huisarts en leefstijlarts Filip Goossens duik je in de zeven pijlers van leefstijl: van voeding, beweging en slaap tot stress, je leefomgeving, middelengebruik en sociale verbinding. Sessies, voedingsadvies aan tafel en samen naar buiten gaan wisselen elkaar af. Je eigen vragen bepalen mee de inhoud. Je stelt een avondritueel samen en kiest welke gewoontes je thuis wilt aanpakken.',
-    price: '€610 vroegboekprijs · €680 standaardprijs',
-    note: 'Ontvang als eerste de exacte datum, het programma en de start van de inschrijvingen.',
-    href: 'https://tally.so/r/lbQGek', cta: 'Hou me op de hoogte',
-    detailHref: '/reizen/leefstijlweekend-filip-goossens/', detailLabel: 'Ontdek het weekend',
-  },
-  {
-    id: 'ademhaling-2027', month: 'OKT', date: 'Datum volgt', label: 'Workshops & oefeningen',
-    title: 'Ademhaling: van inzicht naar oefening', subtitle: 'Hoe adem je? Wat gebeurt er in je lichaam?',
-    expert: 'Expert wordt aangekondigd',
-    copy: 'Je doet het de hele dag. Maar hoe werkt je ademhaling eigenlijk? Tijdens workshops en praktische oefeningen ontdek je de lichamelijke kant van ademhalen en ga je zelf aan de slag.',
-    note: 'Volg de SOLA-updates voor de datum, de expert en het programma.',
-    href: '/newsletter', cta: 'Hou me op de hoogte via de nieuwsbrief',
-  },
-];
+import { weekends2027 as weekends, agendaYear, priceSummary, priceTerms } from "../../data/weekends2027";
 ---
 
 <section id="agenda-2027" class="agenda" aria-labelledby="agenda-title">
@@ -66,7 +20,7 @@ const weekends = [
         <div class="agenda-date">
           <span class="agenda-index">SOLA / 0{index + 1}</span>
           <span class="agenda-month">{weekend.month}</span>
-          <span class="agenda-day">{weekend.date} · 2027</span>
+          <span class="agenda-day">{weekend.date} · {agendaYear}</span>
         </div>
         <div class="agenda-content">
           <p class="agenda-label">{weekend.label}</p>
@@ -74,8 +28,8 @@ const weekends = [
           <p class="agenda-subtitle">{weekend.subtitle}</p>
           <p class="agenda-expert">{weekend.expert}</p>
           <p class="agenda-copy">{weekend.copy}</p>
-          {'price' in weekend && <p class="agenda-expert">{weekend.price}</p>}
-          <p class="agenda-note">{weekend.note}</p>
+          <p class="agenda-expert">{priceSummary(weekend)}</p>
+          <p class="agenda-note">{weekend.deadline ? priceTerms(weekend) : weekend.note}</p>
           <div class="agenda-actions"><a class:list={['agenda-cta', { 'agenda-cta-book': weekend.featured }]} href={weekend.href} target={weekend.href.startsWith('https:') ? '_blank' : undefined} rel={weekend.href.startsWith('https:') ? 'noopener noreferrer' : undefined}>
             {weekend.cta}<span aria-hidden="true">↗</span>
           </a>
