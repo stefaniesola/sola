@@ -48,12 +48,20 @@ const faqs = [
     "Voor wie merkt dat ontspannen of voldoende slapen niet altijd leidt tot echt herstel. Misschien sta je vaak aan, blijf je piekeren, raak je snel overprikkeld of word je moe wakker. Tijdens het weekend leer je beter begrijpen waar dat vandaan komt en wat jou kan helpen.",
   ],
   [
-    "Is het programma wetenschappelijk onderbouwd?",
-    "Ja. Het programma vertrekt vanuit wetenschappelijke inzichten uit de psychologie en fysiologie, onder meer over stress, het autonome zenuwstelsel, slaap, prikkelverwerking en gedragsverandering. Je krijgt geen vaag wellnessverhaal of een verzameling losse ontspanningstips. We leggen uit welke mechanismen een rol spelen, helpen je jouw eigen patronen herkennen en vertalen die inzichten naar acties voor thuis.",
+    "Welke inzichten komen aan bod tijdens het weekend?",
+    "Jorien legt uit hoe je zenuwstelsel reageert op stress en wat dat betekent voor herstel. Daarbij komen onder meer de polyvagaaltheorie en je stressvenster aan bod: kaders om te kijken naar spanning, veiligheid en hoeveel prikkels je op een bepaald moment aankunt. Je koppelt die uitleg aan je eigen lichaamssignalen en dagelijkse gewoontes.",
   ],
   [
     "Wat mag ik van het weekend verwachten?",
-    "We combineren heldere uitleg met oefeningen, beweging en tijd in de natuur. Je onderzoekt wat jou energie geeft of kost en welke signalen aangeven dat je lichaam moeilijk overschakelt naar herstel. Aan het einde van het weekend stel je een persoonlijk herstelprotocol op.",
+    "Inhoudelijke sessies met Jorien, afgewisseld met praktische oefeningen, beweging en tijd in de natuur. Je leert je eigen stress- en energiepatronen herkennen en onderzoekt wat jou helpt om van actie naar herstel te schakelen.",
+  ],
+  [
+    "Wat is een persoonlijk herstelplan?",
+    "Een concreet plan dat je tijdens het weekend met begeleiding van Jorien uitwerkt. Je vertaalt jouw inzichten naar kleine, haalbare aanpassingen in je dagritme, slaap, beweging en omgang met prikkels, zodat je er thuis mee verder kunt.",
+  ],
+  [
+    "Waarom combineren we inhoudelijke sessies met beweging?",
+    "Beweging is onderdeel van het onderzoek naar je stress- en herstelpatroon. Je vergelijkt wat verschillende vormen van inspanning doen met je spanning, ademhaling en energieniveau, en leert letten op het verschil tussen activering en herstel.",
   ],
   [
     "Moet ik sportief zijn?",
@@ -198,14 +206,14 @@ const faqs = [
         <div><p class="font-semibold text-base-900">Vanaf 06.00 uur — vrijblijvend</p><p>Ochtendwandeling voor wie wil</p></div>
         <div><p class="font-semibold text-base-900">07.30 uur</p><p>Actieve sessie met oefeningen</p></div>
         <div><p class="font-semibold text-base-900">08.15 uur</p><p>Ontbijt</p></div>
-        <div><p class="font-semibold text-base-900">09.00 uur</p><p>Waarom rust soms niets doet</p><p class="mt-2 text-sm">Over het autonome zenuwstelsel, overbelasting, prikkels en signalen van stress en energieverlies.</p></div>
+        <div><p class="font-semibold text-base-900">09.00 uur</p><p>Inhoudelijke sessie met Jorien — Waarom rust soms niets doet</p><p class="mt-2 text-sm">Hoe je zenuwstelsel reageert op stress en waarom je lichaam soms alert blijft terwijl je rust.</p></div>
         <div><p class="font-semibold text-base-900">10.30 uur</p><p>Pauze</p></div>
-        <div><p class="font-semibold text-base-900">11.00 uur</p><p>Vervolg over triggers, lichaamssignalen en energieritme</p></div>
+        <div><p class="font-semibold text-base-900">11.00 uur</p><p>Verdieping met Jorien — jouw stress- en energiepatroon</p><p class="mt-2 text-sm">Je onderzoekt wat energie vraagt en hoe je lichaam dat aangeeft.</p></div>
         <div><p class="font-semibold text-base-900">12.30 uur</p><p>Lunch</p></div>
         <div><p class="font-semibold text-base-900">14.30 uur</p><p>Wandeling van ongeveer 8 km of trailrun van ongeveer 12 km</p><p class="mt-2 text-sm">Je kiest zelf wat bij je niveau en goesting past.</p></div>
         <div><p class="font-semibold text-base-900">Vanaf 17.30 uur</p><p>Terugkomst, douche en vrije tijd</p></div>
         <div><p class="font-semibold text-base-900">19.00 uur</p><p>Avondmaal</p></div>
-        <div><p class="font-semibold text-base-900">20.30 uur</p><p>Je hoofd uitzetten — over overdenken</p></div>
+        <div><p class="font-semibold text-base-900">20.30 uur</p><p>Openingssessie</p></div>
         <div><p class="font-semibold text-base-900">Vanaf 21.30 uur</p><p>Hot tub, drankje en vrije tijd</p></div>
       </div>
     </details>
@@ -216,9 +224,9 @@ const faqs = [
       <div class="mt-6 space-y-5 text-base-700">
         <div><p class="font-semibold text-base-900">07.30 uur</p><p>Actieve sessie: yoga of HIIT</p></div>
         <div><p class="font-semibold text-base-900">08.30 uur</p><p>Ontbijt</p></div>
-        <div><p class="font-semibold text-base-900">09.30 uur</p><p>Slaap en herstel — de fysiologie</p><p class="mt-2 text-sm">Over slaap, gsm-gebruik, koffie en dagstructuur.</p></div>
+        <div><p class="font-semibold text-base-900">09.30 uur</p><p>Inhoudelijke sessie met Jorien — Slaap en herstel</p><p class="mt-2 text-sm">Hoe je dagelijkse gewoontes je slaap en herstel beïnvloeden.</p></div>
         <div><p class="font-semibold text-base-900">11.00 uur</p><p>Pauze</p></div>
-        <div><p class="font-semibold text-base-900">11.15 uur</p><p>Jouw herstelprotocol</p></div>
+        <div><p class="font-semibold text-base-900">11.15 uur</p><p>Praktische sessie met Jorien — jouw persoonlijke herstelplan</p></div>
         <div><p class="font-semibold text-base-900">13.00 uur</p><p>Lunch</p></div>
         <div><p class="font-semibold text-base-900">14.00 uur</p><p>Afronding en vertrek</p></div>
       </div>
