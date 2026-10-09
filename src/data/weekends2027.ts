@@ -12,7 +12,7 @@ export const weekends2027: WeekendEdition[] = [
     title: 'Altijd aan?', subtitle: 'Je zenuwstelsel begrijpen. Leren schakelen.',
     expert: 'Met Jorien Raeymaekers',
     copy: 'Waarom blijft je lichaam alert, ook wanneer je probeert te ontspannen? Met Jorien leer je stresssignalen herkennen en begrijpen waarom slapen niet altijd hetzelfde is als herstellen. Je onderzoekt wat jou energie geeft of kost en stelt een persoonlijk herstelprotocol op.',
-    earlyPrice: 580, standardPrice: 650, deadline: '30 november 2026', startDate: '2027-04-23', endDate: '2027-04-25', location: 'Sourbrodt, Hoge Venen, Ardennen',
+    earlyPrice: 580, standardPrice: 650, deadline: '15 december 2026', startDate: '2027-04-23', endDate: '2027-04-25', location: 'Sourbrodt, Hoge Venen, Ardennen',
     note: '',
     href: 'https://tally.so/r/pbogoy', cta: 'Boek je plek', featured: true,
     detailHref: '/reizen/altijd-aan/', detailLabel: 'Ontdek het weekend',
@@ -27,7 +27,7 @@ export const weekends2027: WeekendEdition[] = [
     detailHref: '/weekenden/exercise-is-medicine/', detailLabel: 'Bekijk de eerdere editie',
   },
   {
-    id: 'sarah-2027', month: 'JUN', date: '', startDate: '2027-06-04', endDate: '2027-06-06', label: 'Nieuw · voor professionals',
+    id: 'sarah-2027', month: 'JUN', date: '', startDate: '2027-06-03', endDate: '2027-06-05', label: 'Nieuw · voor professionals',
     title: 'Verdiepingsweekend met Sarah Deleu', subtitle: 'Emotional Freedom Techniques (EFT), systemisch werk en lichaamsbewustzijn',
     expert: 'Met Sarah Deleu',
     copy: 'Een nieuw SOLA-weekend voor professionals, met Emotional Freedom Techniques (EFT) als centraal onderdeel. Samen met Sarah staan we stil bij emoties, terugkerende patronen en relaties. Ook voeding komt aan bod.',
