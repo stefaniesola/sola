@@ -64,7 +64,6 @@ const altijdAanIntro = [
       <h1 class="text-4xl font-semibold lg:text-5xl">{trip.name}</h1>
       {trip.subtitle && <p class="max-w-2xl text-2xl font-semibold">{trip.subtitle}</p>}
       {isAltijdAan && <p class="max-w-2xl text-lg leading-relaxed text-white">Een driedaags weekend in de Hoge Venen met klinisch psycholoog Jorien Raeymaekers. Je combineert inzichten over stress en herstel met praktische oefeningen, beweging en tijd in de natuur.</p>}
-      {isAltijdAan && <div class="max-w-2xl space-y-3 text-white/85">{altijdAanIntro.map((paragraph) => <p>{paragraph}</p>)}</div>}
       <div class="flex flex-wrap gap-3 text-sm">
         <span class="rounded-full border border-white/30 bg-white/15 px-3 py-1">{trip.location}</span>
         <span class="rounded-full border border-white/30 bg-white/15 px-3 py-1">{trip.dates}</span>
@@ -78,6 +77,8 @@ const altijdAanIntro = [
       </div>
     </div>
   </section>
+
+  {isAltijdAan && <div class="border-b border-base-200 bg-base-25"><div class="mx-auto max-w-6xl px-6 py-10 sm:py-12"><div class="max-w-3xl space-y-4 text-lg leading-relaxed text-base-700">{altijdAanIntro.map((paragraph) => <p>{paragraph}</p>)}</div></div></div>}
 
   {isAltijdAan && <AltijdAanContent />}
 
