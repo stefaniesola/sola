@@ -1,6 +1,7 @@
 ---
 import { jorien2027 as edition, fullDate, priceLabel, priceTerms, dayLabel } from "../../data/weekends2027";
 import { Image } from "astro:assets";
+import WeekendPhotoGallery from "./WeekendPhotoGallery.astro";
 import avondmaalImage from "../../assets/images/altijd-aan/avondmaal.jpg";
 import bewegingImage from "../../assets/images/altijd-aan/beweging.jpg";
 import hotTubImage from "../../assets/images/altijd-aan/hot-tub.jpg";
@@ -8,6 +9,64 @@ import jorienImage from "../../assets/images/altijd-aan/jorien-portret.jpeg";
 import samenBuitenImage from "../../assets/images/altijd-aan/samen-buiten.jpg";
 
 const bookingHref = edition.href;
+const weekendPhotos = [
+  {
+    "src": "/images/altijd-aan/gallery/wandelen-thumb.webp",
+    "full": "/images/altijd-aan/gallery/wandelen-full.webp",
+    "alt": "Wandelen in de natuur tijdens een SOLA-weekend",
+    "width": 360,
+    "height": 480
+  },
+  {
+    "src": "/images/altijd-aan/gallery/yoga-thumb.webp",
+    "full": "/images/altijd-aan/gallery/yoga-full.webp",
+    "alt": "Samen yoga beoefenen in de tuin tijdens een SOLA-weekend",
+    "width": 360,
+    "height": 480
+  },
+  {
+    "src": "/images/altijd-aan/gallery/trailrun-thumb.webp",
+    "full": "/images/altijd-aan/gallery/trailrun-full.webp",
+    "alt": "Trailrun tijdens een SOLA-weekend",
+    "width": 360,
+    "height": 480
+  },
+  {
+    "src": "/images/altijd-aan/gallery/hoge-venen-thumb.webp",
+    "full": "/images/altijd-aan/gallery/hoge-venen-full.webp",
+    "alt": "Landschap van de Hoge Venen",
+    "width": 480,
+    "height": 360
+  },
+  {
+    "src": "/images/altijd-aan/gallery/woonkamer-thumb.webp",
+    "full": "/images/altijd-aan/gallery/woonkamer-full.webp",
+    "alt": "Woonkamer van het verblijf",
+    "width": 480,
+    "height": 360
+  },
+  {
+    "src": "/images/altijd-aan/gallery/slaapkamer-thumb.webp",
+    "full": "/images/altijd-aan/gallery/slaapkamer-full.webp",
+    "alt": "Slaapkamer van het verblijf",
+    "width": 360,
+    "height": 480
+  },
+  {
+    "src": "/images/altijd-aan/gallery/samen-aan-tafel-thumb.webp",
+    "full": "/images/altijd-aan/gallery/samen-aan-tafel-full.webp",
+    "alt": "Samen aan tafel tijdens een SOLA-weekend",
+    "width": 360,
+    "height": 480
+  },
+  {
+    "src": "/images/altijd-aan/gallery/verse-maaltijd-thumb.webp",
+    "full": "/images/altijd-aan/gallery/verse-maaltijd-full.webp",
+    "alt": "Verse groenten en een maaltijd tijdens een SOLA-weekend",
+    "width": 360,
+    "height": 480
+  }
+];
 
 const forYou = [
   "je wordt moe wakker, ook wanneer je voldoende hebt geslapen",
@@ -110,14 +169,14 @@ const faqs = [
 <nav aria-label="Inhoud van deze pagina" class="border-y border-base-200 bg-white">
   <div class="mx-auto max-w-6xl px-6 py-4">
     <p class="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-base-500">Op deze pagina</p>
-    <div class="flex gap-x-6 gap-y-2 overflow-x-auto pb-1 text-sm font-semibold text-base-700">
-      <a class="whitespace-nowrap hover:text-accent-700" href="#voor-wie">Voor wie</a>
-      <a class="whitespace-nowrap hover:text-accent-700" href="#inbegrepen">Inbegrepen</a>
-      <a class="whitespace-nowrap hover:text-accent-700" href="#begeleiding">Begeleiding</a>
-      <a class="whitespace-nowrap hover:text-accent-700" href="#programma">Programma</a>
-      <a class="whitespace-nowrap hover:text-accent-700" href="#verblijf">Verblijf & maaltijden</a>
-      <a class="whitespace-nowrap hover:text-accent-700" href="#boeken">Prijs & boeken</a>
-      <a class="whitespace-nowrap hover:text-accent-700" href="#faq">FAQ</a>
+    <div class="weekend-section-links">
+      <a class="weekend-section-link" href="#voor-wie">Voor wie</a>
+      <a class="weekend-section-link" href="#inbegrepen">Inbegrepen</a>
+      <a class="weekend-section-link" href="#begeleiding">Begeleiding</a>
+      <a class="weekend-section-link" href="#programma">Programma</a>
+      <a class="weekend-section-link" href="#verblijf">Verblijf & maaltijden</a>
+      <a class="weekend-section-link" href="#boeken">Prijs & boeken</a>
+      <a class="weekend-section-link" href="#faq">FAQ</a>
     </div>
   </div>
 </nav>
@@ -153,7 +212,9 @@ const faqs = [
       <p class="mt-6 text-base-700"><strong>Niet inbegrepen:</strong> transport van en naar Sourbrodt.</p>
       <p class="mt-2 text-base-700">Iedereen komt op eigen vervoer. Kort voor het weekend bekijken we samen de mogelijkheden om te carpoolen, zodat iedereen ter plaatse geraakt.</p>
     </div>
+    <a href={samenBuitenImage.src} data-weekend-photo class="weekend-existing-photo" aria-label="Foto vergroten">
     <Image src={samenBuitenImage} alt="Deelnemers samen buiten tijdens een SOLA-weekend" class="h-full min-h-80 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 40vw, 100vw" />
+    </a>
   </div>
 </section>
 
@@ -233,27 +294,34 @@ const faqs = [
     </details>
   </div>
   <p class="mt-6 text-sm text-base-500">De precieze volgorde van het programma kan nog wijzigen. Voor vertrek ontvang je het definitieve programma.</p>
+  <WeekendPhotoGallery photos={weekendPhotos.slice(0, 4)} />
 </section>
 
 <section id="verblijf" class="scroll-mt-28 border-y border-base-200 bg-base-50/80">
   <div class="max-w-6xl mx-auto px-6 py-14 grid gap-10 lg:grid-cols-2">
     <article>
+      <a href={hotTubImage.src} data-weekend-photo class="weekend-existing-photo" aria-label="Foto vergroten">
       <Image src={hotTubImage} alt="Hot tub bij het verblijf in Sourbrodt" class="h-72 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
+      </a>
       <h2 class="mt-6 text-3xl font-semibold text-base-900">Verblijf</h2>
       <div class="mt-4 space-y-4 leading-relaxed text-base-700">
         <p>We verblijven in Sourbrodt, in de Hoge Venen, in een ruim en comfortabel groepshuis.</p>
         <p>Je slaapt standaard met twee personen op een kamer. De kamerindeling gebeurt per hetzelfde geslacht. Schrijf je je samen met je partner in, dan kunnen jullie een kamer delen.</p>
         <p>Elke kamer heeft een eigen badkamer. Een eenpersoonskamer is mogelijk tegen een supplement en afhankelijk van de beschikbaarheid.</p>
       </div>
+      <WeekendPhotoGallery photos={weekendPhotos.slice(4, 6)} />
     </article>
     <article>
+      <a href={avondmaalImage.src} data-weekend-photo class="weekend-existing-photo" aria-label="Foto vergroten">
       <Image src={avondmaalImage} alt="Avondmaal tijdens een SOLA-weekend" class="h-72 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
+      </a>
       <h2 class="mt-6 text-3xl font-semibold text-base-900">Maaltijden</h2>
       <div class="mt-4 space-y-4 leading-relaxed text-base-700">
         <p>Alle maaltijden zijn inbegrepen, van het avondmaal op vrijdag tot en met de lunch op zondag.</p>
         <p>Justine zorgt voor gezonde, evenwichtige en vooral lekkere maaltijden, met aandacht voor energie. Een deel van de groenten komt uit eigen kweek.</p>
         <p>Allergieën en voedingsvoorkeuren kun je bij je inschrijving doorgeven.</p>
       </div>
+      <WeekendPhotoGallery photos={weekendPhotos.slice(6, 8)} />
     </article>
   </div>
 </section>
@@ -267,7 +335,9 @@ const faqs = [
       <p class="mt-2 text-white/80">Er zijn maximaal 12 plaatsen.</p>
       <a href={bookingHref} target="_blank" rel="noreferrer" class="mt-7 inline-flex rounded-full bg-white px-6 py-3 font-semibold text-accent-800 hover:bg-base-50">Boek je plek</a>
     </div>
+    <a href={bewegingImage.src} data-weekend-photo class="weekend-existing-photo" aria-label="Foto vergroten">
     <Image src={bewegingImage} alt="Beweging in de natuur tijdens een SOLA-weekend" class="h-full min-h-80 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 40vw, 100vw" />
+    </a>
   </div>
   <div class="mt-8 grid gap-6 md:grid-cols-2">
     <article class="border border-base-200 p-6">
@@ -323,3 +393,46 @@ const faqs = [
     <a href={bookingHref} target="_blank" rel="noreferrer" class="mt-7 inline-flex rounded-full bg-accent-600 px-6 py-3 font-semibold text-white hover:bg-accent-700">Boek je plek</a>
   </div>
 </section>
+
+<dialog id="weekend-photo-viewer" aria-label="Vergrote foto">
+  <button type="button" class="weekend-photo-close" aria-label="Foto sluiten">×</button>
+  <img alt="" width="1200" height="1200" />
+</dialog>
+
+<style>
+  .weekend-section-links { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .weekend-section-link { display: inline-flex; align-items: center; min-height: 44px; padding: .65rem 1rem; border: 1px solid var(--color-base-200); border-radius: 999px; font-size: .875rem; font-weight: 600; color: var(--color-base-700); }
+  .weekend-section-link:hover { border-color: var(--color-accent-600); color: var(--color-accent-700); background: var(--color-base-50); }
+  .weekend-section-link:focus-visible, .weekend-existing-photo:focus-visible { outline: 3px solid var(--color-accent-600); outline-offset: 4px; }
+  .weekend-existing-photo { display: block; cursor: zoom-in; }
+  #weekend-photo-viewer { max-width: min(94vw, 1200px); max-height: 92dvh; padding: 0; border: 0; background: var(--color-base-900); overflow: hidden; }
+  #weekend-photo-viewer::backdrop { background: rgb(0 0 0 / .82); }
+  #weekend-photo-viewer img { display: block; width: auto; height: auto; max-width: 94vw; max-height: 92dvh; object-fit: contain; }
+  .weekend-photo-close { position: absolute; top: .5rem; right: .5rem; width: 44px; height: 44px; border-radius: 50%; background: white; color: var(--color-base-900); font-size: 2rem; line-height: 1; cursor: pointer; }
+  .weekend-photo-close:focus-visible { outline: 3px solid var(--color-accent-600); outline-offset: 3px; }
+</style>
+
+<script>
+  const viewer = document.querySelector<HTMLDialogElement>('#weekend-photo-viewer');
+  const photo = viewer?.querySelector<HTMLImageElement>('img');
+  const close = viewer?.querySelector<HTMLButtonElement>('.weekend-photo-close');
+  if (viewer && photo && close) {
+    document.querySelectorAll<HTMLAnchorElement>('a[data-weekend-photo]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        photo.src = link.href;
+        photo.alt = link.querySelector('img')?.alt ?? 'Foto van een SOLA-weekend';
+        viewer.setAttribute('aria-label', photo.alt);
+        viewer.showModal();
+      });
+    });
+    close.addEventListener('click', () => viewer.close());
+    viewer.addEventListener('click', (event) => {
+      if (event.target !== viewer) return;
+      const bounds = viewer.getBoundingClientRect();
+      if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) viewer.close();
+    });
+    viewer.addEventListener('close', () => photo.removeAttribute('src'));
+  }
+</script>

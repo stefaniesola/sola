@@ -61,9 +61,10 @@ const altijdAanIntro = [
   <section class="relative bg-base-900 text-white">
     {trip.heroImage && <img class="absolute inset-0 h-full w-full object-cover opacity-45" src={trip.heroImage} width={trip.heroImageData?.width ?? 1400} height={trip.heroImageData?.height ?? 933} alt={heroImageAlt} loading="eager" decoding="async" fetchpriority="high" />}
     <div class="relative mx-auto max-w-6xl space-y-6 px-6 py-24">
-      <p class="text-xs uppercase tracking-[0.25em] text-white/70">{trip.type}</p>
+      <p class="text-xs uppercase tracking-[0.25em] text-white/70">{isAltijdAan ? "Weekend met Jorien Raeymaekers" : trip.type}</p>
       <h1 class="text-4xl font-semibold lg:text-5xl">{trip.name}</h1>
       {trip.subtitle && <p class="max-w-2xl text-2xl font-semibold">{trip.subtitle}</p>}
+      {isAltijdAan && <p class="max-w-2xl text-lg leading-relaxed text-white">Een driedaags weekend in de Hoge Venen met klinisch psycholoog Jorien Raeymaekers. Je combineert inzichten over stress en herstel met praktische oefeningen, beweging en tijd in de natuur.</p>}
       {isAltijdAan && <div class="max-w-2xl space-y-3 text-white/85">{altijdAanIntro.map((paragraph) => <p>{paragraph}</p>)}</div>}
       <div class="flex flex-wrap gap-3 text-sm">
         <span class="rounded-full border border-white/30 bg-white/15 px-3 py-1">{trip.location}</span>
