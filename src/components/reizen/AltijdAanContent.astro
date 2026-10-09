@@ -1,6 +1,6 @@
 ---
 import { jorien2027 as edition, fullDate, priceLabel, priceTerms, dayLabel } from "../../data/weekends2027";
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import WeekendPhotoGallery from "./WeekendPhotoGallery.astro";
 import avondmaalImage from "../../assets/images/altijd-aan/avondmaal.jpg";
 import bewegingImage from "../../assets/images/altijd-aan/beweging.jpg";
@@ -9,6 +9,11 @@ import jorienImage from "../../assets/images/altijd-aan/jorien-portret.jpeg";
 import samenBuitenImage from "../../assets/images/altijd-aan/samen-buiten.jpg";
 
 const bookingHref = edition.href;
+const existingPhotoFull = await Promise.all(
+  [samenBuitenImage, hotTubImage, avondmaalImage, bewegingImage].map((src) =>
+    getImage({ src, width: 1600, format: "webp", quality: 80 }),
+  ),
+);
 const weekendPhotos = [
   {
     "src": "/images/altijd-aan/gallery/wandelen-thumb.webp",
@@ -212,7 +217,7 @@ const faqs = [
       <p class="mt-6 text-base-700"><strong>Niet inbegrepen:</strong> transport van en naar Sourbrodt.</p>
       <p class="mt-2 text-base-700">Iedereen komt op eigen vervoer. Kort voor het weekend bekijken we samen de mogelijkheden om te carpoolen, zodat iedereen ter plaatse geraakt.</p>
     </div>
-    <a href={samenBuitenImage.src} data-weekend-photo class="weekend-existing-photo" aria-label="Foto vergroten">
+    <a href={existingPhotoFull[0].src} data-weekend-photo class="weekend-existing-photo" aria-label="Foto vergroten">
     <Image src={samenBuitenImage} alt="Deelnemers samen buiten tijdens een SOLA-weekend" class="h-full min-h-80 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 40vw, 100vw" />
     </a>
   </div>
@@ -300,7 +305,7 @@ const faqs = [
 <section id="verblijf" class="scroll-mt-28 border-y border-base-200 bg-base-50/80">
   <div class="max-w-6xl mx-auto px-6 py-14 grid gap-10 lg:grid-cols-2">
     <article>
-      <a href={hotTubImage.src} data-weekend-photo class="weekend-existing-photo" aria-label="Foto vergroten">
+      <a href={existingPhotoFull[1].src} data-weekend-photo class="weekend-existing-photo" aria-label="Foto vergroten">
       <Image src={hotTubImage} alt="Hot tub bij het verblijf in Sourbrodt" class="h-72 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
       </a>
       <h2 class="mt-6 text-3xl font-semibold text-base-900">Verblijf</h2>
@@ -312,7 +317,7 @@ const faqs = [
       <WeekendPhotoGallery photos={weekendPhotos.slice(4, 6)} />
     </article>
     <article>
-      <a href={avondmaalImage.src} data-weekend-photo class="weekend-existing-photo" aria-label="Foto vergroten">
+      <a href={existingPhotoFull[2].src} data-weekend-photo class="weekend-existing-photo" aria-label="Foto vergroten">
       <Image src={avondmaalImage} alt="Avondmaal tijdens een SOLA-weekend" class="h-72 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
       </a>
       <h2 class="mt-6 text-3xl font-semibold text-base-900">Maaltijden</h2>
@@ -335,7 +340,7 @@ const faqs = [
       <p class="mt-2 text-white/80">Er zijn maximaal 12 plaatsen.</p>
       <a href={bookingHref} target="_blank" rel="noreferrer" class="mt-7 inline-flex rounded-full bg-white px-6 py-3 font-semibold text-accent-800 hover:bg-base-50">Boek je plek</a>
     </div>
-    <a href={bewegingImage.src} data-weekend-photo class="weekend-existing-photo" aria-label="Foto vergroten">
+    <a href={existingPhotoFull[3].src} data-weekend-photo class="weekend-existing-photo" aria-label="Foto vergroten">
     <Image src={bewegingImage} alt="Beweging in de natuur tijdens een SOLA-weekend" class="h-full min-h-80 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 40vw, 100vw" />
     </a>
   </div>
@@ -433,6 +438,5 @@ const faqs = [
       const bounds = viewer.getBoundingClientRect();
       if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) viewer.close();
     });
-    viewer.addEventListener('close', () => photo.removeAttribute('src'));
   }
 </script>
