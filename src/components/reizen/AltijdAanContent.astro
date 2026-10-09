@@ -298,13 +298,12 @@ const faqs = [
       </div>
     </details>
   </div>
-  <p class="mt-6 text-sm text-base-500">De precieze volgorde van het programma kan nog wijzigen. Voor vertrek ontvang je het definitieve programma.</p>
   <WeekendPhotoGallery photos={weekendPhotos.slice(0, 4)} />
 </section>
 
 <section id="verblijf" class="scroll-mt-28 border-y border-base-200 bg-base-50/80">
   <div class="max-w-6xl mx-auto px-6 py-14 grid gap-10 lg:grid-cols-2">
-    <article>
+    <article class="weekend-stay-card">
       <a href={existingPhotoFull[1].src} data-weekend-photo class="weekend-existing-photo" aria-label="Foto vergroten">
       <Image src={hotTubImage} alt="Hot tub bij het verblijf in Sourbrodt" class="h-72 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
       </a>
@@ -316,7 +315,7 @@ const faqs = [
       </div>
       <WeekendPhotoGallery photos={weekendPhotos.slice(4, 6)} />
     </article>
-    <article>
+    <article class="weekend-stay-card">
       <a href={existingPhotoFull[2].src} data-weekend-photo class="weekend-existing-photo" aria-label="Foto vergroten">
       <Image src={avondmaalImage} alt="Avondmaal tijdens een SOLA-weekend" class="h-72 w-full object-cover" widths={[480, 720, 960]} sizes="(min-width: 1024px) 50vw, 100vw" />
       </a>
@@ -405,6 +404,20 @@ const faqs = [
 </dialog>
 
 <style>
+  #verblijf .weekend-stay-card { display: flex; flex-direction: column; min-width: 0; }
+  #verblijf .weekend-stay-card > div:first-of-type { flex: 1; }
+  .weekend-existing-photo { border-radius: 1.25rem; overflow: hidden; }
+  #programma > div { border: 0; display: grid; gap: 1rem; margin-bottom: 2rem; }
+  #programma details { border: 1px solid var(--color-base-200); border-radius: 1.25rem; padding: 1.4rem; background: var(--color-base-25); }
+  #programma details[open] { border-color: var(--color-accent-500); background: var(--color-base-50); }
+  #programma summary { font-size: 1.35rem; }
+  #programma summary > span:last-child { display: grid; place-items: center; width: 36px; height: 36px; flex-shrink: 0; border-radius: 50%; background: white; }
+  #programma details > div > div { padding-left: 1rem; border-left: 2px solid var(--color-accent-500); }
+  #programma details > div > div > p:first-child { color: var(--color-accent-700); font-size: .875rem; }
+  #voor-wie > div > div:last-child, #boeken > div, #na-inschrijving > div > div:last-child { border-radius: 1.25rem; }
+  #faq details { padding-left: .5rem; padding-right: .5rem; }
+  #faq details[open] { background: var(--color-base-25); border-radius: .75rem; }
+  @media (min-width: 640px) { #programma details > div > div { display: grid; grid-template-columns: 175px minmax(0, 1fr); gap: 0 1rem; } #programma details > div > div > p:first-child { grid-row: 1 / 4; } #programma details > div > div > p:not(:first-child) { grid-column: 2; } }
   .weekend-section-links { display: flex; flex-wrap: wrap; gap: .5rem; }
   .weekend-section-link { display: inline-flex; align-items: center; min-height: 44px; padding: .65rem 1rem; border: 1px solid var(--color-base-200); border-radius: 999px; font-size: .875rem; font-weight: 600; color: var(--color-base-700); }
   .weekend-section-link:hover { border-color: var(--color-accent-600); color: var(--color-accent-700); background: var(--color-base-50); }
