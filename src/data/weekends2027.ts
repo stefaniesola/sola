@@ -18,13 +18,14 @@ export const weekends2027: WeekendEdition[] = [
     detailHref: '/reizen/altijd-aan/', detailLabel: 'Ontdek het weekend',
   },
   {
-    period: 'Mei', id: 'simon-2027', month: 'MEI', date: 'Datum volgt', label: 'Beweging & gezondheid',
+    id: 'simon-2027', month: 'APR', date: '', label: 'Beweging & gezondheid',
     title: 'Beweging als medicijn', subtitle: 'Wat doet beweging met je lichaam?',
     expert: 'Met Simon Helleputte',
-    copy: 'Je hart, je uithouding, je stofwisseling: beweging zet meer in gang dan je denkt. Met Simon bereiden we een nieuw weekend voor rond beweging en gezondheid.',
-    note: 'Ontvang de datum en het programma zodra ze bekend zijn.',
-    href: 'https://tally.so/r/QKqRJA', cta: 'Hou me op de hoogte',
-    detailHref: '/weekenden/exercise-is-medicine/', detailLabel: 'Bekijk de eerdere editie',
+    copy: 'Met Simon van Simon Endurance Lab leer je hoe inspanning je hart, uithouding en stofwisseling versterkt en hoe je beweging en sport gericht inzet voor je algemene gezondheid.',
+    earlyPrice: 550, standardPrice: 615, deadline: '31 december 2026',
+    startDate: '2027-04-30', endDate: '2027-05-02', location: 'Sourbrodt, Hoge Venen, Ardennen',
+    note: '', href: 'https://tally.so/r/pbogoy', cta: 'Boek je plek',
+    detailHref: '/reizen/beweging-als-medicijn/', detailLabel: 'Ontdek het weekend',
   },
   {
     id: 'sarah-2027', month: 'JUN', date: '', startDate: '2027-06-03', endDate: '2027-06-05', label: 'Nieuw · voor professionals',
@@ -67,6 +68,7 @@ for (const edition of weekends2027) {
  }
 }
 export const jorien2027 = weekends2027.find(w => w.id === 'jorien-2027')!;
+export const simon2027 = weekends2027.find(w => w.id === 'simon-2027')!;
 export const sarah2027 = weekends2027.find(w => w.id === 'sarah-2027')!;
 export const filip2027 = weekends2027.find(w => w.id === 'filip-2027')!;
 export const fullDate = (w: WeekendEdition) => w.date === 'Datum volgt' ? `${w.period} ${agendaYear} · exacte datum volgt` : `${w.date} ${w.startDate ? w.startDate.slice(0, 4) : agendaYear}`;

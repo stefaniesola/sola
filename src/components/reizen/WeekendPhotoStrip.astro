@@ -1,0 +1,56 @@
+---
+interface Photo {src:string;full:string;alt:string;width:number;height:number}
+interface Props {photos:Photo[]}
+const {photos}=Astro.props;
+---
+<section class="photo-strip" aria-label="Foto’s van SOLA" data-photo-strip>
+ <div class="controls" hidden><button type="button" data-prev aria-label="Vorige foto's">←</button><button type="button" data-next aria-label="Volgende foto's">→</button></div>
+ <div class="track" tabindex="0" aria-label="Blader door de foto's" data-photo-track>
+  {photos.map((photo)=><a href={photo.full} data-photo-open aria-label="Foto vergroten"><img src={photo.src} alt={photo.alt} width={photo.width} height={photo.height} loading="lazy" decoding="async" /></a>)}
+ </div>
+ <dialog aria-label="Vergrote foto" data-photo-dialog><button type="button" data-photo-close aria-label="Foto sluiten">×</button><img alt="" /></dialog>
+</section>
+<style>
+ .photo-strip {position:relative;}
+ .controls {display:flex;justify-content:flex-end;gap:.6rem;margin-bottom:1rem;}
+ .controls[hidden] {display:none;}
+ button {width:44px;height:44px;border-radius:50%;border:1px solid var(--color-base-300);color:var(--color-base-900);font-size:1.5rem;cursor:pointer;background:var(--color-base-25);}
+ button:hover {background:var(--color-base-200);}
+ button:disabled {opacity:.35;cursor:default;}
+ .track {display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 4px 14px;scrollbar-width:thin;scrollbar-color:var(--color-accent-600) var(--color-base-100);}
+ .track a {flex:0 0 auto;scroll-snap-align:start;display:block;overflow:hidden;border-radius:1rem;cursor:zoom-in;}
+ .track img {display:block;height:340px;width:auto;max-width:480px;object-fit:cover;}
+ a:focus-visible,button:focus-visible,.track:focus-visible {outline:3px solid var(--color-accent-500);outline-offset:3px;}
+ dialog {margin:auto;max-width:94vw;max-height:92dvh;padding:0;border:0;background:var(--color-base-900);overflow:hidden;}
+ dialog::backdrop {background:rgb(0 0 0 / .82);}
+ dialog img {display:block;width:auto;height:auto;max-width:94vw;max-height:92dvh;object-fit:contain;}
+ dialog button {position:absolute;top:.5rem;right:.5rem;background:white;font-size:2rem;line-height:1;z-index:1;}
+ @media(max-width:639px) {.track {gap:.75rem;}.track img {height:280px;max-width:78vw;}.controls {margin-bottom:.75rem;}}
+ @media(prefers-reduced-motion:reduce) {.track {scroll-behavior:auto;}}
+</style>
+<script>
+ document.querySelectorAll<HTMLElement>('[data-photo-strip]').forEach(strip=>{
+  const track=strip.querySelector<HTMLElement>('[data-photo-track]')!;
+  const previous=strip.querySelector<HTMLButtonElement>('[data-prev]')!;
+  const next=strip.querySelector<HTMLButtonElement>('[data-next]')!;
+  const controls=strip.querySelector<HTMLElement>('.controls')!;
+  const dialog=strip.querySelector<HTMLDialogElement>('[data-photo-dialog]')!;
+  const image=dialog.querySelector<HTMLImageElement>('img')!;
+  const close=strip.querySelector<HTMLButtonElement>('[data-photo-close]')!;
+  let trigger:HTMLAnchorElement|null=null;
+  const update=()=>{previous.disabled=track.scrollLeft<2;next.disabled=track.scrollLeft+track.clientWidth>=track.scrollWidth-2;};
+  controls.hidden=false;
+  previous.addEventListener('click',()=>track.scrollBy({left:-track.clientWidth*.8}));
+  next.addEventListener('click',()=>track.scrollBy({left:track.clientWidth*.8}));
+  track.addEventListener('scroll',update,{passive:true});
+  new ResizeObserver(update).observe(track);
+  track.querySelectorAll<HTMLAnchorElement>('[data-photo-open]').forEach(link=>link.addEventListener('click',event=>{
+   if(event.ctrlKey||event.metaKey||event.shiftKey||event.altKey)return;
+   event.preventDefault();trigger=link;image.src=link.href;image.alt=link.querySelector('img')?.alt??'';dialog.showModal();
+  }));
+  close.addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('close',()=>{image.removeAttribute('src');trigger?.focus({preventScroll:true});});
+  dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});
+  update();
+ });
+</script>

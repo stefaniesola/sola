@@ -1,0 +1,275 @@
+---
+import { Image, getImage } from "astro:assets";
+import WeekendPhotoStrip from "../../components/reizen/WeekendPhotoStrip.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { simon2027 as edition, fullDate, priceLabel, priceTerms, dayLabel } from "../../data/weekends2027";
+import { journeys } from "../../data/content";
+import portrait from "../../assets/images/Simon Endurance Lab - performance coach (1).png";
+import room from "../../assets/images/Kamer Sourbrodt.avif";
+import house from "../../assets/images/Verblijf in Hoge Venen.avif";
+import breakfast from "../../assets/images/Ontbijt op weekend.avif";
+import meal from "../../assets/images/Lekker eten - SOLA Travel (1).jpg";
+import movement from "../../assets/images/home-carousel/simon.jpg";
+const weekendPhotos = [
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-11.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-11-groot.webp",
+    "alt": "Sfeerbeeld 11 van SOLA in de Hoge Venen",
+    "width": 800,
+    "height": 450
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-06.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-06-groot.webp",
+    "alt": "Sfeerbeeld 6 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-13.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-13-groot.webp",
+    "alt": "Sfeerbeeld 13 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-07.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-07-groot.webp",
+    "alt": "Sfeerbeeld 7 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-04.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-04-groot.webp",
+    "alt": "Sfeerbeeld 4 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-05.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-05-groot.webp",
+    "alt": "Sfeerbeeld 5 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-02.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-02-groot.webp",
+    "alt": "Sfeerbeeld 2 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-10.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-10-groot.webp",
+    "alt": "Sfeerbeeld 10 van SOLA in de Hoge Venen",
+    "width": 450,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-15.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-15-groot.webp",
+    "alt": "Sfeerbeeld 15 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-14.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-14-groot.webp",
+    "alt": "Sfeerbeeld 14 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-16.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-16-groot.webp",
+    "alt": "Sfeerbeeld 16 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-01.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-01-groot.webp",
+    "alt": "Sfeerbeeld 1 van SOLA in de Hoge Venen",
+    "width": 535,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-03.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-03-groot.webp",
+    "alt": "Sfeerbeeld 3 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-08.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-08-groot.webp",
+    "alt": "Sfeerbeeld 8 van SOLA in de Hoge Venen",
+    "width": 450,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-09.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-09-groot.webp",
+    "alt": "Sfeerbeeld 9 van SOLA in de Hoge Venen",
+    "width": 450,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-12.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-12-groot.webp",
+    "alt": "Sfeerbeeld 12 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-17.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-17-groot.webp",
+    "alt": "Sfeerbeeld 17 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-18.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-18-groot.webp",
+    "alt": "Sfeerbeeld 18 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-19.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-19-groot.webp",
+    "alt": "Sfeerbeeld 19 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-20.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-20-groot.webp",
+    "alt": "Sfeerbeeld 20 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-21.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-21-groot.webp",
+    "alt": "Sfeerbeeld 21 van SOLA in de Hoge Venen",
+    "width": 800,
+    "height": 533
+  },
+  {
+    "src": "/images/beweging-als-medicijn-2027/beeld-22.webp",
+    "full": "/images/beweging-als-medicijn-2027/beeld-22-groot.webp",
+    "alt": "Sfeerbeeld 22 van SOLA in de Hoge Venen",
+    "width": 600,
+    "height": 800
+  }
+];
+const previousEditionReviews = [
+  {
+    "name": "Stéphanie",
+    "quote": "Er wordt een gezellige sfeer gecreëerd waar rust en activiteiten organisch in elkaar overgaan. Leefstijlfactoren worden op een heel toegankelijke manier geïntegreerd in een weekend vol vakantievibes."
+  },
+  {
+    "name": "Stefanie",
+    "quote": "Een heel spontaan weekend met een leuke dynamiek en inhoudelijk zeer boeiende sessies. Ik kom rijker terug thuis."
+  },
+  {
+    "name": "Rik",
+    "quote": "Een super fijn team dat interessante weekends organiseert waarbij je als completer persoon terug naar huis gaat."
+  }
+];
+const previous = journeys.find(j => j.slug === "exercise-is-medicine")!;
+const hero = typeof previous.heroImage === "string" ? undefined : previous.heroImage;
+const ogImage = hero ? (await getImage({src: hero, width: 1400, format: "webp"})).src : undefined;
+const contactHref = "https://calendly.com/hello-solatravel/30min";
+const forYou = ["graag beweegt en actief in het leven staat, zonder dat sport je volledige identiteit moet zijn", "voelt dat beweging essentieel is voor je gezondheid en daar graag meer inzicht in krijgt", "een sportief doel hebt of ermee speelt er één te formuleren", "nieuwsgierig bent naar wat beweging doet met je metabole en cardiovasculaire gezondheid"];
+const included = ["driedaags weekend met twee overnachtingen", "inhoudelijke begeleiding door Simon Helleputte", "alle workshops en sessies", "praktijkmomenten en persoonlijke metingen", "verblijf op locatie", "maaltijden van vrijdagavond tot en met zondagmiddag", "een SOLA-sportshirt"];
+const takeaways = ["inzicht in je persoonlijke gezondheids- en bewegingsprofiel", "concrete handvatten om beweging duurzaam en haalbaar te integreren in je leven", "praktische leefstijl- en bewegingsgewoontes om thuis mee aan de slag te gaan", "een sterker fundament voor je sportieve en cardiovasculaire gezondheid op lange termijn"];
+const topics = [
+ {title: "Nuchter bewegen en metabolisme", copy: "Welke energiebronnen gebruikt je lichaam tijdens inspanning? Simon legt uit welke rol voeding en intensiteit spelen en bespreekt de mythes rond nuchter bewegen. Je ontdekt waarom meer vet verbranden tijdens een activiteit niet automatisch hetzelfde is als afvallen."},
+ {title: "Je hart, bloedvaten en stofwisseling", copy: "Wat gebeurt er in je lichaam wanneer je beweegt? Je krijgt inzicht in cardiovasculaire en metabole gezondheid. Persoonlijke metingen, zoals rusthartslag en bloeddruk, maken de uitleg concreet en bieden ruimte voor je eigen vragen."},
+ {title: "Herstellen na inspanning", copy: "Drinken, eten en slapen horen bij bewegen. Je leert hoe voeding en rust bijdragen aan herstel en wat gegevens over hartslag en hartslagvariabiliteit (HRV) je kunnen vertellen. Je bekijkt die gegevens samen met hoe je je voelt."},
+];
+const programme = [
+ {day: dayLabel(edition.startDate!), items: [["Vanaf 18.00 uur", "Aankomst en onthaal", "Kamerverdeling, praktische informatie en kennismaking met de groep. Je staat stil bij je persoonlijke intentie voor het weekend."], ["Avond", "Samen avondeten", "Rustig aankomen en elkaar leren kennen."]]},
+ {day: dayLabel(edition.startDate!, 1), items: [["Ochtend", "Dauwwandeling en nuchter bewegen", "Een vrijblijvende ochtendwandeling en een sessie met Simon over nuchter bewegen. Daarna schuiven we aan voor het ontbijt."], ["Voormiddag", "Persoonlijke metingen en inzichten", "Praktijkmomenten en een inhoudelijke sessie over cardiovasculaire en metabole gezondheid, met een koppeling naar je eigen metingen."], ["Middag", "Lunch", "Met aandacht voor voeding voor, tijdens en na inspanning."], ["Namiddag", "Trailrun of hike in de Hoge Venen", "Je kiest wandelen of rustig lopen. We stemmen de activiteit af op de groep, met daarna tijd om te douchen en te ontspannen."], ["Avond", "Avondmaal en herstel", "Na het eten bespreekt Simon herstel na inspanning. We sluiten de dag af met vrije tijd."]]},
+ {day: dayLabel(edition.startDate!, 2), items: [["Ochtend", "Ontbijt en persoonlijke doelen", "Je bekijkt je metingen en vertaalt de inzichten naar je eigen dagelijkse leven."], ["Voormiddag", "Core en stability", "Een sessie krachttraining en concrete actiepunten om thuis mee verder te gaan."], ["Middag", "Lunch en afsluiting", "Samen het weekend afronden na de lunch."]]},
+];
+const faqs = [
+ ...previous.faq!.map(item => [item.question, item.answer]),
+ ["Hoe groot is de groep?", "We werken met minimaal 6 en maximaal 12 deelnemers."],
+ ["Hoe zijn de kamers geregeld?", "Je slaapt standaard met twee personen op een kamer, met een kamerindeling volgens geslacht. Koppels kunnen samen op een kamer. Elke kamer heeft een eigen douche en toilet. Wil je liever alleen slapen? Geef dit bij je inschrijving aan. Een eenpersoonskamer is mogelijk tegen een supplement en afhankelijk van beschikbaarheid."],
+ ["Is een persoonlijke opvolgsessie inbegrepen?", "Nee. Een persoonlijke opvolgsessie met Simon is optioneel en niet inbegrepen in de weekendprijs."],
+ ["Kan er rekening worden gehouden met voedingswensen?", "Geef allergieën en voedingsvoorkeuren bij je inschrijving door, zodat we daar rekening mee kunnen houden."],
+ ["Tot wanneer geldt de vroegboekprijs?", "Bij inschrijving tot en met 31 december 2026 betaal je €550 per persoon. Vanaf 1 januari 2027 is de prijs €615 per persoon."],
+];
+const canonical = new URL("/reizen/beweging-als-medicijn", Astro.site!).toString();
+const schema = [{"@context":"https://schema.org", "@type":"TouristTrip", name: edition.title, description: edition.copy, url: canonical, image: ogImage ? new URL(ogImage, Astro.site!).toString() : undefined, provider:{"@type":"Organization", name:"SOLA", url:Astro.site!.toString()}, offers:[{"@type":"Offer",price:edition.earlyPrice,priceCurrency:"EUR",validThrough:"2026-12-31T23:59:59+01:00",url:edition.href},{"@type":"Offer",price:edition.standardPrice,priceCurrency:"EUR",validFrom:"2027-01-01T00:00:00+01:00",url:edition.href}], itinerary:{"@type":"ItemList", itemListElement:programme.map((day,i)=>({"@type":"ListItem",position:i+1,name:day.day}))}},
+ {"@context":"https://schema.org", "@type":"FAQPage", mainEntity:faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}}))}];
+---
+<BaseLayout title="Beweging als medicijn met Simon | 30 april–2 mei 2027 | SOLA" description="Weekend in de Hoge Venen met Simon Helleputte. Beweging, hart, stofwisseling en herstel. 30 april–2 mei 2027. €550 t.e.m. 31 december, daarna €615." ogImage={ogImage} ogImageAlt="Het landschap van de Hoge Venen" structuredData={schema}>
+ <section class="relative bg-base-900 text-white">
+  {hero && <Image src={hero} alt="Het landschap van de Hoge Venen" widths={[640, 960, 1440, 1920]} sizes="100vw" loading="eager" fetchpriority="high" class="absolute inset-0 h-full w-full object-cover opacity-40" />}
+  <div class="relative mx-auto max-w-6xl space-y-6 px-6 py-20 lg:py-24">
+   <p class="text-xs uppercase tracking-[0.25em] text-white/80">Weekend met Simon Helleputte</p>
+   <h1 class="text-4xl font-semibold lg:text-5xl">{edition.title}</h1>
+   <p class="max-w-2xl text-2xl font-semibold">{edition.subtitle}</p>
+   <p class="max-w-2xl text-lg leading-relaxed text-white">{edition.copy}</p>
+   <div class="flex flex-wrap gap-3 text-sm">{[edition.location, fullDate(edition), priceLabel(edition)].map(text=><span class="rounded-full border border-white/30 bg-white/15 px-3 py-1">{text}</span>)}</div>
+   <p>Inschrijvingen geopend · min. 6 en max. 12 deelnemers</p>
+   <p>{priceTerms(edition)} Maximaal 12 plaatsen.</p>
+   <div class="flex flex-wrap gap-3"><a class="book" href={edition.href} target="_blank" rel="noopener noreferrer">Boek je plek</a><a class="outline" href={contactHref} target="_blank" rel="noopener noreferrer">Plan een gesprek</a></div>
+  </div>
+ </section>
+ <section class="wrap py-12"><div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{[["Wanneer",fullDate(edition),"Aankomst vrijdag vanaf 18.00 uur"],["Waar","Sourbrodt","Hoge Venen, Ardennen"],["Prijs",priceLabel(edition),priceTerms(edition)],["Groep","Minimaal 6","Maximaal 12 deelnemers"]].map(([label,value,detail])=><article class="border border-base-200 bg-white p-5 shadow-sm"><p class="kicker">{label}</p><p class="mt-2 text-lg font-semibold text-base-900">{value}</p><p class="mt-2 text-sm text-base-700">{detail}</p></article>)}</div></section>
+ <nav aria-label="Inhoud van deze pagina" class="border-y border-base-200 bg-white"><div class="wrap py-5"><p class="kicker mb-3">Op deze pagina</p><div class="flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-base-900">{[["voor-wie","Voor wie"],["focus","Wat je leert"],["inbegrepen","Inbegrepen"],["begeleiding","Begeleiding"],["programma","Programma"],["verblijf","Verblijf & maaltijden"],["boeken","Prijs & boeken"],["faq","FAQ"],["contact","Contact"]].map(([id,label])=><a href={`#${id}`} class="hover:text-accent-700 underline-offset-4 hover:underline">{label}</a>)}</div></div></nav>
+ <section id="voor-wie" class="section bg-base-50"><div class="wrap grid gap-10 lg:grid-cols-2"><div><p class="kicker">Voor wie?</p><h2>Beweeg je graag en wil je begrijpen wat het met je doet?</h2><p>Dit weekend is voor jou als je:</p><ul>{forYou.map(item=><li>{item}</li>)}</ul></div><div class="panel"><p class="kicker">Na dit weekend</p><h2>Inzicht om thuis mee verder te gaan</h2><ul>{takeaways.map(item=><li>{item}</li>)}</ul></div></div></section>
+ <section id="focus" class="section"><div class="wrap"><p class="kicker">Wat je leert</p><h2>Van inspanning naar inzicht</h2><p>Je ontdekt wat er tijdens inspanning in je lichaam gebeurt, hoe voeding en herstel samenhangen met bewegen en hoe je meten en voelen in balans brengt.</p><div class="mt-8 grid gap-5 lg:grid-cols-3">{topics.map(topic=><article class="panel"><h3>{topic.title}</h3><p>{topic.copy}</p></article>)}</div></div></section>
+ <section id="inbegrepen" class="section bg-white"><div class="wrap grid items-center gap-10 lg:grid-cols-2"><div><p class="kicker">Alles voor het weekend</p><h2>Wat is inbegrepen?</h2><ul>{included.map(item=><li>{item}</li>)}</ul><p class="mt-6"><strong>Niet inbegrepen:</strong> transport van en naar de locatie en eigen verzekering. Een persoonlijke opvolgsessie met Simon is optioneel en niet inbegrepen.</p></div><Image src={movement} alt="Bewegingsoefeningen buiten met Simon" widths={[480,720,960]} sizes="(min-width: 1024px) 45vw, 100vw" class="photo" /></div></section>
+ <section id="begeleiding" class="section bg-base-900 text-white"><div class="wrap grid gap-10 lg:grid-cols-[0.7fr_1fr]"><Image src={portrait} alt="Simon Helleputte van Simon Endurance Lab" widths={[420,640,840]} sizes="(min-width: 1024px) 35vw, 100vw" class="photo portrait" /><div><p class="text-xs uppercase tracking-[0.2em] text-white/70">Expertise & coördinatie</p><h2>Simon Helleputte</h2><p>Simon is bewegingswetenschapper en coach, gespecialiseerd in de impact van fysieke activiteit op gezondheid, prestaties en mentale veerkracht. Hij vertaalt wetenschap naar begrijpelijke, relevante en toepasbare inzichten, zonder dogma’s.</p><p class="mt-4"><a class="underline underline-offset-4" href="https://www.instagram.com/simonendurancelab/" target="_blank" rel="noopener noreferrer">Meer over Simon Endurance Lab ↗</a></p></div></div></section>
+ <section class="section bg-white" aria-labelledby="simon-video-title"><div class="wrap"><p class="kicker">Simon vertelt</p><h2 id="simon-video-title">Wat mag je van het weekend verwachten?</h2><p>Simon legt uit wat je tijdens Beweging als medicijn leert.</p><figure class="mt-6 overflow-hidden rounded-2xl bg-base-900"><video class="block aspect-video h-auto max-h-[640px] w-full object-contain" controls preload="metadata" playsinline poster={portrait.src} aria-label="Simon Helleputte legt uit wat je tijdens het weekend Beweging als medicijn leert"><source src="/simon-uitleg-website.mp4" type="video/mp4" />Je browser ondersteunt deze video niet. <a href="/simon-uitleg-website.mp4">Bekijk de uitlegvideo van Simon</a>.</video></figure></div></section>
+ <section id="programma" class="section"><div class="wrap"><p class="kicker">Van vrijdagavond tot zondagmiddag</p><h2>Programma</h2><p>We combineren inhoudelijke sessies met praktische oefeningen, beweging in de natuur en tijd om te ontspannen. Het definitieve programma en de precieze timing ontvang je vóór vertrek.</p><div class="mt-8 space-y-4">{programme.map((day,index)=><details class="day" open={index===0}><summary>{day.day}<span aria-hidden="true">+</span></summary><div class="px-5 pb-6 sm:px-8">{day.items.map(([time,title,copy])=><div class="programme-item"><p class="kicker">{time}</p><h3>{title}</h3><p>{copy}</p></div>)}</div></details>)}</div></div></section>
+ <div class="wrap py-10"><WeekendPhotoStrip photos={weekendPhotos} /></div>
+ <section id="verblijf" class="section bg-white"><div class="wrap grid gap-10 lg:grid-cols-2"><div><p class="kicker">Verblijf</p><h2>Samen in de Hoge Venen</h2><p>Je verblijft in Sourbrodt in de Oostkantons, te midden van het Natuurpark Hoge Venen – Eifel. Het huis kijkt langs de achterkant uit over het landschap. Tijdens je verblijf is er ruimte om te ontspannen in de hottub of in de grote tuin.</p><p class="mt-4">Je slaapt standaard in een gedeelde kamer met twee personen, met een kamerverdeling volgens geslacht. Koppels kunnen samen op een kamer. Elke kamer is voorzien van douche en toilet. Een eenpersoonskamer is mogelijk tegen een supplement en afhankelijk van beschikbaarheid. Geef je wens bij inschrijving door.</p></div><div class="grid grid-cols-2 gap-3"><Image src={house} alt="Verblijf in de Hoge Venen" widths={[360,540,720]} sizes="(min-width: 1024px) 22vw, 45vw" class="photo" /><Image src={room} alt="Slaapkamer van het verblijf in Sourbrodt" widths={[360,540,720]} sizes="(min-width: 1024px) 22vw, 45vw" class="photo" /></div></div></section>
+ <section class="section"><div class="wrap grid gap-10 lg:grid-cols-2"><div class="grid grid-cols-2 gap-3"><Image src={breakfast} alt="Ontbijt tijdens een SOLA-weekend" widths={[360,540,720]} sizes="(min-width: 1024px) 22vw, 45vw" class="photo" /><Image src={meal} alt="Maaltijd tijdens een SOLA-weekend" widths={[360,540,720]} sizes="(min-width: 1024px) 22vw, 45vw" class="photo" /></div><div><p class="kicker">Maaltijden</p><h2>Smakelijk op reis met SOLA</h2><p>Alle maaltijden zijn inbegrepen, van het avondmaal op vrijdag tot en met de lunch op zondag. De focus ligt op gezonde, evenwichtige voeding, in balans met de activiteiten tijdens je weekend.</p><p class="mt-4">Heb je allergieën of specifieke voedingswensen, zoals vegetarisch? Geef dit door bij je inschrijving, dan houden we daar rekening mee.</p></div></div></section>
+ <section class="section bg-base-100" aria-labelledby="reviews-title"><div class="wrap"><p class="kicker">Ervaringen uit de vorige editie</p><h2 id="reviews-title">Wat deelnemers meenamen</h2><div class="mt-8 grid gap-5 lg:grid-cols-3">{previousEditionReviews.map(review=><blockquote class="flex h-full flex-col rounded-2xl border border-base-200 bg-base-25 p-6 sm:p-7"><span class="font-serif text-4xl leading-none text-accent-600" aria-hidden="true">“</span><p class="mt-3 flex-1 text-lg text-base-800">{review.quote}</p><footer class="mt-6 border-t border-base-200 pt-4 text-sm font-semibold text-base-900">{review.name}</footer></blockquote>)}</div></div></section>
+ <section id="boeken" class="section bg-accent-600 text-white"><div class="wrap"><p class="text-xs uppercase tracking-[0.2em] text-white/80">Vroegboekkorting</p><h2>€65 korting</h2><p class="text-xl">{priceLabel(edition)} per persoon. {priceTerms(edition)}</p><p class="mt-3">Minimaal 6 en maximaal 12 deelnemers.</p><a class="book mt-6 bg-white! text-accent-700!" href={edition.href} target="_blank" rel="noopener noreferrer">Boek je plek</a></div></section>
+ <section class="section"><div class="wrap grid gap-10 lg:grid-cols-2"><div class="panel"><h2>Verder werken met Simon?</h2><p>Een persoonlijke opvolgsessie met Simon is optioneel en niet inbegrepen in de weekendprijs.</p></div><div id="contact"><h2>Twijfel je nog?</h2><p>Wil je eerst weten of dit weekend bij je past? Plan een gesprek met SOLA.</p><div class="mt-5 flex flex-wrap gap-3"><a class="book" href={contactHref} target="_blank" rel="noopener noreferrer">Plan een gesprek</a><a class="contact-link" href="https://wa.me/32493410738" target="_blank" rel="noopener noreferrer">Stuur een WhatsApp</a><a class="contact-link" href="tel:+32493410738">Bel Stefanie</a></div></div></div></section>
+ <section id="faq" class="section bg-white"><div class="wrap"><p class="kicker">Goed om te weten</p><h2>Veelgestelde vragen</h2><div class="mt-8 space-y-3">{faqs.map(([question,answer])=><details class="day"><summary>{question}<span aria-hidden="true">+</span></summary><p class="px-5 pb-6 sm:px-8">{answer}</p></details>)}</div></div></section>
+ <section class="section"><div class="wrap max-w-4xl"><p class="kicker">Na je inschrijving</p><h2>Alles op tijd in je mailbox</h2><p>Na je inschrijving ontvang je een bevestiging en verdere praktische informatie per e-mail. Vóór vertrek krijg je een overzicht van wat mee te brengen en de definitieve timing.</p><p class="mt-4">Allergieën, voedingsvoorkeuren, blessures en eventuele kamerwensen kun je bij je inschrijving doorgeven.</p><a class="contact-link mt-5" href="/weekenden/exercise-is-medicine">Bekijk de eerdere editie uit 2026 →</a></div></section>
+ <section class="section bg-base-900 text-white"><div class="wrap"><p class="text-xs uppercase tracking-[0.2em] text-white/70">{fullDate(edition)} · maximaal 12 plaatsen</p><h2>Wat neem jij mee uit dit weekend?</h2><p>{priceLabel(edition)}. {priceTerms(edition)}</p><a class="book mt-6" href={edition.href} target="_blank" rel="noopener noreferrer">Boek je plek</a></div></section>
+</BaseLayout>
+<style>
+ .wrap { max-width:1152px; margin-inline:auto; padding-inline:1.5rem; }
+ .section { padding-block:3.5rem; }
+ section[id], div[id] { scroll-margin-top:7rem; }
+ h2 { font-size:clamp(1.7rem,3vw,2.2rem); font-weight:600; line-height:1.15; margin:.7rem 0 1.2rem; color:inherit; }
+ h3 { font-size:1.25rem; font-weight:600; line-height:1.3; margin-bottom:.65rem; }
+ p { line-height:1.65; }
+ .section:not(.text-white) { color:var(--color-base-700); }
+ .section:not(.text-white) h2,.section:not(.text-white) h3 { color:var(--color-base-900); }
+ .kicker { font-size:.7rem; text-transform:uppercase; letter-spacing:.16em; font-weight:600; color:var(--color-accent-700); }
+ ul { margin-top:1.3rem; padding-left:1.2rem; list-style:disc; }
+ li { padding-left:.3rem; margin:.7rem 0; line-height:1.6; }
+ li::marker { color:var(--color-accent-600); }
+ .panel { padding:1.75rem; background:var(--color-base-100); border:1px solid var(--color-base-200); }
+ .photo { width:100%; height:100%; max-height:440px; min-height:240px; object-fit:cover; border-radius:1rem; }
+ .portrait { object-position:center 25%; }
+ .book,.outline,.contact-link { display:inline-flex; justify-content:center; align-items:center; padding:.8rem 1.3rem; border-radius:999px; font-weight:600; line-height:1.4; text-align:center; }
+ .book { color:white; background:var(--color-accent-600); }
+ .book:hover { background:var(--color-accent-700); }
+ .outline { border:1px solid #ffffff99; color:white; }
+ .contact-link { color:var(--color-accent-700); border:1px solid var(--color-base-300); }
+ a:focus-visible,summary:focus-visible { outline:3px solid var(--color-accent-500); outline-offset:4px; }
+ .day { border:1px solid var(--color-base-200); background:var(--color-base-25); }
+ summary { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.2rem 1.5rem; cursor:pointer; font-size:1.1rem; font-weight:600; color:var(--color-base-900); list-style:none; }
+ summary::-webkit-details-marker { display:none; }
+ summary span { font-size:1.5rem; color:var(--color-accent-700); }
+ details[open]>summary span { transform:rotate(45deg); }
+ .programme-item { padding-block:1rem; border-top:1px solid var(--color-base-200); }
+ .programme-item h3 { margin-top:.35rem; }
+ @media(max-width:479px) { .panel { padding:1.2rem; } .section { padding-block:2.5rem; } .photo { min-height:180px; } summary { padding:1rem; } }
+</style>
+

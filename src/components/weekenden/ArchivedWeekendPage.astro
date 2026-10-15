@@ -12,7 +12,7 @@ const { weekend } = Astro.props as Props;
 const archivedDate = "31 juli – 2 augustus 2026";
 const archiveDetails = {
   "exercise-is-medicine": {
-    interestHref: "https://tally.so/r/QKqRJA",
+    interestHref: "/reizen/beweging-als-medicijn/",
     reviews: [
       {
         name: "Stéphanie",
@@ -141,7 +141,7 @@ const metaDescription = `${weekend.shortDescription} Eerdere SOLA-editie in ${we
     <section class="border-b border-base-200 bg-accent-50/60">
       <div class="mx-auto grid max-w-6xl gap-6 px-6 py-8 md:grid-cols-[1fr_auto] md:items-center">
         <p class="max-w-3xl leading-relaxed text-base-800">
-          Deze editie vond plaats van 31 juli tot 2 augustus 2026. Het thema kan later in een vernieuwde vorm terugkeren.
+          Deze editie vond plaats van 31 juli tot 2 augustus 2026. {weekend.slug === "exercise-is-medicine" ? "De nieuwe editie vindt plaats van 30 april tot en met 2 mei 2027." : "Het thema kan later in een vernieuwde vorm terugkeren."}
         </p>
         <div class="flex flex-wrap gap-3">
           <a
@@ -156,7 +156,7 @@ const metaDescription = `${weekend.shortDescription} Eerdere SOLA-editie in ${we
             rel="noopener noreferrer"
             class="inline-flex items-center justify-center rounded-full border border-base-300 bg-white px-5 py-3 text-sm font-semibold text-base-800 transition hover:border-base-400"
           >
-            {weekend.slug === "bewustwording-connectie" ? "Ontdek het nieuwe weekend voor professionals" : "Interesse in dit weekend"}
+            {weekend.slug === "bewustwording-connectie" ? "Ontdek het nieuwe weekend voor professionals" : "Ontdek de editie van 2027"}
           </a>
         </div>
       </div>
@@ -288,7 +288,7 @@ const metaDescription = `${weekend.shortDescription} Eerdere SOLA-editie in ${we
             Bekijk volgende edities
           </a>
           <a href={details.interestHref} target={details.interestHref.startsWith("https:") ? "_blank" : undefined} rel="noopener noreferrer" class="rounded-full border border-white/35 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
-            {weekend.slug === "bewustwording-connectie" ? "Ontdek het nieuwe weekend voor professionals" : "Interesse in dit weekend"}
+            {weekend.slug === "bewustwording-connectie" ? "Ontdek het nieuwe weekend voor professionals" : "Ontdek de editie van 2027"}
           </a>
         </div>
       </div>
