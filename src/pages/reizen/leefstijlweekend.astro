@@ -95,7 +95,7 @@ const faqs = [
  ["Moet ik achteraf een traject volgen bij LifeLab?","Nee. Het weekend staat op zichzelf. Individuele begeleiding achteraf is een afzonderlijke keuze en is niet inbegrepen in de weekendprijs."],
 ];
 const weekendPhotos = filipGallery.map(key => photos[key]);
-const canonical = new URL("/reizen/leefstijlweekend-filip-goossens",Astro.site!).toString();
+const canonical = new URL("/reizen/leefstijlweekend",Astro.site!).toString();
 const schema = [
  {"@context":"https://schema.org","@type":"TouristTrip",name:edition.title,description:edition.copy,url:canonical,image:new URL(ogImage,Astro.site!).toString(),provider:{"@type":"Organization",name:"SOLA",url:Astro.site!.toString()},offers:[{"@type":"Offer",price:edition.earlyPrice,priceCurrency:"EUR",validThrough:"2027-02-28T23:59:59+01:00",url:edition.href},{"@type":"Offer",price:edition.standardPrice,priceCurrency:"EUR",validFrom:"2027-03-01T00:00:00+01:00",url:edition.href}],itinerary:{"@type":"ItemList",itemListElement:programme.map((day,i)=>({"@type":"ListItem",position:i+1,name:day.day}))}},
  {"@context":"https://schema.org","@type":"FAQPage",mainEntity:faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}}))},

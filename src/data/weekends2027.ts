@@ -44,7 +44,7 @@ export const weekends2027: WeekendEdition[] = [
     earlyPrice: 610, standardPrice: 680, deadline: '28 februari 2027', startDate: '2027-09-24', endDate: '2027-09-26', location: 'Sourbrodt, Hoge Venen, Ardennen',
     note: '',
     href: 'https://tally.so/r/pbogoy', cta: 'Boek je plek',
-    detailHref: '/reizen/leefstijlweekend-filip-goossens/', detailLabel: 'Ontdek het weekend',
+    detailHref: '/reizen/leefstijlweekend/', detailLabel: 'Ontdek het weekend',
   },
   {
     period: 'Oktober', id: 'ademhaling-2027', month: 'OKT', date: 'Datum volgt', label: 'Workshops & oefeningen',

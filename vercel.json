@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/reizen/leefstijlweekend-filip-goossens",
+      "destination": "/reizen/leefstijlweekend",
+      "permanent": true
+    },
+    {
       "source": "/(.*)/",
       "destination": "/$1",
       "permanent": true
