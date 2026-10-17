@@ -1,79 +1,165 @@
 ---
-import { filip2027 as edition, fullDate, priceSummary, priceTerms } from "../../data/weekends2027";
-import UpcomingWeekendPage from '../../components/weekenden/UpcomingWeekendPage.astro';
+import WeekendPhotoStrip from "../../components/reizen/WeekendPhotoStrip.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { filip2027 as edition, fullDate, priceLabel, priceTerms, dayLabel } from "../../data/weekends2027";
+import { filipPhotos as photos, filipGallery, filipHero } from "../../data/filipPhotos";
+const portrait = photos["filip-goossens"];
+const house = photos.verblijf;
+const room = photos.slaapkamer;
+const meal = photos.maaltijd;
+const breakfast = photos.ontbijt;
+const ogImage = filipHero[2].src;
+const contactHref = "https://calendly.com/hello-solatravel/30min";
+const forYou = [
+ "je vaak moe bent en weinig energie overhoudt",
+ "je merkt dat stress en slaap je dagelijks leven beïnvloeden",
+ "je vragen hebt over voeding, gewicht of beweging",
+ "je weet wat gezond is, maar het moeilijk vindt om dat vol te houden",
+ "je graag bijleert door uitleg te combineren met zelf doen",
+];
+const takeaways = [
+ "meer inzicht in de samenhang tussen je gewoontes en je gezondheid",
+ "praktische ideeën voor je maaltijden en dagelijkse beweging",
+ "een zelf uitgewerkt avondritueel",
+ "ervaring met verschillende vormen van beweging en ontspanning",
+ "enkele concrete actiepunten die passen bij jouw week",
+];
 const topics = [
-  { title: 'Je eetgewoontes onder de loep', copy: 'Wat eet je op een doorsneedag? Welke vragen heb je over voeding? Je eigen gewoontes en vragen vormen het vertrekpunt voor de sessies met Filip.' },
-  { title: 'Van zitten naar bewegen', copy: 'We wisselen de inhoudelijke sessies af met beweging. Wandelen en samen buiten zijn krijgen een plek in het programma. Je bekijkt ook hoe beweging in je gewone week past.' },
-  { title: 'Je slaapgewoontes', copy: 'Welke gewoontes hebben invloed op je slaap? Filip legt uit hoe je lichaam zich voorbereidt op slapen en wat je daarin zelf kunt veranderen.' },
-  { title: 'Stress in je dagelijkse ritme', copy: 'Je bespreekt stress samen met voeding, beweging en slaap. Welke gewoontes hangen bij jou samen? En waar wil je als eerste iets aan veranderen?' },
-  { title: 'Je leefomgeving', copy: 'Gezondheid speelt zich ook af op de plekken waar je woont, werkt en ontspant. Je leefomgeving krijgt daarom een plaats naast je persoonlijke gewoontes.' },
-  { title: 'Middelengebruik', copy: 'Ook alcohol, tabak en andere middelen horen bij het gesprek over leefstijl. Welke plaats nemen ze in je dagelijkse leven in?' },
-  { title: 'Sociale verbinding', copy: 'Met wie eet, beweeg en ontspan je? We staan stil bij sociale contacten als onderdeel van je leefstijl. Tijdens het weekend trek je samen naar buiten en schuif je samen aan tafel.' },
+ {title:"Voeding, ook aan tafel", copy:"Filip legt als huisarts en leefstijlarts uit hoe voeding je gezondheid beïnvloedt. De SOLA-crew vertaalt die inzichten naar praktische tips voor je maaltijden en je eigen keuken."},
+ {title:"Beweging in je dagelijkse leven", copy:"We wandelen, doen krachttraining en trekken eropuit voor een hike of trailrun. Je kiest zelf waaraan je deelneemt. We kijken ook hoe verschillende vormen van beweging een plaats kunnen krijgen in jouw week."},
+ {title:"Slaap en je avondritme", copy:"Je onderzoekt je slaapgewoontes en wat je avond beïnvloedt. Met de inzichten uit de sessies werk je een avondritueel uit dat thuis uitvoerbaar is."},
+ {title:"Stress en ontspanning", copy:"Wat merk je wanneer spanning oploopt? Hoe maak je ruimte voor herstel? Uitleg wordt afgewisseld met ademhalingsoefeningen en momenten om stil te staan bij je eigen gewoontes."},
+];
+const included = [
+ "driedaags weekend met twee overnachtingen in Sourbrodt, in de Hoge Venen",
+ "inhoudelijke begeleiding door huisarts en leefstijlarts Filip Goossens",
+ "vier inhoudelijke sessies over leefstijl, met ruimte voor jouw vragen",
+ "alle geplande sessies, oefeningen en workshops",
+ "yoga en krachttraining onder begeleiding van de SOLA-crew",
+ "wandeling of trailrun onder begeleiding van de SOLA-crew",
+ "begeleide ademhalingsoefeningen en toegang tot sauna en ijsbad",
+ "verblijf op locatie",
+ "alle maaltijden van vrijdagavond tot en met zondagmiddag",
+ "koffie, thee, water, aperitief en tussendoortjes",
+ "een SOLA-shirt",
+];
+const excluded = [
+ "vervoer naar en van de locatie",
+ "een eigen reis- of annuleringsverzekering",
+ "een eventuele bloedafname en bespreking van de resultaten",
+ "persoonlijke begeleiding via LifeLab na het weekend",
+];
+const programme = [
+ {day:dayLabel(edition.startDate!),items:[
+  ["Vanaf 18.00 uur","Aankomst, kennismaking en inchecken","Aperitief en toelichting bij het weekendprogramma."],
+  ["19.30 uur","Avondmaal",""],
+  ["20.30 uur","Kennismakingsmoment — wat brengt je hier?","We maken kennis met elkaar en delen welke vragen we meebrengen over voeding, beweging, slaap of stress. Een rustige start, zonder uitgebreide inhoudelijke sessie."],
+  ["Vanaf 21.00 uur","Hot tub en vrije tijd",""],
+ ]},
+ {day:dayLabel(edition.startDate!,1),items:[
+  ["07.15 uur — vrijblijvend","Rustige ochtendwandeling",""],
+  ["08.00 uur","Yoga",""],
+  ["08.45 uur","Ontbijt",""],
+  ["09.30 uur","Inhoudelijke sessie met Filip — hoe je dagelijkse gewoontes samenhangen","Voeding, beweging, slaap en stress beïnvloeden elkaar. Filip legt die samenhang uit aan de hand van herkenbare situaties en de vragenlijsten die jullie vooraf invulden. Je onderzoekt welke gewoontes bij jou aandacht verdienen."],
+  ["10.45 uur","Pauze",""],
+  ["11.15 uur","Inhoudelijke sessie met Filip — voeding en beweging in de praktijk","Wat weten we over de invloed van voeding en beweging op je gezondheid? Filip geeft uitleg als huisarts en leefstijlarts en beantwoordt vragen over onder meer eetgewoontes, gewicht en bewegen. De SOLA-crew helpt je met de praktische toepassing."],
+  ["12.30 uur","Lunch","De SOLA-crew geeft praktische tips bij de maaltijd, aansluitend op de uitleg van Filip. Er is ruimte voor vragen over wat er op je bord ligt."],
+  ["14.00 uur","Hike of trailrun in de Hoge Venen","Je kiest voor wandelen of lopen. Route, afstand en tempo stemmen we af op de groep. Sla je liever over? Dan neem je wat tijd voor jezelf."],
+  ["Vanaf 16.30 uur","Terugkomst en korte pauze",""],
+  ["17.00 uur","Ademhaling, sauna en ijsbad met Filip","Je oefent met je ademhaling en krijgt uitleg over de reactie van je lichaam op warmte en koude. Sauna en ijsbad zijn vrijblijvend en alleen voor wie deelname geschikt is."],
+  ["Vanaf 18.30 uur","Douche en vrije tijd",""],
+  ["19.30 uur","Avondmaal",""],
+  ["Vanaf 20.30 uur","Vrije avond en tijd om na te praten",""],
+ ]},
+ {day:dayLabel(edition.startDate!,2),items:[
+  ["07.30 uur","Krachttraining","Een begeleide sessie met aandacht voor de uitvoering van de oefeningen."],
+  ["08.00 uur","Rustige yoga",""],
+  ["08.30 uur","Ontbijt",""],
+  ["09.30 uur","Inhoudelijke sessie met Filip — slaap en je avondgewoontes","Wat helpt je om je voor te bereiden op de nacht? Filip bespreekt de invloed van onder meer regelmaat, licht, cafeïne en alcohol. Je bekijkt je eigen gewoontes en werkt een haalbaar avondritueel uit."],
+  ["10.45 uur","Pauze",""],
+  ["11.15 uur","Praktische sessie met Filip — jouw eerste stappen voor thuis","Je kiest twee of drie veranderingen waarmee je verder wilt. Je maakt ze concreet: wat ga je doen, wanneer en wat heb je daarvoor nodig? Er is tijd om vragen te stellen en mogelijke hindernissen te bespreken."],
+  ["12.30 uur","Lunch",""],
+  ["13.30 uur","Gezamenlijke afronding","Wat neem je mee en waarmee wil je beginnen?"],
+  ["14.00 uur","Vertrek",""],
+ ]},
+];
+const faqs = [
+ ["Moet ik al veel over gezondheid weten?","Nee. Filip legt de inhoud begrijpelijk uit. Je eigen vragen en ervaringen vormen een goed vertrekpunt."],
+ ["Hoe sportief moet ik zijn?","Je hoeft geen sportervaring te hebben. We gaan samen wandelen en er staan verschillende beweegmomenten op het programma. Je kiest zelf waaraan je deelneemt en op welk tempo. Sla je liever een activiteit over? Dan neem je gewoon wat tijd voor jezelf."],
+ ["Moet ik deelnemen aan het ijsbad?","Nee. Deelname is vrijwillig. Sauna en koudeblootstelling zijn niet voor iedereen geschikt. Bespreek vooraf met Filip of deelname past bij jouw gezondheidssituatie."],
+ ["Is dit een weekend om af te vallen?","Voeding en gewicht kunnen aan bod komen, maar het weekend biedt geen afslankprogramma. De focus ligt op inzicht in je leefstijl en gewoontes waarmee je verder wilt."],
+ ["Kan ik alleen inschrijven?","Ja. Je kunt alleen komen of samen met iemand inschrijven. We beginnen het weekend met een kennismaking."],
+ ["Hoe groot is de groep?","We werken met minimaal 6 en maximaal 12 deelnemers."],
+ ["Kan er rekening worden gehouden met voedingswensen?","Geef allergieën en specifieke voedingsbehoeften door bij je inschrijving, zodat we die vooraf kunnen bespreken."],
+ ["Tot wanneer geldt de vroegboekprijs?","Bij inschrijving tot en met 28 februari 2027 betaal je €610 per persoon. Vanaf 1 maart 2027 geldt de standaardprijs van €680 per persoon."],
+ ["Moet ik achteraf een traject volgen bij LifeLab?","Nee. Het weekend staat op zichzelf. Individuele begeleiding achteraf is een afzonderlijke keuze en is niet inbegrepen in de weekendprijs."],
+];
+const weekendPhotos = filipGallery.map(key => photos[key]);
+const canonical = new URL("/reizen/leefstijlweekend-filip-goossens",Astro.site!).toString();
+const schema = [
+ {"@context":"https://schema.org","@type":"TouristTrip",name:edition.title,description:edition.copy,url:canonical,image:new URL(ogImage,Astro.site!).toString(),provider:{"@type":"Organization",name:"SOLA",url:Astro.site!.toString()},offers:[{"@type":"Offer",price:edition.earlyPrice,priceCurrency:"EUR",validThrough:"2027-02-28T23:59:59+01:00",url:edition.href},{"@type":"Offer",price:edition.standardPrice,priceCurrency:"EUR",validFrom:"2027-03-01T00:00:00+01:00",url:edition.href}],itinerary:{"@type":"ItemList",itemListElement:programme.map((day,i)=>({"@type":"ListItem",position:i+1,name:day.day}))}},
+ {"@context":"https://schema.org","@type":"FAQPage",mainEntity:faqs.map(([question,answer])=>({"@type":"Question",name:question,acceptedAnswer:{"@type":"Answer",text:answer}}))},
 ];
 ---
-<UpcomingWeekendPage
-  title={edition.title}
-  description={`${edition.title}. ${fullDate(edition)}. Voeding, beweging, slaap en stress. Ontvang als eerste het programma.`}
-  label="Leefstijlgeneeskunde · samen met LifeLab"
-  date={fullDate(edition)}
-  expert={edition.expert}
-  headline="Begrijp je gewoontes. Probeer uit. Neem mee naar huis."
-  intro="Wat eet je, hoe beweeg je en hoe sluit je je dag af? Trek met SOLA en Filip Goossens naar de Hoge Venen voor een weekend rond leefstijlgeneeskunde. Je combineert wetenschappelijk onderbouwde sessies met beweging, voedingsadvies aan tafel en oefeningen. Vanuit je eigen vragen kies je met welke gewoontes je thuis aan de slag wilt."
-  price={priceSummary(edition)}
-  href={edition.href}
-  cta={edition.cta}
-  topics={topics}
-  topicsTitle="Zeven pijlers. Jouw dagelijks leven."
-  closing={`Ontvang als eerste de exacte datum, het volledige programma en bericht zodra de inschrijvingen openen. ${fullDate(edition)}.`}
->
-  <div slot="before-topics" class="opening">
-    <section aria-labelledby="filip-title">
-      <p class="kicker">Je expert</p>
-      <h2 id="filip-title">Maak kennis met Filip.</h2>
-      <p>Filip Goossens is huisarts bij Familiepraktijk Nijlen en leefstijlarts bij LifeLab. In zijn werk brengt hij medische kennis en dagelijkse gewoontes samen: hoe help je mensen om bewustere keuzes te maken rond hun gezondheid, op een manier die bij hun leven past?</p>
-      <p>Die aanpak neemt hij mee naar SOLA. Hij begeleidt de leefstijlsessies, geeft voedingsadvies bij de maaltijden en werkt met de groep rond meditatie en slaap. Je kunt je vragen rechtstreeks aan hem stellen en gaat ook zelf aan de slag.</p>
-    </section>
-    <section class="panel" aria-labelledby="preparation-title">
-      <p class="kicker">Het begint bij jou</p>
-      <h2 id="preparation-title">Je vragen reizen mee.</h2>
-      <p>Wil je gezonder leven, maar weet je niet waar te beginnen? Of lees je veel over voeding, slaap en beweging en wil je begrijpen wat je ermee kunt doen? Dit weekend is voor wie zijn eigen leefstijl wil onderzoeken.</p>
-      <p>In de voorbereiding voorzien we een korte vragenlijst over je voedings-, beweeg- en slaapgewoontes. Je vertelt ook waar je grootste vraag zit, bijvoorbeeld rond energie, gewicht of je dagelijkse ritme. Filip gebruikt de antwoorden om de accenten in de sessies te bepalen.</p>
-    </section>
-    <p>De zeven pijlers vormen de basis van het weekend. Hoeveel aandacht elk thema krijgt, stemmen we af op de vragen van de groep.</p>
+<BaseLayout title="Leefstijlweekend met Filip Goossens | 24–26 september 2027 | SOLA" description="Ontdek hoe voeding, beweging, slaap en stress samenhangen. Leefstijlweekend met arts Filip Goossens, 24–26 september 2027 in de Hoge Venen." ogImage={ogImage} ogImageAlt="Het landschap van de Hoge Venen" structuredData={schema}>
+ <section class="relative bg-base-900 text-white">
+  <img src={ogImage} srcset={filipHero.map(image=>`${image.src} ${image.width}w`).join(", ")} width={filipHero[2].width} height={filipHero[2].height} alt="Het landschap van de Hoge Venen" sizes="100vw" loading="eager" fetchpriority="high" class="absolute inset-0 h-full w-full object-cover opacity-40" />
+  <div class="relative mx-auto max-w-6xl space-y-6 px-6 py-20 lg:py-24">
+   <a href="/reizen/#agenda-2027" class="text-sm underline underline-offset-4">← Alle SOLA-weekends in 2027</a>
+   <p class="text-xs uppercase tracking-[0.25em] text-white/80">Met huisarts en leefstijlarts Filip Goossens</p>
+   <h1 class="text-4xl font-semibold lg:text-5xl">{edition.title}</h1>
+   <p class="max-w-2xl text-2xl font-semibold">{edition.subtitle}</p>
+   <p class="max-w-2xl text-lg leading-relaxed text-white">Hoe beïnvloeden voeding, beweging, slaap en stress je gezondheid? Tijdens dit weekend met Filip Goossens krijg je inzicht in die samenhang. Je wisselt inhoudelijke sessies af met beweging in de Hoge Venen, gezamenlijke maaltijden en praktische oefeningen. Je kiest haalbare veranderingen waarmee je thuis verder wilt.</p>
+   <div class="flex flex-wrap gap-3 text-sm">{[edition.location,fullDate(edition),priceLabel(edition)].map(text=><span class="rounded-full border border-white/30 bg-white/15 px-3 py-1">{text}</span>)}</div>
+   <p>Inschrijvingen geopend · min. 6 en max. 12 deelnemers</p>
+   <p>{priceTerms(edition)}</p>
+   <div class="flex flex-wrap gap-3"><a class="book" href={edition.href} target="_blank" rel="noopener noreferrer">Boek je plek</a><a class="outline" href={contactHref} target="_blank" rel="noopener noreferrer">Plan een gesprek</a></div>
   </div>
-  <section class="programme" aria-labelledby="programme-title">
-    <p class="kicker">Van sessie naar zelf doen</p>
-    <h2 id="programme-title">Zo krijgt het weekend vorm.</h2>
-    <p>Dit is de opbouw uit het voorstel. We werken de activiteiten en begeleiding verder uit; het definitieve programma volgt bij de lancering.</p>
-    <div class="days">
-      <article><p class="kicker">Vrijdag</p><h3>Aankomen & kennismaken</h3><p>Elkaar leren kennen en rustig aan het weekend beginnen. Het voorstel voorziet een hot tub-moment als aanknopingspunt voor een gesprek over slaap.</p></article>
-      <article><p class="kicker">Zaterdag</p><h3>Naar buiten. Aan tafel. In gesprek.</h3><p>Een ochtendwandeling of lichte jog, yoga en leefstijlsessies op basis van de vragenlijst. In de namiddag staat een hike of trailrun op de planning. Bij de maaltijden bespreekt Filip voeding met de groep.</p><p>Ook sauna en een ijsbad maken deel uit van het voorstel. De precieze invulling, begeleiding en voorwaarden voor deelname werken we nog uit.</p></article>
-      <article><p class="kicker">Zondag</p><h3>Oefenen & meenemen</h3><p>Beweging, met krachttraining als voorgesteld onderdeel, en yoga. Korte sessies rond onder meer voeding en slaap ronden het weekend af. Je kiest welke tips je thuis wilt uitproberen.</p></article>
-    </div>
-  </section>
-  <section class="panel" aria-labelledby="take-home-title">
-    <p class="kicker">Na het weekend</p>
-    <h2 id="take-home-title">Waar begin jij maandag mee?</h2>
-    <p>Je hoeft niet je hele leven om te gooien. Je kiest uit de sessies en oefeningen de stappen die bij jou passen: iets veranderen aan je eetgewoontes, beweging inplannen of je avond anders afsluiten.</p>
-  </section>
-  <section class="practical" aria-labelledby="practical-title">
-    <h2 id="practical-title">Goed om te weten</h2>
-    <dl><div><dt>Wanneer</dt><dd>{fullDate(edition)}</dd></div><div><dt>Waar</dt><dd>We bereiden het weekend voor in Sourbrodt, in de Hoge Venen.</dd></div><div><dt>Prijs</dt><dd>{priceSummary(edition)}. {priceTerms(edition)}</dd></div><div><dt>Persoonlijke opvolging</dt><dd>Een bloedafname en een individueel traject via LifeLab zijn mogelijke extra’s buiten het weekend. Ze zijn niet inbegrepen in de weekendprijs.</dd></div></dl>
-  </section>
-</UpcomingWeekendPage>
+ </section>
+ <section class="wrap py-12"><div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">{[["Wanneer",fullDate(edition),"Vrijdag vanaf 18.00 uur · zondag vertrek om 14.00 uur"],["Waar","Sourbrodt","Hoge Venen, Ardennen"],["Prijs",priceLabel(edition),priceTerms(edition)],["Groep","Minimaal 6","Maximaal 12 deelnemers"]].map(([label,value,detail])=><article class="border border-base-200 bg-white p-5 shadow-sm"><p class="kicker">{label}</p><p class="mt-2 text-lg font-semibold text-base-900">{value}</p><p class="mt-2 text-sm text-base-700">{detail}</p></article>)}</div></section>
+ <nav aria-label="Inhoud van deze pagina" class="border-y border-base-200 bg-white"><div class="wrap py-5"><p class="kicker mb-3">Op deze pagina</p><div class="flex flex-wrap gap-x-6 gap-y-3 text-sm font-semibold text-base-900">{[["voor-wie","Voor wie"],["focus","Wat je leert"],["inbegrepen","Inbegrepen"],["begeleiding","Begeleiding"],["programma","Programma"],["verblijf","Verblijf & maaltijden"],["boeken","Prijs & boeken"],["faq","FAQ"],["contact","Contact"]].map(([id,label])=><a href={`#${id}`} class="hover:text-accent-700 underline-offset-4 hover:underline">{label}</a>)}</div></div></nav>
+ <section id="voor-wie" class="section bg-base-50"><div class="wrap grid gap-10 lg:grid-cols-2"><div><p class="kicker">Voor wie?</p><h2>Je wilt gezonder leven. Waar begin je?</h2><p>Misschien weet je best wat gezond is, maar lukt het moeilijk om daar in een drukke week naar te leven. Of je leest zoveel verschillende adviezen dat je niet meer weet wat je ermee moet.</p><p class="mt-4">Dit weekend past bij je als:</p><ul>{forYou.map(item=><li>{item}</li>)}</ul><p class="mt-4">Je kiest zelf aan welke activiteiten je deelneemt. Sla je liever een beweegmoment over? Dan neem je wat tijd voor jezelf.</p></div><div class="panel"><p class="kicker">Na dit weekend</p><h2>Waar begin jij maandag mee?</h2><ul>{takeaways.map(item=><li>{item}</li>)}</ul></div></div></section>
+ <section id="focus" class="section"><div class="wrap"><p class="kicker">Wat je leert</p><h2>Je dagelijkse gewoontes onder de loep</h2><p>Filip gebruikt zeven thema’s als leidraad: voeding, beweging, slaap, stressmanagement, leefomgeving, middelengebruik en sociale verbondenheid. De vragen uit de groep bepalen mee waar we langer bij stilstaan.</p><div class="mt-8 grid gap-5 md:grid-cols-2">{topics.map(topic=><article class="panel"><h3>{topic.title}</h3><p>{topic.copy}</p></article>)}</div><div class="panel mt-6"><h3>Vooraf: jouw vragen als vertrekpunt</h3><p>Voor het weekend ontvang je een korte vragenlijst over je voedings-, beweeg- en slaapgewoontes en wat je graag wilt onderzoeken. Filip gebruikt de antwoorden om de accenten in de sessies te bepalen.</p></div><details class="day mt-6"><summary>Wetenschap die je kunt gebruiken<span aria-hidden="true">+</span></summary><div class="px-5 pb-6 sm:px-8"><p>Regelmatig bewegen, een gevarieerd voedingspatroon en voldoende slaap verdienen een plaats in je dagelijkse leven. Filip legt uit wat de wetenschap ons leert en waar nog onzekerheid bestaat. Sauna en ijsbad zijn begeleide ervaringen binnen het programma. Ze worden niet voorgesteld als behandeling of als voorwaarde om gezonder te leven.</p><p class="mt-4 text-sm">Meer achtergrond: <a class="underline" href="https://www.who.int/europe/news-room/fact-sheets/item/physical-activity" target="_blank" rel="noopener noreferrer">WHO over beweging</a> · <a class="underline" href="https://www.who.int/en/news-room/fact-sheets/detail/healthy-diet" target="_blank" rel="noopener noreferrer">WHO over voeding</a> · <a class="underline" href="https://www.nhlbi.nih.gov/health/heart-healthy-living/sleep" target="_blank" rel="noopener noreferrer">NHLBI over slaap</a> · <a class="underline" href="https://pubmed.ncbi.nlm.nih.gov/39879231/" target="_blank" rel="noopener noreferrer">onderzoek naar koudeblootstelling</a></p></div></details></div></section>
+ <section id="inbegrepen" class="section bg-white"><div class="wrap grid gap-10 lg:grid-cols-[1.3fr_1fr]"><div><p class="kicker">Alles voor het weekend</p><h2>Wat is inbegrepen?</h2><ul>{included.map(item=><li>{item}</li>)}</ul></div><div class="panel self-start"><h3>Wat is niet inbegrepen?</h3><ul>{excluded.map(item=><li>{item}</li>)}</ul></div></div></section>
+ <section id="begeleiding" class="section bg-base-900 text-white"><div class="wrap grid items-start gap-10 lg:grid-cols-[0.7fr_1fr]"><img src={portrait.full} srcset={`${portrait.src} ${portrait.width}w, ${portrait.full} ${portrait.fullWidth}w`} width={portrait.fullWidth} height={portrait.fullHeight} alt={portrait.alt} sizes="(min-width: 1024px) 35vw, 100vw" loading="lazy" decoding="async" class="filip-portrait" /><div><p class="text-xs uppercase tracking-[0.2em] text-white/70">Expertise & coördinatie</p><h2>Filip Goossens</h2><p class="text-xl font-semibold">Huisarts en leefstijlarts achter LifeLab</p><p class="mt-4">In zijn werk begeleidt Filip mensen die met hun leefstijl aan de slag willen. Hij kijkt naar voeding, beweging en slaap, maar ook naar de omstandigheden waarin gewoontes ontstaan en veranderen.</p><p class="mt-4">Tijdens het weekend verzorgt hij vier inhoudelijke sessies en begeleidt hij de onderdelen rond ademhaling, sauna en ijsbad. Je kunt hem vragen stellen over wat je hoort, leest en zelf ervaart.</p><p class="mt-4">Filip brengt de medische en wetenschappelijke uitleg. De SOLA-crew helpt je om de inzichten praktisch toe te passen, onder meer bij de maaltijden.</p><a class="mt-5 inline-block underline underline-offset-4" href="https://lifelab.be" target="_blank" rel="noopener noreferrer">Meer over LifeLab ↗</a><div class="mt-7 border-t border-white/30 pt-6"><h3>SOLA · organisatie en begeleiding</h3><p>Stefanie Deleu en SOLA zorgen voor de praktische organisatie en de omkadering van het weekend. De SOLA-crew voorziet praktische voedingstips en organiseert de overige activiteiten, waaronder wandelen, hike of trailrun, yoga en krachttraining.</p></div></div></div></section>
+ <section id="programma" class="section"><div class="wrap"><p class="kicker">Van vrijdagavond tot zondagmiddag</p><h2>Programma</h2><p>Vier sessies met Filip, afgewisseld met beweging, gezamenlijke maaltijden en tijd voor jezelf. Je kiest zelf aan welke beweegmomenten je deelneemt.</p><div class="mt-8 space-y-4">{programme.map((day,index)=><details class="day" open={index===0}><summary>{day.day}<span aria-hidden="true">+</span></summary><div class="px-5 pb-6 sm:px-8">{day.items.map(([time,title,copy])=><div class="programme-item"><p class="kicker">{time}</p><h3>{title}</h3>{copy&&<p>{copy}</p>}</div>)}</div></details>)}</div><p class="mt-5 text-sm">De timing is indicatief. Het programma kan worden aangepast aan het weer en de groep.</p></div></section>
+ <div class="wrap py-10"><WeekendPhotoStrip photos={weekendPhotos} /></div>
+ <section id="verblijf" class="section bg-white"><div class="wrap grid gap-10 lg:grid-cols-2"><div><p class="kicker">Verblijf</p><h2>Samen in de Hoge Venen</h2><p>We verblijven twee nachten in Sourbrodt, in de Hoge Venen. Vanuit deze uitvalsbasis trekken we de natuur in en komen we samen voor de sessies en maaltijden. Tussendoor is er ruimte om te ontspannen.</p><p class="mt-4">Heb je een vraag over de kamers of een specifieke kamerwens? Geef die door bij je inschrijving of neem vooraf contact op met SOLA.</p></div><div class="grid grid-cols-2 gap-3"><img src={house.src} srcset={`${house.src} ${house.width}w, ${house.full} ${house.fullWidth}w`} alt={house.alt} width={house.width} height={house.height} sizes="(min-width: 1024px) 22vw, 45vw" loading="lazy" decoding="async" class="photo" /><img src={room.src} srcset={`${room.src} ${room.width}w, ${room.full} ${room.fullWidth}w`} alt={room.alt} width={room.width} height={room.height} sizes="(min-width: 1024px) 22vw, 45vw" loading="lazy" decoding="async" class="photo" /></div></div></section>
+ <section class="section"><div class="wrap grid gap-10 lg:grid-cols-2"><div class="grid grid-cols-2 gap-3"><img src={meal.src} srcset={`${meal.src} ${meal.width}w, ${meal.full} ${meal.fullWidth}w`} alt={meal.alt} width={meal.width} height={meal.height} sizes="(min-width: 1024px) 22vw, 45vw" loading="lazy" decoding="async" class="photo" /><img src={breakfast.src} srcset={`${breakfast.src} ${breakfast.width}w, ${breakfast.full} ${breakfast.fullWidth}w`} alt={breakfast.alt} width={breakfast.width} height={breakfast.height} sizes="(min-width: 1024px) 22vw, 45vw" loading="lazy" decoding="async" class="photo" /></div><div><p class="kicker">Maaltijden</p><h2>Samen aan tafel</h2><p>Alle maaltijden zijn inbegrepen, van het avondmaal op vrijdag tot en met de lunch op zondag. Ook koffie, thee, water, aperitief en tussendoortjes zijn voorzien.</p><p class="mt-4">De SOLA-crew geeft praktische tips bij de maaltijden, aansluitend op de uitleg van Filip als huisarts en leefstijlarts. Zo krijg je ideeën die je ook in je eigen keuken kunt gebruiken.</p><p class="mt-4">Heb je allergieën of specifieke voedingsbehoeften? Bespreek die bij je inschrijving met SOLA.</p></div></div></section>
+ <section id="boeken" class="section bg-accent-600 text-white"><div class="wrap"><p class="text-xs uppercase tracking-[0.2em] text-white/80">Vroegboekkorting</p><h2>€70 korting</h2><p class="text-xl">{priceLabel(edition)} per persoon. {priceTerms(edition)}</p><p class="mt-3">Vanaf 1 maart 2027 geldt de standaardprijs van €680 per persoon.</p><a class="book mt-6 bg-white! text-accent-700!" href={edition.href} target="_blank" rel="noopener noreferrer">Boek je plek</a></div></section>
+ <section class="section"><div class="wrap grid gap-10 lg:grid-cols-2"><div class="panel"><h2>Verder werken met Filip?</h2><p>Dat kan! Na het weekend kun je bij Filip terecht voor persoonlijke begeleiding via LifeLab. Samen bespreek je je vragen en welke volgende stappen bij jou passen.</p><p class="mt-4">Deze begeleiding is vrijblijvend en wordt afzonderlijk geboekt en betaald.</p></div><div id="contact"><h2>Twijfel je nog?</h2><p>Wil je eerst weten of dit weekend bij je past? Plan een gesprek met SOLA.</p><div class="mt-5 flex flex-wrap gap-3"><a class="book" href={contactHref} target="_blank" rel="noopener noreferrer">Plan een gesprek</a><a class="contact-link" href="mailto:hello@solatravel.be">Mail SOLA</a><a class="contact-link" href="tel:+32493410738">Bel Stefanie</a></div></div></div></section>
+ <section id="faq" class="section bg-white"><div class="wrap"><p class="kicker">Goed om te weten</p><h2>Veelgestelde vragen</h2><div class="mt-8 space-y-3">{faqs.map(([question,answer])=><details class="day"><summary>{question}<span aria-hidden="true">+</span></summary><p class="px-5 pb-6 sm:px-8">{answer}</p></details>)}</div></div></section>
+ <section class="section"><div class="wrap max-w-4xl"><p class="kicker">Na je inschrijving</p><h2>Alles op tijd in je mailbox</h2><p>Voor het weekend ontvang je een korte vragenlijst over je gewoontes en wat je graag wilt onderzoeken. De praktische informatie, timing en lijst met wat je meebrengt, bezorgen we je vóór vertrek.</p><p class="mt-4">Allergieën, voedingsvoorkeuren en eventuele kamerwensen kun je bij je inschrijving doorgeven.</p></div></section>
+ <section class="section bg-base-900 text-white"><div class="wrap"><p class="text-xs uppercase tracking-[0.2em] text-white/70">{fullDate(edition)} · Sourbrodt, Hoge Venen</p><h2>Zin om ermee aan de slag te gaan?</h2><p>Drie dagen om bij te leren, buiten te bewegen en aandacht te besteden aan je dagelijkse gewoontes.</p><p class="mt-4">{priceLabel(edition)}. {priceTerms(edition)}</p><a class="book mt-6" href={edition.href} target="_blank" rel="noopener noreferrer">Boek je plek</a></div></section>
+</BaseLayout>
 <style>
-  .opening { margin-bottom: 3rem; }
-  .kicker { font-size: .7rem; text-transform: uppercase; letter-spacing: .14em; font-weight: 600; color: var(--color-accent-700); }
-  h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 600; line-height: 1.15; margin: .65rem 0 1rem; }
-  p { line-height: 1.6; max-width: 850px; }
-  p + p { margin-top: .9rem; }
-  .panel { background: #eee8df; border-radius: 1rem; padding: 2rem; margin: 2rem 0; }
-  .programme, .practical { margin-top: 3.5rem; }
-  .days { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-  .days article { border-top: 3px solid #d16a3c; padding: 1.4rem; background: #eee8df; border-radius: 0 0 1rem 1rem; }
-  h3 { font-size: 1.3rem; font-weight: 600; line-height: 1.2; margin: .7rem 0 1rem; }
-  dl { margin-top: 1.5rem; }
-  dl div { display: grid; grid-template-columns: 180px 1fr; gap: 1.5rem; padding: 1rem 0; border-top: 1px solid #ded3c3; line-height: 1.5; }
-  dt { font-weight: 600; }
-  @media(max-width: 767px) { .days { grid-template-columns: 1fr; } .panel { padding: 1.4rem; } dl div { grid-template-columns: 1fr; gap: .35rem; } }
+ .wrap { max-width:1152px; margin-inline:auto; padding-inline:1.5rem; }
+ .section { padding-block:3.5rem; }
+ section[id], div[id] { scroll-margin-top:7rem; }
+ h2 { font-size:clamp(1.7rem,3vw,2.2rem); font-weight:600; line-height:1.15; margin:.7rem 0 1.2rem; color:inherit; }
+ h3 { font-size:1.25rem; font-weight:600; line-height:1.3; margin-bottom:.65rem; }
+ p { line-height:1.65; }
+ .section:not(.text-white) { color:var(--color-base-700); }
+ .section:not(.text-white) h2,.section:not(.text-white) h3 { color:var(--color-base-900); }
+ .kicker { font-size:.7rem; text-transform:uppercase; letter-spacing:.16em; font-weight:600; color:var(--color-accent-700); }
+ ul { margin-top:1.3rem; padding-left:1.2rem; list-style:disc; }
+ li { padding-left:.3rem; margin:.7rem 0; line-height:1.6; }
+ li::marker { color:var(--color-accent-600); }
+ .panel { padding:1.75rem; background:var(--color-base-100); border:1px solid var(--color-base-200); }
+ .photo { width:100%; height:100%; max-height:440px; min-height:240px; object-fit:cover; border-radius:1rem; }
+ .filip-portrait { display:block; width:100%; height:auto; max-height:600px; object-fit:contain; object-position:top; border-radius:1rem; }
+ .book,.outline,.contact-link { display:inline-flex; justify-content:center; align-items:center; padding:.8rem 1.3rem; border-radius:999px; font-weight:600; line-height:1.4; text-align:center; }
+ .book { color:white; background:var(--color-accent-600); }
+ .book:hover { background:var(--color-accent-700); }
+ .outline { border:1px solid #ffffff99; color:white; }
+ .contact-link { color:var(--color-accent-700); border:1px solid var(--color-base-300); }
+ a:focus-visible,summary:focus-visible { outline:3px solid var(--color-accent-500); outline-offset:4px; }
+ .day { border:1px solid var(--color-base-200); background:var(--color-base-25); }
+ summary { display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.2rem 1.5rem; cursor:pointer; font-size:1.1rem; font-weight:600; color:var(--color-base-900); list-style:none; }
+ summary::-webkit-details-marker { display:none; }
+ summary span { font-size:1.5rem; color:var(--color-accent-700); }
+ details[open]>summary span { transform:rotate(45deg); }
+ .programme-item { padding-block:1rem; border-top:1px solid var(--color-base-200); }
+ .programme-item h3 { margin-top:.35rem; }
+ @media(max-width:479px) { .panel { padding:1.2rem; } .section { padding-block:2.5rem; } .photo { min-height:180px; } summary { padding:1rem; } }
 </style>
