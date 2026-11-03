@@ -21,7 +21,7 @@ export const weekends2027: WeekendEdition[] = [
     id: 'simon-2027', month: 'APR', date: '', label: 'Beweging & gezondheid',
     title: 'Beweging als medicijn', subtitle: 'Wat doet beweging met je lichaam?',
     expert: 'Met Simon Helleputte',
-    copy: 'Met Simon van Simon Endurance Lab leer je hoe inspanning je hart, uithouding en stofwisseling versterkt en hoe je beweging en sport gericht inzet voor je algemene gezondheid.',
+    copy: 'Met Simon van SimonEnduranceLab leer je hoe inspanning je hart, uithouding en stofwisseling versterkt en hoe je beweging en sport gericht inzet voor je algemene gezondheid.',
     earlyPrice: 550, standardPrice: 615, deadline: '31 december 2026',
     startDate: '2027-04-30', endDate: '2027-05-02', location: 'Sourbrodt, Hoge Venen, Ardennen',
     note: '', href: 'https://tally.so/r/pbogoy', cta: 'Boek je plek',
