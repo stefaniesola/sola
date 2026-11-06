@@ -24,7 +24,7 @@ export const weekends2027: WeekendEdition[] = [
     copy: 'Met Simon van SimonEnduranceLab leer je hoe inspanning je hart, uithouding en stofwisseling versterkt en hoe je beweging en sport gericht inzet voor je algemene gezondheid.',
     earlyPrice: 550, standardPrice: 615, deadline: '31 december 2026',
     startDate: '2027-04-30', endDate: '2027-05-02', location: 'Sourbrodt, Hoge Venen, Ardennen',
-    note: '', href: 'https://tally.so/r/pbogoy', cta: 'Boek je plek',
+    note: '', href: 'https://tally.so/r/4a4dM5', cta: 'Boek je plek',
     detailHref: '/reizen/beweging-als-medicijn/', detailLabel: 'Ontdek het weekend',
   },
   {
@@ -43,7 +43,7 @@ export const weekends2027: WeekendEdition[] = [
     copy: 'Hoe beïnvloeden je voeding, beweging en stress je gezondheid en slaap? Met Filip Goossens, huisarts en leefstijlarts achter LifeLab, begrijp je hoe die samenhangen. Filip geeft uitleg als arts en leefstijlarts, de SOLA-crew voorziet praktische voedingstips. Je kiest haalbare veranderingen voor thuis.',
     earlyPrice: 610, standardPrice: 680, deadline: '28 februari 2027', startDate: '2027-09-24', endDate: '2027-09-26', location: 'Sourbrodt, Hoge Venen, Ardennen',
     note: '',
-    href: 'https://tally.so/r/pbogoy', cta: 'Boek je plek',
+    href: 'https://tally.so/r/lab1Zk', cta: 'Boek je plek',
     detailHref: '/reizen/leefstijlweekend/', detailLabel: 'Ontdek het weekend',
   },
   {
