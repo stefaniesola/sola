@@ -5,11 +5,12 @@ import sport from '../assets/images/home-carousel/simon.jpg';
 import verdieping from '../assets/images/home-carousel/sarah.jpg';
 import learning from '../assets/images/home-carousel/leefstijlweekend.jpg';
 import nature from '../assets/images/home-carousel/ademhaling.jpg';
+import gutFeeling from '../assets/images/gut-feeling/maaltijd.webp';
 import jorien from '../assets/images/jorien-raeymaekers.jpg';
 import { getImage } from 'astro:assets';
-const photos = [landscape, ...await Promise.all([sport, verdieping, learning, nature].map(src => getImage({ src, width: 1400, format: 'webp', quality: 85 })))];
-const photoPositions = ['50% 50%', '50% 65%', '50% 24%', '50% 50%', '50% 48%'];
-const photoAlts = ['', 'Bewegingsoefeningen buiten met Simon', 'Drie vrouwen samen buiten tijdens een SOLA-weekend', 'Het landschap van de Hoge Venen', 'Een begeleide groepssessie buiten'];
+const photos = [landscape, ...await Promise.all([sport, verdieping, learning, nature, gutFeeling].map(src => getImage({ src, width: 1400, format: 'webp', quality: 85 })))];
+const photoPositions = ['50% 50%', '50% 65%', '50% 24%', '50% 50%', '50% 48%', '50% 48%'];
+const photoAlts = ['', 'Bewegingsoefeningen buiten met Simon', 'Drie vrouwen samen buiten tijdens een SOLA-weekend', 'Het landschap van de Hoge Venen', 'Een begeleide groepssessie buiten', 'Samen eten tijdens een SOLA-weekend'];
 ---
 <section class="bg-white" aria-roledescription="carrousel" aria-label="SOLA-weekends 2027" data-weekend-carousel>
   <div class="max-w-6xl mx-auto px-6 py-14 lg:py-20">
@@ -51,7 +52,7 @@ const photoAlts = ['', 'Bewegingsoefeningen buiten met Simon', 'Drie vrouwen sam
     ))}
     </div>
     <a href="/reizen#agenda-2027" class="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-base-200 bg-base-100 px-6 py-5 text-base-900 transition hover:bg-base-200">
-      <span><span class="block text-xs uppercase tracking-[0.18em] text-accent-700">Meer SOLA in 2027</span><span class="mt-1 block text-xl font-semibold">Beweging. Verdieping. Leefstijl. Ademhaling.</span></span>
+      <span><span class="block text-xs uppercase tracking-[0.18em] text-accent-700">Meer SOLA in 2027</span><span class="mt-1 block text-xl font-semibold">Beweging. Verdieping. Leefstijl. Ademhaling. Darmgezondheid.</span></span>
       <span class="text-sm font-semibold">Bekijk de SOLA-agenda 2027 <span aria-hidden="true">↗</span></span>
     </a>
   </div>

@@ -54,6 +54,16 @@ export const weekends2027: WeekendEdition[] = [
     note: 'Volg de SOLA-updates voor de datum, de expert en het programma.',
     href: '/newsletter', cta: 'Hou me op de hoogte via de nieuwsbrief',
   },
+  {
+    id: 'gut-feeling-2027', month: 'OKT', date: '', label: 'Koken · darmgezondheid · energie',
+    title: 'Gut Feeling', subtitle: 'Lekker koken. Je darmen begrijpen. Meer uit je voeding halen.',
+    expert: 'Met Justine Deleu en Sarah Deleu',
+    copy: 'Samen koken, proeven en begrijpen wat voeding doet met je darmen en je energie. Justine begeleidt de kookworkshop; Sarah brengt inzichten rond suikerregulatie, darmgezondheid en emoties, met onder andere EFT. Je combineert bijleren met wandelingen, nuchter bewegen en yoga in de Hoge Venen. Geen kookervaring nodig. Wel goesting om thuis verder te doen.',
+    earlyPrice: 590, standardPrice: 650, deadline: '30 april 2027', startDate: '2027-10-01', endDate: '2027-10-03', location: 'Sourbrodt, Hoge Venen, Ardennen',
+    note: 'Minimaal 6 en maximaal 12 deelnemers.',
+    href: 'https://tally.so/r/RWGal9', cta: 'Schrijf je in',
+    detailHref: '/reizen/gut-feeling', detailLabel: 'Ontdek het weekend',
+  },
 ];
 // Display dates and month navigation are derived from the edition dates.
 for (const edition of weekends2027) {
