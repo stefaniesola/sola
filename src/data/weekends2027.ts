@@ -55,14 +55,14 @@ export const weekends2027: WeekendEdition[] = [
     href: '/newsletter', cta: 'Hou me op de hoogte via de nieuwsbrief',
   },
   {
-    id: 'gut-feeling-2027', month: 'OKT', date: '', label: 'Koken · darmgezondheid · energie',
+    id: 'gut-feeling-2027', month: 'OKT', date: '', label: 'SOLA-dag · koken · darmgezondheid · energie',
     title: 'Gut Feeling', subtitle: 'Lekker koken. Je darmen begrijpen. Meer uit je voeding halen.',
     expert: 'Met Justine Deleu en Sarah Deleu',
-    copy: 'Samen koken, proeven en begrijpen wat voeding doet met je darmen en je energie. Justine begeleidt de kookworkshop; Sarah brengt inzichten rond suikerregulatie, darmgezondheid en emoties, met onder andere EFT. Je combineert bijleren met wandelingen, nuchter bewegen en yoga in de Hoge Venen. Geen kookervaring nodig. Wel goesting om thuis verder te doen.',
-    earlyPrice: 590, standardPrice: 650, deadline: '30 april 2027', startDate: '2027-10-01', endDate: '2027-10-03', location: 'Sourbrodt, Hoge Venen, Ardennen',
-    note: 'Minimaal 6 en maximaal 12 deelnemers.',
-    href: 'https://tally.so/r/RWGal9', cta: 'Schrijf je in',
-    detailHref: '/reizen/gut-feeling', detailLabel: 'Ontdek het weekend',
+    copy: 'Een SOLA-dag rond koken met onderbouwde kennis. Sarah legt uit wat er in je darmen gebeurt en hoe voeding je suikerregulatie en energie beïnvloedt. Met Justine kook je met ingrediënten uit haar moestuin, lunch je samen en ontdek je fermenteren. Geen kookervaring nodig. Wel goesting om thuis verder te doen.',
+    startDate: '2027-10-02', endDate: '2027-10-02',
+    note: 'Zaterdag van 10.00 tot 17.00 uur · 8 tot 15 deelnemers. Locatie en prijs volgen. Ontvang bericht zodra de inschrijvingen openen.',
+    href: 'https://tally.so/r/lbQGek', cta: 'Zet me op de interesselijst',
+    detailHref: '/reizen/gut-feeling', detailLabel: 'Ontdek de dag',
   },
 ];
 // Display dates and month navigation are derived from the edition dates.
@@ -71,7 +71,9 @@ for (const edition of weekends2027) {
   const start = new Date(`${edition.startDate}T12:00:00Z`);
   const end = new Date(`${edition.endDate}T12:00:00Z`);
   const month = new Intl.DateTimeFormat('nl-BE', { month: 'long', timeZone: 'UTC' });
-  edition.date = start.getUTCMonth() === end.getUTCMonth()
+  edition.date = edition.startDate === edition.endDate
+   ? `${start.getUTCDate()} ${month.format(start)}`
+   : start.getUTCMonth() === end.getUTCMonth()
    ? `${start.getUTCDate()}–${end.getUTCDate()} ${month.format(end)}`
    : `${start.getUTCDate()} ${month.format(start)}–${end.getUTCDate()} ${month.format(end)}`;
   edition.month = new Intl.DateTimeFormat('nl-BE', {month: 'short', timeZone: 'UTC'}).format(start).replace('.', '').toUpperCase();
